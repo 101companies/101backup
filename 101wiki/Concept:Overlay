@@ -1,0 +1,9 @@
+== Headline ==
+
+An overlay which may be displayed on top of a map
+
+== Metadata ==
+* [[instanceOf::Android_Location]]
+* [[identifies::https://developers.google.com/maps/documentation/android/reference/com/google/android/maps/Overlay]]
+* [[linksTo::https://developers.google.com/maps/documentation/android/hello-mapview]]
+* [[instanceOf::Namespace:Concept]]

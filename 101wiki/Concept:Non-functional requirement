@@ -1,0 +1,19 @@
+== Headline ==
+
+A required quality of a [[software system]] or a [[software component|component]]
+
+== Details ==
+
+See the following concepts for classifiers of non-functional requirements:
+* [[Development-time quality]]
+* [[Run-time quality]]
+
+(These classifiers are not standardized, but similar concepts appear under different names in various sources.)
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Non-functional_requirement]]
+* [[linksTo::http://www.architecting.co.uk/presentations/NFRs.pdf]]
+* [[isA::Requirement]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

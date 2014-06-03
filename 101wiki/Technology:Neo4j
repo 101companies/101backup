@@ -1,0 +1,13 @@
+== Headline ==
+
+Neo4j is a [[Technology:Graph database]] implemented in the [[Language:Java]] language.
+
+== Description ==
+
+Neo4j is an open-source graph database, meaning it stores data in the form of graphs in the mathematical sense rather than relational tables.
+
+== Links ==
+
+* <primary>http://neo4j.org/ Official Neo4j website</primary>
+== Metadata ==
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,9 @@
+== Headline ==
+
+A human-readable data serialization format
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://www.yaml.org/]]
+* [[linksTo::http://en.wikipedia.org/wiki/YAML]]
+* [[instanceOf::Namespace:Language]]

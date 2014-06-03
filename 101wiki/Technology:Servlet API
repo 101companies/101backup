@@ -1,0 +1,9 @@
+== Intent ==
+
+A [[Technology:Java EE]] [[API]] for responding ([[Technology:HTTP]]-)requests
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://en.wikipedia.org/wiki/Servlet]]
+* [[linksTo::http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets2.html#75087]]
+* [[instanceOf::Namespace:Technology]]

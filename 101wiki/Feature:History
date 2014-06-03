@@ -1,0 +1,30 @@
+== Headline ==
+
+Maintain historical company data for analysis
+
+== Description ==
+
+Company data is to be maintained for a number of years so that some analysis are applicable. Specifically, management is interested in the development of salaries in terms of the [[total]] and the [[median]] of salaries over the years. To this end, the data may be visualized via a [[bar chart]].
+
+== Motivation ==
+
+The feature triggers the need to deal with historical data, which, in a practical setting would need to be obtained by regular snapshotting or the use of a temporal database. Simple implementations of the feature may simply assume sufficient historical data via test data. More interesting implementations may also model (simulate) the process of obtaining historical data.
+
+== Illustration ==
+
+See [[Contribution:haskellBarchart]] for an illustration.
+
+== Relationships ==
+
+The feature leverages [[Feature:Total]] and [[Feature:Median]].
+
+== Metadata ==
+
+
+* [[isA::Functional requirement]]
+* [[isA::Data requirement]]
+* [[linksTo::http://en.wikipedia.org/wiki/Temporal_database]]
+* [[isA::Optional feature]]
+* [[implies::Feature:Total]]
+* [[implies::Feature:Median]]
+* [[instanceOf::Namespace:Feature]]

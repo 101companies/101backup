@@ -1,0 +1,57 @@
+== Headline ==
+
+Sum up the salaries of all employees.
+== Description ==
+
+The salaries of a company's employees are to be summed up. Let's assume that the management of the company is interested in the salary total as a simple indicator for the amount of money paid to the employees, be it for a press release or otherwise. Clearly, any real company faces other expenses per employee, which are not totaled in this manner.
+== Motivation ==
+
+The feature may be implemented as a [[query]], potentially making use of a suitable [[query language]]. Conceptually, the feature corresponds to a relatively simple and regular kind of query, i.e., an [[iterator-based query]], which iterates over a company' employees and aggregates the salaries of the individual employees along the way. It shall be interesting to see how different software languages, technologies, and implementations deal with the conceptual simplicity of the problem at hand.
+== Illustration ==
+
+=== Totaling salaries in SQL ===
+
+Consider the following [[Language:SQL]] query which can be applied to an instance of a straightforward relational schema for companies. We assume that all employees belong to a single company; The snippet originates from [[Contribution:mySqlMany]].
+
+<syntaxhighlight lang="sql">
+SELECT SUM(salary) FROM employee;
+</syntaxhighlight>
+
+=== Totaling salaries in Haskell ===
+
+Consider the following [[Language:Haskell]] functions which are applied to a simple representation of companies.
+
+<syntaxhighlight lang="haskell">
+-- Total all salaries in a company
+total :: Company -> Float
+total = sum . salaries
+
+-- Extract all salaries in a company
+salaries :: Company -> [Salary]
+salaries (n, es) = salariesEs es
+
+-- Extract all salaries of lists of employees
+salariesEs :: [Employee] -> [Salary]
+salariesEs [] = []
+salariesEs (e:es) = getSalary e : salariesEs es
+
+-- Extract the salary from an employee
+getSalary :: Employee -> Salary
+getSalary ( ,  , s) = s
+</syntaxhighlight>
+== Relationships ==
+
+* See [[Feature:Cut]] for a transformation scenario instead of a query scenario.
+* See [[Feature:Depth]] for a more advanced query scenario.
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical_company]].
+== Guidelines ==
+
+* The ''name'' of an operation for summing up salaries thereof should involve the term "total". This guideline is met by the above illustration, if we assume that the shown SQL statement is stored in a SQL script with name "Total.sql". By contrast, if [[OO programming]] was used for implementation, then the names of the corresponding methods should involve the term "total".
+* A suitable ''demonstration'' of the feature's implementation should total the salaries of a sample company. This guideline is met by the above illustration, if we assume that the shown SQL statement is executed on a database which readily contains company data. All such database preparation and query execution should preferably be scripted. Likewise, if [[OO programming]] was used, then the demonstration could be delivered in the form of unit tests.
+== Metadata ==
+
+* [[isA::Functional requirement]]
+* [[isA::Query]]
+* [[isA::Iterator-based query]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,13 @@
+== Intent ==
+
+a library and [[Runtime|runtime]] which supports several programming languages for Windows operating systems
+
+== Links ==
+* [http://en.wikipedia.org/wiki/.NET_Framework Wikipedia]
+* [http://www.microsoft.com/net/ Official site]
+
+
+
+== Metadata ==
+* [[instanceOf::Platform]]
+* [[instanceOf::Namespace:Technology]]

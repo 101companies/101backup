@@ -1,0 +1,12 @@
+== Headline ==
+
+support for naming and directory services in Java applications
+
+== Description ==
+
+JNDI stands for "Java Naming and Directory Interface".
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://www.oracle.com/technetwork/java/jndi/index.html]]
+* [[instanceOf::Namespace:Technology]]

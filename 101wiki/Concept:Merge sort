@@ -1,0 +1,70 @@
+== Headline ==
+
+The Merge sort [[sorting algorithm]]
+
+
+== Illustration ==
+
+See the visualization of Merge sort on Wikipedia: 
+
+http://en.wikipedia.org/wiki/Merge_sort
+
+See various illustrations of Merge sort as available on YouTube, e.g.:
+
+<media url="http://www.youtube.com/watch?v=XaqR3G_NVoo"/>
+
+An implementation of Merge sort is given here for the [[Language:Haskell]]:
+
+<syntaxhighlight language=haskell>
+-- Polymorphic sorting
+sort :: Ord a => [a] -> [a]
+sort [] = []
+sort [x] = [x]
+sort xs = merge (sort ys) (sort zs)
+  where
+    (ys,zs) = split xs
+
+-- Split a list into halves
+split :: [a] -> ([a],[a])
+split xs = (take len xs, drop len xs)
+  where
+    len = length xs `div` 2
+
+-- Merge sorted sublists
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] ys = ys
+merge xs [] = xs
+merge (x:xs) (y:ys) =
+  if x<=y 
+    then x : merge xs (y:ys)
+    else y : merge (x:xs) ys
+</syntaxhighlight>
+
+The main sorting function relies on helpers for splitting the input lists into halves and for merging sorted sublists. An empty list as much as a singleton lists are immediately sorted, as modeled by the first two equations of ''sort''. The ''split'' helper uses list-processing goodies ''take'' and ''drop'' to extract two halves (+/- one element for a list of odd length). The ''merge'' help offers two base cases for a merge to trivially complete, if either of the two operands is an empty list; the recursive case compares the heads of both operands to decide on which of them goes first into the merged result.
+
+The implementation is illustrated as follows:
+
+<syntaxhighlight language=haskell>
+-- Illustrate sorting
+main = do
+  let input = [2,4,3,1,4]
+  print $ sort input -- [1,2,3,4,4]
+</syntaxhighlight>
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Merge_sort, 21 April 2013)
+
+Conceptually, a merge sort works as follows
+
+# Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).
+# Repeatedly merge sublists to produce new sublists until there is only 1 sublist remaining. This will be the sorted list.
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Merge_sort]]
+* [[instanceOf::Sorting algorithm]]
+* [[instanceOf::Divide and conquer algorithm]]
+* [[instanceOf::Namespace:Concept]]

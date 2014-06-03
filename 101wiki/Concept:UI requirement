@@ -1,0 +1,13 @@
+== Headline ==
+
+A requirement regarding the user interface of a [[software system]]
+
+== Description ==
+
+TBD
+
+== Metadata ==
+
+* [[isA::Requirement]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

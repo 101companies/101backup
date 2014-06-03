@@ -1,0 +1,21 @@
+== Intent ==
+
+the capability of bridging the technical spaces [[tableware]] and [[XMLware]]
+
+== Discussion ==
+
+== Description ==
+
+The term R/X mapping is actually not in use in practice.
+
+However, the underlying problem is relevant in practice; see the resources section.
+
+The term was added to this ontology for the sake of uniformity.
+
+See the description of the general [[mapping]] concept for more details.
+
+== Metadata ==
+* [[instanceOf::Mapping]]
+* [[identifies::http://en.wikipedia.org/wiki/XML_database]]
+* [[linksTo::http://en.wikipedia.org/wiki/SQL/XML]]
+* [[instanceOf::Namespace:Concept]]

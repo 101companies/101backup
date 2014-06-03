@@ -1,0 +1,31 @@
+== Headline ==
+
+An information system for human resources functions
+
+== Illustration ==
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Human_resource_management_system, 14 April 2013)
+
+Currently human resource management systems encompass [...]:
+
+# Payroll
+# Time and attendance
+# Performance appraisal
+# Benefits administration
+# HR management information system
+# Recruiting/Learning management
+# Performance record
+# Employee self-service
+# Scheduling
+# Absence management
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Human_resource_management_system]]
+* [[linksTo::http://www.webopedia.com/TERM/H/Human_Resources_Management_System.html]]
+* [[isA::Management system]]
+* [[isA::Information system]]
+* [[instanceOf::Vocabulary:Information system]]
+* [[instanceOf::Namespace:Concept]]

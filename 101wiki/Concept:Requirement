@@ -1,0 +1,21 @@
+== Headline ==
+
+A requirement for a new or altered [[software system]] or [[software component|component]]
+== Illustration ==
+
+Consider the following [[functional requirement]] for the [[@system]]: "The system must be able to total the salaries of all employees of the company and to report the total to the user." [[Feature:Total]] describes this requirement in more detail.
+== Details ==
+
+Requirements can be classified in different way. The following classifiers are used on the 101wiki specifically also for the classification of the requirements of the [[@system]]:
+* [[Functional requirement]]
+* [[Non-functional requirement]]
+* [[Data requirement]]
+* [[UI requirement]]
+Requirements may invoke different abstraction levels. On the 101wiki, requirements may refer to the abstraction levels of [[software architecture]], [[software design]], and [[data modeling]] as opposed to any narrow focus on [[requirements analysis]].
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Requirement]]
+* [[linksTo::http://en.wikipedia.org/wiki/Requirements_analysis]]
+* [[linksTo::http://en.wikipedia.org/wiki/Software_requirements_specification]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

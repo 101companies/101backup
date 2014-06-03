@@ -1,0 +1,9 @@
+== Headline ==
+A variant of [[Contribution:haskellSyb]].
+
+== Metadata ==
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Mentoring]]
+* [[implements::Feature:Closed serialization]]
+* [[cloneOf::Contribution:haskellSyb]]
+* [[instanceOf::Namespace:Contribution]]

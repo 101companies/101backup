@@ -1,0 +1,12 @@
+== Headline ==
+
+A problem that can be solved with an [[algorithm]]
+== Illustration ==
+
+* Examples of algorithmic problems: [[greatest common divisor]], the [[factorial]], and the [[search problem]].
+* An example of non-algorithmic problems: the [[Halting problem]].
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Algorithm]]
+* [[instanceOf::Namespace:Concept]]

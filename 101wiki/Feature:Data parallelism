@@ -1,0 +1,10 @@
+== Headline ==
+
+[[Data parallelism]] for operations on company data
+== Description ==
+
+The [[@system]] may be subject to huge companies with millions of employees and substantial nesting of departments. The present feature applies when the system architecture scales for such company data and [[data parallelism]] is leveraged. See also [[Feature:Task parallelism]].
+== Metadata ==
+
+* [[isA::Feature:Parallelism]]
+* [[instanceOf::Namespace:Feature]]

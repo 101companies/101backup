@@ -1,0 +1,8 @@
+== Headline ==
+A variant of [[Contribution:haskellData]].
+
+== Metadata ==
+* [[implements::Feature:Flat company]]
+* [[implements::Feature:Closed serialization]]
+* [[cloneOf::Contribution:haskellData]]
+* [[instanceOf::Namespace:Contribution]]

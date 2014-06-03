@@ -1,0 +1,13 @@
+==Intent==
+
+a [[Communications protocol]] for message exchange in network communication
+
+==Description==
+
+HTTP is the major [[Term:Application layer|application layer]] [[Communications protocol|protocol]] for internet communication.
+
+
+== Metadata ==
+* [[instanceOf::Communications protocol]]
+* [[identifies::http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol]]
+* [[instanceOf::Namespace:Technology]]

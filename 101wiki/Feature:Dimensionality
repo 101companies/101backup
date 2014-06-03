@@ -1,0 +1,24 @@
+== Headline ==
+
+Implement different data dimensions for reporting salary distribution based on multi-dimensional criteria.
+== Description ==
+
+The data model of 101companies comes with two descriptive attributes capable to use for data analysis and comparison.
+Adding additional attributes such as gender, age and job role enable a multi-dimensional and advanced analysis used in the area of Business Intelligence.
+== Motivation ==
+
+Management needs to understand the distribution of salaries over the employees in the company and apply different criteria (dimensions) for grouping and analysis. Employees could be grouped by gender, age (also age range), department, and job role. For any given criterion, an appropriate chart may be used to visualize the distribution. For instance, distribution for age ranges could be visualized with a line chart with one line per age range.
+
+
+
+This feature calls for a number of extensions to the data model: gender (male, female, or unspecified), date of birth (to be able to compute the age of an employee), and job role (such as developer, tester, and program manager). These extensions are not in any way interesting on their own, but they prepare the data model for multi-dimensional data aggregation for reporting as commonly used in the area of Business Intelligence. Here, the addition of the gender is the most basic as it corresponds to a simple enumeration type. The addition of the date of birth is somewhat more interesting because age or age range need to be computed from the date of birth. The addition of job roles triggers the need for extra (complex) joins in data aggregation, if we assume that job roles are organized, for example, in a designated table in a database with a normalized schema.
+== Illustration ==
+
+This feature is illustrated using [[Contribution:pyDWH]].
+== Metadata ==
+
+* [[isA::Optional feature]]
+* [[isA::Data requirement]]
+* [[isA::Functional requirement]]
+* [[implies::Feature:History]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,63 @@
+== Headline ==
+
+an import matcher for Haskell
+
+== Description ==
+
+HsImportMatcher is a part of [[101companies:Explorer]]; it is a Haskell-specific tool for import matching. That is, the technology supports the syntax-aware proof of using a certain Haskell-based technology in terms of its import into Haskell sources. The input/output behavior of HsImportMatcher is the following:
+
+* Input:
+** a Haskell module
+** a namespace (a string)
+* Output:
+** None
+* Exit:
+** Normal: successful matching
+** Abnormal: failed matching (or other problems)
+
+== Illustration ==
+
+Consider this technology tagging:
+
+<pre>
+$ pwd
+/home/me/projects/101repo
+$ more technologies/HXT/.tetala 
+[
+ { 
+  "language" : "Haskell",
+  "namespace" : "Text.XML.HXT"
+ }
+]
+</pre>
+
+Hence, [[Technology:HXT]] is said to be detectable due to the associated namespace "Text.XML.HXT". More operationally, any Haskell module could be scanned for "imports" to refer to said namespace. For instance, [[Contribution:haskellHxt]] does indeed make good use of [[Technology:HXT]]. Thus, the test case:
+
+<pre>
+$ pwd
+/home/me/projects/101repo/technologies/HsImportMatcher
+$ make test
+$ more Makefile 
+build:
+...
+test:
+...
+        @./matcher.py \
+                ../../contributions/hxt/Total.hs \
+                "Text.XML.HXT"
+...
+</pre>
+
+== See also ==
+
+* The [[101companies:Explorer]]
+
+== Contributors ==
+
+* {{101contributor|Ralf Lämmel|developer}}
+
+== Metadata ==
+* [[instanceOf::Import matcher]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/HsImportMatcher]]
+* [[instanceOf::Namespace:Technology]]

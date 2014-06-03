@@ -1,0 +1,18 @@
+== Intent == 
+
+a platform- and language-neutral [[API|API]] for tree-based XML processing
+
+== Description ==
+
+TBD
+
+== Spaces ==
+
+* [[XMLware]]
+* [[Generic objectware]]
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://www.w3.org/DOM]]
+* [[identifies::http://en.wikipedia.org/wiki/Document_Object_Model]]
+* [[instanceOf::Namespace:Technology]]

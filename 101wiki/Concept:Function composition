@@ -1,0 +1,36 @@
+== Headline ==
+
+Apply several functions, one after the other
+
+
+== Illustration ==
+
+Consider the following [[Language:Haskell]] function ''even'' as a starting point:
+
+<syntaxhighlight lang="haskell">
+-- Test an Int to be even
+even :: Int -> Bool
+even x = x `mod` 2 == 0
+</syntaxhighlight>
+
+The test for a number to be ''odd'' can be trivially described by composing ''even'' and logical negation. In [[Language:Haskell]], the composition operator is denoted as ".". Thus:
+
+<syntaxhighlight lang="haskell">
+-- Test an Int to be odd
+odd :: Int -> Bool
+odd = not . even
+</syntaxhighlight>
+
+We can always replace function composition by some pattern of function application. For instance, ''odd'' could also be expressed like this:
+
+<syntaxhighlight lang="haskell">
+-- Test an Int to be odd
+odd' :: Int -> Bool
+odd' x = not (even x)
+</syntaxhighlight>
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Function_composition]]
+* [[linksTo::http://en.wikipedia.org/wiki/Function_composition_(computer_science)]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,17 @@
+== Headline ==
+
+A particularly simple and regular kind of [[query]]
+
+== Description ==
+
+Queries may be arbitrarily complicated in how they extract data from given data. An [[iterator-based query]] is relatively simple and regular in so far that it may be understood as performing data extraction, conceptually, through iteration over some well-defined set of components of interest within compound input data. For instance, components of interest may be characterized by their type.
+
+== Illustration ==
+
+[[Feature:Total]] is concerned with an [[iterator-based query]] which extracts data (salaries) from all employees of a company.
+
+== Metadata ==
+
+* [[isA::Query]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

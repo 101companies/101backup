@@ -1,0 +1,44 @@
+== Headline ==
+
+A lecture on [[design patterns]] as part of the [[Course:Programming in Koblenz]]
+
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/patterns-19905697"/>
+
+== Concepts ==
+
+* [[Design pattern]]
+* [[Observer pattern]]
+* [[Composite pattern]]
+* [[Proxy pattern]]
+* [[Template pattern]]
+* [[Visitor pattern]]
+* [[Adapter pattern]]
+
+
+== Languages ==
+
+* [[Language:Java]]
+
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+* [[Feature:Logging]]
+
+
+== Contributions ==
+
+* [[Contribution:javaVisitor]]
+* [[Contribution:javaTemplate]]
+* [[Contribution:javaExorcism]]
+
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

@@ -1,0 +1,11 @@
+== Headline ==
+
+You have created new contribution using [https://github.com Github]. Source code for this contribution you can find [https://github.com/https://github.com/hartenfels/Companies101Cpp here].
+
+== Metadata ==
+* [[instanceOf::Namespace:Contribution]]
+* [[developedBy::Contributor:hartenfels]]
+* [[uses::Language:CPlusPlus]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]

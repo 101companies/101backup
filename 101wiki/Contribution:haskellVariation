@@ -1,0 +1,54 @@
+== Headline ==
+
+[[Data variation]] in [[Language:Haskell]] with [[algebraic data type]]s
+
+== Characteristics ==
+
+The [[data model]] leverages [[data variation]] for companies with departmental nesting. Thus, an [[algebraic data type]] is used for subunits of departments (i.e., employees and departments) so that recursive nesting can be expressed. The algebraic data type needs indeed two [[data constructor]]s. Thus, [[data variation]] is exercised, but see [[Contribution:haskellComposition]] for an alternative without data variation.
+
+== Illustration ==
+
+The data model leverages an [[algebraic data type]] for subunits of departments; in this manner recursion is enabled:
+
+<fragment url="src/Company/Data.hs"/>    
+
+A sample company looks like this:
+
+<fragment url="src/Company/Sample.hs"/>    
+
+[[Feature:Total]] is implemented as follows:
+
+<fragment url="src/Company/Total.hs"/>
+
+The following salary total is computed for the sample company:
+
+<syntaxhighlight lang="haskell">
+399747.0
+</syntaxhighlight>
+
+== Relationships ==
+
+See [[Contribution:haskellComposition]] for a contribution with a similar data model such that [[data variation]] is not exercised, but only [[data composition]].
+
+== Architecture ==
+
+See [[Contribution:haskellComposition]].
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+* [[uses::Language:Haskell]] 
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

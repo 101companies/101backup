@@ -1,0 +1,12 @@
+== Headline ==
+
+a [[Function]] serving some style of composition
+
+== Details ==
+
+In the context of functional programming, the term ''combinator'' was probably used first for certain fundamental functions such as the SKI combinators or the Y combinator. Eventually, the term ''combinator'' came also into use for referring to functions of a library that supports some domain such as parsing, pretty printing, or traversal. In this context, combinators are often [[higher-order function]]s or functions operating on a domain-specific [[abstract data type]].
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

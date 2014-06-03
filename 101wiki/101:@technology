@@ -1,0 +1,10 @@
+== Headline ==
+
+A technology developed as part of the [[@project]]
+== Description ==
+
+A [[@technology]] is a [[software technology]] that was essentially developed as part of the [[@project]]. It is entirely possible and appreciated that some [[@technology|101technologies]] may be reused outside the [[@project]]. Vice versa, the [[@project]], of course, also reuses many existing technologies.
+== Metadata ==
+
+* [[isA::Software technology]]
+* [[instanceOf::Namespace:101]]

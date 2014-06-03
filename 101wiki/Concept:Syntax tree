@@ -1,0 +1,9 @@
+== Headline ==
+
+A tree representing grammatical structure of some input
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Syntax_tree]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Namespace:Concept]]

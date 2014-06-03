@@ -1,0 +1,48 @@
+== Headline ==
+
+[[Generic programming]] in [[Language:Python]] with [[SYB]]
+
+==Motivation==
+
+This implementation shows [[generic programming]] in [[Language:Python]] using [[SYB]] style. The data model relies on (recursive) [[data composition]] alone. Generic Programming simplifies the traversal over nested data. Functions for total and cut are implemented as generic functions, they contain type specific cases for Employees. This simplifies functional style traversing in Python a lot. This library is a port of the haskell version of [[SYB]], but it addresses the same optimisations as those in haskell. For tree modification look at the implementation of cut and the implementation of total illustrates querys on a tree. The library depends on reflection in python to define gmapQ and gmapT.
+
+== Illustration ==
+
+The data model is adapted from [[Contribution:py3k]]. 
+
+<syntaxhighlight lang="python" source="101companies.py">
+@t(Employee)
+def salary(e):
+    return e.salary
+
+total = everything(operator.add, 0 |mkQ| salary)
+</syntaxhighlight>
+
+This implementation of total takes the salary of every employee and folds them by adding.
+
+== Relationships ==
+
+* See [[Contribution:haskellSyb]] for the haskell version
+* See [[Contribution:jsSyb]] for the javascript version
+* See [[Contribution:coffeeSyb]] for the coffee script version
+
+== Usage ==
+
+The python file "101companies.py" requires python2.5-2.7. The output appears on the console.
+
+<pre>
+$ python 101company.py 
+399747.0
+199873.5
+</pre>
+
+== Metadata ==
+
+* [[uses::Language:Python]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Mentoring]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Theme:Scrap your boilerplate]]
+* [[instanceOf::Namespace:Contribution]]

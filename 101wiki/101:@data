@@ -1,0 +1,25 @@
+== Headline ==
+
+The Linked Data access point of the [[@project]]
+== Description ==
+
+Various data is synthesized from the [[@repo]] and the [[@wiki]]. All such data is provide online through [[@data]], more specifically through the following link:
+
+http://data.101companies.org
+
+The synthesis of all such data is coordinated by the [[@worker]] which executes various [[@module]]s. The data may be conveniently explored (discovered) with the [[@explorer]]. The data is organized in a way that applies Linked Data principles. In particular, both dumps and smaller slices are provided. JSON is used as the primary format for outputs of [[@module]]s, but RDF is also supported increasingly.
+
+=== Data from the [[101repo]] ===
+
+A systematic documentation effort is underway for [[Namespace:Module]].
+
+Here are some pointers:
+
+* [http://data.101companies.org/dumps/Wiki101Full.json '''101wiki dump'''] synthesized by [[Module:wiki2json]].
+* [http://data.101companies.org/resources '''per-file resources'''] synthesized by various modules.
+* [http://data.101companies.org/dumps/rules.json 101meta '''rules dump'''] synthesized by [[Module:rules101meta]].
+* [http://data.101companies.org/dumps/matches.json basic '''metadata dump'''] synthesized by [[Module:matches101meta]].
+* [http://data.101companies.org/dumps/predicates.json predicative '''metadata dump'''] synthesized by [[Module:predicates101meta]].
+
+== Metadata ==
+* [[instanceOf::Namespace:101]]

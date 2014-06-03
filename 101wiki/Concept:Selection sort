@@ -1,0 +1,68 @@
+== Headline ==
+
+The Selection sort [[sorting algorithm]]
+
+
+== Illustration ==
+
+See the visualization of Selection sort on Wikipedia: 
+
+http://en.wikipedia.org/wiki/Selection_sort
+
+See various illustrations of Selection sort as available on YouTube, e.g.:
+
+<media url="http://www.youtube.com/watch?v=Ns4TPTC8whw"/>
+
+An implementation of Selection sort is given here for the [[Language:Haskell]]:
+
+<syntaxhighlight language=haskell>
+-- Polymorphic sorting
+sort :: Ord a => [a] -> [a]
+sort xs = selects xs
+
+-- Repeat selection of smallest element
+selects :: Ord a => [a] -> [a]
+selects [] = []
+selects xs = x : selects xs'
+  where
+    x = smallest (head xs) (tail xs)
+    xs' = remove x xs
+
+-- Find smallest element
+smallest :: Ord a => a -> [a] -> a
+smallest x [] = x
+smallest x (y:ys) = smallest (min x y) ys
+
+-- Remove a given element
+remove :: Eq a => a -> [a] -> [a]
+remove _ [] = error "Element not found for removal."
+remove x (y:ys) =
+  if x==y
+    then ys
+    else y : remove x ys
+</syntaxhighlight>
+
+The main sorting function relies on helpers to model sorting as repeated selection of the smallest element from the unsorted input. That is, the ''selects'' helper repeats selection combined with removal of the smallest element; the ''smallest'' helper determines the smallest element in an unsorted list while starting with its head as the first candidate; the ''remove'' helper removes a given element from a list following the pattern of [[linear search]]. 
+
+The implementation is illustrated as follows:
+
+<syntaxhighlight language=haskell>
+-- Illustrate sorting
+main = do
+  let input = [2,4,3,1,4]
+  print $ sort input -- [1,2,3,4,4]
+</syntaxhighlight>
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Selection_sort, 21 April 2013)
+
+The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Selection_sort]]
+* [[instanceOf::Sorting algorithm]]
+* [[instanceOf::Namespace:Concept]]

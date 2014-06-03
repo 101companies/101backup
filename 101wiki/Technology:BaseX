@@ -1,0 +1,9 @@
+== Intent ==
+
+an XML database with [[Language:XPath]] and [[Language:XQuery]] processor
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[instanceOf::Language implementation]]
+* [[identifies::http://basex.org/]]
+* [[instanceOf::Namespace:Technology]]

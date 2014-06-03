@@ -1,0 +1,9 @@
+== Headline ==
+
+constrain continuation of computation based on Boolean expression
+
+== Metadata ==
+* [[instanceOf::Programming idiom]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Guard_(computer_science)]]
+* [[instanceOf::Namespace:Concept]]

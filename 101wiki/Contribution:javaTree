@@ -1,0 +1,61 @@
+== Intent ==
+
+Tree based implementation in [[Language:Java]].
+
+== Motivation ==
+
+''This project was created at the PTT-Hackathon 2011.''
+
+The tree-based view allows the user to get a large overview of the hierarchy of the [[@system]]. The tree allows easy navigation within this hierarchy. The tree also provides quick adjustment on changes of the [[Feature:Hierarchical_company]] data.
+
+== Illustration ==
+
+The main features [[Feature:Cut]], [[Feature:Total]] and [[Feature:Hierarchical_company]] are adopted from [[Contribution:javaInheritance]]. The main difference to [[Contribution:swing]] is, that the navigation is simplified with a tree view. This tree has to be initialized recursively with the company as root:
+
+<syntaxhighlight lang="java">
+/*
+ * This method initializes the tree-view.
+ */
+private Component createTree() {
+	Company company = model.getCompany(); // get company data
+
+	DefaultMutableTreeNode root = new DefaultMutableTreeNode(company); // create root element
+
+	for (Department d : company.getDepts()) { // run through the departments and add them to the root
+		root.add(addDepartmentNode(d)); // create department subtrees
+	}
+
+	tree = new JTree(root);
+
+	return new JScrollPane(tree); // return the JTree within a scroll pane
+}
+</syntaxhighlight>
+
+The department subtrees are created in a similar way.
+
+== Architecture ==
+
+The main architecture of this project is [[Architecture:MVC|MVC]]. The class [this!!org/softlang/tests/Interaction.java Interaction.java] starts the application and creates the main parts of the [[Architecture:MVC|MVC]]-structure: The [this!!org/softlang/swing/view/MainView.java MainView.java] creates the tree and provides a container for the single views of the company, departments and employees. These views are initialized by the [this!!org/softlang/swing/controller/Controller.java Controller.java] while the data and the selected element of the tree is stored in the [this!!org/softlang/swing/model/Model.java Model.java]. The main features [[Feature:Cut]] and [[Feature:Total]] can be found in ''org.softlang.operations'' while the classes for the data structure are in ''org.softlang.company''.
+
+== Usage ==
+
+* This project is provided as an [[Technology:Eclipse]] project.
+* After importing the project into [[Technology:Eclipse]] as ''Java Project'', just run Interaction.java as ''Java Application''.
+
+The implementation has been tested with Java version 5.
+
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[uses::Technology:Swing]]
+* [[uses::Technology:Eclipse]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[developedBy::Contributor:Eduard Ditler]]
+* [[developedBy::Contributor:Hanna-Marike Reger]]
+* [[developedBy::Contributor:Helena Swerdlow]]
+* [[developedBy::Contributor:Jan Ruether]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

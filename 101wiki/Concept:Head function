@@ -1,0 +1,21 @@
+== Headline ==
+
+A basic [[operation]] on a [[list]] to return its [[head]]
+
+== Illustration ==
+
+Here is an application of [[Language:Haskell]]'s ''head'' operation:
+
+<syntaxhighlight lang="haskell">
+Prelude> head [1,2,3]
+1
+</syntaxhighlight>
+
+There is the related [[tail function]].
+
+
+== Metadata ==
+
+* [[instanceOf::Common function]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

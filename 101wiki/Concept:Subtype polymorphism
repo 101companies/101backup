@@ -1,0 +1,9 @@
+== Headline ==
+
+A form of [[bounded polymorphism]] applying to all [[subtype]]s of a given type
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Subtype_polymorphism]]
+* [[isA::Bounded polymorphism]]
+* [[instanceOf::Namespace:Concept]]

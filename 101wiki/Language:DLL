@@ -1,0 +1,14 @@
+== Headline == 
+
+Microsoft's file format for [[Technology:DLL]] shared libraries
+
+== Details ==
+
+DLL stands for Dynamic-link library (also written unhyphenated).
+
+[[Technology:DLL]] is also the name of Microsoft's technology/concept instantiating the [[shared library]] concept.
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://en.wikipedia.org/wiki/Dynamic-link_library]]
+* [[instanceOf::Namespace:Language]]

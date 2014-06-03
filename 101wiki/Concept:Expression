@@ -1,0 +1,15 @@
+== Headline ==
+
+The concept of composing computations of values
+
+== Description ==
+
+The distinguished properties of expressions is that they can be evaluated such that evaluation returns a value. An expression is built from literals, variables, operators, functions, and possibly other entities.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Expression_(programming)]]
+* [[instanceOf::Programming]]
+* [[instanceOf::Syntactic category]]
+* [[instanceOf::Language concept]]
+* [[instanceOf::Namespace:Concept]]

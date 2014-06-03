@@ -1,0 +1,14 @@
+== Headline ==
+
+A contributor to the [[@project]]
+
+== Description ==
+
+The most obvious type of [[@contributor]] is the developer, co-developer, or maintainer of a [[@contribution]], i.e., an implementation or a model of the [[@system]]. Such work on [[@contribution]]s includes indeed efforts on programming and documentation. Another type of [[@contributor]] is concerned with the infrastructure and foundation of the [[@project]] such as the [[@repo]], the [[@wiki]], and the [[@worker]].
+
+== Metadata ==
+
+
+* [[relatesTo::@contribution]]
+* [[instanceOf::Namespace:101]]
+

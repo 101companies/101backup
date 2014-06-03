@@ -1,0 +1,23 @@
+== Headline ==
+
+an [[OO programming language]]
+
+== Description ==
+
+See elsewhere for the [[Technology:Java platform]] and the [[Technology:Java SE]].
+
+== Illustration == 
+
+Let's show "Hello World" for Java.
+
+<file url="HelloWorld.java" show="true"/>
+
+== Links ==
+
+* [http://en.wikipedia.org/wiki/Java (programming language) Wikipedia]
+
+== Metadata ==
+* [[instanceOf::OO programming language]]
+* [[instanceOf::Unspecific version]]
+* [[instanceOf::Namespace:Language]]
+

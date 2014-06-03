@@ -1,0 +1,8 @@
+== Intent ==
+
+a query language for XML documents
+
+== Metadata ==
+* [[instanceOf::Domain-specific language]]
+* [[identifies::http://www.w3.org/TR/xpath/]]
+* [[instanceOf::Namespace:Language]]

@@ -1,0 +1,56 @@
+== Headline ==
+
+A lecture on the [[XML data binding]] as part of the [[Course:Programming in Koblenz]]
+
+
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/xml-data-binding" />
+
+
+== Concepts ==
+
+* [[XML data binding]]
+* [[O/X mapping]]
+* [[Schema-first mapping]]
+
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:XML]]
+* [[Language:XSD]]
+
+
+
+== Technologies ==
+
+* [[Technology:JAXB]]
+
+
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+
+
+
+== Contributions ==
+
+* [[Contribution:dom]]
+* [[Contribution:sax]]
+* [[Contribution:jaxbComposition]]
+* [[Contribution:jaxbChoice]]
+* [[Contribution:jaxbExtension]]
+* [[Contribution:jaxbSubstitution]]
+
+
+
+== Metadata ==
+
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

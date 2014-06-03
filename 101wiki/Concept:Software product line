@@ -1,0 +1,10 @@
+== Headline ==
+
+A collection of similar [[software system]]s from a shared set of software assets
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Software_product_line]]
+* [[linksTo::http://www.sei.cmu.edu/productlines/]]
+* [[linksTo::http://www.biglever.com/learn/whitepapers.html?source=spl]]
+* [[instanceOf::Namespace:Concept]]

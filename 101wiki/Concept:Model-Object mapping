@@ -1,0 +1,18 @@
+== Intent ==
+
+the [[capability]] of bridging the [[technical space]]s [[modelware]] and [[objectware]]
+
+== Description ==
+
+The term M/O mapping is actually not in use in practice.
+
+However, the underlying problem is relevant in practice; see the resources section.
+
+The term was added to this ontology for the sake of uniformity.
+
+See the description of the general [[mapping]] concept for more details.
+
+== Metadata ==
+* [[instanceOf::Mapping]]
+* [[identifies::http://www.eclipse.org/modeling/emf]]
+* [[instanceOf::Namespace:Concept]]

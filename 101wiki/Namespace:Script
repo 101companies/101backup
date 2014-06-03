@@ -1,0 +1,28 @@
+== Headline ==
+
+The namespace for event scripts
+
+== Description ==
+
+When events such as lectures or labs or tutorials leverage the [[@project]] at a detailed level, then those events can be loosely scripted according to the metamodel of [[Namespace:Script]]. The idea of these liberal scripts is to capture all concepts, languages, technologies, features, and contributions that are covered during the event. Specifically, the order of listed concepts should resemble the order actually intended for the event.
+
+== Illustration ==
+
+See [[Script:First steps in Haskell]] for an illustrative script.
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the script.
+* '''Summary''' (optional): a short summary of the course.
+* '''Concepts''' (optional): an itemized list of software concepts.
+* '''Languages''' (optional): an itemized list of software languages.
+* '''Technologies''' (optional): an itemized list of software technologies.
+* '''Features''' (optional): an itemized list of features of the [[@system]].
+* '''Contributions''' (optional): an itemized list of contributions of the [[@system]].
+* '''Information''' (optional): an itemized list of members of [[Namespace:Information]].
+* '''Metadata''' (required):
+** The script must be declared to be, indeed, an instance of [[Namespace:Script]].
+** The script may be linked to relevant online resources.
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

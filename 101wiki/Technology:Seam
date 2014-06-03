@@ -1,0 +1,27 @@
+== Intent ==
+
+A [[Technology:Java EE]] based [[Web-application framework|web-application framework]]
+
+== Description ==
+
+[[Technology:JBoss Application Server|JBoss]] Seam is an [[Technology:JSF]] based [[Ajax]] [[Web-application framework|web-application framework]] for the development of rich [[Web application|web applications]] in [[Language:Java]]. It is based on a [[Three-tier architecture|three-tier architecture]], where the presentation layer is handled by JSF <cite>SeamF2012official</cite>.
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:JavaScript]] (generated)
+* [[Language:XHTML]]
+* [[Language:HQL]]
+
+== Technologies ==
+
+* [[Technology:JBoss Application Server]]
+* [[Technology:EJB]]
+* [[Technology:JSF]]
+* [[Technology:JPA]]
+* [[Technology:Hibernate]]
+
+== Metadata ==
+* [[instanceOf::Web-application framework]]
+* [[identifies::http://seamframework.org/]]
+* [[instanceOf::Namespace:Technology]]

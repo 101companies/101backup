@@ -1,0 +1,8 @@
+== Headline ==
+
+Some text with a [[identifies::link]].
+
+== Metadata ==
+
+* [[partOf::Language:Haskell]]
+

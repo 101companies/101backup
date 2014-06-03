@@ -1,0 +1,14 @@
+== Headline ==
+
+Parallel processing with [[Technology:DryadLINQ]]
+
+== Usage ==
+
+* Download and install HPC Pack with SP1 SDK http://www.microsoft.com/download/en/details.aspx?id=9230
+* Download and install HPC Pack 2008 R2 Client Utilities http://www.microsoft.com/download/en/details.aspx?id=17017
+* http://research.microsoft.com/en-us/downloads/03960cab-bb92-4c5c-be23-ce51aee0792c/
+
+== Metadata ==
+
+* [[instanceOf::Theme:Data parallelism]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,118 @@
+== Headline ==
+
+a simple [[Techology:ASP .NET]] implementation in [[Language:CSharp|C#]] for the [[Technology:.NET]] Framework
+== Motivation == 
+
+A Web implementation in ASP .NET MVC 3.0; shows the basic features of MVC framework; in particular URL routing mapping to controllers and model/view binding.
+The implementation also serves as a reference solution for MVC framework for statically typed programming languages (e.g. C#, VB .NET) which also motivates its appearance in the GUI theme.
+== Illustration ==
+
+When we speak about MVC Framework for the Web, there are 2 major components are considered:
+
+1. Mapping URIs to handlers (essentially methods) in a source code. In ASP .NET MVC this called "routing" (http://msdn.microsoft.com/en-us/library/cc668201.aspx). Reflection plays an important part in the mapping workflow. A good detailed explanation can be found at http://msdn.microsoft.com/en-us/magazine/dd695917.aspx
+
+2. Template engine (ofter they called "view engines") which allows using target language inside the "view" to generate html parts from the model. ASP .NET MVC, for instance, supports two such engines: aspx and razor (http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx).
+Razor allows using C#/VB.NET inside the template by using special code blocks. This code is used by a framework to dynamically generate HTML by means of runtime code generation.
+Another important aspect, is how the actual model is binded to such template engine. As soon as the view itself is fully dynamic, traditionally in ASP .NET a dictionary was used to store the model and access it by key from the view code block. When a "dynamic" concept (http://msdn.microsoft.com/en-us/library/dd264741.aspx) was introduced in C# 4.0, it enabled an option making a model available for a view bypassing compile-time checking. Runtime code generation is used to execute all code blocks in a view engine and produce the actual HTML code.
+
+'''Route mapping'''
+
+To set up routes we need to implement class derived from System.Web.HttpApplication
+
+<syntaxhighlight lang=csharp>
+public class MvcApplication : System.Web.HttpApplication
+</syntaxhighlight>
+
+There is a method which is called by the framework when the first resource (such as a page) in an ASP.NET application is requested. (see http://msdn.microsoft.com/en-us/library/ms178473.aspx for the details)
+
+<syntaxhighlight lang=csharp>
+protected void Application Start()
+{
+  .....
+  RegisterRoutes(RouteTable.Routes);
+}
+</syntaxhighlight>
+
+
+Usually there is a need to force MVC to ignore some resources:
+
+<syntaxhighlight lang=csharp>
+routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+</syntaxhighlight>
+
+
+To map routes on controller's actions, the following method is used:
+<syntaxhighlight lang=csharp>
+ routes.MapRoute(
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+             );
+</syntaxhighlight>
+
+The MVC framework provides a default controller factory (aptly named DefaultControllerFactory) that will search through all the assemblies in an appdomain looking for all types that implement IController and whose name ends with "Controller." Thus, if you tell the factory to look for a "Home" controller, the factory can return a newly instantiated instance of a HomeController class regardless of the namespace or assembly it lives in—as long as it implements IController. This behavior is part of the MVC's "convention over configuration" style.
+Once the MvcHandler has an IController reference from the factory, it invokes Execute on the controller and waits for the controller to work its magic. When execution is complete, the MvcHandler will check if the controller implements the IDisposable interface, and if so, will invoke Dispose on the controller to clean up unmanaged resources.
+
+When (if) the action index is reached, as a result it can return a view or just a plain HTTP response (e.g. JSON, HTTP Error Code).
+If the view is returned default engine would search for its tempalte the following locations:
+
+* ~/Views/Home/Index.aspx
+* ~/Views/Home/Index.ascx
+* ~/Views/Shared/Index.aspx
+* ~/Views/Shared/Index.ascx
+* ~/Views/Home/Index.cshtml
+* ~/Views/Home/Index.vbhtml
+* ~/Views/Shared/Index.cshtml
+* ~/Views/Shared/Index.vbhtml
+
+''' Model binding'''
+
+First we populate the view by model (in this case by the Company object)
+
+<syntaxhighlight lang=csharp>
+public class CompanyController : Controller
+ {
+    //
+   // GET: /Company/
+   public ActionResult Index()
+   {
+      return View(CompanyRepository.CreateInMemoryModel());
+   }
+ }
+</syntaxhighlight>
+
+The result of the action above is the view template located at Views/Company/Index.cshtml.
+In the first line of the template, we need to "type" the model by using 
+<syntaxhighlight lang=csharp>
+@model csharpBaseline.CompanyModel.Company
+</syntaxhighlight>
+Later on we can refer to the "Model" property of the page in the following style
+
+<syntaxhighlight lang=csharp>
+@foreach (var dept in Model.Departments)
+{
+
+    <li>@Html.ActionLink(dept.Name, "Index", "Department", new {id = dept.Id}, null )</li>   
+}
+</syntaxhighlight>
+Here we see that the "Model" property has the type of "Company".
+== Architecture ==
+
+An implementation follows the default MVC folder structure provided by Visual Studio.
+It also reuses an object model AS-IS from the [[Contribution:csharp]] by referencing the project.
+== Usage ==
+
+Compile and run the project from Visual Sturio. Web browser opens automatically and shows the company page.
+== Metadata ==
+
+* [[uses::Language:CSharp]] (C#): Programming language used for all code (Version 4.0)
+* [[uses::Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[uses::Technology:.NET]]: framework used to execute compiled code (Version 4.0)
+* [[uses::Technology:NUnit]]: unit testing framework used for testing (Version 2.5)
+* [[uses::Technology:Visual Studio]]: optional IDE (Version 2010)
+* [[uses::Feature:Hierarchical_company]]
+* [[uses::Feature:Distribution]]
+* [[uses::Feature:Browsing]]
+* {{101contributor|Andrei Varanovich|developer}}
+* [[memberOf::Theme:GUI programming]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,20 @@
+== Headline ==
+
+The ATLAS Transformation Language for model transformation
+
+== Description ==
+
+ATL stands for ATLAS Transformation Language.
+In the narrow sense, ATL is indeed a language.
+In the wider sense, ATL is occasionally used to refer to the toolkit supporting ATL.
+
+== Metadata ==
+
+* [[instanceOf::Transformation language]]
+* [[identifies::http://en.wikipedia.org/wiki/ATLAS_Transformation_Language]]
+* [[identifies::http://www.eclipse.org/atl]]
+* [[linksTo::http://www.eclipse.org/m2m/atl/basicExamples_Patterns]]
+* [[linksTo::http://www.eclipse.org/m2m/atl/usecases]]
+* [[linksTo::http://www.eclipse.org/m2m/atl/atlTransformations]]
+* [[linksTo::http://wiki.eclipse.org/ATL/Developer_Guide]]
+* [[instanceOf::Namespace:Language]]

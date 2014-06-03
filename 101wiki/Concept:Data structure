@@ -1,0 +1,14 @@
+== Headline ==
+
+A particular way of storing and organizing data in a computer
+== Illustration ==
+
+See [[linked list]]s as a simple example of an [[imperative data structure]].
+
+See [[immutable list]]s as a simple example of a [[functional data structure]].
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Data_structure]]
+* [[instanceOf::Namespace:Concept]]

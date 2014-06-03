@@ -1,0 +1,29 @@
+== Headline ==
+
+A [[program]] performing [[lexical analysis]]
+== Illustration ==
+
+The following grammar describes the lexical syntax of companies of the [[@system]]. We use the grammar notation of [[Technology:ANTLR]].
+
+<syntaxhighlight lang="text">
+COMPANY     : 'company';
+DEPARTMENT  : 'department';
+EMPLOYEE    : 'employee';
+MANAGER     : 'manager';
+ADDRESS     : 'address';
+SALARY      : 'salary';
+OPEN        : '{';
+CLOSE       : '}';
+WS          :   (' '|'\r'? '\n'|'\t')+;
+STRING      :   '"' (~'"')* '"';
+FLOAT       : ('0'..'9')+ ('.' ('0'..'9')+)?;
+</syntaxhighlight>
+
+[[Technology:ANTLR]] could indeed generate a lexer from this specification (and a few routine parts; see [[Contribution:antlrLexer]]). The resulting lexer could be used by itself to process input at the level of lexeme/token pairs. The lexer could also be complemented by a [[parser]] to analyse the context-free syntax of the input.
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Lexical_analysis]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[isA::Language technology]]
+* [[relatesTo::Parser]]
+* [[instanceOf::Namespace:Concept]]

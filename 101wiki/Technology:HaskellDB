@@ -1,0 +1,13 @@
+== Headline ==
+
+A [[Library|combinator library]] for expressing [[DBMS]] queries in [[Language:Haskell|Haskell]]
+
+== Discussion ==
+
+HaskellDB allows one to declare queries based on [[Relational algebra|relational algebra]] in a type-safe and declarative way and execute these queries on a relational database <cite>bringert2004student, leijen1999domain</cite>.
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[linksTo::http://doi.acm.org/10.1145/331960.331977]]
+* [[linksTo::http://dl.acm.org/citation.cfm?id=1017473]]
+* [[instanceOf::Namespace:Technology]]

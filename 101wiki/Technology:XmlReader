@@ -1,0 +1,9 @@
+== Intent ==
+
+XmlReader is an API for [[Technology:.NET]] provides forward-only, read-only access to a stream of XML data.
+
+== Links ==
+
+* [http://msdn.microsoft.com/en-us/library/aa720470(v=VS.71).aspx MSDN]
+== Metadata ==
+* [[instanceOf::Namespace:Technology]]

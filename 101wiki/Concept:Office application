@@ -1,0 +1,9 @@
+== Headline ==
+
+An application that serves office productivity
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software technology]]
+* [[linksTo::http://en.wikipedia.org/wiki/Office_suite]]
+* [[linksTo::http://en.wikipedia.org/wiki/Productivity_software]]
+* [[instanceOf::Namespace:Concept]]

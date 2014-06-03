@@ -1,0 +1,16 @@
+== Intent ==
+
+start from an object model rather than  a schema in [[O/X mapping|O/X]] or [[O/R mapping]]
+
+== Description ==
+
+TBD
+
+== Discussion ==
+
+See [[Schema-first mapping]] for the counter-part.
+
+
+== Metadata ==
+* [[instanceOf::Mapping]]
+* [[instanceOf::Namespace:Concept]]

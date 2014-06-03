@@ -1,0 +1,38 @@
+== Headline ==
+
+Strafunski approach generic programming in [[Language:Haskell]]
+
+== Characteristics ==
+
+The Strafunski approach to generic functional programming is demonstrated; see [[cites::http://dx.doi.org/10.1007/3-540-36388-2 24]] for some background. That is, based on strategy combinators for traversal and derived traversal schemes, problem-specific traversals are obtained by passing problem-specific arguments to the generic traversal schemes.
+
+== Architecture ==
+
+There are Haskell modules for the basic features.
+
+* [[Feature:Hierarchical_company]]: ''Company.hs''
+* [[Feature:Total]]: ''Total.hs''
+* [[Feature:Cut]]: ''Cut.hs''
+* [[Feature:Depth]]: 'Depth.hs''
+
+Finally, there is a ''Main'' module which collects a few test scenarios; see below.
+
+== Usage ==
+
+See [[Contribution:haskellComposition]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell genericity]]
+* [[cites::http://dx.doi.org/10.1007/3-540-45587-6 10]]
+* [[cites::http://dx.doi.org/10.1007/3-540-36388-2 24]]
+* [[instanceOf::Namespace:Contribution]]

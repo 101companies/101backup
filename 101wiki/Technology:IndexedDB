@@ -1,0 +1,13 @@
+== Intent ==
+
+A [[DBMS]] [[API]] in the [[Language:HTML5]] ecosystem for [[Client|client]] side data storage
+
+== Discussion ==
+
+The [[Language:JavaScript]] [[API]] IndexedDB provides [[Client|client]] side data storage with the help of B-trees  <cite>W3C2012IDB</cite>.
+
+== Metadata ==
+* [[instanceOf::DBMS]]
+* [[instanceOf::API]]
+* [[identifies::http://www.w3.org/TR/IndexedDB/]]
+* [[instanceOf::Namespace:Technology]]

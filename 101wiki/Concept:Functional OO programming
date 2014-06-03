@@ -1,0 +1,10 @@
+== Headline ==
+
+A combination of [[functional programming|functional]] and [[OO programming]]
+
+== Metadata ==
+
+* [[linksTo::http://lambda-the-ultimate.org/node/2225]]
+* [[linksTo::http://www.haskell.org/haskellwiki/The_Monad.Reader/Issue3/Functional_Programming_vs_Object_Oriented_Programming]]
+* [[linksTo::https://leanpub.com/fp-oo]]
+* [[instanceOf::Namespace:Concept]]

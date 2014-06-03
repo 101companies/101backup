@@ -1,0 +1,16 @@
+== Intent == 
+
+[[Language:AspectJ]] Development Tools (AJDT)
+
+== Discussion ==
+
+AJDT specifically targets [[Technology:Eclipse]].
+
+AJDT contains the [[Technology:ajc]].
+
+AJDT requires [[Technology:JDK]].
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[identifies::http://www.eclipse.org/ajdt]]
+* [[instanceOf::Namespace:Technology]]

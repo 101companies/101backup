@@ -1,0 +1,17 @@
+== Headline ==
+
+The web-based exploration service of the [[@project]]
+
+== Description ==
+
+[[@explorer]] is an integral part of the infrastructure and foundation of the [[@project]]. [[@explorer]] supports systematic exploration of all pages on the [[@wiki]], all artifacts in the [[@repo]], and all synthesized data available as [[@data]]. To this end, [[@explorer]] provides access to the various links between all the involved resources. In other words, [[@explorer]] is the Linked Data portal for the [[@project]]. [[@explorer]] is organized as web service (using HTTP GET) with the URL referring to the resource and the response containing information about the resource. Different response formats are supported: HTML, JSON, and RDF.
+
+This is entrance page for the service (using HTML):
+
+http://101companies.org/resources?format=html
+
+At the root, exploration starts with the namespace of all namespaces of the [[@project]]. One can select a namespace, further select a member, and possibly drill into members in terms of their structure on the file system of [[@repo]]. One can also drill into files 
+in terms of fragments understood by [[fact extractor]]s and [[fragment locator]]s. 
+
+== Metadata ==
+* [[instanceOf::Namespace:101]]

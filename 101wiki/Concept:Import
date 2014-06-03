@@ -1,0 +1,16 @@
+== Headline ==
+
+the description of external entities to be used in a given scope
+
+== Details ==
+
+The construct serves [[module]]-based software reuse controlled by [[import]]/[[export]] declarations.
+
+The construct specifically enables the actual selection of external abstractions to be reused.
+
+
+
+== Metadata ==
+* [[instanceOf::Language construct]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

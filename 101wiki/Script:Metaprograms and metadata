@@ -1,0 +1,23 @@
+== Headline ==
+
+A lecture on the [[metaprogram]]s and [[metadata]] (mainly [[reflection]]) as part of the [[Course:Programming in Koblenz]]
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/metaprograms-and-metadata"/>
+== Concepts ==
+
+* [[Reflection]]
+* [[Metaprogram]]
+* [[Metaprogramming]]
+* [[Metalanguage]]
+* [[Object language]]
+* [[Metadata]]
+* [[Annotation]]
+== Contributions ==
+
+* [[Contribution:javaReflection]]
+== Metadata ==
+
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

@@ -1,0 +1,24 @@
+== Headline ==
+
+A lecture on [[aspect-oriented programming]] in [[Language:AspectJ|AspectJ]] as part of the [[Course:Programming in Koblenz]]
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/aop-23146713"/>
+
+== Concepts ==
+
+* [[Joinpoint]]
+* [[Pointcut]]
+* [[Advice]]
+* [[Crosscutting concern]]
+* [[Intertype declarations]]
+
+== Contributions ==
+
+* [[Contribution:aspectJ]]
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

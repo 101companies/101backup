@@ -1,0 +1,48 @@
+== Headline ==
+
+Use of [[algebraic data type]]s in [[Language:Haskell]]
+
+== Characteristics ==
+
+A data model for flat companies is defined in terms of Haskell's [[algebraic data type]]s. Other than that, the contribution is a simple variation on [[Contribution:haskellEngineer]]. The systematic use of algebraic data types implies nominal type distinctions in the sense of [[nominal typing]]. For instance, arbitrary floats cannot be confused with salaries which are floats only structurally. The different kinds of names for companies, departments, and employees are not distinguished, even though this would also be possible, in principle.
+
+== Illustration ==
+
+The data model looks like this:
+
+<fragment url="src/Company/Data.hs"/>    
+
+A sample company looks like this:
+
+<fragment url="src/Company/Sample.hs"/>    
+
+[[Feature:Total]] is implemented as follows:
+
+<fragment url="src/Company/Total.hs"/>
+
+== Relationships ==
+
+The present contribution is a variation on [[Contribution:haskellEngineer]].
+
+== Architecture ==
+
+See [[Contribution:haskellEngineer]].
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Namespace:Contribution]]
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+

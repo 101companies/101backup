@@ -1,0 +1,62 @@
+== Headline ==
+
+A [[data model]] for flat companies
+
+== Description ==
+
+Flat companies are sufficiently described by the base feature [[Feature:Company]].
+
+== Motivation ==
+
+The data model for flat companies is supposed to provide a simple (in fact, trivial) starting point for contributions. Despite its simplicity, the data model readily exercises some data modeling facets: basic types such as strings and floats, compound types based on tuples or records, mandatory as opposed to optional properties, and list-based containers.
+
+== Illustration ==
+
+The feature is illustrated with a data model in [[Language:Haskell]]; [[type synonym]]s instead of [[algebraic data type]]s are used to emphasize the fact that no recursive are defined here:
+
+<syntaxhighlight lang="haskell">
+type Company = (Name, [Employee])
+type Employee = (Name, Address, Salary)
+type Name = String
+type Address = String
+type Salary = Float
+</syntaxhighlight>
+
+A sample company takes the following form:
+
+<syntaxhighlight lang="haskell">
+( "Acme Corporation",
+  [ 
+    ("Craig", "Redmond", 123456),
+    ("Erik", "Utrecht", 12345),
+    ("Ralf", "Koblenz", 12342),
+    ("Ray", "Redmond", 234567),
+    ("Klaus", "Boston", 23456),
+    ("Karl", "Riga", 2345),
+    ("Joe", "Wifi City", 2344)
+ ] 
+)
+</syntaxhighlight>
+
+Company data is a pair consisting of the company name and a list of employees. Each employee has a name, an address, and a salary.
+
+These snippet originate from [[Contribution:haskellList]].
+
+== Relationships ==
+
+* See [[Feature:Hierarchical_company]] for hierarchical, i.e., non-flat companies. 
+* The features [[Feature:Flat company]] and [[Feature:Hierarchical_company]] are mutually exclusive and either of them must be selected for any realization of the [[@system]]. 
+* Several features cannot be usefully combined with [[Feature:Flat company]]. For instance, [[Feature:Depth]] for the computation of the nesting depth of departments makes no sense without (nested) departments.
+
+== Guidelines ==
+
+* The terms "company", "employee", "manager", "name", "address", and "salary" should appear as part of the abstractions that realize the corresponding ingredients of the data model. 
+* A ''sample company'' should be described and processed in some ways, depending on what other features are implemented.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Hierarchical organization]]
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]
+

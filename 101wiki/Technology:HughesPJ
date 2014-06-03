@@ -1,0 +1,47 @@
+== Headline == 
+
+A [[Language:Haskell|Haskell]] library [[pretty printing]]
+
+== Illustration ==
+
+The library's central is ''Doc'' for documents. The idea is that one maps [[abstract syntax]] (represented via [[algebraic data type]]s) to documents, which in turn can be shown. Thus:
+
+<syntaxhighlight lang="haskell">
+instance Show Doc 
+  where
+    -- type is abstract; it can be shown
+</syntaxhighlight>
+
+Documents can be contructed from literals, e.g.:
+
+<syntaxhighlight lang="haskell">
+-- Map string to document
+text :: String -> Doc
+
+-- Map int to document
+int :: Int -> Doc
+</syntaxhighlight>
+
+Documents can be composed in some ways, e.g.:
+
+<syntaxhighlight lang="haskell">
+-- The empty docment
+empty :: Doc
+
+-- Compose horizontally
+(<>) :: Doc -> Doc -> Doc
+
+-- Compose horizontally with extra space for separation
+(<+>) :: Doc -> Doc -> Doc
+
+-- Compose vertically
+($$) :: Doc -> Doc -> Doc
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Library]]
+* [[relatesTo::unparsing]]
+
+* [[linksTo::http://hackage.haskell.org/packages/archive/pretty/1.0.1.0/doc/html/Text-PrettyPrint-HughesPJ.html]]
+* [[instanceOf::Namespace:Technology]]

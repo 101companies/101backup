@@ -1,0 +1,13 @@
+== Headline ==
+
+The specifically imperative approach to the implementation of [[data structure]]s
+
+== Illustration ==
+
+See [[linked list]]s as a simple example of an [[imperative data structure]].
+
+== Metadata ==
+
+* [[isA::Data structure]]
+* [[relatesTo::Functional data structure]]
+* [[instanceOf::Namespace:Concept]]

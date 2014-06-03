@@ -1,0 +1,22 @@
+== Intent == 
+
+an [[Object-XML mapping]] technology for [[Language:Java]]
+
+== Description ==
+
+JAXB consists of the schema compiler [[Technology:xjc]] and a library that supports un-/marshaling. 
+JAXB is typically used for [[schema-first mapping]] so that one generates Java classes and interfaces
+from an XML schema (i.e., an element of the [[Language:XSD]] language. Arguably, JAXB can also be said to provide the capability of [[Open serialization|(open) serialization]] based on [[Language:XML]] as serialization format.
+
+== Spaces ==
+
+* [[XMLware]]
+* [[Objectware]]
+
+
+== Metadata ==
+* [[instanceOf::Mapping technology]]
+* [[identifies::http://www.oracle.com/technetwork/articles/javase/index-140168.html]]
+* [[identifies::http://jaxb.java.net/]]
+* [[identifies::http://en.wikipedia.org/wiki/Java Architecture for XML Binding Wikipedia]]
+* [[instanceOf::Namespace:Technology]]

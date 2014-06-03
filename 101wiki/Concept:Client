@@ -1,0 +1,14 @@
+== Headline ==
+
+a component to gain access to a service provided by a [[server]]
+
+== Details ==
+
+A client can be a part of a [[client-server architecture]].
+
+
+== Metadata ==
+* [[instanceOf::Architectural component]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/Client_(computing)]]
+* [[instanceOf::Namespace:Concept]]

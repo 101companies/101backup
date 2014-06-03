@@ -1,0 +1,15 @@
+== Headline ==
+
+Translate text or another representation into [[syntax tree]]s
+
+== Details ==
+
+A [[parser]] performs [[parsing]].
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Parsing]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Unparsing]]
+* [[instanceOf::Namespace:Concept]]

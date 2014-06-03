@@ -1,0 +1,39 @@
+== Headline ==
+
+a [[Function]] for reversing a [[list]]
+
+== Illustration ==
+
+[[Language:Haskell]]'s ''reverse'' function for lists works like this:
+
+<syntaxhighlight lang="haskell">
+Prelude> reverse [1,2,3]
+[3,2,1]
+Prelude> reverse "ABBA"
+"ABBA"
+</syntaxhighlight>
+
+In the first example, reverse is applied to a list of numbers.
+
+In the second example, reverse is applied to a string, i.e., a list of characters.
+
+[[Language:Haskell]]'s ''reverse'' function for lists is defined like this:
+
+<syntaxhighlight lang="haskell">
+reverse :: [a] -> [a]
+reverse =  foldl f []
+ where f = flip (:)
+</syntaxhighlight>
+
+That is, ''reverse'' performs a left-associative [[Fold function|fold]] that composes the current element and the recursive result of folding.
+We illustrate this by inlining the definition of ''foldl'' for a specific argument list:
+
+<syntaxhighlight lang="haskell">
+reverse [1,2,3] = (([] `f` 1) `f` 2) `f` 3
+</syntaxhighlight>
+
+
+
+== Metadata ==
+* [[instanceOf::Common function]]
+* [[instanceOf::Namespace:Concept]]

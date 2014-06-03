@@ -1,0 +1,17 @@
+== Headline ==
+
+Mapping between XML types and types of a programming language
+
+== Synonyms ==
+
+* [[Object-XML mapping]]
+
+== Details ==
+
+XML data binding stands for the general notion of mediating between XML types (e.g., based on [[Language:XSD]]) and programming languages types (e.g., [[OO class]]es or [[algebraic data type]]s in [[functional programming]]). Careful, one can easily run into the O/X impedance mismatch.<ref>Ralf Lämmel and Erik  Meijer: "Revealing the X/O impedance mismatch (Changing lead into gold)". In SSDGP'06 
+Proceedings of the 2006 international conference on Datatype-generic programming. Springer. 2007. Available online http://homepages.cwi.nl/~ralf/xo-impedance-mismatch/</ref>
+
+== Metadata ==
+* [[instanceOf::Mapping]]
+* [[identifies::http://en.wikipedia.org/wiki/XML data binding]]
+* [[instanceOf::Namespace:Concept]]

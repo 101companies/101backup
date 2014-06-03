@@ -1,0 +1,8 @@
+== Headline ==
+
+[[Equality]] based on object references or memory addresses
+
+== Metadata ==
+
+* [[isA::Equality]]
+* [[instanceOf::Namespace:Concept]]

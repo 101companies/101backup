@@ -1,0 +1,15 @@
+== Headline ==
+
+A [[thread]] synchronization variable in [[Language:Haskell]]
+
+== Details ==
+
+MVars are variables for thread synchronization in [[Language:Haskell]] (in fact, [[Concurrent Haskell]]) being either empty or holding a value <cite>jones2008tutorial, ghcMVar</cite>. The [[module]] ''Control.Concurrent.MVar'' provides various functions for <syntaxhighlight lang="haskell" enclose="none">MVar</syntaxhighlight> values <cite>hackageMVar</cite>.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Haskell]]
+* [[identifies::http://www.haskell.org/ghc/docs/latest/html/libraries/base/Control-Concurrent-MVar.html]]
+* [[linksTo::http://hackage.haskell.org/packages/archive/base/4.3.1.0/doc/html/Control-Concurrent-MVar.html]]
+* [[linksTo::http://www.haskell.org/ghc/docs/latest/html/libraries/base/Control-Concurrent-MVar.html]]
+* [[linksTo::http://dl.acm.org/citation.cfm?id=1813353]]
+* [[instanceOf::Namespace:Concept]]

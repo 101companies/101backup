@@ -1,0 +1,12 @@
+== Headline ==
+
+A program that checks the validity of software artifacts
+
+== Details ==
+
+For instance, in the technological space of [[XMLware]], a validator corresponds to the kind of program that performs [[schema-based validation]]. In the technological space of [[grammarware]], a parser may serve as a validator or an "acceptor", i.e., a program that does not even need to build a parse tree. 
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[linksTo::http://en.wikipedia.org/wiki/Validator]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,31 @@
+== Headline ==
+
+A [[programming idiom]] for computing a result along traversal of a [[data structure]] 
+
+== Details ==
+
+The idiom is approached differently depending on [[programming language]] and [[programming paradigm]]. For instance, in [[functional programming]], the [[fold function]] may be used to model accumulation. The [[state monad]] may be also used for data structures other than lists. In [[logic programming]], the predicates for traversal may use extra parameter positions for the accumulator's value before and after visiting a given term.
+
+== Illustration ==
+
+Consider the following [[Language:Prolog]] code for computing maximum of a list of numbers:
+
+<syntaxhighlight lang="prolog">
+max([H|T],M) :- max(T,H,M).
+
+max([],M,M).
+max([H|T],M1,M2) :- H > M1 -> max(T,H,M2); max(T,M1,M2).
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="prolog">
+?- max([1,7,3],M).
+M = 7.
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Programming idiom]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

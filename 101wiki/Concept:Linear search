@@ -1,0 +1,49 @@
+== Headline ==
+
+Solve the [[search problem]] by iterating over the input list
+== Illustration ==
+
+Consider the [[search problem]], i.e., the problem of determining whether a given value occurs in a given list. This problem is an [[algorithmic problem]], i.e., it can be solved by an [[algorithm]]. Semi-formally, linear search can be described by an algorithm as follows:
+
+* Given is a list ''l'' and a value ''v'' of the element type of ''l''.
+* Perform the following steps to search ''v'' in ''l'':
+** Initialize an index variable ''i'' to 0 (to refer to the first element of ''l'', if any).
+** Repeat the following steps until a result is returned.
+*** Return ''False'', if ''i'' equals the length of ''l''.
+*** Return ''True'', if ''l'' stores ''v'' at the index ''i''.
+*** Increment ''i''.
+
+Please note that this formulation also expresses that the element type must admit comparison for equality.
+
+Consider this implementation of linear search in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell>
+-- Polymorphic linear search
+search :: Eq a => [a] -> a -> Bool
+search [] _ = False
+search (x:xs) y = x==y || search xs y
+</syntaxhighlight>
+
+The type of the ''search'' function is polymorphic in that admits arbitrary element types for as long as equality ("Eq") is supported for the type.
+
+The implemented search function can be applied as follows:
+
+<syntaxhighlight lang="haskell>
+-- Illustrate linear search
+main = do
+  let input = [2,4,3,1,4]
+  print $ search input 1 -- True
+  print $ search input 5 -- False
+</syntaxhighlight>
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Linear_search, 21 April 2013 with Knuth's "The Art of Computer Programming" credited for citation)
+
+In computer science, linear search or sequential search is a method for finding a particular value in a list, that consists of checking every one of its elements, one at a time and in sequence, until the desired one is found.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Linear_search]]
+* [[instanceOf::Search algorithm]]
+* [[relatesTo::Search problem]]
+* [[relatesTo::Binary search]]
+* [[instanceOf::Namespace:Concept]]

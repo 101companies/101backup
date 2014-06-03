@@ -1,0 +1,10 @@
+== Intent == 
+
+the Java Enterprise Edition is a [[Platform]] for [[Server]] programming in [[Language:Java]]
+
+== Metadata ==
+* [[instanceOf::Platform]]
+* [[instanceOf::Runtime]]
+* [[identifies::http://www.oracle.com/technetwork/java/javaee/overview/index.html]]
+* [[linksTo::http://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition]]
+* [[instanceOf::Namespace:Technology]]

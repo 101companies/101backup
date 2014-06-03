@@ -1,0 +1,9 @@
+== Headline ==
+
+A toolkit for graph visualization
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[identifies::http://www.graphviz.org/]]
+* [[linksTo::http://en.wikipedia.org/wiki/Graphviz]]
+* [[instanceOf::Namespace:Technology]]

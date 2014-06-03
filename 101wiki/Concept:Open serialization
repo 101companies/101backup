@@ -1,0 +1,19 @@
+== Headline ==
+
+Technology- and platform-independent [[serialization]]
+
+== Description ==
+
+[[Open serialization]] leverages a serialization format that can be interpreted on different platforms with different technologies, as opposed to a format that is only well-supported by a specific technology on a specific platform. In practice, open serialization is often achieved by means of [[Language:XML]] or [[Language:JSON]]. However, the mere use of these or other format languages does not imply that serialization is properly open. That is, the specific serialization format may still involve idiosyncratic aspects that make it hard to be used with diverse technologies on diverse platforms.
+
+== Relationships ==
+
+* See [[closed serialization]] for comparison.
+
+== Metadata ==
+
+* [[isA::Serialization]]
+* [[linksTo::http://en.wikipedia.org/wiki/Data_exchange]]
+* [[linksTo::http://en.wikipedia.org/wiki/Cross-platform]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

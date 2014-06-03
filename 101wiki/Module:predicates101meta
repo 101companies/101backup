@@ -1,0 +1,20 @@
+== Headline ==
+
+Matching of 101meta rules with predicate conditions against 101repo
+
+== Description ==
+This is one the modules which matches 101meta rules against the files in 101repo. This module deals with rules that contain predicates. See the [[Module:matches101meta]] for a comprehensive description of matching as it is scattered over multiple modules.
+
+== Input ==
+
+* 101repo as prepared by [[Module:pull101repo]]
+* 101meta rules as collected by [[Module:rules101meta]]
+
+
+== Output ==
+
+http://data.101companies.org/dumps/predicates.json
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

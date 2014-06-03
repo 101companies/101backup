@@ -1,0 +1,9 @@
+== Headline == 
+
+the API for monitoring and managing the JVM and other components in the Java runtime
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[instanceOf::Java package]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/java/lang/management/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

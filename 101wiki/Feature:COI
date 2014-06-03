@@ -1,0 +1,35 @@
+== Headline ==
+
+An association for conflicts of interests between employees
+
+== Description ==
+
+Employees may declare conflicts of interests (COIs) with each other so that management can observe those conflicts when they may be relevant. For instance, during management-level discussions for a performance appraisal, it should be carefully avoided, if possible, that employees evaluate other employees with whom they may have a COI, declared by either side. As far as the [[@system]] is concerned, it suffices to merely maintain COIs so that management knows about everything. It is assumed that a COI must be declared, when two employees are closely related, or they are close friends, or judgement may be significantly impaired otherwise.
+
+The association for COIs is constrained as follows:
+* Each employee has an associated set of employees with whom he or she has declared a COI.
+* If ''A'' is a member of the COIs declared by ''B'', then it does not need to hold that ''B'' is a member of the COIs declared by ''A''. (Thus, the declarations are not symmetric, but this may be entirely possible in practice.)
+
+Unidirectional navigation of the association is considered sufficient here. (Arguably, one may need the symmetric closure of declared COIs for some applications, but this is omitted here. ''A'' and ''B'' would have a COI under symmetric closure, if ''A'' has a declared COI with ''B'' or vice versa.)
+
+== Motivation ==
+
+The feature is interesting in so far that it involves an association with [[many-to-many]] cardinality. Thus, any given employee may declare COIs with many employees, and in fact, many employees may declare a COI with the same employee. In a [[Language:UML]] class diagram or an [[entity-relationship model]], for example, the COI association (or relationship) can be modeled in a straightforward way. In an [[OO programming language]] with references, the corresponding links are easily implemented, too. (Unidirectional navigation is particularly easy to implement, when compared to bidirectional navigation.)  When the data model is implemented as a [[relational schema]], then an extra junction table is needed to model the many-to-many relationship.
+
+== Relationships ==
+
+* See [[Feature:Mentoring]] for another association, also between employees. The two associations differ in terms of cardinalities and directions of navigation, with the present association targeting many-to-many cardinality and unidirectional navigation.
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical_company]].
+
+== Guidelines ==
+
+* Unidirectional navigation is sufficient for the COI association. The ''name'' of  the accessor to the declared COIs of an employee should involve the term "conflicts" (e.g., "getConflicts").
+* A suitable ''demonstration'' of the feature's implementation should link some employees according to the association and retrieve COIs for some employee.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Conflict of interest]]
+* [[linksTo::http://en.wikipedia.org/wiki/Performance appraisal]]
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

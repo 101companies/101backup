@@ -1,0 +1,97 @@
+== Headline ==
+
+[[XML data binding]] for [[Language:Haskell]] with [[Technology:HXT]]'s [[Technology:XML pickler]]
+
+== Motivation ==
+
+The implementation demonstrates [[XML data binding]] for [[Language:Haskell]] with [[Technology:HXT]]'s [[Technology:XML pickler]]. As a result, companies can be imported from and exported to [[Language:XML]] while using [[algebraic data type]]s for companies in the core functional programming. The mapping between XML and algebraic data type relies on [[Technology:XML pickler]]'s [[type class]] <syntaxhighlight lang="haskell" enclose="none">XMLPickler</syntaxhighlight> for type-specific pickler functions. [[Type-class instance]]s are defined for the types for companies, departments, and employees. These definitions leverage [[Technology:XML pickler]]'s predefined [[arrow]]s for picklers, predefined picklers and pickler combinators. 
+
+== Illustration ==
+
+=== A Pickler for Companies ===
+
+To define a pickler for companies we declare an instance of <syntaxhighlight lang="haskell" enclose="none">XMLPickler</syntaxhighlight>:
+
+<syntaxhighlight lang="haskell" source="hxtPickler/Pickler.hs">
+instance XmlPickler Company where
+    xpickle = xpCompany
+</syntaxhighlight>
+
+The pickler function <syntaxhighlight lang="haskell" enclose="none">xpCompany</syntaxhighlight> is defined as follows:
+
+<syntaxhighlight lang="haskell" source="hxtPickler/Pickler.hs" line>
+xpCompany :: PU Company
+xpCompany 
+      = xpElem "company" $
+        xpWrap ( uncurry Company
+               , \c -> ( cname c
+                       , depts c
+                       )
+                ) $
+        xpPair  (xpAttr "name" xpText)
+                (xpList xpickle)
+</syntaxhighlight>
+
+For implementing <syntaxhighlight lang="haskell" enclose="none">xpCompany</syntaxhighlight> we use <syntaxhighlight lang="haskell" enclose="none">xpElem</syntaxhighlight> in line 3.
+By using this function we define that a company, represented in XML, should be inside a XML tag labeled "company". The pickler for the content of the tag is defined by the second argument of <syntaxhighlight lang="haskell" enclose="none">xpElem</syntaxhighlight>.
+
+<syntaxhighlight lang="haskell" enclose="none">xpWrap</syntaxhighlight> is of type <syntaxhighlight lang="haskell" enclose="none">(a -> b, b -> a) -> PU a -> PU b</syntaxhighlight>. 
+It returns a Pickler (PU) for <syntaxhighlight lang="haskell" enclose="none">b</syntaxhighlight> and expects a pair of functions from <syntaxhighlight lang="haskell" enclose="none">a</syntaxhighlight> to <syntaxhighlight lang="haskell" enclose="none">b</syntaxhighlight> and vice versa and a Pickler for <syntaxhighlight lang="haskell"  enclose="none">a</syntaxhighlight> (<syntaxhighlight lang="haskell" enclose="none">PA a</syntaxhighlight>).
+
+In lines 4-8 the first part of the first argument of the wrapping pickler is <syntaxhighlight lang="haskell" enclose="none">uncurry Company</syntaxhighlight>. It defines how to construct a <syntaxhighlight lang="haskell" enclose="none">Company</syntaxhighlight> value from a pair of name and departments. The second part of the pair defines the opposite direction: How to disassemble a company into its components.
+
+The second argument of <syntaxhighlight lang="haskell" enclose="none">xpWrap</syntaxhighlight> in lines 9-10 defines the actual pickler for the (name, departments) pair (this is <syntaxhighlight lang="haskell" enclose="none">PA a</syntaxhighlight> in the type signature of the wrapping pickler). 
+We use the combinator for pairs <syntaxhighlight lang="haskell" enclose="none">xpPair :: PU a -> PU b -> PU (a, b)</syntaxhighlight>. The pickler for the company name is defined by using a pickler for XML attributes and a pickler for text. That is, the company name should be an attribute of the "company" tag.
+The pickler for the list of departments is defined by making use of a combinator for lists and <syntaxhighlight lang="haskell" enclose="none">xpickle</syntaxhighlight>.
+Because of type inference and because we also declare a <syntaxhighlight lang="haskell" enclose="none">XMLPickler</syntaxhighlight> instance for departments, Haskell will choose the appropriate pickler function for departments.
+
+=== Pickling a Company ===
+
+Pickling a company is realized by using arrows:
+
+<syntaxhighlight lang="haskell" source="hxtPickler/Main.hs">
+runX ( constA company 
+       >>>
+       xpickleDocument xpCompany [withIndent yes] $ 
+       "sampleCompanyCut.xml"
+     )
+</syntaxhighlight>
+
+A lifted sample company is passed to the arrow for pickling a document. In this case <syntaxhighlight lang="haskell" enclose="none">xpickleDocument</syntaxhighlight> expects a pickler for companies, some writing options and a file name.
+
+=== Unpickling a Company ===
+
+To unpickle a company the arrow function <syntaxhighlight lang="haskell" enclose="none">xunpickleDocument</syntaxhighlight> is used:
+
+<syntaxhighlight lang="haskell" source="hxtPickler/Main.hs">
+[company1] <- runX ( xunpickleDocument xpCompany $ 
+                     [withRemoveWS yes] $ 
+                     "sampleCompany.xml" )
+</syntaxhighlight>
+
+<syntaxhighlight lang="haskell" enclose="none">runX</syntaxhighlight> returns a list of arrow results, which we except to be a singleton list. On success <syntaxhighlight lang="haskell" enclose="none">company1</syntaxhighlight> should hold the unpicklered company.
+
+== Architecture ==
+
+[this!!Pickler.hs] holds the pickler definitions for companies, departments and employees. The algebraic data type for companies can be found in [this!!Company.hs].[this!!Total.hs] and [this!!Cut.hs] provide totaling and cutting functionality. [this!!sampleCompany.xml] holds a sample company. [this!!Main.hs] collects test scenarios for pickling/unpickling, totaling and cutting companies.
+
+== Usage ==
+
+* [this!!Main.hs] has to be loaded into GHCi. 
+* The <syntaxhighlight lang="haskell" enclose="none">main</syntaxhighlight> function has to be applied.
+* The output should be equal to the content of the file [this!!baseline].
+One can also use the [this!!Makefile] with a target ''test'' for [[test automation]].
+
+== Metadata ==
+
+* [[uses::Language:XML]]
+* [[uses::Language:Haskell]]
+* [[uses::Technology:HXT]]
+* [[uses::Technology:XML pickler]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Open serialization]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

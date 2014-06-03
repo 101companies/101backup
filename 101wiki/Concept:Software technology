@@ -1,0 +1,13 @@
+== Headline == 
+
+A software technology
+
+== Description ==
+
+Technologies may be subdivided into [[Development technology|development]] or [[Application technology|application technologies]] depending on whether they target the developer by providing some kind of tool support or the application by providing some kind of reusable components. For instance, [[IDE]]s or [[tool]]s count as development technologies whereas [[Library|libraries]] or [[framework]]s count as application technologies. Classification of technologies may also 
+apply to their possible status of being a [[programming technology]] in the sense that they serve specific programming domains;  consider, for example, [[web technology]] or [[data technology]]. Given the central role of [[Space|technological spaces]], classification of technologies may also apply to their possible status of being a [[mapping technology]] across spaces. Finally, some technologies specifically support some software language, giving rise to further classification according to [[language technology]]; consider, for example, [[compiler]]s or [[program generator]]s. All these categories of technologies may be broken down further into subcategories. Some technologies may be naturally instances of multiple categories. Technologies are further characterized by their [[Capability|capabilities]].
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Software technology]]
+* [[instanceOf::Namespace:Concept]]

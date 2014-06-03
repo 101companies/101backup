@@ -1,0 +1,70 @@
+== Headline ==
+
+some parts of the Java package [[Technology:java.util]]
+
+== Description ==
+
+This framework is strongly defined by the Java platform.
+
+Pragmatically, some slices of the [[Technology:java.util]] package were extracted; the present "technology" denotes the rest.
+
+=== Interfaces ===
+
+* Comparator
+* Formattable
+
+=== Classes ===
+
+* Calendar
+* Currency
+* Date
+* FormattableFlags
+* Formatter
+* GregorianCalendar
+* ListResourceBundle
+* Locale
+* Locale.Builder
+* Objects
+* PropertyPermission
+* PropertyResourceBundle
+* Random
+* ResourceBundle
+* ResourceBundle.Control
+* Scanner
+* ServiceLoader
+* SimpleTimeZone
+* StringTokenizer
+* Timer
+* TimerTask
+* TimeZone
+* UUID
+
+=== Enums ===
+
+* Formatter.BigDecimalLayoutForm
+* Locale.Category
+
+=== Exceptions ===
+
+* DuplicateFormatFlagsException
+* FormatFlagsConversionMismatchException
+* FormatterClosedException
+* IllegalFormatCodePointException
+* IllegalFormatConversionException
+* IllegalFormatException
+* IllegalFormatFlagsException
+* IllegalFormatPrecisionException
+* IllegalFormatWidthException
+* IllformedLocaleException
+* InputMismatchException
+* InvalidPropertiesFormatException
+* MissingFormatArgumentException
+* MissingFormatWidthException
+* MissingResourceException
+* UnknownFormatConversionException
+* UnknownFormatFlagsException
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

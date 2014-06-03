@@ -1,0 +1,174 @@
+== Intent ==
+
+[[Technology:WCF]] [[Web service]] implementation in [[Technology:.NET]] 4.0
+
+== Motivation ==
+
+The [[Technology:WCF]] technology supports the development of applications based on [[service-oriented architecture]]. Our implementation illustrates a [[Stateful|stateful]] [[Web service|web service]] created with WCF. It also introduces the use of [[Technology:SOAP]] over [[Technology:HTTP]]. That necessitates the use of [[DTO]]s to wrap the domain model into leightweight serializable containers and pass it to the client.
+
+== Illustration ==
+
+[[Technology:WCF]] uses contracts to generate [[Language:WSDL]] definitions for the [[Web service|web service]]. The contract is provided by a [[Language:CSharp]] interface. It contains all necessary methods for retreiving the company data and invoking the method cut on every entity within the company:
+
+<syntaxhighlight lang="csharp" source="wcf/ICompanyService.cs">
+[ServiceContract]
+public interface ICompanyService
+{
+	// The following methods define the interface for data retrieval.
+	[OperationContract]
+	CompanyDto GetCompany();
+
+	[OperationContract]
+	DepartmentDetailsDto GetDepartmentDetails(Guid id);
+
+	[OperationContract]
+	EmployeeDto GetEmployee(Guid id);
+
+	// The following methods define the interface for performing cut on each entity.
+	[OperationContract]
+	decimal CutDept(DepartmentDetailsDto dept);
+
+	[OperationContract]
+	decimal CutEmpl(EmployeeDto emp);
+
+	[OperationContract]
+	decimal Cut(CompanyDto company);
+}
+</syntaxhighlight>
+
+The class <syntaxhighlight lang="csharp" enclose="none">CompanyService</syntaxhighlight> is the concrete contract implementation. The implementation uses the basic [[Contribution:csharp]] for data generation and manipulation. Our contract class invokes the methods of the implementation and creates DTOs out of the retrieved entities. The example shows the implementation of the method <syntaxhighlight lang="csharp" enclose="none">GetCompany</syntaxhighlight>. The method returns all necessary data for the company view encapsulated into a DTO:
+
+<syntaxhighlight lang="csharp" source="CompanyService.svc.cs">
+[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
+[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+public class CompanyService : ICompanyService
+{
+
+	...
+
+	// The concrete method implementation creates the DTO for a company using the data provided in the baseline csharp implementation.
+	public CompanyDto GetCompany()
+	{
+		var dto = new CompanyDto
+		{
+
+			// The DTO is filled with ID, Name and subdepartments.
+			Id = Company.Id,
+			Name = Company.Name,
+			Departments = Company.Departments.Select(d => new DepartmentDto
+			{
+
+				// The data for each department are included iteratively.
+				Details = new DepartmentDetailsDto
+				{
+					Id = d.Id,
+					Name = d.Name,
+					Manager = new EmployeeDto
+					{
+						// Every Manager has its id, address, name and salary.
+						Address = d.Manager.Person.Address,
+						Id = d.Manager.Id,
+						Name = d.Manager.Person.Name,
+						Salary = d.Manager.Salary
+					}
+	
+				},
+
+				// The data for each employee are included iteratively.
+				Employees = d.Employees.Select(e => new EmployeeDto
+				{
+					// Every Manager has its id, address, name and salary.
+					Id = e.Id,
+					Address = e.Person.Address,
+					Name = e.Person.Name,
+					Salary = e.Salary
+				}).ToList(),
+
+				SubDepartments = FillSubDepartments(d),
+			}).ToList(),
+
+			// The parameter "Total" is filled.
+			Total = Company.Total
+		};
+
+		return dto;
+	}
+
+	...
+
+}
+</syntaxhighlight >
+
+The DTO classes <syntaxhighlight lang="csharp" enclose="none">CompanyDto</syntaxhighlight>, <syntaxhighlight lang="csharp" enclose="none">DepartmentDetailsDto</syntaxhighlight>, and <syntaxhighlight lang="csharp" enclose="none">EmployeeDto</syntaxhighlight> provide the serializability for view informations. The following example illustrates the DTO of the company, which contains fields for identifier, name, subdepartments and [[Feature:Total]].
+
+<syntaxhighlight lang="csharp" source="wcf/Dto/CompanyDto.cs">
+[ServiceContract]
+[DataContract]
+public class CompanyDto
+{
+	// Identifier
+	[DataMember]
+	public Guid Id { get; set; }
+
+	// Name
+	[DataMember]
+	public string Name { get; set; }
+
+	// Subdepartments
+	[DataMember]
+	public List<DepartmentDto> Departments { get; set; }
+
+	// Total value
+	[DataMember]
+	public decimal Total { get; set; }
+}
+</syntaxhighlight>
+
+== Architecture ==
+
+The base folder contains the contract definition [this!!ICompanyService.cs] and the contract implementation ''ComanyService.svc.cs''. The file [this!!CompanyService.svc] links to the concrete implementation. DTO definitions are located in the ''dto'' folder. Both files, [this!!clientaccesspolicy.xml] and [this!!crossdomain.xml], solve possible cross-domain issues. The ''.config'' files in the base folder are generated.
+
+== Usage ==
+
+''Requirements:''
+* You need Microsoft Windows (preferably Vista or 7) running in combination with [[Technology:.NET]] 4.0.
+* Install [[Technology:IIS]] (Internet Information Services) 7 or 7.5 using the installation tutorials on [http://learn.iis.net/page.aspx/28/installing-iis-on-windows-vista-and-windows-7/ IIS] or [http://msdn.microsoft.com/de-de/library/aa964620.aspx MSDN]. Make sure, that you have installed the "static content" feature as well.
+* Download the wcf implementation from github.
+
+''Build:''
+* Use [[Technology:Visual Studio]] to build the project.
+
+''Create web site:''
+* Go to the "Computer Management" dialog.
+* Open the "Services and Applications" root and select the "Internet Information Services (IIS) Manager".
+* On the right, there is a panel "Connections". Create a new web site by right click on "web sites".
+* Use ''wcf'' as "sitename" and link to the physical folder of the wcf implementation. Use port 1212.
+
+Make sure that http://localhost:1212/CompanyService.svc shows that you have created a service. After the [[Web service|web service]] is running, continue with your [[Client|client]] side application, for example [[Contribution:silverlight]].
+
+We also used:
+* version 4.0 of WCF
+* version 4.0 of [[Language:CSharp]]
+* and version 4.0 of the [[Technology:csc.exe]] [[Compiler|compiler]]
+to create the implementation.
+
+Attention: When creating a service anywhere other than on the web server, that hosts your Silverlight application, cross-domain issues can arise. Cross-domain calls between Silverlight applications and services present a security vulnerability and must be specifically enabled by an appropriate cross-domain policy. For procedures that describe how to implement such a policy, see "Making a Service Available Across Domain Boundaries" <cite>MSDN2012CD</cite>.
+
+== Metadata == 
+* [[uses::Language:CSharp]]
+* [[uses::Language:XML]]
+* [[uses::Language:WSDL]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:WCF]]
+* [[uses::Technology:IIS]]
+* [[uses::Technology:SOAP]]
+* [[uses::Technology:ASP .NET]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Distribution]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[reviewedBy::Contribor:Tobias Zimmer]]
+* [[identifies::http://msdn.microsoft.com/en-us/library/cc197955(v=vs.95).aspx]]
+* [[instanceOf::Namespace:Contribution]]

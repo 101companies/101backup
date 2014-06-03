@@ -1,0 +1,14 @@
+== Headline ==
+
+A form of [[polymorphism]] with a bound for feasible actual type parameters
+
+== Illustration ==
+
+See [[polymorphism]].
+
+== Metadata ==
+
+* [[isA::Polymorphism]]
+* [[linksTo::http://en.wikipedia.org/wiki/Bounded_quantification]]
+* [[linksTo::http://en.wikipedia.org/wiki/Polymorphism_(computer_science)]]
+* [[instanceOf::Namespace:Concept]]

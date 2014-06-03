@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[design pattern]] for a centralized entry point for handling requests
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Front_Controller_pattern]]
+* [[instanceOf::Design pattern]]
+* [[relatesTo::Model View Controller]]
+* [[instanceOf::Namespace:Concept]]

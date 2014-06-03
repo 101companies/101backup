@@ -1,0 +1,10 @@
+== Intent ==
+
+the [[capability]] of a system to be fault-tolerant 
+
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Fault-tolerant_system]]
+* [[linksTo::http://en.wikipedia.org/wiki/High_availability]]
+* [[linksTo::http://en.wikipedia.org/wiki/Availability]]
+* [[instanceOf::Namespace:Concept]]

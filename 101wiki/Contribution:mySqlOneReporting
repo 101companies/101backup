@@ -1,0 +1,57 @@
+== Headline ==
+
+[[Language:SQL]]-based implementation tailored to [[Technology:MySQL]]
+
+== Motivation ==
+
+To extend the data base structure of [[Contribution:mySqlOne]] by implementing [[Feature:Dimensionality]].
+
+A [[relational schema]] is used as the [[data model]] of the [[@system]]. Some [[functional requirement]]s of the system are modelled as [[Language:SQL]] statements.
+
+== Illustration ==
+'' ERM of source database schema ''
+
+[[media:https://raw.github.com/ydupont/101repo/master/wiki/feature_dimensionality/img/src_er.png]]
+
+== Relationships ==
+
+* See [[Contribution:mySqlOne]] which implements the base structure used in [[Contribution:mySqlOneReporting]]
+* See [[Contribution:mySqlMany]] for a variation of the base structure which supports many companies instead a single company. The two variants are used for illustrating [[Feature:Singleton]] and [[Feature:Many companies]].
+
+== Usage ==
+
+=== Requirements ===
+* MySQL Client >= 5.0
+* MySQL Server >= 5.0
+
+Create the database(s):
+
+=== Installation ===
+
+<pre>
+    $ mysql> CREATE DATABASE onereporting;
+</pre>
+'' NOTE: Grant privileges in case you don´t want to use the root user. ''
+'' You can use "n" source databases. ''
+
+Load database schema:
+
+<pre>
+    $ mysql -u <USERNAME> -p -h <HOSTNAME> onereporting < sql/schema.sql
+</pre>
+
+OPTIONAL: Populate the databases using sample data:
+<pre>
+    $ mysql -u <USERNAME> -p -h <HOSTNAME> onereporting < sql/sample.sql
+</pre>
+
+== Metadata ==
+
+* [[uses::Language:SQL]]
+* [[uses::Technology:MySQL]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Singleton]]
+* [[implements::Feature:Dimensionality]]
+* [[developedBy::Contributor:Yves Dupont]]
+* [[instanceOf::Namespace:Contribution]]
+

@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[library]] for embedded [[Language:SQL]] programming in [[Language:Haskell]]
+
+== Discussion ==
+
+HDBC enables one to express database queries as strings in Haskell and execute these queries on various [[DBMS]] <cite>hackageHDBC</cite>.
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://hackage.haskell.org/package/HDBC]]
+* [[instanceOf::Namespace:Technology]]

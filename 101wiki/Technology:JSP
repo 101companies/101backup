@@ -1,0 +1,12 @@
+== Intent ==
+
+a [[template engine]] for dynamically generated [[Language:HTML]]/[[Language:XML]] pages
+
+== Description ==
+
+JavaServer Pages (JSP) offer the possibility to dynamically generate web pages based on [[Language:HTML]] and [[Language:XML]] in combination with [[Language:Java]] [[Technology:Servlet API|Servlets]] <cite>Wiki2012JSP</cite>.
+
+== Metadata ==
+* [[instanceOf::Template engine]]
+* [[identifies::http://en.wikipedia.org/wiki/JavaServer_Pages]]
+* [[instanceOf::Namespace:Technology]]

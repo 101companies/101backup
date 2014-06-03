@@ -1,0 +1,155 @@
+== Headline ==
+
+[[Web programming]] based on the [[Language:HTML5]] ecosystem using [[Ajax]] style 
+
+== Metadata ==
+
+* [[instanceOf::Theme:Web programming]]
+
+== Languages ==
+
+* [[Language:HTML5]]
+* [[Language:JavaScript]]
+* [[Language:PHP]]
+* [[Language:SQL]]
+* [[Language:JSON]]
+
+== Technologies ==
+
+* [[Technology:MySQL]]
+* [[Technology:XAMPP]]
+* [[Technology:Apache HTTP Server|Apache HTTP Server]]
+* [[Technology:XMLHttpRequest]]
+* [[Web browser]]
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Cut]]
+* [[Feature:Total]]
+* [[Feature:Distribution]]
+* [[Feature:Browsing]]
+* [[Feature:Editing]]
+* [[Feature:Web UI]]
+
+== Motivation ==
+
+This [[Web application|web application]] provides an optimized data exchange between the [[client]] and the [[server]]. It is achieved by the use of the [[Ajax]] principle. Optimized data exchange with Ajax means, that only necessary parts of the current page are reloaded and only necessary data are transmitted from the server to the client. This web application uses the [[Technology:XMLHttpRequest]] [[API]] included in [[Language:HTML5]] and is developed without any supporting [[Language:JavaScript]] [[Framework|framework]].
+
+== Illustration ==
+
+This implementation is [[MVC]] and [[Client-server architecture|client-server]] based. In order to create a reasonable illustration of the different layers of this application, this section is geared to this layers. The view, controller and some parts of the model are located on the [[client]] side.
+
+=== Client ===
+
+The view is mainly [[Language:HTML]] based, even though there are [[Language:JavaScript]] parts. The following example shows a table row in the [[Language:HTML5]] [this!!client/company.html company.html] document, which creates the textfield for the companies' total output and the cut button:
+
+<syntaxhighlight lang="xml" source="html5ajax/client/company.html">
+<table>
+           
+	...
+
+	<tr>
+		<td>Total:</td>
+		<td><input type="text" name="total" class="text" readonly="readonly"/></td>
+		<td><input type="button" class="button" value="cut" onClick="controller.cut()"/></td> 
+	</tr>
+          
+	...
+
+</table>
+</syntaxhighlight>
+
+If the user presses the cut button, the corresponding JavaScript [[method]] located in the client side model [this!!/client/model/companyModel.js companyModel.js] is invoked through the [this!!client/javascript/controller.js controller.js]. The ''initCompany'' method, used in ''cut'', initializes an object with all necessary data to identify the company on the [[server]] side:
+
+<syntaxhighlight lang="java" source="html5ajax/client/model/companyModel.js">
+// cut company
+model.cut = function(strategy) {
+	model.initCompany();
+	model.company.action = "cut";
+    
+	model.sendRequest(strategy, model.company);
+}
+</syntaxhighlight>
+
+The sent request contains a strategy, which defines the reaction after receiving the response. In case of a non error response the strategy refreshes the total field of the company.
+
+The use of [[Language:JSON]] instead of [[Language:XML]] for request and response messages has a major advantage: The messages are created in an [[OO programming]] style and can easily be transformed into JSON strings. There is no additional effort for creating and interpreting complex [[Language:XML]] messages. The JSON message for the specific cut request contains the necessary information about the action and the entity:
+
+<syntaxhighlight lang="text">
+{
+	"id":1,
+	"table":"company",
+	"action":"cut"
+}
+</syntaxhighlight>
+
+The message is received by the server, which cuts the company with the identifier 1.
+
+=== Server ===
+
+After receiving the cut request, the server performs the corresponding action within the [[Language:PHP]] script [this!!server/companyServer.php companyServer.php]. After that, it returns the new information for the company to the [[client]]:
+
+<syntaxhighlight lang="php" source="html5ajax/server/companyServer.php">
+// ---------------------------------------- cut company
+function cut($jsonObject) {
+	$id = $jsonObject->id;
+	$request = "UPDATE employee SET salary = salary / 2 WHERE cid = $id";
+	mysql query($request);
+       
+	return loadCompany($jsonObject);
+}
+</syntaxhighlight>
+
+The answer is a stringified company object containing all necessary information about the company (and nothing more):
+
+<syntaxhighlight lang="text">
+{
+	"name":"meganalysis",
+	"departments":["Research","Development"],
+	"total":199873.5
+}
+</syntaxhighlight>
+
+This application implements the [[Feature:Editing]] feature. Hence, there is also validation. The client side validation is performed within the client side part of the model, while the [[Server|server]] side validation is performed within the PHP scripts. If there is a client side input error, no request will be created and the error is displayed directly. If there is a server side error, the PHP script responds with an appropriate JSON message.
+
+== Architecture ==
+
+The architecture is based upon the [[MVC]] pattern. While the view (example: [this!!/client/company.html company.html], [this!!/client/javascript/view/companyView.js companyView.js]) and the controller ([this!!/client/javascript/controller.js controller.js]) are parts of the [[Client|client]], the model is part of the [[server]] and the client.
+
+* The view is based on pure [[Language:HTML]] (see [this!!client/]) and [[Language:JavaScript]]. The corresponding JavaScript files (see [this!!/client/javascript/views]) are used to fill the fields of the [[user interface]].
+
+* The model on the server side (see [this!!server/]) is a [[Language:PHP]] script and receives the requests and responds in [[Language:JSON]]. The model on the [[Client|client-side]] (see [this!!client/javascript/model]) receives the JSON message and refreshes its data (example: [this!!/server/companyServer.php companyServer.php], [this!!/client/javascript/requests/companyModel.js companyModel.js]).
+
+* All requests and responses via the [[Technology:XMLHttpRequest]] [[API]] are handled by the function defined in [this!!client/javascript/model/XMLHttpRequest.js].
+
+* The JavaScript based controller (see [this!!client/javascript/controller.js controller.js]) handles the actions invoked by the user and refreshes the [[GUI]] at the client side.
+
+== Usage ==
+
+You need a web and sql server to use this application. In this tutorial both will be taken care of by XAMPP: http://www.apachefriends.org/en/xampp.html
+
+This tutorial adopts some parts of [[Contribution:mySqlMany]]. The company.sql and sampleCompany.sql are modified for this project. They are located in the "sqlScripts" folder.
+
+* Download and install XAMPP
+* Open the "XAMPP Control Panel" and start "Apache" and "MySQL"
+* Use the guideline of [[Contribution:mySqlMany]] up to "Populate tables..." with the modified sql scripts.
+
+Once the database is running, follow the next steps:
+
+* To start the application, you need to download all project files
+* Put the files into the htdocs directory of your XAMPP (a new sub-directory in "htdocs" is recommended)
+* Run index.html
+
+The project is provided as a netbeans project. If you want to change the code, you have to:
+
+* Download (http://netbeans.org/) and install [[Technology:NetBeans]]
+* "Open project" and select the html5ajax folder
+
+
+
+== Contributors ==
+
+* {{101contributor|Tobias Zimmer|developer}}
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

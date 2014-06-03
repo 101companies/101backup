@@ -1,0 +1,70 @@
+== Headline ==
+
+A [[type]] for the construction of terms
+
+== Illustration ==
+
+Algebraic data types are typically supported by [[functional programming language]]s. For instance, [[Language:Haskell]], [[Language:Scala]], and [[Language:SML]] support algebraic data types. Illustrations are given here for [[Language:Haskell]].
+
+A data type for shapes can be defined as follows:
+
+<syntaxhighlight lang="haskell">
+data Shape = Circle Float
+           | Rectangle Float Float
+</syntaxhighlight>
+
+The [[data contructor]] ''Circle'' serves for the representation of circles; the one and only [[constructor component]] serves for the radius. The [[data constructor]] ''Rectangle'' serves for the representation of rectangles; the two [[constructor component]]s serve for width and height.
+
+Constructors can be used as functions to construct terms:
+
+<syntaxhighlight lang="haskell">
+myCircle :: Shape
+myCircle = Circle 42
+
+myRectangle :: Shape
+myRectangle = Rectangle 77 88
+</syntaxhighlight>
+
+In fact, constructors are functions with the types of the constructor components as argument types and the type of algebraic data type as the result type:
+
+<syntaxhighlight lang="haskell">
+> :t Circle
+Circle :: Float -> Shape
+> :t Rectangle 
+Rectangle :: Float -> Float -> Shape
+</syntaxhighlight>
+
+Pattern matching can be applied to terms of algebraic data types:
+
+<syntaxhighlight lang="haskell">
+-- Test whether the shape is a circle
+isCircle (Circle _) = True
+isCircle (Rectangle _ _) = False
+</syntaxhighlight>
+
+See [[Contribution:haskellData]] for a simple implementation of the [[@system]] which makes systematic use of algebraic data types]]. 
+
+All predefined, compound types of Haskell are essentially algebraic data types. For instance, Haskell's Booleans could be defined by an algebraic data type with two [[data constructor]]s as follows:
+
+<syntaxhighlight lang="haskell">
+data Bool = True | False
+</syntaxhighlight>
+
+Haskell's lists could be defined by an algebraic data type with two construtors as follows:
+
+<syntaxhighlight lang="haskell">
+data List a = Nil | Cons a (List a)
+</syntaxhighlight>
+
+The constructors ''Nil'' and ''Cons'' are meant to correspond to the empty list and ":" of Haskell's built-in lists. The ''Nil'' constructor has no [[constructor component]], whereas the ''Cons'' constructor has two [[constructor component]]s.
+
+See also [[Maybe type]]s for yet another illustration of algebraic data types.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Algebraic_data_type]]
+* [[identifies::http://www.haskell.org/haskellwiki/Algebraic_data_type]]
+* [[isA::Type]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]
+

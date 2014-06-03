@@ -1,0 +1,22 @@
+== Headline ==
+
+A last in, first out (LIFO) [[abstract data type]]
+== Illustration ==
+
+A simple implementation of stacks (of ints) is shown here as a functional data structure in [[Language:Haskell]]:.
+
+<fragment url="Stack.hs"/>
+
+These stacks are immutable. The push operation does not modify the given stack; it returns a new stack which shares the argument stack possibly with other parts of the program. The pop operation does not modify the given stack; it returns a part of the argument stack. We refer to [[Resource:Handbook of Data Structures and Applications]] for a profound discussion of functional data structures including the stack example. The functions for operations top and pop, as given above, are partial because they are undefined for the empty stack.
+
+There are also alternative illustrative Stack implementations available:
+* <file url="LeakyListStack.hs"/>: Stacks are represented as lists while the ''Stack'' type is simply defined as a type synonym to this end. This implementation does not enforce information hiding.
+* <file url="OpaqueListStack.hs"/>: As before, stacks are represented as lists, but the ''Stack'' type is defined as a [[newtype]] which hides the representation as its constructor is not exported.
+* <file url="FastListStack.hs"/>: As before, stacks are represented as lists and again this representation is hidden, but an additional data component for the size of the stack is maintained so that the size of a stack can be returned without traversing the stack. 
+
+== Metadata ==
+
+* [[instanceOf::Abstract data type]]
+* [[identifies::http://en.wikipedia.org/wiki/Stack_(abstract_data_type)]]
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Namespace:Concept]]

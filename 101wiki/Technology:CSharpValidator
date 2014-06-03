@@ -1,0 +1,23 @@
+== Headline ==
+
+A validator for [[Language:CSharp]]
+
+== Description ==
+
+CSharpValidator is a [[@technology]]; it is a C#-specific validator. CSharpValidator essentially parses the source code; it does not attempt compilation; it does not enforce any static semantics rules. Zero exit code is to be interpreted as successful validation; non-zero exit code as failure.
+
+== Usage ==
+
+To build and execute the validator, you need to have Mono SDK (2.10 +) installed.
+Use 'make build' to build the project.
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+* {{101contributor|Ralf Lämmel|reviewer}}
+
+== Metadata ==
+* [[instanceOf::Validator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/CSharpValidator]]
+* [[instanceOf::Namespace:Technology]]

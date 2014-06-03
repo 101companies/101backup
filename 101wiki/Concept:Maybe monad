@@ -1,0 +1,129 @@
+== Headline ==
+
+A [[monad]] for dealing with partiality or error handling
+
+== Illustration ==
+
+Let us put to work the maybe monad in a simple interpreter.
+
+There are these expression forms for floats, addition, and square roots:
+
+<syntaxhighlight lang="haskell">
+-- Simple arithmetic expressions
+data Expr = Const Float | Add Expr Expr | Sqrt Expr
+  deriving (Eq, Show, Read)
+</syntaxhighlight>
+
+Consider these samples:
+
+<syntaxhighlight lang="haskell">
+-- Sample terms
+sample = Sqrt (Add (Const 2) (Const 2))
+sample' = Sqrt (Add (Const (-2)) (Const (-2)))
+</syntaxhighlight>
+
+The first expression should evaluate to 2.0. Evaluation should somehow fail for the second one. The most straightforward interpreter may be this one:
+
+<syntaxhighlight lang="haskell">
+-- An interpreter with a potential NaN (not a number) result
+eval :: Expr -> Float
+eval (Const f) = f
+eval (Add e1 e2) = eval e1 + eval e2
+eval (Sqrt e) = sqrt (eval e)
+</syntaxhighlight>
+
+This interpreter would return ''NaN'' (not a number) for the second sample. This may be acceptable, but assume that we would like to represent the error situation explicitly as an error value so that we cannot possibly miss the problem and it is propagated properly. To this end, we may use a [[Maybe type]] in the interpreter as follows:
+
+<syntaxhighlight lang="haskell">
+-- An interpreter using a Maybe type for partiality
+eval' :: Expr -> Maybe Float
+eval' (Const f) = Just f
+eval' (Add e1 e2) = 
+  case eval' e1 of
+    Nothing -> Nothing
+    Just f1 ->
+      case eval' e2 of
+        Nothing -> Nothing 
+        Just f2 -> Just (f1 + f2)
+eval' (Sqrt e) =
+  case eval' e of
+    Nothing -> Nothing
+    Just f -> if f < 0.0
+                then Nothing
+                else Just (sqrt f)
+</syntaxhighlight>
+
+Alas, the resulting interpreter is harder to understand. Maybes need to be handled for all subexpressions and the intention of propagating ''Nothing'' is expressed time and again. By conversion to monadic style, we can hide error handling:
+
+<syntaxhighlight lang="haskell">
+-- A monadic style interpreter
+evalM :: Expr -> Maybe Float
+evalM (Const f) = return f
+evalM (Add e1 e2) =
+  evalM e1 >>= \f1 ->
+  evalM e2 >>= \f2 ->
+  return (f1 + f2)
+evalM (Sqrt e) =
+  evalM e >>= \f ->
+  guard (f >= 0.0) >>
+  return (sqrt f)
+</syntaxhighlight>
+
+We can also use do notation:
+
+<syntaxhighlight lang="haskell">
+-- A monadic style interpreter in do notation
+evalM' :: Expr -> Maybe Float
+evalM' (Const f) = return f
+evalM' (Add e1 e2) = do
+  f1 <- evalM' e1
+  f2 <- evalM' e2
+  return (f1 + f2)
+evalM' (Sqrt e) = do
+  f <- evalM' e
+  guard (f >= 0.0)
+  return (sqrt f)
+</syntaxhighlight>
+
+The corresponding instance of the [[type class]] ''Monad'' follows:
+
+<syntaxhighlight lang="haskell">
+-- Monad instance for Maybe
+instance Monad Maybe
+  where
+    return = Just
+    Nothing >>= f = Nothing
+    (Just x) >>= f = f x
+</syntaxhighlight>
+
+The definition of ''return'' conveys that a pure computation is successful. The definition of ''bind'' conveys that ''Nothing'' for the first argument is to be propagated. The Maybe monad actually is a more special monad, i.e., a monad with ''+'' and ''0'':
+
+<syntaxhighlight lang="haskell">
+-- Type class MonadPlus (see Control.Monad)
+class Monad m => MonadPlus m
+  where
+    mzero :: m a
+    mplus :: m a -> m a -> m a
+</syntaxhighlight>
+
+<syntaxhighlight lang="haskell">
+-- MonadPlus instance for Maybe
+instance MonadPlus Maybe
+  where
+    mzero = Nothing
+    Nothing `mplus` y = y
+    x `mplus` _ = x
+</syntaxhighlight>
+
+We can also define the ''guard'' function now which was used in the interpreter: 
+
+<syntaxhighlight lang="haskell">
+-- Succeed or fail 
+guard :: MonadPlus m => Bool -> m ()
+guard b = if b then return () else mzero
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[isA::Monad]]
+* [[instanceOf::Namespace:Concept]]

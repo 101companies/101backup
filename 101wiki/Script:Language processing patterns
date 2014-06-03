@@ -1,0 +1,26 @@
+== Headline ==
+
+A lecture on the [[design patterns]] for [[language processing]] as part of the [[Course:Programming in Koblenz]]
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/language-processing-patterns"/>
+== Concepts ==
+
+* [[Grammar]]
+* [[Syntax]]
+* [[Lexer]]
+* [[Acceptor]]
+* [[Parser]]
+* [[Design pattern]]
+* [[Lookahead]]
+* [[Recursive descent parser]]
+== Contributions ==
+
+* [[Contribution:javaScanner]]
+* [[Contribution:javaLexer]]
+* [[Contribution:javaParser]]
+== Metadata ==
+
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

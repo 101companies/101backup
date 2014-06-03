@@ -1,0 +1,15 @@
+== Intent ==
+
+a transformation that lowers or raises the level of abstraction
+
+== Discussion ==
+
+In model-driven engineering, a model-to-code transformation lowers the level of abstraction.
+
+In reverse engineering or de-compilation, a transformation raises the level of abstraction.
+
+
+
+== Metadata ==
+* [[instanceOf::Transformation]]
+* [[instanceOf::Namespace:Concept]]

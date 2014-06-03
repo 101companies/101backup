@@ -1,0 +1,12 @@
+== Headline ==
+
+[[Web programming]] theme of implementations 
+
+== Description ==
+
+There is a myriad of web-programming frameworks. This theme features implementations that demonstrate arguably the most established frameworks, while at the same time aiming at coverage of different languages and platforms. For instance, [[Technology:Silverlight]] may currently count as a major web-programming approach for the [[Technology:.NET]] platform, and hence, an implementation was included. Also, [[Language:PHP]] is generally popular for web development, and hence, an implementation based on the popular [[Technology:Pyjamas]] framework was included. As far as [[Language:Java]] is concerned, there are again, in turn, many different approaches and frameworks, and the goal was here to select a small number of different and popular approaches. Finally, in the case of [[Language:HTML5]], the two options of a local applications versus a client/server architecture is demonstrated.
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

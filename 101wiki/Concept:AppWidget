@@ -1,0 +1,9 @@
+== Headline ==
+
+Miniature application views that can be embedded in other applications.
+
+== Metadata ==
+* [[instanceOf::Android_UI]]
+* [[identifies::http://developer.android.com/guide/topics/appwidgets/index.html]]
+* [[linksTo::http://developer.android.com/guide/practices/ui_guidelines/widget_design.html]]
+* [[instanceOf::Namespace:Concept]]

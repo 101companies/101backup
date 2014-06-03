@@ -1,0 +1,11 @@
+== Headline ==
+
+The programmatic location of fragments in files
+
+== Description ==
+
+Fragment location aims at the location of fragments within files, subject to a description of the fragment of interest and tool support for the execution of fragment location, i.e., [[fragment locator]]s. Fragment descriptions are somewhat language-aware description of fragments, e.g., in terms of names of abstractions or regular expression matching on program text. A fragment locator takes a file on which to apply fragment locator as well as the description of the fragment to be located. It returns, in some way, the success or failure of location together with additional information geared at tools that should operate on the fragment level.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software technology]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+[[Language:XML]] theme of implementations
+
+== Description ==
+
+The theme collects representatives of the most established [[XML processing]] options. Several of these options rely on [[API|API]]s so that of XML processing is embedded into an existing language such as [[Language:CSharp|C#]] or [[Language:Java]]. More specifically, there are options for [[in-memory XML processing]], [[push-based XML parsing]], and [[pull-based XML parsing]]. In the case of in-memory processing, two options are included: one for the more classic [[Technology:DOM]] approach and another more declarative, query-oriented which is based on [[Technology:LINQ]] in that case. Besides those API-based options, the theme also covers two major styles of XML processing when it is supported directly by languages designated to either querying or transformation. Finally, there is a [[Mapping|mapping]]-based option such that an object model is derived from an XML schema such that [[Serialization|de-/serialization]] can be used to access XML data through objects and extract XML data from objects.
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

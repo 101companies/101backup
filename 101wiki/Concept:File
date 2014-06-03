@@ -1,0 +1,11 @@
+== Headline ==
+
+a resource for storing [[data]] in a [[file system]]
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/Computer_file]]
+* [[instanceOf::Namespace:Concept]]

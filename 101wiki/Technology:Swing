@@ -1,0 +1,14 @@
+== Headline ==
+
+Java's primary primary GUI library
+
+== Description ==
+
+See also the major package [[Java:javax.swing]] of the library.
+
+Note that [http://www.iam.ubc.ca/guides/javatut99/uiswing/start/_packagename.html package naming] varies considerably for Swing versions.
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://en.wikipedia.org/wiki/Swing_(Java)]]
+* [[instanceOf::Namespace:Technology]]

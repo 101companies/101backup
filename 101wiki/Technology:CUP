@@ -1,0 +1,12 @@
+== Headline ==
+
+a parser generator for [[Language:Java]]
+
+== Description ==
+
+There is also a runtime library [[Java:java_cup.runtime]] for CUP.
+
+== Metadata ==
+* [[instanceOf::Parser generator]]
+* [[identifies::http://www.cs.princeton.edu/~appel/modern/java/CUP/manual.html]]
+* [[instanceOf::Namespace:Technology]]

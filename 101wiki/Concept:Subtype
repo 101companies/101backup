@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[type]] that is [[Substitutability|substitutable]] for another [[type]] according to the [[type system]]
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Subtyping]]
+* [[instanceOf::Vocabulary:OO programming]]
+* [[relatesTo::Subtyping]]
+* [[instanceOf::Namespace:Concept]]

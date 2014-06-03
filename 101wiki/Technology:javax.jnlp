@@ -1,0 +1,15 @@
+== Headline ==
+
+a framework starting applications over the web
+
+== Description ==
+
+This implementation also goes by the name "Java Web Start".
+
+See also the [[Language:JNLP]] language for some background.
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_Web_Start]]
+* [[linksTo::http://docs.oracle.com/javase/7/docs/jre/api/javaws/jnlp/]]
+* [[instanceOf::Namespace:Technology]]

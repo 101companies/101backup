@@ -1,0 +1,10 @@
+== Headline == 
+
+A unit of functionality as part of [[@worker]]
+
+== Description ==
+
+Modules capture functionality of the [[@project]] and they are executed by the [[@worker]]. Modules analyze resources in the [[@repo]] and the content of the [[@wiki]] including semantic properties; modules synthesize information that is deployed on the web as [[@data]] and made discoverable through the [[@explorer]]. All modules are collected by a designated namespace: [[Namespace:Module]]. See [[Information:Module]] for how to develop a new module.
+
+== Metadata ==
+* [[instanceOf::Namespace:101]]

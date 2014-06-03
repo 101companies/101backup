@@ -1,0 +1,44 @@
+== Intent ==
+
+modular programming with [[Visitor pattern|visitors]] in [[Language:Python]]
+
+== Motivation ==
+
+This contribution is similar to [[Contribution:javaVisitor]]. The Visitor Pattern
+allows the separation of operations from an object model.
+
+== Illustration ==
+
+There is a method for every class to work on it because python has no method 
+overloading. The dispatch is done by the Visitor class which uses reflection.
+It searches for a method which has the name <code>visit_[class_name]</code>
+but if there is not any method, it calls a default method that performs a deeper
+traversal.
+
+<syntaxhighlight language="python">
+class CutVisitor(Visitor):
+
+    def visit_Company(self, c):
+        for d in c.depts:
+            self.visit(d)
+
+    def visit_Department(self, d):
+        self.visit(d.manager)
+        for s in d.subunits:
+            self.visit(s)
+
+    def visit_Employee(self, e):
+        e.salary /= 2.0
+</syntaxhighlight>
+
+== Usage ==
+
+Download the source and run <code>python operations.py</code>
+
+== Metadata ==
+
+* [[uses::Language:Python]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Namespace:Contribution]]

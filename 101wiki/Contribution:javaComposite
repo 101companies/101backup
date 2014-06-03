@@ -1,0 +1,34 @@
+== Headline ==
+
+Making use of the tree-like object model using the [[Composite pattern|composite pattern]]
+== Characteristics ==
+
+The present implementation can be viewed as a variation on [[Contribution:javaInheritance]]. 
+The [[Composite pattern|composite pattern]] is applied to a [[Feature:Hierarchical_company|tree-like model of companies]].
+To this end, employees and departments are composites while employees are leafs. 
+The features of [[Feature:Total|totaling]] and [[Feature:Cut|cutting]] a company, department and employees are specified in a component interface.
+== Illustration ==
+
+The data model is implemented with [[class inheritance]]. For example Departments:
+
+<fragment url="src/main/java/org/softlang/company/model/Department.java/class/Department"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are specified in the component interface
+
+<fragment url="src/main/java/org/softlang/company/model/Unit.java/class/Unit"/>
+
+and implemented in the respective classes of the object model, for instance for departments: 
+
+<fragment url="src/main/java/org/softlang/company/model/Department.java/class/Department"/method/cut>
+== Usage ==
+
+Execute the main class in Eclipse.
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[uses::Language:Java]]
+
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

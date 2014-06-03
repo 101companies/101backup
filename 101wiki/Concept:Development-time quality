@@ -1,0 +1,16 @@
+== Headline ==
+
+A [[non-functional requirement]] that relates to the development time of a [[software system]]
+
+== Details ==
+
+See also the concept of [[run-time quality]].
+
+(These classifiers are not standardized, but similar concepts appear under different names in various sources.)
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Non-functional_requirement]]
+* [[isA::Non-functional requirement]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

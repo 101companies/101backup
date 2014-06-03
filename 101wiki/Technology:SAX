@@ -1,0 +1,22 @@
+== Intent == 
+
+a simple API for [[push-based XML parsing]]
+
+== Discussion ==
+
+SAX is an API for [[push-based XML parsing]].
+
+That is, SAX allows one to process serialized XML content by [[streaming]] in a specific manner.
+
+A Java-based implementation of SAX is part of [[Technology:JAXP]].
+
+== Headline ==
+
+an event-based sequential access parser API developed for XML processing in Java
+
+== Metadata ==
+* [[instanceOf::XML processor]]
+* [[linksTo::http://en.wikipedia.org/wiki/Simple_API_for_XML]]
+* [[identifies::http://sax.sourceforge.net SourceForge]]
+* [[linksTo::http://www.saxproject.org/apidoc/org/xml/sax/package-summary.html JavaDoc]]
+* [[instanceOf::Namespace:Technology]]

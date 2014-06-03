@@ -1,0 +1,43 @@
+== Headline ==
+
+Map a tuple of sequences into a sequence of tuples
+
+== Illustration ==
+
+In [[Language:Haskell]], the basic ''zip'' function is of the following type:
+
+<syntaxhighlight lang="haskell">
+> :t zip
+zip :: [a] -> [b] -> [(a, b)]
+</syntaxhighlight>
+
+Thus, the ''zip'' function takes two lists of possibly different element types and returns a list of pairs. Here is an illustrative application of ''zip'' to build pairs of characters with associated ASCII codes:
+
+<syntaxhighlight lang="haskell">
+> zip ['A','B','C'] [65,66,67]
+[('A',65),('B',66),('C',67)]
+</syntaxhighlight>
+
+There exist further variation on zipping. For instance, there is also a ''zipWith'' function which applies an argument function to pairs rather than constructing pairs. For instance, consider two lists of operands for addition; pairwise addition can be applied as follows:
+
+<syntaxhighlight lang="haskell">
+> :t zipWith
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+> zipWith (+) [1,2,3] [4,5,6] 
+[5,7,9]
+</syntaxhighlight>
+
+For what it matters, the basic ''zip'' function is defined as follows:
+
+<syntaxhighlight lang="haskell">
+zip :: [a] -> [b] -> [(a, b)]
+zip = zipWith (,) -- apply pair construction
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Common function]]
+* [[instanceOf::Higher-order function]]
+* [[linksTo::https://en.wikipedia.org/wiki/Convolution_(computer_science)]]
+* [[linksTo::http://stackoverflow.com/questions/1115563/what-is-zip-functional-programming]]
+* [[instanceOf::Namespace:Concept]]

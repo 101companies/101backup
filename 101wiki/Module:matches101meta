@@ -1,0 +1,19 @@
+== Headline ==
+
+Basic matching of 101meta rules against 101repo
+
+== Description == 
+
+This is one the modules which matches 101meta rules against the files in 101repo. Depending on the conditions in a rule, it may be checked by this module or by another module. This module deals with basic rules that contain neither predicate nor fragment conditions. Matching is not performed by a single module so that some simple basic order constraints and interleaving with other modules is possible. In particular, basic matching may provide metadata that is needed for modules that in turn prepare data for predicate execution and fragment location to be performed during those other phases of matching. Thus, the right order of matching is this:
+* [[Module:matches101meta]]
+* Any modules that suffice with basic matching and that may prepare data for the other matching phases.
+* [[Module:predicates101meta]]
+* [[Module:fragments101meta]]
+
+== Output ==
+
+http://data.101companies.org/dumps/matches.json
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

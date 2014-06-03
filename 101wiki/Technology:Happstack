@@ -1,0 +1,17 @@
+== Headline ==
+
+A [[Framework|framework]] for [[Web programming|web programming]] in [[Language:Haskell|Haskell]] 
+
+== Discussion ==
+
+Some features of Happstack are <cite>happstackHome, haskellWikiHappstack</cite>:
+* [[Route filter|Route filters]] to extract URL path components.
+* An integrated [[Technology:HTTP]]-server. 
+* Support for most Haskell database interfaces. 
+* Integration of various [[Language:HTML|HTML]] templating systems such as [[Technology:Heist]]. 
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://happstack.com/index.html]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Web/Frameworks#Happstack]]
+* [[instanceOf::Namespace:Technology]]

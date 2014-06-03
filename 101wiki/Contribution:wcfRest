@@ -1,0 +1,27 @@
+== Headline ==
+
+REST-based service implemented in [[Technology:WCF]]
+
+== Motivation ==
+
+== Architecture ==
+
+== Usage ==
+
+* Create a new web site under IIS pointing to the projects' directory. Use port 1234 for a newly created web site. Ensure you use .NET Framework 4.0 for the application pool.
+
+* By pressing F5 in VS you will get the browser opened; go to the following URL to get the full API description http://localhost:1234/CompanyService/help
+
+This contribution has been tested under C# Version 4 and Visual Studio 2010.
+
+== Metadata ==
+* [[uses::Language:CSharp]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:WCF]]
+* [[uses::Technology:Visual Studio]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Distribution]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

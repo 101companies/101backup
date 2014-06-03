@@ -1,0 +1,12 @@
+== Headline ==
+
+A control mechanism in [[concurrent programming]]
+
+== Details ==
+
+STM stands for Software Transactional Memory.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Software_transactional_memory]]
+* [[instanceOf::Namespace:Concept]]

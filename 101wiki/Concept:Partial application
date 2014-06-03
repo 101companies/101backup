@@ -1,0 +1,49 @@
+== Headline ==
+
+Apply a function to some but not all arguments
+
+== Illustration ==
+
+Here is an example of "non-partial" application of addition in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+> 41 + 1
+42
+</syntaxhighlight>
+
+In this example, we actually increment 41. Let us thus define the increment function as a partial application of addition so that we can model the same computation as follows:
+
+<syntaxhighlight lang="haskell">
+> let inc = (+) 1
+> inc 41
+42
+</syntaxhighlight>
+
+It is important that "+" was surrounded by "(...)" because "+" is an infix operator and we need to use in an prefix manner when aiming at partial application. The notation "(+)" does indeed produce a prefix operator.
+
+In Haskell, sections for infix operators correspond to a special form of partial application. A section applies an infix operator to one of its two operands by using parenthesization in the following way:
+
+<syntaxhighlight lang="haskell">
+> let inc = (+1)
+> inc 41
+42
+</syntaxhighlight>
+
+In this example, we have applied "+" to its second operand. For what it matters (and because addition is commutative), we could also define the increment function in terms of a section for the first operand:
+
+<syntaxhighlight lang="haskell">
+> let inc = (1+)
+> inc 41
+42
+</syntaxhighlight>
+
+== Discussion ==
+
+In languages with type-level functions such as parametrized type synonyms or data types, e.g., [[Language:Haskell]], partial application makes sense at the type level as well.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Partial_application]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Section_of_an_infix_operator]]
+* [[instanceOf::Namespace:Concept]]

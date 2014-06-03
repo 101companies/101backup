@@ -1,0 +1,23 @@
+== Headline ==
+
+A transformation with the type of the input and output being the same
+
+== Details ==
+
+In the context of [[model-driven engineering]], type-preserving transformations also go by the name of [[endogenous model transformation]]s.
+
+== Illustration ==
+
+Diverse examples of type-preserving transformations:
+* A program transformation for optimization.
+* An XML transformation that only affects primitive values of selected elements.
+* A traversal over an object graph (by a visitor or otherwise) that mutates objects.
+* A model transformation where the metamodels of the input and output models are the same.
+
+In the context of the 101companies System, [[Feature:Cut]] corresponds to a type-preserving transformation.
+
+== Metadata ==
+
+* [[isA::Transformation]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

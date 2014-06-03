@@ -1,0 +1,13 @@
+== Headline ==
+
+a simple facade for various logging frameworks
+
+== Description ==
+
+SLF4J stands for Simple Logging Facade for Java.
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://www.slf4j.org/]]
+* [[linksTo::http://www.slf4j.org/api/org/slf4j/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

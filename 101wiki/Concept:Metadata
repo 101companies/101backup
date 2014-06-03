@@ -1,0 +1,18 @@
+== Headline ==
+
+Data about data (or programs).
+
+== Illustration ==
+ 
+See the concept of [[Java annotation]]s for mundane, programming-focused illustration. Beware, the following illustration is somewhat weird. That is, this very page, when considered as markup is, of course, data. Semantic properties are used on this wiki to associate wiki pages among each other and with external resources. Those associations can be viewed as metadata. For instance, this very page, specifies a namespace association in the metadata section:
+
+<pre>
+[[instanceOf::Namespace:Concept]]
+</pre>
+
+That semantic properties associates this page and [[Namespace:Concept]]. In fact, both pages carry the resulting triple as metadata.
+
+== Metadata ==
+
+* [[identifies::https://en.wikipedia.org/wiki/Metadata]]
+* [[instanceOf::Namespace:Concept]]

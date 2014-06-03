@@ -1,0 +1,26 @@
+== Headline ==
+
+The automatic deduction of the type of a program fragment
+
+== Illustration ==
+
+A [[programming language]] implementation may perform type inference to compensate for the lack of explicitly declared [[type signature]]s such that [[type checking]] is still feasible. Typically, [[type inference]] happens at compile time. Consider, for example, the following function for negating [[Boolean]]s in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+not True = False
+not False = True
+</syntaxhighlight>
+
+The [[Language:Haskell]] [[type system]] is perfectly confident to infer, even without any [[type signature]] at hand, that ''not'' is of the following type:
+
+<syntaxhighlight lang="haskell">
+not :: Bool -> Bool
+</syntaxhighlight>
+
+Type inference becomes enormously more powerful, once [[higher-order function]]s are taken into account. 
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming language]]
+* [[identifies::http://en.wikipedia.org/wiki/Type_inference]]
+* [[instanceOf::Namespace:Concept]]

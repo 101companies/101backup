@@ -1,0 +1,11 @@
+== Headline ==
+
+A program that extracts facts from software artifacts
+
+== Details ==
+
+See the notion of [[fact extraction]] for details.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Namespace:Concept]]

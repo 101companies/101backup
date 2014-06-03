@@ -1,0 +1,42 @@
+== Headline ==
+
+How to download contributions of the [[@project]]
+
+== Description ==
+
+<media url="http://www.youtube.com/watch?v=knIcx4P7DRA"/>
+
+If you want to try out contributions, there are these means of downloading them.
+
+=== ZIP file as linked on 101wiki page ===
+
+# Go to the 101wiki page for the contribution.
+# Select the "Code tab" and the item "Download .zip".
+
+In this manner, one downloads the zipped directory for the contribution. It should be noted that some contributions may rely on artifacts that are not located in the contribution directory, that are located instead in other directories of the same repo. The following options are more generally applicable.
+
+=== ZIP file as linked on GitHub page ===
+
+# Go to the 101wiki page for the contribution.
+# Select the "Code tab" and the item "View code at GitHub".
+# Go to the root of the repo.
+# Select the "ZIP" button to download the entire repo.
+
+One will only get to see the "ZIP" button when position at the root of the directory.
+
+=== git clone the GitHub repo ===
+
+# Go to the 101wiki page for the contribution.
+# Select the "Code tab" and the item "View code at GitHub".
+# Go to the root of the repo.
+# Select "Git Read-Only", if necessary.
+# Copy the URL next to the button into the clipboard.
+# Run "git clone <url>" on your system.
+
+Here it is assume that some git client is available on the system. In fact, the last step, i.e., the "git clone" command, is given in the form as appropriate with a typical git client using the command line rather than a GUI.
+
+
+== Metadata ==
+
+* [[relatesTo::Namespace:Contribution]]
+* [[instanceOf::Namespace:Information]]

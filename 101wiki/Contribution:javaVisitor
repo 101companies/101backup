@@ -1,0 +1,71 @@
+== Headline ==
+
+modular programming with [[Visitor pattern|visitors]] in [[Language:Java]]
+== Characteristics ==
+
+The present  implementation can be viewed as a variation on [[Contribution:javaInheritance]]. 
+The [[Visitor pattern]] is applied to implement operations modularly. 
+To this end, two visitor interfaces are defined: one for ''void'' visitors (that
+do not return any values), another one for ''returning'' visitors (with a designated
+type parameter for the result type). Indeed, [[Feature:Total]] calls
+for a returning visitor whereas [[Feature:Cut]] can be expressed as
+a void visitor - if an [[impure computation]] is assumed.
+== Illustration ==
+
+The data model is implemented with [[class inheritance]]. For example Departments:
+
+<fragment url="src/main/java/org/softlang/company/model/Department.java/class/Department"/>
+
+[[Feature:Closed serialization]] is implemented using [[Language:Java]] [[Technology:Object Streams]]:
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/deserializeCompany"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/serializeCompany"/>
+
+[[Feature:Total]] is implemented as a returning visitor:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total"/>
+
+[[Feature:Cut]] is implemented as a void visitor:
+
+<fragment url="src/main/java/org/softlang/company/features/Cut.java/class/Cut"/>
+
+Test cases are implemented for all [[Namespace:Feature]]s.
+== Relationships ==
+
+For basic OO without inheritance see [[Contribution:javaComposition]].
+
+For basic OO with inheritance see [[Contribution:javaInheritance]].
+
+For modular OO programming with static methods see [[Contribution:javaStatic]].
+
+For use of Java reflection see [[Contribution:javaReflection]] (data processing) and [[Contribution:javaSyb]] (SYB-style generic programming).
+
+For design patterns see [[Contribution:javaTemplate]] (template design pattern), [[Contribution:javaVisitor]] (visitor design pattern) and [[Contribution:javaExorcism]] (excessive illustration of design patterns).
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+** org.softlang.company.features.visitor for visitor patterns.
+** org.softlang.company.model for implementations of [[Feature:Company]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases for [[Namespace:Feature]]s.
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

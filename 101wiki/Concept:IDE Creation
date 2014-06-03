@@ -1,0 +1,11 @@
+== Headline ==
+
+Creation of an IDE to support editing
+
+== Description ==
+
+Creation of an IDE to better support editing of certain domain specific languages. An example for a contribution demonstrating this is [[Contribution:xtext]].
+
+== Metadata ==
+* [[instanceOf::Vocabulary:MDE]]
+* [[instanceOf::Namespace:Concept]]

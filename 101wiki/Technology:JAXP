@@ -1,0 +1,21 @@
+== Intent == 
+
+a collection of XML [[API|APIs]] as part of [[Technology:Java SE]]
+
+== Description ==
+
+Among others, JAXP contains a Java binding for the platform- and language-neutral [[Technology:DOM]] API and a specific implementation.
+
+Strictly speaking, JAXP provides [[API implementation]]s.
+
+== Spaces ==
+
+* [[XMLware]]
+* [[Generic objectware]]
+
+== Metadata ==
+* [[instanceOf::API implementation]]
+* [[instanceOf::XML processor]]
+* [[identifies::http://download.oracle.com/javase/6/docs/technotes/guides/xml/jaxp/index.html]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_API_for_XML_Processing]]
+* [[instanceOf::Namespace:Technology]]

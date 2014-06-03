@@ -1,0 +1,17 @@
+== Headline ==
+
+An [[algorithm]] to solve the [[sorting problem]]
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Sorting_algorithm, 14 April 2012)
+
+A sorting algorithm is an algorithm that puts elements of a list in a certain order. The most-used orders are numerical order and lexicographical order. [...] More formally, the output must satisfy two conditions:
+# The output is in nondecreasing order (each element is no smaller than the previous element according to the desired total order);
+# The output is a permutation (reordering) of the input.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Sorting_algorithm]]
+* [[relatesTo::Sorting problem]]
+* [[instanceOf::Namespace:Concept]]

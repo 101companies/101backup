@@ -1,0 +1,10 @@
+== Headline ==
+
+[[Closed serialization]] for company data
+== Relationships ==
+
+See [[Feature:Open serialization]].
+== Metadata ==
+
+* [[isA::Feature:Serialization]]
+* [[instanceOf::Namespace:Feature]]

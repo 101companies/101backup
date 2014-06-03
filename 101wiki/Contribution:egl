@@ -1,0 +1,123 @@
+== Headline ==
+
+Demonstrate modular code generation using symmetric aspects in EGL for generating 101companies attributes, associations, and basic methods.
+
+== Technologies ==
+* [[Technology:EMF]]
+* [[Technology:Java]]
+* [[Technology:Epsilon Generation Language]] including aspect-oriented extensions
+* [[Technology:Ant]]
+
+== Languages ==
+* [[Language:Ecore]]
+* [[Language:Java]]
+
+== Features ==
+* [[Feature:Hierarchical_company]]
+* [[Feature:Cut]]
+* [[Feature:Code generation demo]]
+
+== Motivation ==
+
+This implementation makes the contribution of demonstrating symmetric aspects in code generation using Epsilon Generation Language for Ecore to Java code generation such that the basic features can be generated in a modular way.
+
+This is specifically interesting for a number of reasons:
+
+1. It demonstrates basic code generation using Epsilon Generation Language and Ecore as a modelling language for basic class models.
+
+2. It demonstrates various ways of modularising code-generation templates, including aspect-oriented techniques.
+
+3. It demonstrates how aspect-oriented techniques can be used to introduce variability into the code-generation workflow---specifically, allowing to choose between different realisation of associations in the code generated without affecting any of the other parts of the code generation.
+
+== Illustration ==
+
+The code generator demonstrated is relatively generic in that it does not contain any information specific to the 101companies example system. All the system-specific information is kept in a separate model model/101companies.ecore. This is essentially a class diagram (expressed in ECore rather than UML) of the key classes and their relationships.
+
+From this model, the code generators will produce Java code implementing the classes described. The code generators are kept in directory templates/ and are expressed in the Epsilon Generation Language (EGL). There are two kinds of generation templates present:
+
+* Templates for coordination of generation (e.g., templates/Associations.egl): These do not produce any code themselves, but invoke other templates for each class or association in the model given.
+
+* Templates for generating parts of individual files (e.g., templates/AssociationsOneClass.egl): These are invoked once for each file to be generated and produce all or part of that file.
+
+More detailed information on EGL can be found at http://www.eclipse.org/epsilon/ The language basically allows generation templates to be expressed from two parts: target-language code, which will be included verbatim in the generation result, and control code, which allows navigating source models and producing text based on source-model information. The latter code can be identified easily because it is always enclosed by [% %]. So, the following code generates a basic class skeleton, assuming a variable cl of type EClass to be passed in as a parameter:
+
+<syntaxhighlight lang="java>
+public class [%=cl.name%] {
+  public [%=cl.name%] () {}
+}
+</syntaxhighlight>
+
+More complex code generation is possible by using more complex control structures. For example, the following code generates attributes and setters + getters (simplified from templates/AttributesOneClass.egl):
+
+<syntaxhighlight lang="java>
+public class [%=cl.name%] {
+[%
+  for (attr in cl.eAllAttributes) {
+    %]
+  private [%=attr.type.name%] [%=attr.name%];
+
+  public [%=attr.type.name%] get[%=attr.name.firstToUpperCase()%] () {
+    return [%=attr.name%];
+  }
+  [%if (attr.changeable) {%]
+
+  public void set[%=attr.name.firstToUpperCase()%] ([%=attr.type.name%] [%=attr.name%]) {
+    this.[%=attr.name%] = [%=attr.name%];
+  }
+  [%}%]
+
+    [%
+  }
+%]
+}
+</syntaxhighlight>
+
+Directory templates/ contains a number such templates for generating different aspects of a class's structure. In a normal use of EGL, most of these would have to be combined into one template. In this example 101companies implementation we demonstrate some more advanced modularity techniques for code generation templates. Specifically, we show two forms of modularity:
+
+1. Use of a shared library of functions to ensure consistent use of coding conventions across generation templates: CoreOps.eol contains some functions encoding how type names are derived from model information. This is imported from a range of EGL files ensuring consistent generation of types across all files generated.
+
+2. Use of symmetric aspect technology to allow separation of different features of the code generation and enable variability in code generation: We have implemented separate templates for dealing with attributes and associations. In fact, there are two sets of templates for dealing with associations. Depending on which set is used, a different implementation of associations is generated.
+
+Which set of templates is chosen and how they are combined (where appropriate) is defined in file workflow/build.xml (which is also the file to be executed to test the example). This is a normal ANT build file, using some Epsilon-specific tasks. Notice the use of epsilon.eglRegister to invoke a generation template. This will perform the code generation described in that template and register the result against the file name indicated (in this case, the file names are specified inside the template itself). Note that you could also ask for the generation result to be output to a file directly using the epsilon.egl task instead. The template would not need to be adjusted.
+
+Once all code has been generated and registered, epsilon.eglMerge is used to merge all code generated for the same file and to output to a file.
+
+Note that the build.xml file contains two alternate top-level targets: generate all and generate all assocclasses. These generate code with different implementations of associations. Note that they both reuse the same templates for generating attribute-related code.
+
+Feature [type-driven transformation] is implemented manually in the java source files in model/src/. These are merged with the generated code by explicitly registering them using the epsilon.eglRegisterFile task.
+
+More information about symmetric aspects for EGL is available from [1]
+
+[1] Steffen Zschaler and Awais Rashid: Towards Modular Code Generators Using Symmetric Language-Aware Aspects. In Proc. 1st Workshop on Free Composition (FREECO'11).
+
+== Architecture ==
+
+There are a number of folders including different components of the overall architecture. File workflow/build.xml is the overall configuration binding these components together. It has two main targets demonstrating different compositions of components (producing different implementations of associations, but otherwise identical).
+
+* Folder model/ contains the Ecore model of the 101companies scenario, with each class modelled as an EClass (implementing [Tree structure]). It also contains a number of manually written pieces of source code implementing the [Type-driven transformation] feature (folder model/src). These will be merged with the generated code.
+
+* Folder template contains the EGL templates that specify the generation. Note that some templates only serve to coordinate the invocation of other templates.
+
+* Folder src will contain the generated sources ready to be run.
+
+== Usage ==
+
+* Open Eclipse and ensure Epsilon and the symmetric AO extensions are installed. Epsilon is available as an Eclipse project from [EPSILON]. The symmetric AO extensions are available from [EPSILONLABS] and best run from source (see general documentation on how to run Eclipse plugins from source).
+
+* Import the package provided as an Eclipse project.
+
+* Execute workflow/build.xml as an Ant build file (making sure to run it in the same JRE as the Eclipse workbench). You can choose either of the first two targets; the output will differ in the way in which it handles associations.
+
+* Refresh the project and inspect the src folder. You may need to auto-format the generated files.
+
+== Issues ==
+
+* The implementation currently only supports a limited number of features. The [Type-driven transformation] feature implementation is not actually generated, but integrated from manually written code. Instead, these files could be generated from a suitable model.
+
+* Other more interesting features could be added, such as generating EJB annotations through a separate EGL template.
+
+== Contributors ==
+
+* {{101contributor|Steffen Zschaler|developer}}
+== Metadata ==
+* [[instanceOf::Namespace:Contribution]]

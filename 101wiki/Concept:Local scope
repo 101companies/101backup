@@ -1,0 +1,30 @@
+== Headline ==
+
+Validity of program identifiers in only the declaring scope
+
+== Illustration ==
+
+Local scope exists in many forms for most programming languages.
+
+Consider the following implementation of the factorial function in [[Language:Java]]:
+
+<fragment url="Program.java/class/Program/method/factorial"/>
+
+Several kinds of local scope are present. The parameter of the method, ''n'', has local scope with the entire method corresponding to the scope. The local variable ''result'' has that same local scope, but it is declared differently. The index variable ''i'' is declared in the for loop and its scope is indeed limited to the for loop.
+
+Consider the following [[Language:Haskell]] function for splitting a list into two halves (+/-1 in the case of a list of odd length):
+
+<fragment url="Main.hs/function/split"/>
+
+Local scope is present again in several ways. First, the argument ''xs'' of the ''split'' function is locally bound in the given equation; specifically it can be used on the right-hand side of the equation. Further, the ''split'' function carries a "where" block which is used to define a local binding ''len''. Again, ''len'' can only be used within the scope of ''split''. It is also worth noting that ''len'' makes good use of the argument ''xs'' which has been bound by the hosting function equation for ''split''.
+
+The use of local definitions like ''len'' greatly improves clarity of programming. If we were to avoid the local binding, then the ''split'' function would need to duplicate some code as follows:
+
+<fragment url="Main.hs/function/split'"/>
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Scope_(computer_science)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Local_variable]]
+* [[instanceOf::Namespace:Concept]]

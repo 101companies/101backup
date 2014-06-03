@@ -1,0 +1,48 @@
+== Intent ==
+
+[[Web programming]] based on [[Technology:Grails]]
+
+== Motivation ==
+
+== Usage ==
+
+1. Prepare the source project
+
+* In the 101Companies folder rename grails- app, web-app and WEB-INF folders to grailsapp, webapp and WEBINF respectively
+** Inside grailsapp\views\company, grailsapp\views\department and grailsapp\views\employee rename the  form.gsp to form.gsp
+
+2. Executing the Hephaestus
+
+* Inside 101Companies\hephaestus folder, choose the product configuration between some of the existing instance models or create a new xml file following the same pattern of the existing instance models and save
+* Open the project.properties file:
+** Set the path to where this folder is located in your computer in all fields
+** Set the instance-model field to the instance you have chosen
+** Set the target-dir field to the directory where the project will be generated
+* In your command line:
+** Go to hephaestus folder
+** Run VMCODE.exe
+** Type project.properties and hit enter
+** When the program asks to generate the product, type y and hit enter
+** If no warnings appears, the product was generated with success
+
+3. Run the generated product
+
+* In the 101Companies folder rename grailsapp, webapp and WEBINF folders to grails-app, web-app and WEB-INF respectively
+* Inside grailsapp\views\company, grailsapp\views\department and grailsapp\views\employee rename the form.gsp to  form.gsp
+* In your command line:
+** Go to the generated product directory type grails run-app and hit enter
+
+== Metadata ==
+
+* [[uses::Language:Groovy]]
+* [[uses::Language:JavaScript]]
+* [[uses::Technology:Grails]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Authentication]]
+* [[implements::Feature:Logging]]
+* [[developedBy::Contributor:Paola Accioly]]
+* [[developedBy::Contributor:Rodrigo Andrade]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+The Resource [[file]]s of an Android application
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Android]]
+* [[identifies::http://developer.android.com/guide/topics/resources/available-resources.html]]
+* [[linksTo::http://developer.android.com/guide/topics/resources/providing-resources.html]]
+* [[linksTo::http://developer.android.com/guide/topics/resources/accessing-resources.html]]
+* [[instanceOf::Namespace:Concept]]

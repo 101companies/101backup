@@ -1,0 +1,30 @@
+== Headline ==
+
+Implementation in [[Language:Perl]] using [[Technology:Moose]] as its object system and [[Technology:Dancer]] as its framework for [[Feature:Web_UI]].
+
+== Characteristics ==
+
+[[Technology:Dancer]] is a lightweight web application framework inspired by [[Language:Ruby]]'s [[Technology:Sinatra]], just like [[Language:Python]]'s [[Technology:Flask]] or [[Language:Java]]'s [[Technology:Spark]].
+
+== Metadata ==
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:Carsten Hartenfels]]
+* [[uses::Language:Perl]]
+* [[uses::Language:HTML]]
+* [[uses::Technology:Moose]]
+* [[uses::Technology:Dancer]]
+* [[uses::Technology:TemplateToolkit]]
+* [[uses::Technology:TestMore]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Median]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Serialization]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Web_UI]]
+* [[implements::Feature:Hierarchical_Company]]
+

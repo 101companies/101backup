@@ -1,0 +1,39 @@
+== Headline ==
+
+Lecture "Higher-order functions in Haskell" as part of [[Course:Lambdas in Koblenz]]
+
+== Summary ==
+
+[[Higher-order function]]s are functions that take functions as arguments or return functions as results. Much of the expressiveness and convenience of [[functional programming]] is a consequence of the status of functions to be first-class citizens. In this lecture, we focus on higher-order functions for [[list processing]], e.g., the [[map function]]. We also look at important related concepts such as [[partial application]] of functions or [[anonymous function]]s.
+
+== Concepts ==
+
+* [[Polymorphism]]
+* [[Parametric polymorphism]]
+* [[Partial application]]
+* [[Higher-order function]]
+* [[Currying]]
+* [[Uncurrying]]
+* [[Map function]]
+* [[Fold function]]
+* [[Filter function]]
+* [[Zip function]]
+* [[List comprehension]]
+* [[Anonymous function]]
+* [[Lambda abstraction]]
+
+== Languages ==
+
+* [[Language:Haskell]]
+
+== Contributions ==
+
+* [[Contribution:haskellEngineer|haskellEngineer]]: No higher-order functions
+* [[Contribution:haskellList|haskellList]]: Leverage [[map function|map]] and [[sum function|sum]]
+* [[Contribution:haskellLambda|haskellLambda]]: Leverage [[anonymous function]]s
+* [[Contribution:haskellProfessional|haskellProfessional]]: Richer demonstration
+
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

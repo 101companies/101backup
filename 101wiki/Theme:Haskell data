@@ -1,0 +1,23 @@
+== Headline == 
+
+A theme of [[Language:Haskell]]-based contributions varying data representation
+== Description ==
+
+Different feature models and design choices are exercised for the [[Language:Haskell]]-based data model of companies. Thereby, Haskell's data modeling expressiveness and common styles are explored. Here is summary of included contributions and reasons for inclusion:
+
+* [[Contribution:haskellStarter|haskellStarter]]: A data model with only type synonyms
+* [[Contribution:haskellData|haskellData]]: A data model with algebraic data types
+* [[Contribution:haskellRecord|haskellRecord]]: A data model with record types
+* [[Contribution:haskellComposition|haskellComposition]]: A data model with [[data composition|composition]]
+* [[Contribution:haskellVariation|haskellVariation]]: A data model with [[data variation|variation]]
+* [[Contribution:haskellTermRep|haskellTermRep]]: A universal term representation
+
+Any mentioning of "trivial data model" implies [[Feature:Flat company]] as opposed to [[Feature:Hierarchical_company]]. The remaining contributions involve data models that deal with [[Feature:Hierarchical_company]]. It should be noted that the contributions may serve additional purposes other than just illustrating data modeling options.
+== Relationships ==
+
+There are further themes with Haskell-based contributions:
+* [[Theme:Haskell introduction]]: basics of Haskell.
+* [[Theme:Haskell potpourri]]: more advanced and diverse coverage of the Haskell ecosystem.
+* [[Theme:Haskell genericity]]: different styles of generic functional programming in Haskell.
+== Metadata ==
+* [[instanceOf::Namespace:Theme]]

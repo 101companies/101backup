@@ -1,0 +1,53 @@
+== Intent ==
+
+demonstrate Kiama
+
+== Motivation ==
+
+Kiama provides several advanced programming concepts:
+context-sensitive attribute equations, circular attribute equations,
+rewrite rules and higher-order rewriting strategies.  The present
+implementation puts to work some of them for the benefit of a
+declarative and concise implementation of the 101companies system.
+
+== Usage ==
+
+Use the simple-build-tool to build: sbt script for Unix and MacOSX and
+sbt.bat script for Windows.
+
+(One time only) Download Scala compiler and needed libraries:
+
+<pre>
+$ ./sbt update
+</pre>
+
+This downloads and installs the relevant jars in your project, so you
+need to be on the net for it to work. 
+
+The remaining steps can be performed without a net connection.
+
+To compile the project (if necessary) and run the main program:
+
+<pre>
+$ ./sbt run
+399747.0
+199873.5
+3
+</pre>
+
+To run the tests with logging:
+
+<pre>
+$ ./sbt info test
+</pre>
+
+== Metadata ==
+* [[uses::Language:Scala]]
+* [[uses::Technology:Kiama]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Ranking]]
+* [[developedBy::Contributor:Tony Sloane]]
+* [[instanceOf::Namespace:Contribution]]

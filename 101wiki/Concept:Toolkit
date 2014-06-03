@@ -1,0 +1,15 @@
+== Headline ==
+
+A collection of libraries, tools, plugins, or other reuseware
+
+== Details == 
+
+On the one hand, there is no widely accepted definition of the term "toolkit". In fact, the term toolkit is also used in the sense of a GUI toolkit, where it refers to a set of widgets (e.g., OO classes) to implement GUIs.
+On the other hand, there does not seem to be any established term that captures the above-mentioned intent. 
+Hence, the term "toolkit" is pragmatically claimed by this ontology.
+
+
+
+== Metadata ==
+* [[instanceOf::Development technology]]
+* [[instanceOf::Namespace:Concept]]

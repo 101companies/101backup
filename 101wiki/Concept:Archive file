@@ -1,0 +1,9 @@
+== Headline ==
+
+A file that archives several files
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Archive_file]]
+* [[linksTo::http://en.wikipedia.org/wiki/Archive]]
+* [[instanceOf::Namespace:Concept]]

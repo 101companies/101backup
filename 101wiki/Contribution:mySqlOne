@@ -1,0 +1,44 @@
+== Headline ==
+
+[[Language:SQL|SQL]]-based implementation tailored to [[Technology:MySQL|MySQL]]
+== Motivation ==
+
+A [[relational schema]] provides the [[data model]] of the [[@system]]. Some [[functional requirement]]s of the system are modeled as [[Language:SQL|SQL]] statements.
+== Relationships ==
+
+* See [[Contribution:mySqlMany]] for a slightly more complicated variation which supports many companies instead of a single company.
+* Various contributions (see the backlinks) use the present contribution (or its variant [[Contribution:mySqlMany]]) for their database components.
+== Usage ==
+
+All steps are supported by SQL scripts. Different database setups are conceivable. In the following, we assume a local database MySQL database server based on [[Technology:XAMPP|XAMPP]]. Different means of executing [[Language:SQL|SQL]] statements are conceivable. In the following, we assume the use of the [[Technology:MySQL Workbench|MySQL Workbench]].
+
+The following steps were tested with XAMPP 1.7.3 and MySQL Workbench 5.2.33 on Mac OSX 10.6.
+* Download and install XAMPP and MySQL Workbench. 
+* Open the "XAMPP Control Panel" and start "Apache" and "Mysql".
+** Thereby, a local MySQL Server is now running:
+*** Server Host : "localhost"
+*** Port : 3306
+*** Username : "root"
+*** Password : "" (no password)
+* Connect to the database in MySQL Workbench.
+* Create schema "test".
+* Select schema "test" and make it the default.
+* Create tables (run SQL script Company.sql).
+* Populate tables (run SQL script sampleCompany.sql).
+* Total all salaries (run SQL script Total.sql).
+* Cut all salaries (run SQL script Cut.sql).
+* Total all salaries, again (run SQL script Total.sql).
+== Metadata ==
+
+* [[uses::Language:SQL]]
+* [[uses::Technology:MySQL]]
+* [[uses::Technology:XAMPP]]
+* [[uses::Technology:MySQL Workbench]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Singleton]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:NoSQL]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

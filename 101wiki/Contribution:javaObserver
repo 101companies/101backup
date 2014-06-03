@@ -1,0 +1,59 @@
+== Headline ==
+
+Implement [[Feature:Logging|logging]] my means of the [[Observer pattern|observer pattern]] in [[Language:Java]]
+
+== Characteristics ==
+
+The present  implementation can be viewed as a variation on [[Contribution:javaInheritance]]. 
+The [[Observer pattern|observer pattern]] is applied to implement the logging of salary cutting.
+
+== Illustration ==
+
+The data model is implemented with [[class inheritance]]. For example Departments:
+
+<fragment url="src/main/java/org/softlang/company/model/Department.java/class/Department"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are implemented as in [[Contribution:javaInheritance]]:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total"/>
+
+In addition the Employee class extends the "Observerable" class, implements methods for adding and notifying observers,  
+and notifies them when salaries are cut:
+
+<fragment url="src/main/java/org/softlang/company/model/Employee.java/class/Employee"/>
+
+The actual [[Feature:Logging]] happens in the "EmployeeObserver": 
+
+<fragment url="src/main/java/org/softlang/company/EmployeeObserver.java/class/EmployeeObserver"/>
+
+The "update" method is called one anyone notifies the observer, leading to a logging of the new salary.
+
+== Relationships ==
+
+
+For basic OO with inheritance see [[Contribution:javaInheritance]].
+
+== Architecture ==
+
+The contribution follows a standardized structure:
+* src/main/java contains the following packages:
+** org.softlang.company.model for implementations of [[Feature:Company]].
+** org.softlang.company holds the observer which implements [[Feature:Logging]].
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Logging]]
+* [[uses::Language:Java]]
+
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]
+

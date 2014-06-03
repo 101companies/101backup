@@ -1,0 +1,37 @@
+== Headline ==
+
+A [[Technology:LogicBlox]]-based implementation that makes use of a project file
+
+== Motivation ==
+
+This implementation revises [[Contribution:basicLb]] to use compilation. To this end, a project file is used to collect all compilable blocks. The actual [[Language:DatalogLB]] files are retained, as is. That is, no extra module declarations are added to the files. (Using this approach, active blocks can be compiled, whereas inactive blocks are execcuted with bloxbath with the help of .lb files.) See [[Contribution:modularLb]] for a fully modularized implementation which also uses "lb" instead "bloxbatch".
+
+== Architecture ==
+
+The implementation consists of these files:
+* ''schema.logic'': the schema for companies
+* ''instance.logic'': the Acme company (and another company for testing)
+* ''instance.lb'': a bloxbatch script to process ''instance.logic''.
+* ''total.logic'': the query for totaling salaries
+* ''total.lb'': a bloxbatch script to process ''total.logic''.
+* ''cut.logic'': the delta for cutting salaries
+* ''Makefile'': script for running the implementation
+* ''baseline'': baseline for regression testing
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+* [[instanceOf::Theme:Datalog basics]]
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Thiago Tonelli Bartolomei]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

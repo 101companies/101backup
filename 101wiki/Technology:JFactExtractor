@@ -1,0 +1,71 @@
+== Headline ==
+
+A [[fact extractor]] for Java
+
+== Description ==
+
+JFactExtractor is a [[@technology]]; it is a Java-specific [[fact extractor]]. JFactExtractor extracts facts from Java source code, as it is useful, specifically, for the operation of the [[101companies:Explorer]]. At this point, facts of interest are concerned with imports and names of declarations. JFactExtractor is a simple command line tool that is applied to two arguments: a source file and a target file for storing the extracted facts in JSON.
+
+Fact extraction will be explained by means of an example: the module for serialization as part of the [[Contribution:jaxbComposition]]; see [https://github.com/101companies/101repo/blob/master/contributions/jaxbComposition/org/softlang/qualities/Serialization.java] for the source code.
+
+<syntaxhighlight lang="javascript">
+{
+  "comment" : "",
+  "package" : "org.softlang.qualities",
+  "imports" : [ 
+    "org.softlang.model",
+    "java.io",
+    "javax.xml.bind",
+    "javax.xml.stream"
+  ],
+  "declarations" : [
+    {
+      "class" : "Serialization",
+      "methods" : [
+        "initializeJaxbContext",
+        "serializeCompany",
+        "deserializeCompany"
+      ],
+      "attributes": [
+      ] 
+    }
+  ]
+}
+</syntaxhighlight>
+
+The "comment" key is bound to the heading comment of the file, if any. The idea is here that code generators often leave some signature in that heading comment and hence the comment could be efficiently checked for the signature if needed, e.g., in the context of [[Language:101meta]] rules that determine files that are the output of certain technologies.
+
+The "package" key is bound to the package of the file. The idea is here that packages of source files should be known so that imports can be subdivided into source and non-source imports. Source imports basically relate to the architecture of a contribution whereas non-source imports relate to the reuse within a contribution. The [[101companies:Explorer]] uses this distinction in handling packages.
+
+The "imports" key is bound to a list of packages used in imports of the file. Arguably, the precise list of imports may also be useful, but this is currently not needed and served. The idea is that non-source imports should be resolved in terms of links of package names to technologies (such as APIs). The [[101companies:Explorer]] provides such links.
+
+The "declarations" key is bound to a list of declarations of the file. In the case of Java, these are typically classes or interfaces. The values for these entries further break down into entries for methods declared. The idea is that such information can be conveniently used for fragment-scope tagging with features, terms, phrases, and concepts in the sense of [[Language:101meta]]. That is, the [[101companies:Explorer]] may use such information to guide interactive tagging.
+
+The "attributes" key is bound to a list of annotations of the file. The values are a set of used Annotations without their qualifiers. In the case of [https://github.com/101companies/101repo/blob/master/contributions/jaxbComposition/org/softlang/model/Employee.java], the attributes would look like
+
+<syntaxhighlight lang="javascript">
+{
+ ...
+      "attributes": [
+        "XmlType",
+        "XmlAccessorType",
+        "XmlElement"
+      ] 
+ ...
+}
+</syntaxhighlight>
+
+== Contributors ==
+
+* {{101contributor|Martin Leinberger|developer}}
+* {{101contributor|Ralf Lämmel|author}}
+* {{101contributor|Jean-Marie Favre|influencer}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Fact extractor]]
+* [[instanceOf::@technology]]
+* [[linksTo::https://github.com/101companies/101repo/tree/master/technologies/JFactExtractor]]
+* [[instanceOf::Namespace:Technology]]

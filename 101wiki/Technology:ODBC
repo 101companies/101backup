@@ -1,0 +1,8 @@
+== Headline ==
+
+A standard [[API]] for accessing database management systems
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://en.wikipedia.org/wiki/ODBC]]
+* [[instanceOf::Namespace:Technology]]

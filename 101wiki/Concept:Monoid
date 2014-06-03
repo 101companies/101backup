@@ -1,0 +1,42 @@
+== Headline ==
+
+A type with an associative operation and a neutral element
+== Illustration ==
+
+The notion of monoid is precisely defined in group theory, but we focus here on its illustration in a programming setting. Specifically, in functional programming, a monoid is essentially a type with an associative operation and a neutral element. For instance, lists form a monoid with the empty list as neutral element and list append as the associative operation. Monoids are useful, for example, in aggregating results. 
+
+In [[Language:Haskell]], monoids are modeled through the [[type class]] ''Monoid'' with first two members needed for a minimal complete definition:
+
+<syntaxhighlight lang="haskell">
+-- The type class Monoid
+class Monoid a
+  where
+    mempty :: a -- neutral element
+    mappend :: a -> a -> a -- associative operation
+    mconcat :: [a] -> a -- fold
+    mconcat = foldr mappend mempty
+</syntaxhighlight>
+
+Algebraically, the following properties are required for any monoid (given in Haskell notation):
+
+<syntaxhighlight lang="haskell">
+mempty `mappend` x = x -- left unit
+x `mappend` mempty = x -- right unit
+x `mappend` (y `mappend` z) = (x `mappend` y) `mappend` z -- associativity
+</syntaxhighlight>
+
+See the following monoids for continued illustration:
+
+* [[List monoid]]
+* [[Sum monoid]]
+* [[Product monoid]]
+== Metadata ==
+
+* [[instanceOf::Type class]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Vocabulary:Mathematics]]
+* [[identifies::http://en.wikipedia.org/wiki/Monoid]]
+* [[identifies::http://mathworld.wolfram.com/Monoid.html]]
+* [[linksTo::http://en.wikibooks.org/wiki/Haskell/Monoids]]
+* [[linksTo::http://www.haskell.org/ghc/docs/latest/html/libraries/base/Data-Monoid.html]]
+* [[instanceOf::Namespace:Concept]]

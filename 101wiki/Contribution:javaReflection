@@ -1,0 +1,16 @@
+== Headline == 
+
+Data processing in [[Language:Java]] with [[Technology:java.lang.reflect]]
+== Characteristics ==
+
+[[Language:Java]]'s [[reflection]] is put to work to walk object graphs in a generic manner so that queries and transformations can be expressed very concisely. The sub-objects in an object graph are made available through a reusable [[iterator]]. Simple queries and transformations (such as [[Feature:Total]] and [[Feature:Cut]]) can be simply implemented by accessing the list of subobjects. The resulting code is thus rather concise, when compared to a conservative implementation, e.g., in [[Contribution:javaComposition]] (and many others). The particular approach implies the use of type casts and thus is limited in terms of static type checking.
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[uses::Technology:java.lang.reflect]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+
+* [[developedBy::Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

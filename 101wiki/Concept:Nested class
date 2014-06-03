@@ -1,0 +1,11 @@
+== Headline ==
+
+A [[OO class]] declared within the body of another [[OO class]]
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Inner_class]]
+* [[linksTo::http://docs.oracle.com/javase/tutorial/java/javaOO/nested.html]]
+* [[relatesTo::Anonymous class]]
+* [[relatesTo::Closure]]
+* [[instanceOf::Namespace:Concept]]

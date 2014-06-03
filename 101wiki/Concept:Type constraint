@@ -1,0 +1,25 @@
+== Headline ==
+
+A means of constraining a [[Polymorphism|polymorphic type]]
+
+== Illustration ==
+
+Suppose you want to count the elements in an array that are ''greater'' than a given element. This sort of function (or method) would need to be parametric in the element type of the array and that type would also need to be constrained to admit comparison. For instance, in [[Language:Java]], the [[type signature]] for a suitable method is of the following form:
+
+<syntaxhighlight lang="java">
+public static <T extends Comparable<T>> int countGreaterThan(T[] anArray, T elem)
+</syntaxhighlight>
+
+In [[Language:Haskell]], the [[type signature]] looks as follows:
+
+<syntaxhighlight lang="haskell">
+countGreaterThan :: Ord t => [t] -> t -> Ordering
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming language]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/d5x73970.aspx]]
+* [[linksTo::http://en.wikipedia.org/wiki/Generic_programming]]
+* [[linksTo::http://docs.oracle.com/javase/tutorial/java/generics/bounded.html]]
+* [[instanceOf::Namespace:Concept]]

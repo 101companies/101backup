@@ -1,0 +1,19 @@
+== Headline ==
+
+A system of intercommunicating components based on software
+
+== Illustration ==
+
+The [[@project]] is obviously concerned with one particular system: the [[@system]] which is actually an imaginary software system that is built time and again in different ways by the various contributions of the project. The [[@system]] it is a [[human resource management system]]. Thus, it deals, for example, with payroll-related management aspects in a company.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Software_system, 14 April 2013)
+
+A software system is a system of intercommunicating components based on software forming part of a computer system (a combination of hardware and software). It "consists of a number of separate programs, configuration files, which are used to set up these programs, system documentation, which describes the structure of the system, and user documentation, which explains how to use the system".
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Software_system]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

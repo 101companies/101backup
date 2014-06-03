@@ -1,0 +1,17 @@
+== Headline ==
+
+A markup language for documents on the Web
+
+== Description ==
+
+XHTML is a derivative or dialect of [[Language:HTML]].
+
+It is more strictly XML-based.
+
+== Metadata ==
+
+* [[linksTo::http://www.w3.org/MarkUp]] 
+* [[instanceOf:Markup language]]
+* [[instanceOf:Domain-specific language]]
+* [[instanceOf:XML language]]
+* [[instanceOf::Namespace:Language]]

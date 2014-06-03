@@ -1,0 +1,100 @@
+== Headline ==
+
+[[Web programming]] in [[Language:CSharp|C#]] with [[Technology:Silverlight]]
+
+== Motivation ==
+
+The implementation illustrates the development of a [[Client|client]]-side [[user interface]] accessible via [[Web browser|web browser]]. We used [[Technology:Silverlight]] in combination with the [[Technology:Navigation framework]] [http://msdn.microsoft.com/en-us/library/cc838245(v=vs.95).aspx#application navigation] to create an [[MVC]] based implementation. The [[Web application|web application]] is tied to a [[Web service|web service]], which is implemented in [[Contribution:wcf]]. An advantage of Silverlight is the out-of-the-box back button support.
+
+== Illustration ==
+
+There have to be proxy DTOs enabling the [[Client|client]] to receive the serialized data from the [[Web service|web service]]. These proxies are generated from a [[Language:WSDL]] file. The namespace for the generated classes is 
+<syntaxhighlight lang="csharp" enclose="none">silverlight.CompanyServiceReference</syntaxhighlight>. These proxies are [[Language:CSharp]] classes located in [this!silverlight/Service References/CompanyServiceReference/Reference.cs]:
+
+<syntaxhighlight lang="csharp" source="silverlight/silverlight/Service References/CompanyServiceReference/Reference.cs">
+namespace silverlight.CompanyServiceReference {
+	using System.Runtime.Serialization;    
+
+	// The class "CompanyDto" is the proxy DTO for serialized company data.
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+	[System.Runtime.Serialization.DataContractAttribute(Name="CompanyDto", Namespace="http://schemas.datacontract.org/2004/07/wcf.Dto")]
+	public partial class CompanyDto : object, System.ComponentModel.INotifyPropertyChanged {
+
+		...
+
+	}
+
+	...
+
+	// The connection point to the company service provided by the wcf implementation.
+	[System.Diagnostics.DebuggerStepThroughAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+	public partial class CompanyServiceClient : System.ServiceModel.ClientBase<silverlight.CompanyServiceReference.ICompanyService>, silverlight.CompanyServiceReference.ICompanyService {
+
+		...
+
+	}
+
+	...
+
+}
+</syntaxhighlight>
+
+=== GUI ===
+
+The proxy in combination with the <syntaxhighlight lang="csharp" enclose="none">CompanyServiceClient</syntaxhighlight> allows us to create an [[asynchronous communication]] asynchronous request.
+
+<syntaxhighlight lang="csharp" source="silverlight/silverlight/Home.xaml.cs">
+// Create a service client for companies and ... 
+var client = new CompanyServiceClient();
+client.GetCompanyCompleted += client GetCompanyCompleted;
+// ... wait for the requested company.
+client.GetCompanyAsync();
+</syntaxhighlight>
+
+The illustrated code creates a service client and waits, until the company data are completely delivered to the client. The result is a DTO, which is stored in the <syntaxhighlight lang="csharp" enclose="none">DataContext</syntaxhighlight>:
+
+<syntaxhighlight lang="csharp" source="silverlight/silverlight/Home.xaml.cs">
+ void client GetCompanyCompleted(object sender, GetCompanyCompletedEventArgs e)
+{
+	DataContext = e.Result;
+}
+</syntaxhighlight>
+
+We are now able to fill the [[GUI]] with the help of the <syntaxhighlight lang="csharp" enclose="none">DataContext</syntaxhighlight>. Each field of the DTO is automatically binded to the GUI defined by the [[Language:XAML]] files by using binding properties. For example, the [this!!silverlight/Home.xaml] contains a field <syntaxhighlight lang="xml" enclose="none">txtCompanyName</syntaxhighlight> binded to the field ''Name'' of the DTO.
+
+<syntaxhighlight lang="xml" source="silverlight/silverlight/Home.xaml">
+<TextBlock Height="23" HorizontalAlignment="Left" Margin="59,46,0,0" Name="txtCompanyName" Text="{Binding Name}"
+</syntaxhighlight>
+
+== Architecture ==
+
+The project is represented as two Visual Studio projects:
+
+* ''silverlight.Web'' contains the generated bootstrap code for launching the silverlight application.
+* ''silverlight''  contains the actual implementation. The [[Language:WSDL]] file and the generated DTO proxies are located in the folder ''silverlight/ServiceReferences/CompanyServiceReference''. The [[GUI]] is provided by [[Language:XAML]] files located in the base folder of the project.
+
+== Usage ==
+
+* Follow the Usage section for the [[Contribution:wcf]] to create a WCF service.
+* Build the project using Visual Studio.
+* Open the [this!!silverlight.Web/silverlightTestPage.html silverlightTestPage.html] from ''silverlight.Web'' folder.
+
+This contribution has been tested under C# and .NET Version 4.0.
+
+== Metadata ==
+* [[instanceOf::Theme:Web programming]]
+* [[uses::Language:CSharp]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:Silverlight]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[reviewedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

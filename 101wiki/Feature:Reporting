@@ -1,0 +1,24 @@
+== Headline ==
+
+Numbers and views on company data for reporting
+== Description ==
+
+Reporting must compute certain numbers or views (charts) on company data to help management, e.g., for the purpose of business analytics.
+== Motivation ==
+
+Reporting relies on basic statistical notions and techniques, e.g., medians and charts for distribution, but also visualization techniques, such as scaling for salary distribution. Further, by considering grouping of employees (when the relevant reporting feature [[Feature:Grouping]] is chosen), query languages are also challenged some more than with the basic features such as [[Feature:Total]].
+== Illustration ==
+
+See the concrete reporting features for illustrations.
+== Relationships ==
+
+See [[Feature:Median]], [[Feature:Charting]], [[Feature:Grouping]] for concrete reporting features.
+== Guidelines ==
+
+This is an abstract (an OR) feature, which should not be chosen as such, but instead [[Feature:Median]], [[Feature:Charting]], [[Feature:Grouping]], or any combination thereof is to be selected.
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Business_reporting]]
+* [[isA::Functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

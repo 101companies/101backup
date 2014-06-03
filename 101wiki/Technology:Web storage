@@ -1,0 +1,19 @@
+== Intent ==
+
+A [[Language:JavaScript]] [[API]] for [[Client|client]] side data storage in the [[Language:HTML5]] ecosystem
+
+== Discussion ==
+
+There are four major differences in behaviour between [[cookie]]s and Web storage <cite>W3C2012WS, MSDN2012WS</cite>, which are shown within this implementation: 
+
+* the Web storage offers a largely enhanced amount of data (up to 5MB-10MB for web storage, 4KB for cookies),
+* there is no need to use special parameters within the pages' URL to refer to a cookie with the required data,
+* the [[Client|client]] does not need to transmit data to the [[Server|server]] with every request,
+* and the data within Web storage never expires, if there is no explicit command to do so.
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://en.wikipedia.org/wiki/Web_storage]]
+* [[linksTo::http://www.w3.org/TR/webstorage/]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/cc197062%28VS.85%29.aspx]]
+* [[instanceOf::Namespace:Technology]]

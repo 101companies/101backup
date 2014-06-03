@@ -1,0 +1,55 @@
+== Headline ==
+
+The product 1 * ... * ''n'' for a given natural number ''n''
+
+== Illustration ==
+
+We face an [[algorithmic problem]] because the factorial can be computed by a (simple) algorithm. Assume that ''n'' is a natural number. Then, the following steps compute the factorial of ''n'':
+
+* Initialize a variable ''r'' with 1.
+* Repeat the following step until ''n'' equals ''0'':
+** Assign ''n''*''r'' to ''r''. 
+** Decrement ''n''.
+* Return ''r''.
+
+Here is also an implementation in [[Language:Java]]:
+
+<syntaxhighlight lang="java">
+  // An imperative definition of the factorial function
+  public static int factorial(int n) {
+    int result = 1;
+    for (int i=n; i>1; i--) 
+      result = result * i;
+    return result;
+  }
+</syntaxhighlight>
+
+Here is also an implementation in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- A recursive definition of the factorial function
+factorial n =
+  if n==0
+    then 1
+    else n * factorial (n-1)
+</syntaxhighlight>
+
+See also the following collection of implementations:
+
+http://www.willamette.edu/~fruehr/haskell/evolution.html
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Factorial, 21 April 2013)
+
+In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
+
+5! = 5 * 4 * 3 * 2 * 1 = 120
+
+The value of 0! is 1, according to the convention for an empty product.
+
+== Metadata ==
+
+* [[instanceOf::Algorithmic problem]]
+* [[identifies::http://en.wikipedia.org/wiki/Factorial]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[standard]] for website generation on a [[web server]]
+
+== Details ==
+
+CGI stands for Common Gateway Interface.
+
+== Metadata ==
+* [[instanceOf::Standard]]
+* [[identifies::http://en.wikipedia.org/wiki/Common_Gateway_Interface]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+a programming idiom for transforming [[monad]]s
+
+== Metadata ==
+
+* [[instanceOf::Programming idiom]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://www.haskell.org/haskellwiki/Monad_Transformers_Explained]]
+* [[instanceOf::Namespace:Concept]]

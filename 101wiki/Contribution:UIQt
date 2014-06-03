@@ -1,0 +1,77 @@
+== Headline ==
+
+A GUI contribution by means of [[Technology::Qt]].
+
+Source code for this contribution you can find [https://github.com/https://github.com/brezvan/101Qt here].
+
+== Motivation ==
+Specifically, the GUI provides the following features: 
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+*[[implements::Feature:Editing]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Hierarchical]]
+* [[implements::Feature:Restructing]]
+
+== Architecture ==
+The implementation uses  the common MV architecture used in [[Technology::Qt]].
+The main window contains the view for the company, departments and employees. For presenting the company hierarchy an object of the QtreeView provided by [[Technology::Qt]] is used.
+Three dialogs will appear when the associated slot is triggered enabling further user interaction. The signal and slot concept is mainly used for communicating between objects and loose coupling.
+The model(Treemodel) is derived from QAbstractItemModel and modifies it with some additional functions. It communicates with TreeItems by means of indexes.
+
+== Illustration ==
+Nodes of the tree could be objects of Company,Department or Employee. QVariant is a union for common data types. Here we have added the mentions types to the QVarinat:
+
+<syntaxhighlight lang="java">
+class Company:public QObject
+{
+    Q_OBJECT
+...
+};
+Q_DECLARE_METATYPE(Company*);
+</syntaxhighlight>
+
+Here is a slot for the signal clicked defined. the clicked signal is defined in the QAbstractButton class and is ready to be used. In the next step we connect the defined slot to the signal.
+<syntaxhighlight lang="java">
+private slots:
+    void on_okButton_clicked();
+</syntaxhighlight>
+
+
+<syntaxhighlight lang="java">
+    connect(ui->okButton, SIGNAL(clicked()), this, SLOT(on_okButton_clicked()));
+</syntaxhighlight>
+
+As soon as the object which sends the signal changes its state, the object which is interested in this change will receive the signal. The sender would not know if the signal is delivered to the receiver.
+
+The metaobject compiler runs over the code and produces the following such that signals and slots can be used:
+
+<syntaxhighlight lang="java">
+static const char qt_meta_stringdata_newDepartmentdialog[] = {
+    "newDepartmentdialog\0\0on_okButton_clicked()\0"
+    "on_cancelButton_clicked()\0"
+};
+
+void newDepartmentdialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        newDepartmentdialog *_t = static_cast<newDepartmentdialog *>(_o);
+        switch (_id) {
+        case 0: _t->on_okButton_clicked(); break;
+        case 1: _t->on_cancelButton_clicked(); break;
+        default: ;
+        }
+    }
+</syntaxhighlight>
+    
+== Usage ==
+for compiling you have to run qmake and then make. Everything will be ready for running.
+== Metadata ==
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:baharak ]]
+<!-- Next link is generated automatically-->
+* [[uses::Language:CPlusPlus]]
+

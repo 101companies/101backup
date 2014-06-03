@@ -1,0 +1,8 @@
+== Intent ==
+
+an Erlang build tool that makes it easy to compile and test Erlang applications, port drivers and releases
+
+== Metadata ==
+* [[identifies::https://bitbucket.org/basho/rebar/wiki/Home]]
+* [[linksTo::https://github.com/basho/rebar]]
+* [[instanceOf::Namespace:Technology]]

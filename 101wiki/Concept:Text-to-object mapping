@@ -1,0 +1,13 @@
+== Intent ==
+
+the [[capability]] of mapping [[grammarware]] to [[objectware]]
+
+== Description ==
+
+Text-to-object mapping entails conversion of text-based (or otherwise grammar-ruled) structure to object-based structure. The assumption is here that a grammar and an object model are involved here which are meant to correspond to each other in some manner made explicit by the mapping.
+
+
+
+== Metadata ==
+* [[instanceOf::Mapping]]
+* [[instanceOf::Namespace:Concept]]

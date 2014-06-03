@@ -1,0 +1,13 @@
+== Headline ==
+
+Reliability of the system services
+
+== Description ==
+
+This is a loosely defined [[101execution|execution quality]] of the system to be reliable or fault-tolerant in some way. For instance, suppose that [[Feature:Distribution]] is used for system architecture, then we could require that the system should function even if a server component is terminated such that the server component is automatically restarted.
+
+== Metadata ==
+* [[instanceOf::101execution]]
+* [[identifies::http://en.wikipedia.org/wiki/Reliability_(engineering)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Fault-tolerant_system]]
+* [[instanceOf::Namespace:Feature]]

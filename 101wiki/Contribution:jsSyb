@@ -1,0 +1,57 @@
+== Headline ==
+
+[[Generic programming]] in [[Language:Javascript]] with [[SYB]]
+
+==Motivation==
+
+This implementation shows [[generic programming]] in [[Language:Javascript]] using [[SYB]] style. The data model relies on (recursive) [[data composition]] alone. Generic Programming simplifies the traversal over nested data. Functions for total and cut are implemented as generic functions, they contain type specific cases for employees  to extract salaries. This library is a port of [[SYB]], in JS this implementation's mapping functions are easily possible due to the simple object structure in Javascript.
+
+== Illustration ==
+
+<syntaxhighlight lang="javascript" source="101companies.js">
+function cutOne(e) {
+    if(e.salary != null) {
+        return {
+            salary: e.salary/2,
+            name: e.name
+        };
+    }
+    else {
+        throw new Error("fail");
+    }
+}
+ 
+cut = everywhere(mkT(cutOne))
+cut company = cut(company);
+console.log(cut company)
+
+</syntaxhighlight>
+
+This implementation of total takes the salary of every employee and folds them by adding.
+
+== Relationships ==
+
+* See [[Contribution:haskellSyb]] for the haskell version
+* See [[Contribution:pythonSyb]] for the python version
+* See [[Contribution:coffeeSyb]] for the coffee script version
+
+== Usage ==
+
+Use node.js to run the example, you can embedd it to an html file too.
+
+<pre>
+$ node syb.js
+12345
+6172.5
+</pre>
+
+== Metadata ==
+
+* [[uses::Language:Javascript]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Mentoring]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Theme:Scrap your boilerplate]]
+* [[instanceOf::Namespace:Contribution]]

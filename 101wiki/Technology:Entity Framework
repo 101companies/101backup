@@ -1,0 +1,23 @@
+== Intent ==
+
+an [[Object-Relational mapping]] technology for the [[Technology:.NET]] Framework.
+
+== Description ==
+
+Entity Framework is consiedered to be a toolkit in our ontology as soon as [[framework]] has different properties. Even that an official name of the technology contains a "framework" part.
+
+== Spaces ==
+
+* [[Objectware]]
+* [[Relationalware]]
+* [[Auxiliary XMLware]]
+
+== Metadata ==
+* [[instanceOf::Mapping technology]]
+* [[instanceOf::Toolkit]]
+* [[identifies::http://en.wikipedia.org/wiki/ADO.NET Entity Framework]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/aa697427(VS.80).aspx]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/bb399559.aspx SSDL]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/bb399292.aspx CSDL]] 
+* [[relalinksTotesTo::http://msdn.microsoft.com/en-us/library/bb399202.aspx]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,411 @@
+== Headline ==
+Data Warehouse and reporting implementation for 101companies using [[Language:Python]].
+== Characteristics ==
+A Data Warehouse is a database used for reporting and data analysis. This [[Language:Python]] based contribution implements a so called ETL (Extract, Transform, Load), extracting data from multiple databases using the [[Database schema]] of [[Contribution:mySqlOneReporting]], transforming its data (i.e. converting salaries in different currencies) and loads them into a new Star [[Database schema]], tracking the history and removing unneeded data. Afterwards it generates charts based on the historic data.
+== Illustration ==
+
+The contribution consists of two parts:
+* The ETL
+* The chart generator
+
+=== ETL ===
+==== Extract ====
+The contribution works with one or more source databases using the database schema as described in [[Contribution:mySqlOneReporting]].
+The schema implements the additional dimensions gender, age (yet using day of birth - dob) and job role. 
+
+
+'' ERM of source database schema ''
+
+[[media:https://raw.github.com/ydupont/101repo/master/wiki/feature_dimensionality/img/src_er.png]]
+
+'' NOTE: The enum 'gender' can have the values 'UNDEFINED','FEMALE' and 'MALE' ''
+
+
+In regular intervals the source databases are queried by the ETL. The extracted data will be loaded in source models.
+
+'' Excerpt of etl/models.py ''
+<syntaxhighlight language="python">
+class SourceEmployee(object):
+    """
+    Represents a row data for src_N.employee table:
+    id, name, address, salary, manager, did, jid, gender, dob
+    """
+    def __init__(self, *args):
+        assert len(args) == 9
+        self.id = args[0]
+        self.name = args[1]
+        self.address = args[2]
+        self.salary = args[3]
+        self.manager = args[4]
+        self.did = args[5]
+        self.jid = args[6]
+        self.gender = args[7]
+        self.dob = args[8]
+</syntaxhighlight>
+
+
+==== Transform ====
+Once all data has been extracted and loaded into models the transformation is taking place.
+Transformation is needed to unify different data structures and to implement new attributes based on gathered information.
+In this case salary currencies are being converted and the employees age is being calculated using the date of extraction as a reference point.
+
+'' Excerpt of etl/transform.py ''
+<syntaxhighlight language="python">
+    def employees(self, source_employees, cid):
+        """
+        Transforms source employees objects.
+        """
+        for employee in source_employees:
+            yield TargetEmployee(
+                employee.id, # Reference use only, NOT INSERTED INTO DB
+                employee.gender,
+                employee.did,
+                employee.jid,
+                self.tid,
+                cid,
+                self._apply_exchange_rate(employee.salary),
+                employee.manager,
+                get_age(employee.dob, self.today))
+</syntaxhighlight>
+
+Exemplary the function to calculate the employees age.
+
+'' Excerpt of utils/__init__.py ''
+<syntaxhighlight language="python">
+def get_age(dob, current_date):
+"""
+Returns person's age as of current date given the date of birth.
+"""
+    try:
+        bday = dob.replace(year=current_date.year)
+    except ValueError:
+        # This happens if dob falls on 29th Feb and the current year is
+        # not a leap year.
+        bday = dob.replace(year=current_date.year, day=dob.day - 1)
+    if bday > current_date:
+        age = current_date.year - dob.year - 1
+    else:
+        age = current_date.year - dob.year
+    return age
+</syntaxhighlight>
+
+==== Load ====
+After transformation of the source data it a specific target model will be used.
+
+'' Excerpt of etl/models.py ''
+<syntaxhighlight language="python">
+class TargetEmployee(object):
+    """
+    Represents a row data for tgt_N.fact_employee table:
+    id, gender, did, jid, tid, cid, salary, manager, age
+    """
+    def __init__(self, *args):
+        assert len(args) == 9
+        self.id = args[0]
+        self.gender = args[1]
+        self.did = args[2]
+        self.jid = args[3]
+        self.tid = args[4]
+        self.cid = args[5]
+        self.salary = args[6]
+        self.manager = args[7]
+        self.age = args[8]
+</syntaxhighlight>
+
+And finally saved in a target database using a different data schema (star schema, only partially normalized).
+
+'' ERM of target database schema ''
+
+[[media:https://raw.github.com/ydupont/101repo/master/wiki/feature_dimensionality/img/tgt_er.png]]
+
+'' NOTE: The enum 'interval' can have the values 'DAILY','MONTHLY' and 'YEARLY' ''
+
+=== Chart generation ===
+
+After running the ETL several times there is a sufficient dataset in the target database which references historic states of the source databases. Now the database can be used to create a chart with selected dimensions. The following class generates the needed SQL queries for chart generation based on the choices of the user.
+
+'' Excerpt of chart/query.py ''
+<syntaxhighlight language="python">
+class Query(object):
+    """
+    Performs database queries to fetch all the required lines data in order to
+    generate a chart.
+    """
+    def __init__(self, database, chart):
+        self.database = database
+        self.chart = chart
+
+    def _split_line_range(self, line_range):
+        """
+        Splits a line range into a tuple representing start and end of the
+        range. This is typically used for age range.
+        """
+        line_range = line_range.split("-")
+        if len(line_range) > 1:
+            (start, end) = line_range
+        else:
+            start = line_range[0]
+            end = start
+        return (start, end)
+
+    def _get_tables(self):
+        """
+        Returns a list of tables that forms the FROM clause for a query given
+        the data type.
+        """
+        if self.chart['data_type'] == JOBROLE:
+            return "fact_employee e, dim_time d, dim_jobrole j"
+        return "fact_employee e, dim_time d"
+
+    def _get_time_limit(self):
+        """
+        Returns a time limit string that forms the WHERE clause for a query
+        given the x-axis inputs.
+        """
+        x_unit = self.chart['x']['unit'].upper()  # x-axis for time
+        x_limit = self.chart['x']['limit']  # (start, end) or None
+        time_limit = "e.tid = d.id AND d.time_interval = '{}'".format(x_unit)
+        if x_limit is not None:
+            time_limit += " AND d.date >= '{}' AND d.date <= '{}'".format(
+                x_limit[0], x_limit[1])
+        return time_limit
+
+    def _get_data_limit(self, line_range):
+        """
+        Returns a data limit string that forms the WHERE clause for a query
+        given the data label.
+        """
+        data_limit = ""
+        data_type = self.chart['data_type']
+        if data_type == AGE:
+            (start, end) = self._split_line_range(line_range)
+            data_limit = "e.age >= {} AND e.age <= {}".format(start, end)
+        elif data_type == COMPANY:
+            data_limit = "e.cid = {}".format(int(line_range))
+        elif data_type == GENDER:
+            data_limit = "e.gender = '{}'".format(line_range.upper())
+        elif data_type == JOBROLE:
+            data_limit = "e.jid = j.id AND j.name = '{}'".format(line_range)
+        elif data_type == MANAGER:
+            data_limit = "e.manager = {}".format(int(line_range))
+        return data_limit
+
+    def _get_data_select(self, context):
+        """
+        Returns a select statement that forms a joinable query given the
+        unit for y-axis, i.e. median or total.
+        """
+        query = ""
+        if self.chart['y']['unit'] == MEDIAN:
+            query = (
+                "(SELECT date AS line{idx}_date, "
+                "AVG(salary) AS line{idx}_value "
+                "FROM ( "
+                "SELECT t1.row, t1.salary, t1.date FROM ( "
+                "SELECT IF(@prev != date, @rownum := 1, @rownum := @rownum + 1) AS row, @prev := date AS date, salary "
+                "FROM ( "
+                "SELECT d.date, e.salary "
+                "FROM {tables} "
+                "WHERE {data_limit} AND {time_limit} "
+                "ORDER BY date, salary "
+                ") ordered, (SELECT @rownum := 0, @prev := NULL) reset "
+                ") AS t1 INNER JOIN "
+                "( "
+                "SELECT COUNT(*) AS total_rows, d.date AS date "
+                "FROM {tables} "
+                "WHERE {data_limit} AND {time_limit} "
+                "GROUP BY date "
+                ") AS t2 "
+                "ON t1.date = t2.date "
+                "AND t1.row >= t2.total_rows / 2 AND t1.row <= ((t2.total_rows / 2) + 1) "
+                ") median "
+                "GROUP BY date ORDER BY date) line{idx} ")
+        elif self.chart['y']['unit'] == TOTAL:
+            query = (
+                "(SELECT d.date AS line{idx}_date, "
+                "SUM(e.salary) AS line{idx}_value "
+                "FROM {tables} "
+                "WHERE {data_limit} AND {time_limit} "
+                "GROUP BY date ORDER BY date) line{idx} ")
+        return query.format(idx=context['idx'],
+                            tables=context['tables'],
+                            data_limit=context['data_limit'],
+                            time_limit=context['time_limit'])
+
+    def get_data_rows(self, line_ranges):
+        """
+        Returns data rows for use in rendering the chart given the line ranges.
+        """
+        left_column = "COALESCE("  # Header for first column
+        right_columns = ""  # Headers for subsequent columns
+        joins = " "
+        tables = self._get_tables()
+        time_limit = self._get_time_limit()
+
+        for idx, line_range in enumerate(line_ranges, 1):
+            data_limit = self._get_data_limit(line_range)
+
+            joins += self._get_data_select({
+                'idx': idx,
+                'tables': tables,
+                'data_limit': data_limit,
+                'time_limit': time_limit,
+            })
+
+            if idx > 1:
+                joins += "ON line{}_date = line{}_date ".format(idx - 1, idx)
+            if idx != len(line_ranges):
+                joins += "LEFT JOIN "
+
+            left_column += "line{}_date".format(idx)
+            if idx < len(line_ranges):
+                left_column += ", "
+            else:
+                left_column += ") AS date,"
+
+            right_columns += "line{}_value".format(idx)
+            if idx < len(line_ranges):
+                right_columns += ", "
+
+        query = "SELECT {} {} FROM".format(left_column, right_columns) + joins
+        logging.debug("query={}".format(query))
+
+        try:
+            self.database.cursor.execute(query)
+        except ProgrammingError as err:
+            raise QueryError(err)
+        rows = self.database.cursor.fetchall()
+
+        logging.debug("rows={}".format(rows))
+        return rows
+</syntaxhighlight>
+
+Lastly a chart is being generated using the Google Charts API. 
+
+
+[[media:https://raw.github.com/ydupont/pyDWH/master/doc/sample_chart.png]]
+== Usage ==
+
+=== Requirements === 
+* Python >= 2.7.1
+* MySQL-python (http://sourceforge.net/projects/mysql-python)
+* Jinja2 >= 2.7 (http://jinja.pocoo.org/)
+* MySQL Client >= 5.0
+* MySQL Server >= 5.0
+* Internet access (at least while opening the generated charts)
+
+=== Preparation === 
+<pre>
+mysql> CREATE DATABASE src_1;
+mysql> CREATE DATABASE src_2;
+mysql> CREATE DATABASE tgt;
+</pre>
+NOTE: Grant privileges in case you don´t want to use the root user. 
+You can use "n" source databases.
+
+Load source- and target database schema:
+<pre>
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_1 < sql/schema/src.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_2 < sql/schema/src.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> tgt < sql/schema/tgt.sql
+</pre>
+
+Populate the databases on your own or using the sample data:
+<pre>
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_1 < sql/sample/src_1/src_1_1.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_2 < sql/sample/src_2/src_2_1.sql
+</pre>
+
+=== Execute === 
+
+Please check the configuration file (config.cfg) and adjust it according to your environment. You may add new "source" sections.
+
+In case you want to use the ETL in production mode you will have to install a new cronjob with the following command:
+<pre>
+$ python run_etl.py -c config.cfg
+(please ensure that you are in the proper directory)
+</pre>
+
+In case you want to use the ETL in simulation mode you will have to change the according options in the configuration files and run the ETL as well as the database updates manually. You can do it with the packaged sample SQL files:
+<pre>
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_1 < sql/sample/src_1/src_1_1.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_2 < sql/sample/src_2/src_2_1.sql
+$ python run_etl.py -c config.cfg
+
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_1 < sql/sample/src_1/src_1_2.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_2 < sql/sample/src_2/src_2_2.sql
+$ python run_etl.py -c config.cfg
+
+........................................
+
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_1 < sql/sample/src_1/src_1_10.sql
+$ mysql -u <USERNAME> -p -h <HOSTNAME> src_2 < sql/sample/src_2/src_2_10.sql
+$ python run_etl.py -c config.cfg
+</pre>
+
+Now you can generate a chart. I.e.:
+
+<pre>
+$ python generate_chart.py -x time -X yearly -y salary -Y median -d company -D 1,2
+</pre>
+
+=== Command-Line parameters ===
+<pre>
+$ generate_chart.py --help
+  Usage: generate_chart.py [options]
+  Script to generate chart using data from target database.
+  Examples:
+  generate_chart.py -x time -X yearly -y salary -Y median -d age -D 26-35,36-45
+  generate_chart.py -x time -X 2000,2010 -y salary -Y median -d jobrole -D "Project Manager"
+  See generate_chart.py --help for supported options.
+
+  Options:
+    -h, --help                      show this help message and exit
+    -c CONFIG, --config=CONFIG      Configuration file
+    -v, --verbose                   Show verbose output
+    -x X_AXIS, --x_axis=X_AXIS      Label for x-axis: time
+    -X X_OUTPUT, --x_output=X_OUTPUT    Unit for x-axis. time: daily, month, yearly or range
+                                2000,2003. Range for time is separated by comma to
+                                allow daily range such as -X 2000-01-01,2003-08-20
+    -y Y_AXIS, --y_axis=Y_AXIS              Label for y-axis: salary
+    -Y Y_OUTPUT, --y_output=Y_OUTPUT    Unit for y-axis. salary: median or total
+    -d DATA_TYPE, --data_type=DATA_TYPE Data type for plotted lines: age, company, gender,
+                                jobrole or manager
+    -D DATA_OUTPUT, --data_output=DATA_OUTPUT
+                    Unit for plotted lines. age: comma-separated list of
+                                ages or ranges, company: comma-separated list of IDs,
+                                gender: comma-separated list (male,female, undefined
+                                or empty for all), jobrole: comma-separated list of
+                                job roles, manager: comma-separated list (true,false)
+
+$ run_etl.py --help
+  Usage: run_etl.py [options]
+  Script to perform extract, transform and load flow.
+  Example: run_etl.py --config=config.cfg --verbose
+  See run_etl.py --help for supported options.
+
+  Options:
+    -h, --help                      show this help message and exit
+    -c CONFIG, --config=CONFIG      Configuration file
+    -v, --verbose                   Show verbose output
+</pre>
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Median]]
+* [[implements::Feature:History]]
+* [[implements::Feature:Conversion]]
+* [[implements::Feature:Dimensionality]]
+* [[developedBy::Contributor:Yves Dupontl]]
+* [[linksTo::https://developers.google.com/chart/]]
+* [[linksTo::http://sourceforge.net/projects/mysql-python]]
+* [[linksTo::http://jinja.pocoo.org/]]
+* [[instanceOf::Namespace:Contribution]]
+* [[uses::Language:Python]]
+* [[uses::Language:SQL]]
+* [[uses::Technology:MySQL]]
+* [[uses::Technology:Google_Charts]]
+* [[uses::Technology:Jinja2]]
+* [[uses::Language:JavaScript]]
+* [[uses::Language:HTML]]

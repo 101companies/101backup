@@ -1,0 +1,13 @@
+== Headline ==
+
+A document-oriented database is a form of storage software that stores semi-structured data.
+
+== Description ==
+
+A document-oriented database stores semi-structured data in the form of documents. A document can be seen as record-like data, encoded in some standard format like [[Language:JSON]], [[Language:BSON]] or [[Language:XML]].
+
+== Metadata ==
+* [[identifies::http://en.wikipedia.org/wiki/Document-oriented_database]]
+* [[linksTo::http://www.mongodb.org]]
+* [[linksTo::http://couchdb.apache.org]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,56 @@
+== Headline ==
+
+A language construct for list processing
+== Illustration ==
+
+=== Mapping over a list ===
+
+Suppose you want to map over a list of numbers to increment each number. The following list comprehension implements this requirement: 
+
+<syntaxhighlight lang="haskell">
+> [ x+1 | x <- [1,2,3,4,5] ]
+[2,3,4,5,6]
+</syntaxhighlight>
+
+The expression after the bar "|" is the ''generator'' for elements ''x''. The expression before the bar computes the element of the resulting list from the generated elements. The [[Map function]] actually models such element-wise mapping. Thus, the list comprehension could also be expressed as follows:
+
+<syntaxhighlight lang="haskell">
+> map (\x -> x + 1) [1,2,3,4,5]
+[2,3,4,5,6]
+</syntaxhighlight>
+
+=== Filtering a list ===
+
+Suppose you want to filter a list of numbers to only keep odd numbers. The following list comprehension implements this requirement: 
+
+<syntaxhighlight lang="haskell">
+> [ x | x <- [1,2,3,4,5], odd x ]
+[1,3,5]
+</syntaxhighlight>
+
+There are two expressions after the bar. The first one is a ''generator'' for elements ''x'', the second is a ''guard'' to impose a condition of generated elements. The [[Filter function]] actually models filtering according to a guard (i.e., a predicate). Thus, the list comprehension could also be expressed as follows:
+
+<syntaxhighlight lang="haskell">
+> filter odd [1,2,3,4,5]
+[1,3,5]
+</syntaxhighlight>
+
+=== Multiple generators and guards ===
+
+List comprehensions can use multiple generators and guards, the scope of the generators extends to the subsequent generators and guards. For instance, we may collect all combinations of pairs of elements drawn from two separate lists as follows:
+
+<syntaxhighlight lang="haskell">
+> [ (x,y) | x <- [1,2,3], y <- ['a','b'] ]
+[(1,'a'),(1,'b'),(2,'a'),(2,'b'),(3,'a'),(3,'b')]
+</syntaxhighlight>
+
+Let us compute the sum of all possible pairs with elements drawn from one list, where a guard is applied to reject pairs of identical elements:
+
+<syntaxhighlight lang="haskell">
+> let sample = [1,2,3,4,5]
+e> [ x + y | x <- sample, y <- sample, x /= y ]
+[3,4,5,6,3,5,6,7,4,5,7,8,5,6,7,9,6,7,8,9]
+</syntaxhighlight>
+== Metadata ==
+* [[instanceOf::Language construct]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,17 @@
+== Intent ==
+
+the [[Capability|capability]] of logging certain events along program execution
+
+== Discussion ==
+
+Logging may be meant to help with debugging, forensics, or data governance.
+
+Logging may be achieved by designated, possibly scattered code units.
+
+A popular approach to logging is provided by [[Aspect-oriented programming]].
+ 
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Serialization]]
+* [[linksTo::http://en.wikipedia.org/wiki/Data_governance]]
+* [[instanceOf::Namespace:Concept]]

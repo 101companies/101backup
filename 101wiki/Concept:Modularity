@@ -1,0 +1,17 @@
+== Headline ==
+
+A property of [[software design]]s to be based on separate and recombinable [[software component|components]]
+
+== Illustration ==
+
+See the related terms [[modular programming]] and [[modularity]].
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Modularity]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[relatesTo::Separation of concerns]]
+* [[relatesTo::Modularization]]
+* [[relatesTo::Modular programming]]
+* [[relatesTo::Separation of concerns]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,37 @@
+== Headline ==
+
+[[Equality]] in terms of structure alone, without interpretation
+
+== Illustration ==
+
+[[Structural equality]] means that two expressions are equal if and only if they agree on constructors or primitive values at every level and in every position. In Haskell, this would be captured by the following [[type-class instance]] for the [[type class]] ''Eq'':
+
+<syntaxhighlight lang="haskell">
+-- Simple arithmetic expressions
+data Expr = Const Int | Add Expr Expr
+</syntaxhighlight>
+
+<syntaxhighlight lang="haskell">
+-- Uniform (structural) equality
+instance Eq Expr
+  where
+    (Const i) == (Const j) = i == j
+    (Add e1 e2) == (Add e3 e4) = e1 == e3 && e2 == e4
+</syntaxhighlight>
+
+Thus, the operands of equality (i.e., "==") must agree on the outermost constructor and equality must hold recursively for all immediate positions. For instance:
+
+<syntaxhighlight lang="haskell">
+> Const 42 == Const 42
+True
+> Const 42 == Add (Const 20) (Const 22)
+False
+</syntaxhighlight>
+
+The second equality test fails because the constant term is clearly structurally unequal to the addition term, even though we can see that both expressions would evaluate to the same result. Indeed, sometimes, we could prefer [[semantic equality]]; this is when we take semantic properties of the underlying data into account.
+
+== Metadata ==
+
+* [[isA::Equality]]
+* [[relatesTo::Semantic equality]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,21 @@
+== Headline ==
+
+A transformation with the type of the input and output being ''not'' the same
+
+== Details ==
+
+In the context of [[model-driven engineering]], type-changing transformations also go by the name of [[exogenous model transformation]]s.
+
+== Illustration ==
+
+Diverse examples of type-changing transformations:
+* A program transformation that translates one software language into another.
+* A traversal over an object graph (by a visitor or otherwise) that returns objects of different classes.
+* An XML transformation that replaces elements of one namespace by elements of another namespace.
+* A model transformation where the metamodels of the input and output models are different.
+
+== Metadata ==
+
+* [[isA::Transformation]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

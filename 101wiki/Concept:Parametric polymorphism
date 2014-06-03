@@ -1,0 +1,14 @@
+== Headline ==
+
+A form of [[polymorphism]] applying to all types of a certain kind
+
+== Illustration ==
+
+See [[polymorphism]].
+
+== Metadata ==
+
+* [[isA::Polymorphism]]
+* [[identifies::http://en.wikipedia.org/wiki/Parametric_polymorphism]]
+* [[linksTo::http://en.wikipedia.org/wiki/Polymorphism_(computer_science)]]
+* [[instanceOf::Namespace:Concept]]

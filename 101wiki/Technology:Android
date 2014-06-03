@@ -1,0 +1,10 @@
+== Headline ==
+
+A software stack for mobile devices that includes an operating system, middleware, and key applications
+
+== Metadata ==
+* [[instanceOf::Platform]]
+* [[identifies::http://en.wikipedia.org/wiki/Android_%28operating_system%29]]
+* [[linksTo::http://www.android.com/]]
+* [[linksTo::http://developer.android.com/about/dashboards/index.html]]
+* [[instanceOf::Namespace:Technology]]

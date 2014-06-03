@@ -1,0 +1,17 @@
+== Headline ==
+
+Aggregate scattered metadata, metrics, et al. per file
+== Description ==
+Various metadata, metrics et al. is computed for each file (see the input dependencies above). As a result of the modular approach and some implementation constraints, all such data is scattered over several files, which makes it hard to consume by other modules. Thus, the present module aggregates all such data in a single summary file (see the sample above). Such aggregation is also continued at the directory level; see the Module index101meta.
+== Input ==
+
+* http://data.101companies.org/dumps/matches.json as prepared by [[Module:matches101meta]]
+* http://data.101companies.org/dumps/predicates.json as prepared by [[Module:predicates101meta]]
+* http://data.101companies.org/dumps/fragments.json as prepared by [[Module:fragments101meta]]
+* *.metrics.json files in 101repo as prepared by [[Module:metrics101meta]]
+== Output ==
+
+*.summary.json files per 101repo file
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

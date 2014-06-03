@@ -1,0 +1,8 @@
+== Headline ==
+
+A manager to give information about the state of network connectivity
+
+== Metadata ==
+* [[instanceOf::Android_term]]
+* [[identifies::http://developer.android.com/reference/android/net/ConnectivityManager.html]]
+* [[instanceOf::Namespace:Concept]]

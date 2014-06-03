@@ -1,0 +1,41 @@
+== Intent ==
+
+this projects provides a very simple WebDSL WebApp for companies
+
+== Motivation ==
+
+We define pages (company/department/employee view) using the [http://webdsl.org WebDSL] DSL. 
+We also provide a metamodel for companies and scenerios to [[Feature:Cut]] and [[Feature:Total]] salaries. 
+
+=== Architecture of the project ===
+
+"webDSL.app" is the "main file", containing the page definitions.
+"company.app" holds the company model while meganalysis.app contains "meganalysis" as an instance of the model. 
+
+== Usage ==
+
+We make use of the WebDSL Plugin. Update Site: http://webdsl.org/page/Download
+
+* Build the project by running the Ant Build file
+* Select the project in the package explorer -> right click -> Run As -> Run on Server
+* Select your preferred server (we made use of [[Technology:Apache Tomcat]] v6.0 Server) and click "Next"
+* Click "Download and Install" and follow the menu's steps
+* Click "Finish"
+* The project will be published on the installed server
+* Visit http://localhost:8080/webDSL/ 
+(Eventually you will have to re-build or restart the server)
+
+== Metadata ==
+* [[uses::Language:JavaScript]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Distribution]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Web application]]
+
+== Acknowlegdement ==
+
+[[101contributor:Eelco Visser]] provided some basic advice on the usage of WebDSL.
+* [[instanceOf::Namespace:Contribution]]

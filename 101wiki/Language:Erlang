@@ -1,0 +1,8 @@
+== Intent ==
+
+a programming language used to build massively scalable soft real-time systems with requirements on high availability
+
+== Metadata ==
+* [[identifies::http://www.erlang.org/]]
+* [[linksTo::http://en.wikipedia.org/wiki/Erlang_(programming_language)]]
+* [[instanceOf::Namespace:Language]]

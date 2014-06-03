@@ -1,0 +1,8 @@
+== Headline ==
+
+An object maintains a list of its dependents and notifies them of any state changes
+
+== Metadata ==
+* [[instanceOf::Design pattern]]
+* [[identifies::http://en.wikipedia.org/wiki/Observer_pattern]]
+* [[instanceOf::Namespace:Concept]]

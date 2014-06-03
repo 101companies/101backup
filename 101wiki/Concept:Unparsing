@@ -1,0 +1,15 @@
+== Headline ==
+
+Translate [[syntax tree]]s into text or another representation
+
+== Details ==
+
+An [[unparser]] performs [[unparsing]].
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Unparser]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Parsing]]
+* [[instanceOf::Namespace:Concept]]

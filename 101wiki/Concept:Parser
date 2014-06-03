@@ -1,0 +1,11 @@
+== Headline ==
+
+A [[program]] performing [[parsing]]
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Parsing]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[isA::Language technology]]
+* [[relatesTo::Unparser]]
+* [[relatesTo::Lexer]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[software component]] that performs [[unparsing]]
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Unparser]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[relatesTo::Parser]]
+* [[instanceOf::Namespace:Concept]]

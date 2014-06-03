@@ -1,0 +1,9 @@
+== Headline ==
+
+An extensible [[Language:JSON|]] encoder/decoder for [[Language:Python|]]
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://pypi.python.org/pypi/simplejson/]]
+* [[instanceOf::Namespace:Technology]]
+

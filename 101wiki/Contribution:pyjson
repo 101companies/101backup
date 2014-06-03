@@ -1,0 +1,44 @@
+== Headline ==
+
+Processing [[Language:JSON]]-based data in [[Language:Python]]
+
+== Motivation ==
+
+This is a very basic implementation which shows to process company data, externally represented in [[Language:JSON]], can be processed with basic idioms of [[Language:Python]]. The JSON input is represented in memory as a hierarchically nested dictionary. Hence, all processing depends on recursive loops over the dictionary.
+
+== Architecture ==
+
+There are modules for the basic features.
+
+* [[Feature:Total]]: "total.py"
+* [[Feature:Cut]]: "cut.py"
+
+The sample company is available as a JSON file "input.json".
+
+== Usage ==
+
+Tested with Python 2.7.3.
+
+There is Makefile that automates a test case; see the "test target".
+
+All steps could as well be executed just on the command line.
+
+<pre>
+./total.py input.json
+326927
+./cut.py input.json output.json
+./total.py output.json
+163462
+</pre>
+
+== Metadata ==
+* [[uses::Language:Python]]
+* [[uses::Language:JSON]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Open serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

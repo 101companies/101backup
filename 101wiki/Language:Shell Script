@@ -1,0 +1,10 @@
+== Headline ==
+A  [[scripting language]] written for shells or command line interpreters
+
+== Description == 
+A shell script is a type of script that is mainly used for file manipulation, program execution and printing text.
+
+== Metadata ==
+* [[instanceOf::Scripting language]]
+* [[identifies::http://en.wikipedia.org/wiki/Shell_script]]
+* [[instanceOf::Namespace:Language]]

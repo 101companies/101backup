@@ -1,0 +1,32 @@
+== Headline ==
+
+A kind of [[grammar]] used for syntax definition
+== Illustration ==
+
+Here is a context-free grammar for a possible concrete syntax for companies of the [[@system]]:
+
+<syntaxhighlight lang="text">
+Company :  
+  'company' QString '{'
+    Department* 
+  '}';
+
+Department :
+  'department' QString '{' 
+    'manager' Employee    
+    Department* 
+    NonManager* 
+  '}';
+
+NonManager : 'employee' Employee;
+
+Employee : QString '{' 
+    'address' QString
+    'salary' Number 
+  '}';
+</syntaxhighlight>
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Context-free_grammar]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Namespace:Concept]]

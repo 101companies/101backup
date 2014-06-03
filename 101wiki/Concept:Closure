@@ -1,0 +1,15 @@
+== Headline ==
+
+A reference to a function with a referencing environment
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Closure_(computer_science), 4 June 2013)
+
+In computer science, a closure (also lexical closure or function closure) is a function or reference to a function together with a referencing environment—a table storing a reference to each of the non-local variables (also called free variables) of that function. [...]
+
+The concept of closures was developed in the 1960s and was first fully implemented in 1975 [...] as a language feature in the Scheme programming language to support lexically scoped first-class functions.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Closure_(computer_science)]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

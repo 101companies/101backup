@@ -1,0 +1,54 @@
+== Headline ==
+
+Resolving of metadata and contributions
+== Description ==
+
+This module creates several files per theme and a folder for each theme having its name.
+
+=== members.json ===
+
+This is a list of theme members with some info per member.
+
+Physically, this is a JSON array where each entry is a JSON object as follows:
+
+* key = name; value = name of the contribution.
+* key = headline; value = headline for the contribution as shown on 101wiki.
+* key = features; value = number of features implemented by the contribution; see "implements".
+* key = ufeatures; value = unique features, i.e., features not implemented by any other contribution in the given theme.
+* key = languages; value = number of languages used by the contribution; see "uses".
+* key = ulanguages; value = unique languages, i.e., languages not used by any other contribution in the given theme.
+* key = technologies; value = number of technologies used by the contribution; see "uses".
+* key = utechnologies; value = unique technologies, i.e., technologies not used by any other contribution in the given theme.
+* key = concepts; value = number of concepts referenced by the contribution
+* key = uconcepts; value = unique concepts
+
+=== concepts.json ===
+
+Conceptually, this is a list of referenced concepts (see above) with some info per concepts.
+
+Physically, this is a JSON array where each entry is a JSON object as follows:
+
+* key = name; value = name of the concept referenced by any member of the theme.
+* key = headline; value = headline for the concept as shown on 101wiki.
+* key = contributions; value = number of contribution pages referring to the concept.
+* key = resolved; value = a boolean saying whether the concept page has a [[identifies::...]]
+
+=== features.json ===
+
+Very much like concepts.json but for "implemented features" instead of "referenced concepts".
+
+=== languages.json ===
+
+Very much like concepts.json but for "used languages" instead of "referenced concepts".
+
+=== technologies.json ===
+
+Very much like concepts.json but for "used technologies" instead of "referenced concepts".
+== Input ==
+
+The wiki data as collected by [[Module:wiki2json]]
+== Output ==
+
+http://data.101companies.org/resources/themes/
+== Metadata ==
+* [[instanceOf::Namespace:Module]]

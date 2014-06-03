@@ -1,0 +1,12 @@
+== Intent ==
+
+the metamodel based on the EMOF standard
+
+== Description ==
+
+Ecore is an essential component of [[Technology:EMF]].
+
+== Metadata ==
+* [[instanceOf::Structural modeling language]]
+* [[identifies::http://de.wikipedia.org/wiki/Eclipse_Modeling_Framework]]
+* [[instanceOf::Namespace:Language]]

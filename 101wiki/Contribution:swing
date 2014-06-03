@@ -1,0 +1,33 @@
+== Intent ==
+
+provide interaction on companies by means of [[Technology:Swing]]
+== Motivation ==
+
+Specifically, the GUI provides the following gestures:
+* Navigate hierarchical structure of departmental nesting.
+* Edit all fields of types string and number.
+== Architecture ==
+
+The implementation uses a poorman's MVC architecture.
+It is based on the object model of [[Contribution:javaComposition]].
+We do not assume any change-notification services on the model.
+There are two views: one for departments (and companies) and another for employees.
+The controller provides services that push effect of gestures into the model.
+The views delegates event handlers to the controller.
+The controller calls into the model and the view.
+== Usage ==
+
+Run Interaction.java to start the GUI for the sample company.
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Technology:Swing]]
+* [[uses::Technology:AWT]]
+* [[uses::Technology:Eclipse]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Editing]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,13 @@
+== Headline == 
+
+a Java library for object graph navigation
+
+== Description ==
+
+OGNL stands for "Object Graph Navigation Library", but see the language [[Language:OGNL]]
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Reflection technology]]
+* [[identifies::http://commons.apache.org/ognl/]]
+* [[instanceOf::Namespace:Technology]]

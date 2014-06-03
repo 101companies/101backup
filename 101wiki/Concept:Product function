@@ -1,0 +1,26 @@
+== Headline ==
+
+compute the product of a list of numbers
+
+== Illustration ==
+
+In Haskell, there is a corresponding [[Prelude module]] function as follows:
+
+<syntaxhighlight lang="haskell">
+Prelude> product [1..5]
+120
+</syntaxhighlight>
+
+For what it matters, this function can be defined as a [[Fold function|fold]] as follows:
+
+<syntaxhighlight lang="haskell">
+Prelude> let product = foldr (*) 1
+Prelude> product [1..5]
+120
+</syntaxhighlight>
+
+
+
+== Metadata ==
+* [[instanceOf::Common function]]
+* [[instanceOf::Namespace:Concept]]

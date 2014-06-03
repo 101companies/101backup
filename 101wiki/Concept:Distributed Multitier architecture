@@ -1,0 +1,18 @@
+== Intent ==
+
+The main [[Technology:Java EE]]-architecture
+
+== Description ==
+
+The distributed Multi-tier architecture contains four layers <cite>Oracle2012JavaEETutorial</cite>:
+
+* [[Client]]-tier: [[Web browser]]
+* [[Technology:Java EE]] Server
+** Web-tier: [[Technology:JSP]], [[Technology:Facelets]]
+** Business-tier: [[Technology:Java Bean|Java Beans]]
+* Enterprise-information-system-tier: [[DBMS]]
+
+== Metadata ==
+* [[instanceOf::Multi-tier architecture]]
+* [[identifies::http://docs.oracle.com/javaee/5/tutorial/doc/bnaay.html]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,17 @@
+== Intent ==
+
+== Installation ==
+
+There is an [http://www.opencobol.org/modules/bwiki/index.php?InstallGuide installation guide] available.
+
+[[101contributor:Ralf Lämmel]] adds the following:
+
+* You need GNU MP (libgmp). It works with [http://ftp.gnu.org/gnu/libtool/libtool-2.4.tar.gz].
+* You need GNU Libtool (libltdl). It works with [ftp://ftp.gmplib.org/pub/gmp-5.0.1/gmp-5.0.1.tar.bz2].
+* Berkley DB is not optional if you want indexed files. It works with [http://freshmeat.net/projects/berkeleydb/] (Version 5.1.19).
+
+You should make sure that ''configure'' install Berkley DB in <nowiki>/usr/local</nowiki>.
+
+== Metadata ==
+* [[identifies::http://www.opencobol.org]]
+* [[instanceOf::Namespace:Technology]]

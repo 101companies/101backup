@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[transformation]] that transforms a [[model]] into text
+
+== Metadata ==
+* [[instanceOf::Transformation]]
+* [[instanceOf::MDE_term]]
+* [[identifies::http://en.wikipedia.org/wiki/Model_transformation]]
+* [[instanceOf::Namespace:Concept]]

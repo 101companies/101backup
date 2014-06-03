@@ -1,0 +1,175 @@
+== Intent ==
+
+basic use of [[Technology:XMLHttpRequest]] with [[Language:HTML5]]
+
+== Motivation ==
+
+This implementation provides simple [[Server|server]] side [[Language:XML]] based data storage. Therefor, it introduces [[Technology:XMLHttpRequest]] in a very simple way of use. This helps to understand the [[Asynchronous communication|asynchronous]] mechanisms of the XMLHttpRequest [[API]]. In order to keep it simple, there is no greater [[Ajax]] support in this implementation. If you want to see an Ajax based implementation, please visit [[Contribution:html5ajax]].
+
+== Illustration ==
+
+This section illustrates, how the data moves from an [[Language:XML]] file to a [[Technology:DOM]] based [[Web application]] and back. The first section shows the structure of the initial XML file, the second part shows the load mechanism with [[Technology:XMLHttpRequest]], the third part shows some data manipulation according to the [[Feature:Cut]] and the last part shows the save mechanism with XMLHttpRequest. Please visit [[Contribution:html5local]] for the aspect of [[GUI]] generation.
+
+=== [[Language:XML]] document structure ===
+
+The [this!!company.xml] file represents the company. It models the company structure in typical XML manner: Each entity is represented by a node, at which its parameters or appended entities are represented by subnodes. Each department and employee contains an aditional parameter node for the ''id''.
+
+<syntaxhighlight lang="xml" source="html5XMLHttpRequest/company.xml">
+<Company>
+	<name>Meganalysis</name>
+	<departments>
+
+		...
+
+	</departments>
+</company>
+</syntaxhighlight>
+
+This example shows the <syntaxhighlight lang="xml" enclose="none">company</syntaxhighlight> node with the two subnodes <syntaxhighlight lang="xml" enclose="none">name</syntaxhighlight> and <syntaxhighlight lang="xml" enclose="none">departments</syntaxhighlight>. The <syntaxhighlight lang="xml" enclose="none">departments</syntaxhighlight> node contains all direct subdepartments of the company as a single subnode.
+
+=== Load company ===
+
+We are able to access this [this!!company.xml] file by using a simple XMLHttpRequest. The request itself needs three informations:
+
+* The request method is ''GET'', because we only want to load the file,
+* the filename is ''company.xml'',
+* and we want to perform an [[Asynchronous communication|asynchronous]] request, announced by the last boolean parameter ''true''.
+
+<syntaxhighlight lang="javascript" source="html5XMLHttpRequest/company.js">
+company.loadData = function() {
+
+	var xhr = new XMLHttpRequest();
+	
+	// This statement creates a new request with the parameters:
+	// - "GET": only load
+	// - "company.xml": filename of the requested xml doc
+	// - "true": asynchronous request
+	xhr.open('GET', 'company.xml', true);
+
+	// This method is triggered after the response reaches the client.
+	xhr.onload = function(e) {
+		if (this.status == 200) {
+			// This line guarantess, that the result has xml format.
+			company.response = xhr.responseXML;
+			controller.loadInner();
+		}
+	};
+
+	// This call starts the request.
+	xhr.send();
+
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="javascript" enclose="none">loadData</syntaxhighlight> function first creates a new XMLHttpRequest object. The three necessary values mentioned before are used as parameters for the <syntaxhighlight lang="javascript" enclose="none">open</syntaxhighlight> function. The <syntaxhighlight lang="javascript" enclose="none">onload</syntaxhighlight> function defines the reaction after finish the file load. Status 200 means, that the file is successfully transfered to the client. The advantage of XML is, that it is extremely easy to load with [[Technology:XMLHttpRequest]]. The <syntaxhighlight lang="javascript" enclose="none">xhr.responseXML</syntaxhighlight> function returns a complete data structure for the company traversable with [[Technology:DOM]].
+
+=== Feature implementation ===
+
+We use the DOM API to retrieve all salary nodes of the company:
+
+<syntaxhighlight lang="javascript" source="html5XMLHttpRequest/companyModel.js">
+model.cut = function() {
+	// This call retrieves all salary nodes.
+	var salaryNodes = company.response.documentElement.getElementsByTagName("Salary");
+
+	// This loop cuts the salary values by two and saves the value to the specific nodes.
+	for (var i = 0; i < salaryNodes.length; i++) {
+		salaryNodes[i].childNodes[0].nodeValue = parseFloat(salaryNodes[i].childNodes[0].nodeValue) / 2;
+	}
+
+	// This function saves the company to the xml file.
+	company.saveData(company.response);
+	// The new total value has to be determined after the cut.
+	model.total();
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="javascript" enclose="none">getElementsByTagName("Salary")</syntaxhighlight> returns all salary nodes for the company. The return value is a simple array. The ''for'' loop traverses this array and cuts all the salaries. After cutting the salaries, all new values have to be saved and the new total value has to be determined. In our example we will save the complete company with the new data into the [this!!company.xml] file.
+
+=== Save company ===
+
+The save mechanism is as simple as the load mechanism. The difference is, that some parameters of the <syntaxhighlight lang="javascript" enclose="none">open</syntaxhighlight> function have to be changed:
+
+* The request method is now ''POST'', because we want to have write access
+* and the filename is ''update.php'', refering to the [[Language:PHP]] script, which accepts the changed content for the [this!!company.xml].
+
+<syntaxhighlight lang="javascript" source="html5XMLHttpRequest/company.js">
+company.saveData = function(data) {
+	var serializer = new XMLSerializer();
+	var xml = serializer.serializeToString(data);
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'upload.php', true);
+	xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	xhr.setRequestHeader("X-File-Name", "company.xml");
+	xhr.setRequestHeader("Content-Type", "application/octet-stream");
+	xhr.send(xml);
+}
+</syntaxhighlight>
+
+There are some additional parameters, which are used to define the following proceeding on the [[Server|server]] sides [[Language:PHP]] script. The three elements of the request header show, that the request is an XMLHttpRequest, that the concerning file has its relative path ''company.xml'' and the content is a stream. The [this!!upload.php] script handles the stream and saves it as XML file with the given name:
+
+<syntaxhighlight lang="php" source="html5XMLHttpRequest/upload.php">
+<?php
+	$uploaddir = "";
+
+	if($ SERVER['HTTP X FILE NAME']!="") {
+
+		$nomefile=$ SERVER['HTTP X FILE NAME'];
+
+		$fh = fopen($uploaddir.$nomefile, 'w') or die("<h1 style='color:red;'>Upload failed</h1>");
+
+		fwrite($fh, $HTTP RAW POST DATA);
+
+		fclose($fh);
+
+		echo "<h1>success uploaded</h1>.\n";
+	}
+?>
+</syntaxhighlight>
+
+The first ''if'' control structure proofs, that the filename is not empty. After that, the script opens the file with the given filename and write access. If it is successfully opened, the stream can be written to the file handled by the function <syntaxhighlight lang="php" enclose="none">fwrite</syntaxhighlight> The parameters for this function are the opened file (<syntaxhighlight lang="php" enclose="none">$fh</syntaxhighlight>) and the delivered content (<syntaxhighlight lang="php" enclose="none">$HTTP RAW POST DATA</syntaxhighlight>).
+
+== Architecture ==
+
+All necessary files are located in the base folder. The architecture is based on [[MVC]]:
+
+* All [[Language:HTML]] files in combination with the [[Language:JavaScript]] (.js) files with the suffix ''View'' represent the view.
+* The controller is implemented within the JavaScript (.js) files with the suffix ''Controller''.
+* The model files have the suffix ''Model''.
+
+There is an additional [this!!upload.php] file, which is necessary to upload new content for the [[Language:XML]] file.
+
+== Usage ==
+
+* Please check out all files in the repository.
+* Open the index.html with your web-browser (check [[Language:HTML5|HTML5]] for the HTML5-support of your browser).
+
+This HTML5-program does not work over file-protocol when using Chrome. In this case, you need access over http. To gain access over http, you can use XAMPP, for example, to create a webserver.
+
+* Download XAMPP from http://www.apachefriends.org/en/xampp.html.
+* Install XAMPP.
+* Deploy all files to your htdocs-directory (for example: E:/xampp/htdocs/xhr/).
+* Start the XAMPP-Control Panel and activate Apache.
+* Start your web-browser.
+* Call http://localhost/xhr/index.html.
+
+
+
+== Metadata ==
+
+* [[uses::Language:HTML5]]
+* [[uses::Language:JavaScript]]
+* [[uses::Language:PHP]]
+* [[uses::Language:XML]]
+* [[uses::Technology:DOM]]
+* [[uses::Technology:XMLHttpRequest]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

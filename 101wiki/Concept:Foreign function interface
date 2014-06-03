@@ -1,0 +1,12 @@
+== Headline ==
+
+a mechanism for inter-[[programming language]] calls
+
+== Abbreviation ==
+
+* FFI
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Foreign_function_interface]]
+* [[instanceOf::Namespace:Concept]]

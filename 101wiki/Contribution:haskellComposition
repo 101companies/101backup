@@ -1,0 +1,65 @@
+== Headline ==
+
+[[Data composition]] in [[Language:Haskell]] with [[algebraic data type]]s
+
+== Characteristics ==
+
+The [[data model]] leverages [[data composition]] for companies with departmental nesting. Thus, an [[algebraic data type]] is used for departments so that recursive nesting can be expressed. The algebraic data type only needs a single [[data constructor]]. Thus, [[data variation]] is not exercised, but see [[Contribution:haskellVariation]] for an alternative with data variation.
+
+== Illustration ==
+
+The data model leverages an [[algebraic data type]] for departments; in this manner recursion is enabled:
+
+<fragment url="src/Company/Data.hs"/>    
+
+A sample company looks like this:
+
+<fragment url="src/Company/Sample.hs"/>    
+
+[[Feature:Total]] is implemented as follows:
+
+<fragment url="src/Company/Total.hs"/>    
+
+The following salary total is computed for the sample company:
+
+<syntaxhighlight lang="haskell">
+399747.0
+</syntaxhighlight>
+
+== Relationships ==
+
+* See [[Contribution:haskellVariation]] for a contribution with a similar data model such that [[data variation]] is exercised in addition to [[data composition]].
+* See [[Contribution:haskellEngineer]] for a contribution with a simple data model without support for departmental nesting. No algebraic data types are leveraged.
+* See [[Contribution:haskellData]] for a contribution with a simple data model without support for departmental nesting. Algebraic data types are leveraged systematically for all types to distinguish the types nominally.
+
+== Architecture ==
+
+There are these modules:
+
+* <file url="src/Company/Data.hs"/>: a data model for [[Feature:Hierarchical_company]]
+* <file url="src/Company/Sample.hs"/>: a sample company
+* <file url="src/Company/Total.hs"/>: the implementation of [[Feature:Total]]
+* <file url="src/Company/Cut.hs"/>: the implementation of [[Feature:Cut]]
+* <file url="src/Main.hs"/>: Tests
+
+The types of <file url="src/Company/Data.hs"/> implement [[Feature:Closed serialization]] through Haskell's read/show.
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

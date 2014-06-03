@@ -1,0 +1,20 @@
+== Headline ==
+
+The libraries and [[toolkit]]s for [[Technology:Android]] programming
+
+== Description ==
+
+The Android SDK provides the tools and libraries necessary to begin developing applications that run on Android-powered devices.
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:XML]]
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::toolkit]]
+* [[linksTo::http://developer.android.com/tools/help/index.html]]
+* [[linksTo::http://developer.android.com/reference/packages.html]]
+* [[linksTo::https://developers.google.com/android/add-ons/google-apis/]]
+* [[instanceOf::Namespace:Technology]]

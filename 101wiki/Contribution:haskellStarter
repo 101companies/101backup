@@ -1,0 +1,75 @@
+== Headline ==
+
+Basic [[functional programming]] in [[Language:Haskell]].
+
+== Characteristics ==
+
+The contribution demonstrates basic style of [[functional programming]] in [[Language:Haskell]]. Only very basic language constructs are exercised. Companies are represented via [[tuple]]s over primitive data types. (No [[algebraic data type]]s are used; [[type synonym]]s suffice.) Only flat companies are modeled, i.e., nested departments are not modeled. [[Pure function|pure]], [[Recursion|recursive]] functions implement operations for totaling and cutting salaries by [[pattern matching]]. The types for companies readily implement read and show functions for [[closed serialization]].
+
+== Illustration ==
+
+<media url="http://www.youtube.com/watch?v=6EI-dTWG0oU"/>
+
+The data model relies on tuples for [[data composition]]:
+
+<fragment url="src/Main.hs/type/Company"/>
+<fragment url="src/Main.hs/type/Employee"/>
+
+Basic types for [[string]]s and [[float]]s are leveraged for names, addresses, and salaries.
+
+<fragment url="src/Main.hs/type/Address"/>
+<fragment url="src/Main.hs/pattern/total"/>  
+<fragment url="src/Main.hs/type/Salary"/>
+
+A sample company looks like this:
+
+<fragment url="src/Main.hs/pattern/sampleCompany"/>
+
+Features for functional requirements are implemented by families of functions on the company types. For instance, [[Feature:Total]] is implemented as follows:
+
+<fragment url="src/Main.hs/pattern/total"/>
+<fragment url="src/Main.hs/function/salaries"/>
+<fragment url="src/Main.hs/function/getSalaries"/>
+<fragment url="src/Main.hs/function/getSalary"/>
+
+We may test these functions with the following [[function application]]:
+
+<syntaxhighlight language="haskell">
+total sampleCompany
+</syntaxhighlight>
+
+The function application evaluates to the following total:
+
+<pre>
+399747.0
+</pre>
+
+All the remaining functions are implemented in the same module: <file url="src/Main.hs"/>
+
+== Relationships ==
+
+In the interest of maintaining a very simple simple beginner's example, the present contribution is the only contribution which does not commit to modularization, packaging, unit testing. See [[Contribution:haskellEngineer]] for a modularized and packaged variation with also unit tests added.
+
+== Architecture ==
+
+The contribution only consists of a single module "Main.hs" which includes all the code as shown above.
+
+== Usage ==
+
+See a designated [https://github.com/101companies/101haskell/blob/master/contributions/haskellStarter/README.md README].
+
+== Metadata ==
+
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Flat company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Namespace:Contribution]]
+

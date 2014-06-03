@@ -1,0 +1,42 @@
+== Headline ==
+
+[[Parsing]] in [[Language:Haskell|Haskell]] with [[Technology:Parsec|Parsec]]
+== Motivation ==
+
+The implementation demonstrates [[parsing]] in [[Language:Haskell]] with the [[Technology:Parsec]] [[library]] of [[parser combinator]]s using an appropriate [[monad]] for [[parsing]]. A concrete textual syntax for companies is assumed; the parser maps text to values of straightforward [[algebraic data type]] for companies. (These are essentially the same data types as in [[Contribution:haskellComposition]].) The parser is a family of Haskell functions with one function per nonterminal of the context-free syntax. There are basic parsers for names, addresses, and salaries. The parsers for companies, departments, and employees are composed by means of appropriate parser combinators for sequence, alternative, and option.
+== Illustration ==
+
+There is one function per nonterminal of the underlying grammar for companies. We may use do notation to handle sequential composition. For instance:
+
+<syntaxhighlight lang="haskell">
+-- Parse a department
+parseDepartment :: Parser Department
+parseDepartment = do
+  parseString "department"
+  n <- parseLit
+  parseString "{"
+  m <- parseEmployee "manager"
+  sus <- many parseSubUnit
+  parseString "}"
+  return (Department n m sus)
+</syntaxhighlight>
+== Architecture ==
+
+TBD
+== Usage ==
+
+TBD
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:Parsec]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Parsing]]
+* [[developedBy::Contributor:Martijn van Steenbergen]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell potpourri]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

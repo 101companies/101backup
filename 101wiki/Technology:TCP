@@ -1,0 +1,12 @@
+==Intent==
+
+a [[Communications protocol]] for message exchange in network communication
+
+==Description==
+
+The Transmission Control Protocol is the major [[Term:Transport layer|transport layer]] [[Communications protocol|protocol]] for data transfer in computer [[Term:Network|networks]].
+
+== Metadata ==
+* [[instanceOf::Communications protocol]]
+* [[identifies::http://en.wikipedia.org/wiki/Transmission_Control_Protocol]]
+* [[instanceOf::Namespace:Technology]]

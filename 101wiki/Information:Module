@@ -1,0 +1,13 @@
+== Headline ==
+
+How to develop and maintain a module for the [[@project]]
+
+== Description ==
+
+TBD
+
+== Metadata ==
+
+* [[relatesTo::@module]]
+* [[relatesTo::Namespace:Module]]
+* [[instanceOf::Namespace:Information]]

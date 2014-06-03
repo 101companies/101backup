@@ -1,0 +1,66 @@
+== Headline ==
+
+A [[Technology:ANTLR]]-based generator for [[text-to-object mapping]]s
+
+== Motivation ==
+
+Parser generators such as [[Technology:ANTLR]] already enable [[Text-to-object mapping]] because one can author semantic actions so that suitable objects are associated with grammatical structures. For instance, [[Contribution:antlrObjects]] demonstrates this simple idea. A potential problem with this approach is that it requires the definition of both a grammar and object model as well as relatively low-level functionality for the actual mapping, i.e., object construction. This problem is indeed demonstrated by the aforementioned implementation. The present demonstration contains a simple (proof-of-concept) code generator, code-name YAPG (Yet Another Parser Generator) which takes an idiomatic (i.e., constrained) ANTLR grammar and generates a suitable object model as well as an ANTLR grammar with suitable semantic actions for mapping. In this manner, it suffices to author only a simple grammar, without any semantic actions, to obtain an object model as well as the functionality for object population from text. This idea has been exercised by various technologies in the past, e.g., JJForester and Sdf2Haskell (as part of Strafunski). This idea has also seen much interest more recently in the model-driven engineering community. The main objective of the present demonstation is to illustrate the aforementioned idea in the context of the Java platform with a bare-bones implementation that does not use any sophisticated techniques and that leverages an underlying parser generator for the heavy lifting. The developed and demonstrated technology, YAPG, is not just another parser generator, it is, in fact, a parser generator input generator.
+
+== Architecture ==
+
+YAPG is based on the following ANTLR subset for grammar productions.
+
+<pre>
+Grammar : prods=Production*;
+Production : lhs=Id ':' rhs=Expression ';';
+Expression : Sequence | Choice;
+Sequence : list=Atom*;
+Choice : first=Id rest=Option*;
+Atom : Terminal | Nonterminal | Many;
+Terminal : symbol=QString;
+Nonterminal : label=Id '=' symbol=Id;
+Option : '|' symbol=Id;
+Many : elem=Nonterminal '*';
+</pre>
+
+That is, productions must either define nonterminals as sequences (i.e., composed structure) or choices (i.e., inheritance structure). When defining the operands of a sequence, then all components must be labeled. These two restrictions imply that a straightforward object model can be derived. One can also speak of such grammar as object-oriented context-free grammars.
+
+There are these packages:
+* ''org.yapg.company'': demonstration of YAPG for [[Feature:Hierarchical_company]].
+* ''org.yapg.tests'': JUnit tests for parsing company files.
+* ''org.yapg'': the YAPG with modules for code generation.
+* ''org.yapg.grammar'': the object model of YAPG which has been applied by YAPG.
+
+== Usage ==
+
+This contribution has been tested with Version 3.2 of ANTLR.
+
+The contribution is an Eclipse Indigo project.
+
+See the Makefiles for invoking the parser generator.
+
+See the JUnit tests for using the generated parser.
+
+== Issues ==
+
+This is (deliberately) a bare-bones implementation of a "parser generator input generator".
+
+Hence, some aspects are pretty limited and potentially worth addressing in the future.
+
+* The infamous "printf" method is used to generate Java and ANTLR code.
+* EBNF support is limited; "+" and "?" are unsupported.
+* The idiomatic style is only partially enforced. 
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]] 
+* [[implements::Feature:Parsing]] 
+* [[implements::Feature:Mapping]] 
+* [[implements::Feature:Code generation demo]] 
+* [[uses::Language:Java]]
+* [[uses::Technology:ANTLR]] 
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[linksTo::http://en.wikipedia.org/wiki/Strafunski]]
+* [[linksTo::http://www.program-transformation.org/Tools/JJForester]]
+* [[instanceOf::Theme:ANTLR]]
+* [[instanceOf::Namespace:Contribution]]

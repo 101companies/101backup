@@ -1,0 +1,20 @@
+== Headline ==
+
+Generate tagclouds for languages and technologies on 101wiki
+
+== Description ==
+The JSON extracted from 101wiki (101companies.org) readily includes the languages and technologies associated with each implementation. These associations are accumulated as counts per language and technology and visualized by simple HTML-based tagclouds.
+
+== Input ==
+
+http://data.101companies.org/dumps/Wiki101Full.json as prepared by [[Module:wiki2json]]
+
+== Output ==
+
+* http://data.101companies.org/views/frequencyOfLanguages.html
+* http://data.101companies.org/views/frequencyOfTechnologies.html
+
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

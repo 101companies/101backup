@@ -1,0 +1,11 @@
+== Headline ==
+
+Distribution of company data and operations
+== Description ==
+
+Distribution may be explained with the help of the [[Client-server architecture]]. The server is assumed to maintain company data and provide services for data access and behaviors such as totaling or cutting salaries. The client may be, for example, a GUI- or browser-based component through which the data is accessed and the services are invoked by the user. Different kinds of protocols and technologies are conceivable for setting up such a client-server architecture. For instance, client and server could communicate in a request/response manner using, for example, [[REST]]. Also, the server may be a [[SOA]]-based Web service implying calls to service on the client side. Further, server and client may use [[RMI]] to communicate with each other. The feature is considered an [[101execution|execution quality]] in the sense that the system is observably or knowingly distributed such that the system user interacts with the client whereas some of the operations and some of the data management resides on a different server side.
+== Metadata ==
+
+* [[isA::Non-functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

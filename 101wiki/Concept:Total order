@@ -1,0 +1,75 @@
+== Headline ==
+
+A transitive, antisymmetric, and total (binary) relation on some set
+== Illustration ==
+
+In programming, total order serves for comparison of values. For instance, in [[Language:Haskell]], we may leverage total order on numbers as follows:
+
+<syntaxhighlight lang="haskell">
+> 41 < 42
+True
+> max 41 42
+42
+</syntaxhighlight>
+
+Some form of [[polymorphism]] may be used in many programming languages to define such a comparison-relate total order on given data types. For instance, in Haskell, there is a [[type class]] ''Ord'' for total order; its key member is ''compare'' which returns either LT, EQ, or GT. For instance:
+
+<syntaxhighlight lang="haskell">
+> compare 41 42
+LT
+</syntaxhighlight>
+
+Let us illustrate the definition a total order for a simple data type for natural numbers:
+
+<syntaxhighlight lang="haskell">
+-- Peano natural numbers
+data Nat = Zero | Succ Nat
+</syntaxhighlight>
+
+Before we define a total order for natural numbers, let us define [[equality]], as it is effectively a precondition for total order. In Haskell, we instantiate the [[type class]] ''Eq'' hence:
+
+<syntaxhighlight lang="haskell">
+-- Equality of natural numbers
+instance Eq Nat
+  where
+    Zero == Zero = True
+    Zero == (Succ _) = False
+    (Succ _) == Zero = False
+    (Succ x) == (Succ y) = x == y
+</syntaxhighlight>
+
+Thus, all pairs of constructor patterns are examined and accordingly mapped to truth values while subterms are processed recursively, when necessary. We can test for equality as follows:
+
+<syntaxhighlight lang="haskell">
+> Succ Zero == Zero
+False
+> Succ Zero == Succ Zero
+True
+</syntaxhighlight>
+
+The type-class instance for total order follows the same scheme:
+
+<syntaxhighlight lang="haskell">
+-- Total order on natural numbers
+instance Ord Nat
+  where
+    compare Zero Zero = EQ
+    compare Zero (Succ _) = LT
+    compare (Succ _) Zero = GT
+    compare (Succ x) (Succ y) = compare x y
+</syntaxhighlight>
+
+We can test for total order as follows:
+
+<syntaxhighlight lang="haskell">
+> compare (Succ Zero) Zero
+GT
+> compare (Succ Zero) (Succ Zero)
+EQ
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Total_order]]
+* [[identifies::http://mathworld.wolfram.com/TotalOrder.html]]
+* [[instanceOf::Namespace:Concept]]

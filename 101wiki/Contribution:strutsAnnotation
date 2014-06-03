@@ -1,0 +1,134 @@
+== Headline ==
+
+[[Web programming]] in [[Language:Java]] with [[Technology:Struts]] configuring with annotations
+
+== Motivation == 
+
+This [[Language:Java]] [[Web application|web application]] illustrates the use of the popular [[Technology:Struts]] technology in combination with [[Technology:JSP]] and a [[Technology:Servlet API|servlet]] based [[Web server|web server]]. It introduces the use of [[Technology:Maven]] as a good advantage for [[Language:Java]] based [[Application|applications]], as well.
+
+== Illustration == 
+
+The [[Technology:Struts]] architecture is based on [[MVC]]. The view is implemented with [[Technology:JSP]], the controller is based on [[Language:Java]] ''action'' [[Class|classes]] in combination with [[Technology:Servlet API|servlets]] and the model is provided by a service [[Class|class]] and a class for each company, department and employee. The initial [[Feature:Hierarchical_company]] data is stored in a [this!!src/main/resources/sampleCompany.ser serialization file] (compare [[Contribution:javaInheritance]]). We will illustrate the [[Technology:Struts]] implementation with an example of showing and cutting a company.
+
+=== View ===
+
+The [[Technology:JSP]] [this!!src/main/webapp/WEB-INF/content/list-all-companies.jsp file] for the view of the company offers two textfields and two buttons. One of the textfields shows the name, the other one shows the [[Feature:Total]] value. The buttons allow the user to request for further detailed information like a department list. It also allows her to cut all salaries of the company.
+
+<syntaxhighlight lang="xml" source="strutsAnnotation/src/main/webapp/WEB-INF/content/list-all-companies.jsp">
+...
+
+<s:form action="company">
+
+		...
+
+		<s:iterator value="allCompanies">
+			<tr>
+				<!-- The name and total fields refer
+					to the corresponding getters of "Company.java". -->
+				<td><s:property value="name"/></td>
+				<td><s:property value="total"/></td>
+				<td>
+					<!-- These lines create a link,
+						which invokes the cutSalaries-method of "CompanyAction.java -->
+					<s:url id="cutURL" action="company.cutSalaries">
+						<s:param name="id" value="%{id}"/>
+					</s:url>
+					<s:a href="%{cutURL}">Cut</s:a>
+				</td>
+				<td>
+					<!-- These lines create a link
+						to the department list of the company. -->
+					<s:url id="detailURL" action="company.details">
+						<s:param name="id" value="%{id}"/>
+					</s:url>
+					<s:a href="%{detailURL}">Detail</s:a>
+				</td>
+			</tr>
+		</s:iterator>
+
+		...
+</syntaxhighlight>
+
+The iterator <syntaxhighlight lang="xml" enclose="none"><s:iterator ... /></syntaxhighlight> creates a table row for each company listed in the [this!!src/main/java/org/softlang/actions/ListAllCompaniesAction.java ListAllCompaniesAction.java] instance. The value <syntaxhighlight lang="xml" enclose="none">"allCompanies"</syntaxhighlight> refers to the member <syntaxhighlight lang="java" enclose="none">List<Company> allCompanies;</syntaxhighlight> of the [[Class|class]]. Each company within this list has a getter for its name and another for the [[Feature:Total]] value.
+
+=== Controller ===
+
+The <syntaxhighlight lang="xml" enclose="none">action="company.cutSalaries"</syntaxhighlight> of the [[Feature:Cut]] link invokes the <syntaxhighlight lang="java" enclose="none">cutSalaries()</syntaxhighlight> method of [this!!src/main/java/org/softlang/actions/CompanyAction.java CompanyAction.java], which is, in combination with a [[Technology:Servlet API|servlet]], a controller of the application:
+
+<syntaxhighlight lang="java" source="strutsAnnotation/src/main/java/org/softlang/actions/CompanyAction.java">
+@Action(value = "company.cutSalaries",
+			results = { @Result(name = "listAllCompanies", type="redirectAction", location="list-all-companies")})
+public String cutSalaries() {
+	company =  CompanyService.instance().findCompany(Long.parseLong(RequestUtil.getRequestParameter("id")));
+	company.cut();
+	return "listAllCompanies"; 
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="java" enclose="none">@Action(value = "company.cutSalaries", ...)</syntaxhighlight> maps this method to the action name ''company.cutSalaries''. Whenever this name is called within an action of the [[Technology:JSP]] files, this method is invoked. <syntaxhighlight lang="java" enclose="none">CompanyService.instance()</syntaxhighlight> returns the instance of the model, which returns the necessary entity for the company. This object is used to perform the companies [[Feature:Cut]] [[Method|method]]. The <syntaxhighlight lang="java" enclose="none">results</syntaxhighlight> parameter redirects the application to the [this!!src/main/webapp/WEB-INF/content/list-all-companies.jsp list-all-companies.jsp], which simply means, that the page is reloaded. Every result entry refers to a returned ''string'' value of the <syntaxhighlight lang="java" enclose="none">@Action(value = "company.cutSalaries", ...)</syntaxhighlight>. In this case, there is only one possible return value.
+
+=== Model ===
+
+All data are instantiated within the [[Singleton]] [this!!/src/main/java/org/softlang/services/CompanyService.java CompanyService.java], which is considered as a major part of the model. The instance contains lists of the company, its departments and its employees. As we have seen in the controller description, the [[Feature:Cut]] method of all of these entities is invokeable. In our case, the cut method for the company simply invokes the cut method of the departments:
+
+<syntaxhighlight lang="java" source="strutsAnnotation/src/main/java/org/softlang/basics/Company.java">
+	public void cut() {
+		for (Department d : getDepts())
+			d.cut();
+	}
+</syntaxhighlight>
+
+The lists within this [this!!/src/main/java/org/softlang/services/CompanyService.java CompanyService.java] are initialized by loading a previously serialized company. We strongly recommend to have a look on [[Contribution:javaInheritance]], to get an overview over the serialization and deserialization process in [[Language:Java]].
+
+== Architecture ==
+
+* The [[Technology:JSP]] files for the view are located in [this!!src/main/webapp/WEB-INF/content].
+* The [this!!src/main/webapp/index.jsp index.jsp] in the [this!!src/main/webapp] folder represents the initial page, which redirects to the first ''list-all-companies.jsp''. The [this!!src/main/webapp] folder also contains the [[Language:CSS]] files for this application.
+* The [this!!src/main/resources] folder contains two necessary files. The [this!!src/main/resources/sampleCompany.ser] provides the serialized company data. The [this!!src/main/resources/struts.xml] [[Language:XML]] file defines, that the initial page of this application is the [this!!src/main/webapp/index.jsp index.jsp].
+* The main [[Language:Java]] code of the application is located in [this!!src/main/java/org/softlang]. We have four folders for the different concerns. [this!!src/main/java/org/softlang/actions] contains the actions described in the illustration section for the controller. The [this!!src/main/java/org/softlang/basics] folder contains all necessary [[Class|classes]] for the deserialized company. The [this!!src/main/java/org/softlang/services/CompanyService.java CompanyService.java] is located in the [this!!src/main/java/org/softlang/services] folder. The last folder [this!!src/main/java/org/softlang/util] contains some helpful [[Language:Java]] files for the deserialization.
+
+== Usage ==
+
+''Requirements:''
+* [[Technology:Maven]] (Version 2.x) as [[Technology:Eclipse]] plugin (http://eclipse.org/m2e/download/) or standalone (http://maven.apache.org/download.html)
+* [[Web server]] or [[Application server|application server]] based on the [[Technology:Servlet API|servlet]] technology (We recommend [[Technology:JBoss Application Server|JBoss application server]], but [[Technology:Apache Tomcat]] will also be sufficient).
+
+''Import (Eclipse only):''
+Import the strutsAnnotation implementation into eclipse as [[Technology:Maven]] project:
+* Click the "File"-button in the menu bar and "Import...".
+* Select the "Maven" folder and "Existing Maven Projects".
+* Browse to your local "strutsAnnotation" folder and "Finish".
+
+''Build:''
+* Run "mvn clean" and "mvn install" in the root directory of the struts 2 implementation or (''Eclipse only'') right click on your imported project and first click "Run As" -> "Maven clean" and second "Run As" -> "Maven install".
+* Copy the target/struts2app.war file to the web-application folder of your [[Web server]] ([[Technology:JBoss Application Server|JBoss application server]]: <JBossHome>/server/default/deploy).
+
+''Run:''
+* Start your [[Web server]] ([[Technology:JBoss Application Server|JBoss application server]]: <JBossHome>/bin/run.bat (Windows) or <JBossHome>/bin/run.sh (Unix)).
+* Start your [[Web browser]] and go to http://localhost:8080/struts2app.
+
+
+
+== Contributors ==
+
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Language:XML]]
+* [[uses::Language:HTML]]
+* [[uses::Language:CSS]]
+* [[uses::Technology:Struts]]
+* [[uses::Technology:Servlet API]]
+* [[uses::Technology:Maven]]
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+* [[Feature:Distribution]]
+* [[Feature:Browsing]]
+* [[Feature:Web UI]]
+* [[instanceOf::Theme:Web programming]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Theme:Web applications in Java]]
+* [[developedBy::Contributor:Rodrigo Bonifacio]]
+* [[reviewedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,28 @@
+== Headline ==
+
+An [[algorithm]] to solve the [[search problem]]
+
+== Illustration ==
+
+Consider the following list of ints as the input for sorting:
+
+<syntaxhighlight language=haskell>
+[2,4,3,1,4]
+</syntaxhighlight>
+
+A search algorithm returns ''True'' if asked to search for 1 and ''False'' for 5.
+
+See [[linear search]] and [[binary search]] for specific search algorithms.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Search_algorithm, 14 April 2012)
+
+In computer science, a search algorithm is an algorithm for finding an item with specified properties among a collection of items. The items may be stored individually as records in a database; or may be elements of a search space defined by a mathematical formula or procedure, such as the roots of an equation with integer variables; or a combination of the two, such as the Hamiltonian circuits of a graph.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Search_algorithm]]
+* [[isA::Algorithm]]
+* [[relatesTo::Search problem]]
+* [[instanceOf::Namespace:Concept]]

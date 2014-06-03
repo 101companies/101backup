@@ -1,0 +1,97 @@
+== Headline ==
+
+[[Database programming]] in [[Language:Haskell]] with [[Technology:HDBC]]
+
+== Motivation ==
+
+The implementation demonstrates [[database programming]] in [[Language:Haskell]] with [[Technology:HDBC]]. That is, [[Technology:HDBC]] is used to access a [[database]] with company data from within Haskell by means of embedded [[Language:SQL]]. In particular, simple [[Prepared statement|(prepared) SQL statements]] for totaling and cutting salaries are implemented in this manner. SQL query results are mapped to HDBC's Haskell data types for results; query results are fetched in a lazy manner. The connection to the [[Technology:MySQL]] database is realized by means of an [[Technology:ODBC]] back-end. Hence, the Haskell code for cutting and totaling salaries is independent from the concrete [[DBMS]]. The implementation is only dynamically typed in the sense that the database schema is not leveraged in any way to statically typecheck the Haskell code. See [[Contribution:haskellDB]] for a schema-ware approach to database programming in Haskell.
+
+== Illustration ==
+
+=== Connecting ===
+
+In [this!!Main.hs] we connect to the MySQL database by using an ODBC driver and appropriate connection information:
+
+<syntaxhighlight lang="haskell" source="hdbc/Main.hs">
+let connString = "Driver={MySQL ODBC 5.1 Driver};"
+              ++ "Server=localhost;"
+              ++ "Port=3306;"
+              ++ "Database=101companies;"
+              ++ "User=root;"
+conn <- connectODBC connString
+</syntaxhighlight>
+
+=== Totaling ===
+
+The function <syntaxhighlight lang="haskell" enclose="none">total</syntaxhighlight> defines a statement to total all salaries:
+
+<syntaxhighlight lang="haskell" source="hdbc/Total.hs">
+total :: IConnection conn => conn -> String -> IO Double
+total conn cName = do
+     stmt <- prepare conn $ 
+        "SELECT salary " ++ 
+        "FROM employee, company " ++ 
+        "WHERE company.name = ? and " ++ 
+        "company.id = employee.cid"
+     execute stmt [toSql cName]
+     res <- fetchAllRows stmt
+     return $ sum (map (fromSql.head) res)        
+</syntaxhighlight>
+
+In lines 3-7 we use a prepared statement in which the company name placeholder is then replaced by the given name <syntaxhighlight lang="haskell" enclose="none">cName</syntaxhighlight>. The statement is executed and we use the lazy HDBC function <syntaxhighlight lang="haskell" enclose="none">fetchAllRows</syntaxhighlight> in line 9 to get all salaries, which we then sum up lazy to a <syntaxhighlight lang="haskell" enclose="none">Double</syntaxhighlight> value and return in line 10. That is, salaries are fetched one by one from the database.
+We can now use the open connection to total all salaries:
+<syntaxhighlight lang="haskell" source="hdbc/Main.hs">
+let cName = "meganalysis" 
+oldTotal <- total conn cName
+</syntaxhighlight>
+
+Functionality to cut all salaries uses an UPDATE statement instead of SELECT (see [this!!Cut.hs] for details).
+
+== Architecture ==
+
+[this!!Company.sql] and [this!!Meganalysis.sql] provide SQL-scripts to create and populate company tables. [this!!Total.hs] and [this!!Cut.hs] provide totaling and cutting functionality using SQL statements. [this!!Main.hs] collects test scenarios for totaling and cutting.
+
+== Usage ==
+
+=== Setup ===
+
+We need a local database server.
+In the following we explain the steps for XAMPP <cite>xampp</cite>.
+We also need an SQL tool to create and populate tables.
+In the following we explain the steps for the MySQL Workbench <cite>mysqlworkbench</cite>.
+
+* Download and install XAMPP.
+* Open the "XAMPP Control Panel" and start "Apache" and "Mysql".
+* A local MySQL Server is now running:
+** '''Server Host''': localhost       
+** '''Port''': 3306             
+** '''Username''': root             
+** '''Password''': (empty password) 
+* Connect to the database in MySQL Workbench.
+* Select the "101companies" schema or create it.
+* Create company tables: Run the SQL script [this!!Company.sql].
+* Populate company tables: Run the SQL script [this!!Meganalysis.sql].
+
+=== Testing ===
+
+* [this!!Main.hs] has to be loaded into GHCi. 
+* The <syntaxhighlight lang="haskell" enclose="none">main</syntaxhighlight> function has to be applied.
+* The output should be equal to the content of the file [this!!baseline].
+One can also use the [this!!Makefile] with a target ''test'' for [[test automation]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:SQL]] (MySQL dialect)
+* [[uses::Technology:HDBC]]
+* [[uses::Technology:MySQL]]
+* [[uses::Technology:GHCi]]   
+* [[uses::Technology:ODBC]]   
+* [[uses::Technology:XAMPP]] 
+* [[uses::Technology:MySQL Workbench]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Persistence]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

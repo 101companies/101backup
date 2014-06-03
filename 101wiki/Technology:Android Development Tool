@@ -1,0 +1,17 @@
+== Headline ==
+
+A plugin for [[Technology:Eclipse]] to integrate [[Technology:Android]]
+
+== Description ==
+
+ADT is a [[plugin]] for the [[Technology:Eclipse]] IDE. It gives a integrated environment in which to develop apps for the [[Technology:Android]] platform. It extends the capabilites of [[Technology:Eclipse]] to let a quickly set up new [[Android project]]s, build an app UI, debug a app, and export signed (or unsigned) app packages (APKs) for distribution. 
+
+== Technologies ==
+
+* [[Technology:Eclipse]]
+
+== Metadata ==
+* [[instanceOf::toolkit]]
+* [[identifies::http://developer.android.com/tools/help/adt.html]]
+* [[linksTo::http://developer.android.com/sdk/installing/installing-adt.html]]
+* [[instanceOf::Namespace:Technology]]

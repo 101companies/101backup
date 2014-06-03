@@ -1,0 +1,83 @@
+== Headline ==
+
+[[Model to Model transformation]]s with [[Language:ATL]]
+
+== Motivation ==
+[[Model to Model transformation]]s with [[Language:ATL]] are exercised in this implementation. The [[metamodel]]s used are given in [[Language:Ecore]], models are in [[Language:XMI]]. Two different means of execution are shown. One based on loading the [[model]]s with [[Technology:EMF]] and one directly relying on the ATL Framework. The implementation uses the Total scenario to show a [[exogenous model transformation]]. The second transformation, the Cut scenario, is a [[endogenous model transformation]]. Additionally, for the Cut scenario, the [[Language:ATL]] [[refinement mode]] is used, in which only those model elements are altered for which rules exist.   
+
+== Illustration ==
+
+The transformations used in this example are Model-To-Model Transformations. Therefore, all transformations use an model as input and create an model as an output. 
+The Cut transformation uses the Company metamodel and an company that conforms to this metamodel and produces an model, that conforms to the company metamodel. The transformation is refining, which means that every element for which no rule is defined isn't modified in the target model. Therefore, the only rule of the transformation is the Employee2Employee rule.
+<syntaxhighlight lang="text">
+rule Employee2Employee {
+	from
+	 s : Company!Employee 
+	to
+	 t : Company!Employee (
+	   salary <- s.salary / 2  -- cutting
+	 )
+}
+</syntaxhighlight>
+This rule just takes an Employee (called s) and creates an Employee in the target model (called t), whose salary is the same as the salary of s divided by 2.
+The ComputeTotal transformation uses the Company metamodel and a company that conforms to this metamodel and creates an double value. Since ATL transformations are model to model transformations, a model representing the double value is used. 
+<syntaxhighlight lang="text">
+rule Company2Total {
+	from
+	 company : Company!Company 
+	to 
+	 t : Total!TotalWrapper (
+	   	total <- Company!Employee.allInstances() -> collect(e | e.salary) -> sum()			
+	 )
+}
+</syntaxhighlight>
+The rule creates a collection of the salary values of all employees in the source model and then takes the sum from the values in the collection. 
+
+== Architecture ==
+* Company.ecore is the metamodels for companies
+* Total.ecore is a wrapper for a double value.
+* metamodels can be found in the "Metamodel" directory
+
+
+* The cut scenario is implementet in Cut.atl
+* Company.ecore is used for input and output
+
+
+* The total scenario is implemented in Total.atl
+* Company.ecore is used for input
+* Total.ecore is used for output
+
+
+* sampleCompany.xmi is the source model for all transformations
+* sampleCompany.xmi is in the "Models" directory
+
+== Usage ==
+A Eclipse version with an installed ATL plugin is needed to execute the transformations (e.g. [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor the EMF version] with the installed ATL Framework).
+
+Steps:
+* The project should be imported into Eclipse
+* It will provide a executable Java file called RunTransfoJava.java. It uses EMF to start the transformation.
+* Right click on the java file and select "Run As" -> "Java Application"
+
+Comments:
+* The output models can be found in Models/Java.
+* The project might need to be refreshed, before Eclipse shows the results.
+
+== Metadata ==
+* [[uses::Language:ATL]]
+* [[uses::Language:Ecore]]
+* [[uses::Language:Java]]
+* [[uses::Language:XMI]]
+* [[uses::Technology:EMF]]
+* [[uses::Technology:Eclipse]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Hugo  Brunelière]]
+* [[reviewedBy::Contributor:Ralf Lämmel]]
+* [[reviewedBy::Contributor:Martin Leinberger]]
+* [[instanceOf::Theme:MDE]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,13 @@
+== Intent ==
+
+a [[Library|library]] for creating reusable software components in [[Language:Java]]
+
+== Technologies ==
+
+* [[Technology:Java SE]]
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[linksTo::http://download.oracle.com/otndocs/jcp/7224-javabeans-1.01-fr-spec-oth-JSpec/]]
+* [[identifies::http://en.wikipedia.org/wiki/JavaBean]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,24 @@
+== Headline ==
+
+The [[Language:Haskell|Haskell]]-related sub-chrestomathy of the [[@project]]
+== Descrciption ==
+
+101haskell, as part of 101companies, collects tiny or small Haskell-based software systems ("contributions") designed to serve the didactic purpose of a) presenting Haskell-based solutions to a number of general system requirements as defined by the [[@project]] and b) exercising alternative applicable programming techniques and technologies for the requirements. 101haskell is essentially the Haskell-specific sub-chrestomathy of the 101companies chrestomathy which covers dozens of programming and software languages. It happens that Haskell has played a special role in the 101com- panies project, i.e., Haskell has been used to bootstrap and demonstrate many capabilities of 101, e.g., the use of semantic properties, the use of metamodels and namespaces in content management, and the curation of Wikipedia and textbook links. (To a slighly reduced extent, this is also true for Java.)
+
+All 101haskell contributions are readily linked to [[Language:Haskell]].
+
+The contributions are also organized in themes as follows:
+
+* [[Theme:Haskell introduction|Haskell introduction]]: Introduction to the Haskell language
+* [[Theme:Haskell data|Haskell data]]: Data modeling techniques and variations
+* [[Theme:Haskell potpourri|Haskell potpourri]]: Diverse feature and technology coverage
+* [[Theme:Haskell genericity|Haskell genericity]]: Generic functional programming, e.g., with [[SYB]].
+
+The contributions follow the overall feature model of the [[@system]].
+
+Most of the contributions are closs-room-tested, e.g., in the [[Course:Lambdas in Koblenz]].
+== Metadata ==
+
+* [[identifies::http://softlang.uni-koblenz.de/101haskell]]
+* [[identifies::https://github.com/101companies/101haskell]]
+* [[instanceOf::Namespace:101]]

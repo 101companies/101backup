@@ -1,0 +1,14 @@
+== Headline ==
+
+An [[array]]-like data structure amenable to vector processing
+
+== Details ==
+
+Parallel arrays provide an alternative representation for arrays of records such that multiple arrays are used for the various components of the array. In essence, parallel arrays are arrays where the actual arrays only use primitive types. In this manner, parallel arrays are more suitable for vector processors for [[data parallelism]]. 
+
+In the context of [[Technology:DPH]], the term "parallel array" is also used in a slightly different manner. That is, a parallel array is essentially an array that is amenable to data parallelism. Incidentally, those arrays are also assumed to use a primitive element type.
+
+== Metadata ==
+* [[instanceOf::Data structure]]
+* [[identifies::http://en.wikipedia.org/wiki/Parallel_array]]
+* [[instanceOf::Namespace:Concept]]

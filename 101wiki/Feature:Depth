@@ -1,0 +1,54 @@
+== Headline ==
+
+Compute the nesting depth of departments
+
+== Description ==
+
+The nesting depth of departments within a company is to be computed; see below for details. Let's assume that the management of the company is interested in the nesting depth as a simple indicator for the complexity of the company (or particular departments thereof) in the sense of a hierarchical organization. Nesting depth, together possibly with other metrics and information, could feed into the discussion of reorganizing business structures.
+
+The nesting depth is computed as follows:
+* The depth of a department is 1 + the maximum of the depths of its sub-departments.
+* In particular, the depth of a department without sub-departments is 1.
+* The depth of a company is the maximum of the depths of its (immediate) departments.
+
+== Motivation ==
+
+The feature may be implemented as a [[query]], potentially making use of a suitable [[query language]]. Conceptually, the required query is non-trivial in that it needs to process company structure recursively so that nesting of departments can be properly observed. For instance, it is not straightforward to design a [[Language:SQL]] query that computes indeed nesting depth on a normalized relational schema for company data. Thus, it shall be interesting to see how different software languages, technologies, and implementations succeed in realizing the feature.
+
+== Illustration ==
+
+The feature is illustrated with a [[Function]] in [[Language:Haskell]] that works on top of appropriate [[algebraic data type]]s for company data; the function recurses into company data in a straightforward manner and it counts departments along the way:
+
+<syntaxhighlight lang="haskell">
+depth :: Company -> Int
+depth (Company   ds) = max' (map depth' ds)
+  where
+    max' = foldr max 0
+    depth' :: Department -> Int
+    depth' (Department     ds  ) = 1 + max' (map depth' ds)
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:haskellComposition]].
+
+== Relationships ==
+
+* See [[Feature:Total]] for a simpler query scenario. 
+* Indeed, the present feature should be tackled only after [[Feature:Total]]. 
+* The present feature can only usefully instantiated on top of [[Feature:Hierarchical_company]], as it assumes nesting of departments for non-trivial results.
+
+== Guidelines ==
+
+* The ''name'' of an operation for computing the nesting depth of departments should involve the term "depth".
+* A suitable ''demonstration'' of the feature's implementation should compute the depth of a sample company.
+* See [[Feature:Total]] for more detailed guidelines on a query scenario, which apply similarly to the present feature.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Hierarchical organization]]
+* [[linksTo::http://en.wikipedia.org/wiki/Restructuring]]
+* [[isA::Functional requirement]]
+* [[isA::Query]]
+* [[isA::Optional feature]]
+
+* [[implies::Feature:Hierarchical_company]]
+* [[instanceOf::Namespace:Feature]]

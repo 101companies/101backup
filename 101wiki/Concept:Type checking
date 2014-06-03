@@ -1,0 +1,28 @@
+== Headline ==
+
+Verification of programs or parts thereof to be of the right types
+
+== Illustration ==
+
+A [[programming language]] implementation may perform type checking at compile time or prior to interpretation or during run time. Consider, for example, the following function for incrementing [[Integer|ints]] in Haskell which favors compile-time type checking (or type checking prior to interpretation):
+
+<syntaxhighlight lang="haskell">
+inc :: Int -> Int
+inc x = x + 1
+</syntaxhighlight>
+
+This function type-checks because the [[function definition]] is in compliance with the stated [[type signature]]. Now assume that the function signature would have been instead this one:
+
+<syntaxhighlight lang="haskell">
+inc :: Int -> Bool
+inc x = x + 1
+</syntaxhighlight>
+
+Obviously, type checking would be bound to fail on this example, as the result type of the function is ''Int'' rather than ''Bool''.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming language]]
+* [[linksTo::http://en.wikipedia.org/wiki/Type_system]]
+* [[linksTo::http://c2.com/cgi/wiki?TypeChecking]]
+* [[instanceOf::Namespace:Concept]]

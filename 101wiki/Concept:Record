@@ -1,0 +1,13 @@
+== Headline ==
+
+A labeled collection of component values
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Record_(computer_science)]]
+* [[instanceOf::Data structure]]
+* [[instanceOf::Vocabulary:Data structure]]
+* [[relatesTo::Record type]]
+* [[relatesTo::List]]
+* [[relatesTo::Tuple]]
+* [[instanceOf::Namespace:Concept]]

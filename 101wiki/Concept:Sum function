@@ -1,0 +1,25 @@
+== Headline ==
+
+Compute the sum of a list of numbers
+
+== Illustration ==
+
+[[Language:Haskell]]'s [[Prelude module]] function offers the [[sum function]]:
+
+<syntaxhighlight lang="haskell">
+Prelude> sum [1..5]
+15
+</syntaxhighlight>
+
+For what it matters, this function can be defined in terms of the [[fold function]] as follows:
+
+<syntaxhighlight lang="haskell">
+Prelude> let sum = foldr (+) 0
+Prelude> sum [1..5]
+15
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Common function]]
+* [[instanceOf::Namespace:Concept]]

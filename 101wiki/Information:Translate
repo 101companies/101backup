@@ -1,0 +1,10 @@
+== Headline ==
+
+How to translate terms used on 101wiki
+
+== Description ==
+
+Specifically, concepts according to [[Namespace:Concept]] may need to be translated. Any standard means of translation can be used, of course, but Wikipedia can also be leveraged directly, whenever a page is linked to Wikipedia. For instance, [[Sorting algorithm]] links to http://en.wikipedia.org/wiki/Sorting_algorithm (using, in fact, an [[Property:Identifies]]), which in turn is linked to the German Wikipedia page http://de.wikipedia.org/wiki/Sortierverfahren. Thus, one cannot just translate terms, in fact, one can read about concepts in the preferred language, without using any unstructured means of web search.
+
+== Metadata ==
+* [[instanceOf::Namespace:Information]]

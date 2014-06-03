@@ -1,0 +1,11 @@
+== Headline ==
+
+A syntax without semantically irrelevant parts
+
+== Metadata ==
+
+* [[isA::Syntax]]
+* [[relatesTo::Concrete syntax]]
+* [[linksTo::https://en.wikipedia.org/wiki/Abstract_syntax]]
+* [[linksTo::http://en.wikipedia.org/wiki/Parse_tree]]
+* [[instanceOf::Namespace:Concept]]

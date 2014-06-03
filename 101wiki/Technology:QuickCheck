@@ -1,0 +1,217 @@
+== Headline ==
+
+A [[Language:Haskell|Haskell]] combinator library for software [[testing]]
+== Illustration ==
+
+=== QuickCheck basics ===
+
+QuickCheck supports testing based on properties in the sense of parameterized [[assertion]]s. Consider the following simple properties:
+
+<syntaxhighlight lang="haskell">
+-- Double negation is the identity
+prop_double_negation x = not (not x) == x
+
+-- Addition on number types is commutative
+prop_addition_commutative x y = x + y == y + x
+</syntaxhighlight>
+
+The first property is obviously parameterized in a Boolean value to test a trivial law of negation. The second property is parameterized in two numbers (for instance, Ints) to test a trivial law of multiplication. 
+
+Given a property, QuickCheck can check it quickly with the function ''quickCheck''. The idea is that QuickCheck generates some actual values for the parameters of the properties and checks whether the instantiated properties evaluate to ''True''. For instance:
+
+<pre>
+> quickCheck prop_double_negation
++++ OK, passed 100 tests.
+> quickCheck prop_addition_commutative
++++ OK, passed 100 tests.
+</pre>
+
+It may be interesting to study the function signature of ''quickCheck'':
+
+<syntaxhighlight lang="haskell">
+> :t quickCheck
+quickCheck :: Testable prop => prop -> IO ()
+</syntaxhighlight>
+
+Thus, there is a [[type class]] ''Testable'' designated to testable property types, which obviously includes unary operations on Booleans and binary operations on number types, as demonstrated with the two initial examples. Let us show (the existence of) two instances:
+
+<syntaxhighlight lang="haskell">
+> :i Testable
+class Testable prop where ...
+instance Testable Bool
+instance (Arbitrary a, Show a, Testable prop) => Testable (a -> prop)
+...
+</syntaxhighlight>
+
+The idea is that a Boolean is a non-parameterized property, which can be trivially checked to be ''True''. Recursively, more completex property types can be constructed from a parameter type ''a'' to an existing property type. However, for a parameter type to be suitable, it must instantiate in turn the [[type class]] Arbitrary, which is essentially serving for test-data generation. It is clear that default instances are available for Booleans and Ints, as demonstrated with checking quickly the two initial examples. We will discuss shortly how test-data generation can be arranged.
+
+=== Failing checks ===
+
+Consider the following (unreasonable) property:
+
+<syntaxhighlight lang="haskell">
+-- An unreasonable property for take
+no'prop_take n l = length (take n l) == n
+</syntaxhighlight>
+
+Randomized test-data generation may lead to this outcome:
+
+<pre>
+> verboseCheck no'prop_take
+Passed:  
+0
+[]
+Passed: 
+1
+[()]
+Passed:  
+0
+[]
+Failed:  
+1
+[]
+...
+</pre>
+
+Thus, taking 0 elements of an empty list succeeds. Also, taking 1 elements of a singleton list (with "()" as the only element) succeeds. However, taking 1 elements of an empty list fails, since the resulting list would be expected to be of length 1, as expressed by the unreasonable property.
+
+A more reasonable property is this:
+
+<syntaxhighlight lang="haskell">
+-- A reasonable property for take
+prop_take n l = length (take n l) <= n
+</syntaxhighlight>
+
+The property says that the length of the list returned by ''take'' may as well be smaller than the number of elements requested.
+
+=== Verbosity and configurability ===
+
+Before looking into generation of "arbitrary" test data, let us understand more deeply how the ''quickCheck'' function works. In fact, let us invoke its "verbose" partner, ''verboseCheck'':
+
+<pre>
+> verboseCheck prop_double_negation
+Passed:  
+True
+Passed: 
+True
+Passed:  
+False
+Passed:  
+True
+...
++++ OK, passed 100 tests.
+</pre>
+
+In this particular case, clearly, much less than 100 tests are needed. In other cases, much more than 100 tests may be preferred. Not surprisingly, QuickCheck can be configured in a number of dimensions, including the number of test cases to consider. For instance:
+
+<pre>
+> quickCheckWith stdArgs { maxSuccess = 101 } prop_addition_commutative 
++++ OK, passed 101 tests.
+</pre>
+
+=== Test-data generation ===
+
+Consider the following property that, by definition, should hold for any [[monoid]]:
+
+<syntaxhighlight lang="haskell">
+-- A monoid's mempty is a unit (identity)
+prop_identity x = prop_left_identity && prop_right_identity
+ where
+  prop_left_identity = mempty `mappend` x == x
+  prop_right_identity = x `mappend` mempty == x
+</syntaxhighlight>
+
+We better specify the monoid that we want this property to be tested for. For what's it worth, we mention that the property would otherwise be checked for the default of the "()" monoid. Using a type annotation, let us test the property for the summation monoid, relative to the Int type:
+
+<pre>
+> quickCheck (prop_identity :: (Sum Int) -> Bool)
++++ OK, passed 100 tests.
+</pre>
+
+Thus, the property should be applied to 100 randomly generated Ints. This demonstration though requires a designated instance of the [[type class]] ''Arbitrary'' so that it is known to QuickCheck how to generate test data for the monoid at hand, as there is no standard instance for this case. The type class is defined as follows:
+
+<syntaxhighlight lang="haskell">
+class Arbitrary a where
+  arbitrary :: Gen a
+  -- another member suppressed for brevity
+</syntaxhighlight>
+
+The [[type constructor]] ''Gen'' is effectively a [[monad]] for randomized test-data generation such that the state of the underlying random-number generator is passed around along generation and composition of bigger test data from smaller test-data components is facilitated. Consider the following ''Arbitrary'' instance for the summation monoid:
+
+<syntaxhighlight lang="haskell">
+-- An Arbitrary instance for the summation monoid
+instance (Num x, Arbitrary x) => Arbitrary (Sum x)
+  where
+    arbitrary = do
+      x <- arbitrary
+      return (Sum x)
+</syntaxhighlight>
+
+The member ''arbitrary'' is defined by first generating an "arbitrary" number and then wrapping it up in the [[data constructor]] for summation. Thus, test-data generation for summation is effectively delegated to test-data generation for numbers.
+
+=== Testing for algebraic data types ===
+
+Ultimately, we also want to check quickly properties of functionality that involves programmer-defined algebraic data types. In this case, test-data generators need to be defined carefully. For illustration, consider the following algebraic data type for expression forms along with functions for evaluation and simplification:
+
+<syntaxhighlight lang="haskell">
+-- Simple expression forms
+data Expr = Const Int | Add Expr Expr
+ deriving (Eq, Show, Read)
+
+-- Evaluation of expressions
+eval :: Expr -> Int
+eval (Const x) = x
+eval (Add x y) = eval x + eval y
+
+-- Simplification based on the unit law for addition
+simplify :: Expr -> Expr
+simplify (Add (Const 0) x) = simplify x
+simplify (Add x (Const 0)) = simplify x
+simplify x = x
+</syntaxhighlight>
+
+We submit the following property:
+
+<syntaxhighlight lang="haskell">
+-- Simplification preserves evaluation
+prop_simplify x = eval x == eval (simplify x)
+</syntaxhighlight>
+
+This property simply states that simplification does not affect evaluation. We suggest the following test-data generator:
+
+<syntaxhighlight lang="haskell">
+-- A generator for expressions
+instance Arbitrary Expr
+  where
+    arbitrary = do
+      -- Pick either "Const" or "Add"
+      n <- choose (0, 1) :: Gen Int
+      case n of
+        0 -> do
+          -- Pick a constant in the range [0..10]
+          x <- choose (0,10) :: Gen Int
+          return (Const x)
+        1 -> do
+          -- Pick "arbitrary" operands for addition
+          x <- arbitrary 
+          y <- arbitrary
+          return (Add x y)
+</syntaxhighlight>
+
+The generator is defined with the following hypotheses in mind. First, it is not important to have many different constants; it is important though to exercise "0" (so that simplifications related to the unit law may be exercised in turn). Accordingly, numbers in the range [0..10] are generated. Second, when considering the addition form of expression, we simply resort to "arbitrary" operands, thereby performing test-data generation in a uniform, recursive manner. 
+
+The property appears to hold:
+
+<pre>
+> quickCheckWith stdArgs { maxSuccess = 1234 } prop_simplify 
++++ OK, passed 1234 tests.
+</pre>
+== Metadata ==
+
+* [[instanceOf::Testing framework]]
+* [[relatesTo::Unit testing]]
+* [[identifies::http://en.wikipedia.org/wiki/QuickCheck]]
+* [[identifies::http://hackage.haskell.org/packages/archive/QuickCheck/2.4.0.1/doc/html/Test-QuickCheck.html]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Introduction to QuickCheck]]
+* [[linksTo::http://stackoverflow.com/questions/10039416/use-quickcheck-tests-with-cabal]]
+* [[instanceOf::Namespace:Technology]]

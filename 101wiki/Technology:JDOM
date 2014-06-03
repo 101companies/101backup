@@ -1,0 +1,14 @@
+== Intent == 
+
+an [[API|API]] ([[API implementation|implementation]]) for tree-based XML processing
+
+== Links ==
+
+* [http://www.jdom.org/ JDOM home page]
+* [http://en.wikipedia.org/wiki/JDOM Wikipedia]
+
+
+
+== Metadata ==
+* [[instanceOf::API implementation]]
+* [[instanceOf::Namespace:Technology]]

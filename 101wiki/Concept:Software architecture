@@ -1,0 +1,13 @@
+== Headline ==
+
+A high-level depiction of a [[software system]] or [[software component|component]]
+
+== Metadata ==
+
+* [[linksTo::http://www.sei.cmu.edu/architecture/]]
+* [[linksTo::http://dx.doi.org/10.1016/j.scico.2004.03.012]]
+* [[linksTo::http://en.wikipedia.org/wiki/Software_architecture]]
+* [[linksTo::http://en.wikipedia.org/wiki/ISO/IEC_42010]]
+* [[linksTo::http://msdn.microsoft.com/en-us/library/ee658098.aspx]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

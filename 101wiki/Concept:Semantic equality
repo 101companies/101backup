@@ -1,0 +1,82 @@
+== Headline ==
+
+[[Equality]] with taking into account semantics of data
+
+== Illustration ==
+
+We speak of semantic equality when we take semantic properties of the underlying data into account. Semantic equality is to be contrasted with [[structural equality]].
+
+Consider the following type for the representation of arithmetic expressions:
+
+<syntaxhighlight lang="haskell">
+-- Simple arithmetic expressions
+data Expr = Const Int | Add Expr Expr
+</syntaxhighlight>
+
+When assuming straightforward structural equality, then the following properties should hold:
+
+<syntaxhighlight lang="haskell">
+> Const 42 == Const 42
+True
+> Const 42 == Add (Const 20) (Const 22)
+False
+</syntaxhighlight>
+
+The second equality test fails because the constant term is clearly structurally unequal to the addition term. Let us take semantic properties of the underlying data into account. One option for the given example is that we say that two arithmetic expressions are equal if and only if they evaluate to the same result. In Haskell, this is expressed with the following [[type-class instance]] for the [[type class]] ''Eq'':
+
+<syntaxhighlight lang="haskell">
+-- Equality based on evaluation
+instance Eq Expr
+  where
+    x == y = eval x == eval y
+      where
+        eval (Const i) = i
+        eval (Add e1 e2) = eval e1 + eval e2
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+*Main> Const 42 == Add (Const 20) (Const 22)
+True
+*Main> Const 42 == Const 41
+False
+</syntaxhighlight>
+
+Semantic equality based on proper evaluation does not quite generalize because, we may not be able to evaluate the structure at hand. Think of arithmetic expressions, for example, when they contain free variables. Often, semantic equality is defined relative to selected semantic properties that are readily attainable. For instance, consider semantic equality of our arithmetic expressions modulo associativity of addition. In Haskell, this is expressed as follows:
+
+<syntaxhighlight lang="haskell">
+-- Lawful equality
+instance Eq Expr
+  where
+    x == y = eq (normalize x) (normalize y)
+      where
+
+        -- Associate addition to the right
+        normalize :: Expr -> Expr
+        normalize x@(Const i) = x
+        normalize (Add x@(Const i) y) = Add x (normalize y)
+        normalize (Add (Add x y) z) = normalize (Add x (Add y z))
+
+        -- Uniform (structural) equality
+        eq :: Expr -> Expr -> Bool
+        eq (Const i) (Const j) = i == j
+        eq (Add e1 e2) (Add e3 e4) = eq e1 e3 && eq e2 e4
+        eq _ _ = False
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+> let c1 = Const 1
+> let c2 = Const 2
+> let c3 = Const 3
+> Add c1 (Add c2 c3) == Add (Add c1 c2) c3
+True
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[isA::Equality]]
+* [[relatesTo::Structural equality]]
+* [[instanceOf::Namespace:Concept]]

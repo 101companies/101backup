@@ -1,0 +1,62 @@
+== Headline ==
+
+[[Web programming]] using the Django Framework in [[Language:Python]]
+
+== Characteristics ==
+Django is a web framework written in [[Language:Python]], it provides a long list of features. This contribution makes use of the template language of Django to produce html output. It supports browsing the company to view Company, Department and Employee. To make this possible, there are special urls to access them by http get. The implementation of total and cut are implemented in an object oriented style.
+
+== Illustration ==
+
+The implementation adapts the object model from [[Contribution:py3k]] but adds a few more methods to add support for browsing the company:
+
+<syntaxhighlight lang="python">
+def get dept(self, name):
+    return filter(bool, (d.get dept(name) for d in self.depts))[0]
+
+def get employee(self, name):
+    return filter(bool, (d.get employee(name) for d in self.depts))[0]
+</syntaxhighlight>
+
+The generation of the output is very straight forward:
+<syntaxhighlight lang="python">
+def index(request):
+    return render to response('index.html', { 'company' : company })
+
+def department(request, department name):
+    dept = company.get dept(department name)
+    return render to response('department.html', { 'dept' : dept })
+
+def employee(request, employee name):
+    e = company.get employee(employee name)
+    return render to response('employee.html', { 'e' : e})
+</syntaxhighlight>
+
+== Architecture ==
+
+The contribution is straightforward. 
+
+* [[ Feature:Hierarchical companies ]]: models.py
+* [[Feature:Total]]: models.py
+* [[Feature:Cut]]: models.py
+* [[Feature:Browsing]]: views.py
+
+== Usage ==
+
+The contribution has been tested with python 2.7 and an up-to-date version of Django.
+
+<pre>
+$ python manage.py runserver
+</pre>
+
+Then open localhost:8000 in your browser,
+
+== Metadata ==
+
+* [[uses::Language:Python]]
+* [[uses::Technology:Django]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Hierarchical_company]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Namespace:Contribution]]

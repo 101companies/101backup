@@ -1,0 +1,23 @@
+== Headline ==
+
+A step-by-step procedure for achieving a certain [[IO behavior]]
+
+== Illustration ==
+
+See [[greatest common divisor]] and [[linear search]] for examples of an algorithm which is described both semi-formally and in an actual programming language.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Algorithm, 14 April 2013)
+
+In mathematics and computer science, an algorithm [...] is a step-by-step procedure for calculations. Algorithms are used for calculation, data processing, and automated reasoning.
+
+More precisely, an algorithm is an effective method expressed as a finite list [...] of well-defined instructions [...] for calculating a function. [...] Starting from an initial state and initial input (perhaps empty), [...] the instructions describe a computation that, when executed, proceeds through a finite [...] number of well-defined successive states, eventually producing "output" [...] and terminating at a final ending state. The transition from one state to the next is not necessarily deterministic; some algorithms, known as randomized algorithms, incorporate random input.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Algorithm]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Program]]
+* [[relatesTo::Algorithmic problem]]
+* [[instanceOf::Namespace:Concept]]

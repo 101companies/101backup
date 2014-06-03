@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[design pattern]] that restricts the instantiation of a [[class]] to one [[object]] 
+
+== Metadata ==
+
+* [[identifies::A source that imports ANTLR]]
+* [[instanceOf::Design pattern]]
+* [[instanceOf::Namespace:Concept]]

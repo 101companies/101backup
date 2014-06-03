@@ -1,0 +1,73 @@
+== Headline ==
+
+A [[Language:Groovy|Groovy]]-based implementation that uses [[data flow variables]]
+
+== Motivation == 
+
+[[Language:Groovy|Groovy]] is one of the most well-known [[JVM languages]]. 
+One of its strength lies in the [[Technology:GPars|GPars]] , 
+which offers many different approaches to [[parallel programming]]. An 
+interesting concept is the [[concurrency]] based on [[data flow]]. The overall 
+idea is the creation of a temporal order between processes, seeing the availability 
+of certain values as [[constraints]]. This project demonstrates the usage of 
+this [[data flow]] [[concurrency]] in [[Language:Groovy|Groovy]] using [[data flow variables]].
+
+== Illustration ==
+
+Queries like [[Feature:Total]] depends on different values (e.g. 
+the [[Feature:Total]] of each department). Because these subqueries 
+are independent from each other they can be executed in parallel.
+
+In general, all subcomputations are outsourced in a new [[thread]]. Therefore, 
+these computations are encapsulated into [[Closure|closures]] and transfered 
+to the ''task'' method. If such a [[thread]] needs a value of a [[data flow variables|data flow variable]], 
+which is not bound (i.e. computed) yet, it is [[wait|suspended]] until its [[notify all|awoken]] 
+by the system. For compact programing [[Technology:GPars|GPars]] offers a 
+[[container]] like [[bean]], which properties are [[data flow variables]]. 
+These variables are initialized [[Lazy Evaluation|lazily]] the first time they are accessed. 
+An example for such a [[bean]] is ''totals''.
+
+ <nowiki>
+// outsourcing total computation for each the department
+depts.each() { d ->
+    task {
+    // adding dept's total as dataflow variable to the bean
+        totals.putAt d.name, d.total()
+    }
+}
+</nowiki>
+
+== Architecture ==
+
+* ''Company.groovy'' everything related to a company
+* ''Department.groovy'' everything related to a department
+* ''Employee.groovy'' everything related to an employee
+* ''Basic.groovy'' basic functionality tests with a sample company
+
+== Usage ==
+
+You need to install the [[Technology:Eclipse|Eclipse]] plugin [[Technology:Groovy-Eclipse|Groovy-Eclipse]].
+Update Site: [http://dist.springsource.org/release/GRECLIPSE/e3.7/]
+
+Then open ''Basic.groovy'' and start the [[Technology:JUnit|JUnit]] test case you like.
+The implementation has been tested with:
+* Eclipse IDE (Version 3.7)
+* Groovy-Eclipse: Eclipse plugin (Version 2.5.1)
+* GPars: Parallel computing framework (Version 0.12)
+* JUnit: Unit testing (Version 4.8.2)
+
+
+== Metadata ==
+
+* [[uses::Language:Groovy]] 
+* [[uses::Technology:Eclipse]] IDE (Version 3.7)
+* [[uses::Technology:Groovy-Eclipse]]  Eclipse plugin (Version 2.5.1)
+* [[uses::Technology:GPars]] Parallel computing framework (Version 0.12)
+* [[uses::Technology:JUnit]] Unit testing (Version 4.8.2)
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Task parallelism]]
+* [[developedBy::Contributor:Jan Baltzer]]
+* [[instanceOf::Framework|framework]]
+* [[instanceOf::Namespace:Contribution]]

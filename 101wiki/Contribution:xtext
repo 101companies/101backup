@@ -1,0 +1,52 @@
+== Headline ==
+
+[[IDE Creation]] with an XText- and Eclipse-based DSL editor
+
+== Motivation ==
+
+Based on an Xtext [[grammar]], [[model]] code and a corresponding DSL editor is generated, with which companies can be edited and operations for totaling and cutting salaries can be invoked. Textual syntax is described by the EBNF dialect of Xtext. [[Technology:Ecore]] is used for the representation of [[model]]s where the [[Technology:Ecore]] [[model]] is derived from the EBNF. The generated [[parser]] maps textual syntax to EObjects. Hence, this can be seen as a [[Text to Model transformation]]. The [[parser]] is ANTLR-based. The implementation hence also relates to [[Technology:EMF]]-based implementations such as [[Contribution:emf]] as well as ANTLR-based implementations such as [[Contribution:antlrParser]].
+
+== Architecture ==
+
+* [[Feature:Hierarchical_company]]: implemented by the generated EMF classes.
+* [[Feature:Total]]: manually implemented as verification in IOIJavaValidator.java
+* [[Feature:Cut]]: manually implemented as verification and corresponding editor quickfix in IOIJavaValidator.java and IOIQuickfixProvider.java.
+* [[Feature:Parsing]] TODO
+
+== Usage ==
+
+A Eclipse version with an installed xtext plugin is needed to execute the transformations (e.g. the  [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor the EMF version] with the installed xtext Framework).
+
+Steps:
+* The contribution should be imported into Eclipse (it will contain 3 Eclipse plugins)
+* io.iocompanies.lang.ioi will provide a file called GenerateIOI.mwe2, which is under src/org.ioicompanies.lang
+* Executing this file (by right clicking and then selecting "Run As" -> "MWE2 workflow") will result in the generation of a [[metamodel]] and the the [[editor]]
+* Then the runtime workbench can be started by right clicking on "org.ioicompanies.lang.ioi" and selecting "Run As" -> "Eclipse Application".
+
+The project will also provide a sample company. This file is called text.ioi and can be found in org.ioicompanies.lang.ioi. To use it, first a new project needs to be created ("File" -> "New" -> "Other" and then under "General" select "Project"). Then, copy the file into this newly created project and double click on it. Eclipse will ask if you want to add the XText nature to your project, which you should do. The file can then be edited with full auto completion support. 
+
+Comments:
+* You might need to refresh the Project Explorer in Eclipse (right click and then select "Refresh")
+
+== Issues ==
+
+* Usage information missing
+* Architecture information somewhat sparse
+* The information markers indicating the total salary per department are not correctly updated when updating salaries manually.
+
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Language:EBNF]]
+* [[uses::Technology:ANTLR]]
+* [[uses::Technology:Eclipse]]
+* [[uses::Technology:Ecore]]
+* [[uses::Technology:Xtext]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Rolf-Helge Pfeiffer]]
+* [[instanceOf::Theme:ANTLR]]
+* [[instanceOf::Theme:MDE]]
+* [[instanceOf::Namespace:Contribution]]

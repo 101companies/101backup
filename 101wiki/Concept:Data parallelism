@@ -1,0 +1,12 @@
+== Headline ==
+
+[[Parallelism]] focused on distributing data across parallel computing nodes
+
+== Details ==
+
+See the related notion of [[task parallelism]].
+
+== Metadata ==
+* [[instanceOf::Parallelism]]
+* [[identifies::http://en.wikipedia.org/wiki/Data_parallelism]]
+* [[instanceOf::Namespace:Concept]]

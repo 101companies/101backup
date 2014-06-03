@@ -1,0 +1,23 @@
+== Headline ==
+
+Parse an external format for company data
+== Description ==
+
+Users of the [[@system]] may need to exchange data with other systems or edit data independently of the system. To this end, some XML- or JSON-based format or a concrete textual or visual syntax may need to be supported. The corresponding representation format may actually be imposed on the system by external factors. Consequently, the [[@system]] may need to consume such an external representation through parsing, as covered by the present feature, or it may need to produce such data through unparsing, as covered by the extra [[Feature:Unparsing]].
+
+An implementation of parsing is to be demonstrated for a
+sample company as follows. In the most basic case, the implementation
+has to illustrate at least 'acceptance' of the input. Another option
+is that parsing populates a data model for companies. Yet another
+option is to perform the computation for totaling salaries according
+to [[Feature:Total]] along with parsing.
+
+== Relationships ==
+
+* [[Feature:Parsing]] is complemented by [[Feature:Unparsing]].
+* [[Feature:Parsing]] and [[Feature:Unparsing]] are related to [[serialization]], as covered by the designated [[Feature:Serialization]], but we speak of parsing specifically, when the [[@system]] needs to actually process (parse) the external format, thus going beyond the uniform use of a serialization framework.
+== Metadata ==
+
+* [[isA::Functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,13 @@
+== Headline ==
+
+The result of invoking certain [[abstraction]]s
+
+== Details ==
+
+For instance, the evaluation of a function application may return a result.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Argument]]
+* [[instanceOf::Namespace:Concept]]

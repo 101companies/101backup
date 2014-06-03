@@ -1,0 +1,9 @@
+== Intent ==
+
+a tool for software development
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Tool]]
+* [[linksTo::http://en.wikipedia.org/wiki/Programming_tool]]
+* [[instanceOf::Namespace:Concept]]

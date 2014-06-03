@@ -1,0 +1,13 @@
+== Headline ==
+
+Systematic exploration of a [[tree]]- or [[graph]]-like [[data structure]] in programming
+
+== Illustration ==
+
+Consider the problem of totaling the salaries of all employees in a company (e.g., according to [[Feature:Total]]). Assume that the company is represented as a tree- or graph-like structure (e.g., in the sense of terms of [[algebraic data type]]s, [[Language:XML]] trees, or [[object]] graphs). Thus, the aggregation of all the salaries boils down to a traversal of the tree (or the graph).
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Tree_traversal]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

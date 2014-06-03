@@ -1,0 +1,33 @@
+== Headline ==
+
+The namespace of advices, hints, etc.
+
+== Description ==
+
+The [[@project]] is an advanced knowledge resource which in turn also relies on an advanced infrastructure. [[Namespace:Information]] helps with using and contributing to the knowledge resource and the infrastructure. "Information" is used here in the broad sense to include advices, clues, hints, instructions, notes, tips, and what have you. Importantly, "information" is meant here in the sense of meta-knowledge about 101 as opposed to knowledge about technologies, languages, and concepts.
+
+== Illustration ==
+
+See basic information like this:
+* [[@explorer]]: How to discover 101 in a LinkedData sense?
+* [[Information:Contribute]]: How to contribute to 101?
+* [[Information:Markup]]: What markup to use?
+* [[Information:Contact]]: How to contact 101 HQ?
+* [[Information:Inform]]: How to add information?
+
+== Relationships ==
+
+* Namespaces as instance of [[Namespace:Namespace]], by themselves, also capture meta-knowledge, but namespaces are more focused on metamodels of pages on 101wiki, where the instances of [[Namespace:Information]] are more focused on informal pieces of meta-knowledge.
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the information.
+* '''Description''' (required): the description of the information.
+* '''Metadata''' (required):
+** The information must be declared to be, indeed, an instance of [[Namespace:Information]].
+** The information may be said to "relate to" to relevant pages on 101wiki.
+** The information may be linked to external resources.
+
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

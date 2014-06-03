@@ -1,0 +1,38 @@
+== Headline ==
+
+Cut the salaries of all employees in half.
+== Description ==
+
+For a given company, the salaries of all employees are to be cut in half. Let's assume that the management of the company is interested in a salary cut as a response to a financial crisis. Clearly, any real company is likely to respond to a financial crisis in a much less simplistic manner.
+== Motivation ==
+
+The feature may be implemented as a [[transformation]], potentially making use of a suitable [[transformation language|transformation]] or [[data manipulation language]]. Conceptually, the feature corresponds to a relatively simple and regular kind of transformation, i.e., an [[iterator-based transformation]], which iterates over a company' employees and updates the salaries of the individual employees along the way. It shall be interesting to see how different software languages, technologies, and implementations deal with the conceptual simplicity of the problem at hand.
+== Illustration ==
+
+The feature is illustrated with a statement in [[Language:SQL]] to be applied to an instance of a straightforward relational schema for companies where we assume that all employees belong to a single company:
+
+<syntaxhighlight lang="sql">
+UPDATE employee
+ SET salary = salary / 2;
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:mySqlMany]].
+== Relationships ==
+
+* See [[Feature:Total]] for a query scenario instead of a transformation scenario. 
+* In fact, [[Feature:Total]] is likely to be helpful in a ''demonstration'' of [[Feature:Salary cut]].
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical_company]].
+== Guidelines ==
+
+* The ''name'' of an operation for cutting salaries thereof should involve the term "cut". This guideline is met by the above illustration, if we assume that the shown SQL statement is stored in a SQL script with name "Cut.sql". Likewise, if [[OO programming]] was used for implementation, then the names of the corresponding methods should involve the term "cut".
+* A suitable ''demonstration'' of the feature's implementation should cut the salaries of a sample company. This guideline is met by the above illustration, if we assume that the shown SQL statement is executed on a database which readily contains company data. Queries according to [[Feature:Total]] may be used to compare salaries before and after the cut. All such database preparation, data manipulation, and query execution should preferably be scripted. By contrast, if [[OO programming]] was used, then the demonstration could be delivered in the form of unit tests.
+== Metadata ==
+
+* [[linksTo::http://www.thefreedictionary.com/salary+cut]]
+
+* [[isA::Functional requirement]]
+* [[isA::Transformation]]
+* [[isA::Type-preserving transformation]]
+* [[isA::Iterator-based transformation]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

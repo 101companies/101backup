@@ -1,0 +1,10 @@
+== Headline ==
+
+A function without a name based on [[lambda abstraction]]
+
+== Metadata ==
+
+* [[identifies::http://www.haskell.org/haskellwiki/Anonymous_function]]
+* [[linksTo::http://en.wikipedia.org/wiki/Lambda_calculus]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

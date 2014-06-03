@@ -1,0 +1,19 @@
+== Intent ==
+
+an implementation in a Pharo Smalltalk with the Moose capabilities.
+
+== Description ==
+
+== Usage ==
+
+1. Download and open Moose:
+http://moosetechnology.org/download
+
+2. Drag and drop load-101companies.st into Moose
+
+3. Choose FileIn
+
+== Metadata ==
+* [[uses::Technology:Pharo]]
+* [[uses::Language:Smalltalk]]
+* [[instanceOf::Namespace:Contribution]]

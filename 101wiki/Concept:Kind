@@ -1,0 +1,17 @@
+== Headline ==
+
+The type of a type constructor
+
+== Illustration ==
+
+When describing kinds, types are commonly referred to as "*", unary type constructors are referred to as "* -> *", etc. Let us draw illustrations from [[Language:Haskell]]:
+
+* ''()'' (i.e., the empty tuple type) is of kind "*".
+* ''[]'' (i.e., the list type constructor) is of kind "* -> *".
+* ''Either'' (i.e., the sum type constructor) is of kind "* -> * -> *".
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Kind_(type_theory)]]
+* [[identifies::http://www.haskell.org/haskellwiki/Kind]]
+* [[instanceOf::Namespace:Concept]]

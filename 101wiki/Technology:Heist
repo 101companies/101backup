@@ -1,0 +1,13 @@
+== Headline ==
+
+An [[Language:XHTML]] [[template engine]] for [[Language:Haskell]]
+
+== Discussion ==
+
+With Heist one can combine templates in a flexible manner. To generate dynamic web pages one can bind strings and XHTML fragments (splices) to template variables in Haskell <cite>hackageHeist, snapHeist</cite>.
+
+== Metadata ==
+* [[instanceOf::Template engine]]
+* [[identifies::http://hackage.haskell.org/package/heist]]
+* [[linksTo::http://snapframework.com/docs/tutorials/heist]]
+* [[instanceOf::Namespace:Technology]]

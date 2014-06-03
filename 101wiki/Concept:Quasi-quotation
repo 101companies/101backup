@@ -1,0 +1,11 @@
+== Headline ==
+
+Interpolation of quotation and evaluation
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Quasi-quotation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Lisp_(programming_language)#Self-evaluating_forms_and_quoting]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Quasiquotation]]
+* [[linksTo::http://docs.racket-lang.org/reference/quasiquote.html]]
+* [[instanceOf::Namespace:Concept]]

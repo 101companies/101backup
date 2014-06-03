@@ -1,0 +1,29 @@
+== Intent ==
+
+This contribution is supposed to demonstrate YAPAF(1) capabilities on the basis of [Contribution:php] by implementing logging.
+
+(1) https://github.com/SchulteMarkus/YAPAF
+
+== Motivation ==
+
+YAPAF "Yet another PHP aspect framework" brings aspect-capabilities to [Language:PHP], similar to [Language:AspectJ]. This contribution uses YAPAF to implement some logging-feature to [Contribution:php] realized via a YAPAF-aspect. The contribution is showing a possible use-case for using YAPAF.
+
+== Details ==
+
+You can find the contribution at https://github.com/SchulteMarkus/101repo-php-yapaf/tree/master/contributions/php-yapaf
+
+The aspects are defined at dir "aspects". As code is evolving, please have a look at the repository to see an YAPAF-aspect in action.
+
+An an abstract, a YAPAF-aspect is a simple php-class including one or more methods. Using annotaions, each method defines it's possible JoinPoints:
+
+<syntaxhighlight lang="php">
+class LoggingAspect {
+
+    /**
+     * @Call(class="ClassToLog", method="methodToLog")
+     */
+    public function log() {
+        # apsect-body
+    }
+}
+</syntaxhighlight>

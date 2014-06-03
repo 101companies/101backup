@@ -1,0 +1,40 @@
+== Headline ==
+
+A lecture on [[database programming]] including [[Object-Relational mapping]] as part of the [[Course:Programming in Koblenz]]
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/databases-23432756"/>
+
+== Concepts ==
+
+* [[Database]]
+* [[Embedded SQL]]
+* [[Persistence]]
+* [[Mapping]]
+* [[Object-Relational mapping]]
+== Languages ==
+
+* [[Language:Java|Java]]
+* [[Language:SQL|SQL]]
+* [[Language:HQL|HQL]]
+* [[Language:XML|XML]]
+== Technologies ==
+
+* [[Technology:MySQL|MySQL]]
+* [[Technology:Hibernate|Hibernate]]
+* [[Technology:JDBC|JDBC]]
+== Features ==
+
+* [[Feature:Persistence]]
+* [[Feature:Mapping]]
+* [[Feature:Singleton]]
+== Contributions ==
+
+* [[Contribution:mySqlOne]]
+* [[Contribution:mySqlMany]]
+* [[Contribution:jdbc]]
+* [[Contribution:hibernate]]
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

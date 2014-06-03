@@ -1,0 +1,52 @@
+== Headline ==
+
+A [[monoid]] leveraging addition for the associative operation
+== Illustration ==
+
+Number types may be completed into monoids in different ways. The sum monoid favors addition for the associative operation of the monoid. We illustrate the sum monoid in [[Language:Haskell]] on the grounds of the [[type class]] ''Monoid'' with the first two members needed for a minimal complete definition:
+
+<syntaxhighlight lang="haskell">
+-- The type class Monoid
+class Monoid a
+  where
+    mempty :: a -- neutral element
+    mappend :: a -> a -> a -- associative operation
+    mconcat :: [a] -> a -- fold
+    mconcat = foldr mappend mempty
+</syntaxhighlight>
+
+The sum monoid relies on a designated type which essentially wraps a number type:
+
+<syntaxhighlight lang="haskell">
+-- The type of the sum monoid
+newtype Sum a = Sum { getSum :: a }
+</syntaxhighlight>
+
+Here is the [[type-class instance]] for the sum monoid:
+
+<syntaxhighlight lang="haskell">
+-- The Monoid instance for numbers under addition
+instance Num a => Monoid (Sum a)
+  where
+    mempty = Sum 0
+    x `mappend` y = Sum (getSum x + getSum y)
+</syntaxhighlight>
+
+For further illustration, we can reconstruct the standard ''sum'' function in a monoidal way. To this end, we first review the normal definition in terms of foldr:
+
+<syntaxhighlight lang="haskell">
+-- A foldr-based definition of sum
+sum' :: Num a => [a] -> a
+sum' = foldr (+) 0
+</syntaxhighlight>
+
+<syntaxhighlight lang="haskell">
+-- A monoidal definition of sum
+sum'' :: Num a => [a] -> a
+sum'' = getSum . mconcat . map Sum
+</syntaxhighlight>
+== Metadata ==
+
+* [[isA::Monoid]]
+* [[relatesTo::Product monoid]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,13 @@
+== Intent ==
+
+Sequential XML processing such that the input is present as an event stream to a programmer-defined handler
+
+== Discussion ==
+
+Such parsing provides one option of achieving [[streaming]] for XML processing. The idea is that programmer define handlers for events such as "open element", "close element", "text node", and a library sequentially processes actual XML and pushes events to the hander.
+
+
+
+== Metadata ==
+* [[instanceOf::XML processing]]
+* [[instanceOf::Namespace:Concept]]

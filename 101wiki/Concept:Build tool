@@ -1,0 +1,11 @@
+== Headline ==
+
+A tool for build automation
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Build_automation]]
+* [[isA::Software technology]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

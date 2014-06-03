@@ -1,0 +1,9 @@
+== Headline ==
+
+a framework for caching content in web applications
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://en.wikipedia.org/wiki/OSCache]]
+* [[linksTo::http://www.opensymphony.com/oscache/]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,82 @@
+== Headline ==
+
+A [[type]] of [[record]]s
+
+== Illustration ==
+
+Record types are available or conveniently expressible in many programming languages.
+
+== Record types in Haskell ==
+
+[[Language:Haskell]] provides syntactic sugar for [[algebraic data type]]s such that [[constructor component]]s can be be labeled so that they can be accessed in a record-like manner. Consider, for example, the following algebraic data type for shapes:
+
+<syntaxhighlight lang="haskell">
+data Shape = Circle Float
+           | Rectangle Float Float
+</syntaxhighlight>
+
+The [[data constructor]]s can be defined using record notation instead:
+
+<syntaxhighlight lang="haskell">
+data Shape = Circle { getRadius :: Float }
+           | Rectangle { getWidth :: Float, getHeight :: Float }
+</syntaxhighlight>
+
+Thus, record notation is announced via braces "{ ... }".
+
+We can construct records as follows:
+
+<syntaxhighlight lang="haskell">
+myCircle :: Shape
+myCircle = Circle { getRadius = 42 }
+
+myRectangle :: Shape
+myRectangle = Rectangle { getWidth = 77, getHeight = 88 }
+</syntaxhighlight>
+
+The constructors and component selectors are of these types:
+
+<syntaxhighlight lang="haskell">
+> :t Circle
+Circle :: Float -> Shape
+> :t Rectangle
+Rectangle :: Float -> Float -> Shape
+> :t getRadius
+getRadius :: Shape -> Float
+> :t getWidth
+getWidth :: Shape -> Float
+> :t getHeight
+getHeight :: Shape -> Float
+</syntaxhighlight>
+
+We can also update records in the sense that we can construct new records from existing records by updating specific components. For instance:
+
+<syntaxhighlight lang="haskell">
+myUpdate :: Shape
+myUpdate = myRectangle { getWidth = 42 }
+</syntaxhighlight>
+
+For what it matters, the position-based approach to construction, as with normal algebraic data types, can also be used. Thus, component selectors can be omitted at will. This is demonstrated with constructing the same shapes as above:
+
+<syntaxhighlight lang="haskell">
+myCircle :: Shape
+myCircle = Circle 42
+
+myRectangle :: Shape
+myRectangle = Rectangle 77 88
+</syntaxhighlight>
+
+Component selectors are also omitted during pattern matching:
+
+<syntaxhighlight lang="haskell">
+-- Test whether the shape is a circle
+isCircle (Circle _) = True
+isCircle (Rectangle _ _) = False
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Record_(computer_science)]]
+* [[isA::Type]]
+* [[instanceOf::Vocabulary:Data structure]]
+* [[instanceOf::Namespace:Concept]]

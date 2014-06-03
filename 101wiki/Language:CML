@@ -1,0 +1,10 @@
+== Headline ==
+
+A markup language for chemical knowledge.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Chemical_Markup_Language]]
+* [[instanceOf::Domain-specific language]]
+* [[instanceOf::XML language]]
+* [[instanceOf::Namespace:Language]]

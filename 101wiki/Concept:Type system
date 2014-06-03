@@ -1,0 +1,19 @@
+== Headline == 
+
+Rules used for [[type checking]] or [[type inference|inference]]
+
+== Illustration ==
+
+Consider a [[function application]] in [[Language:Haskell]] like this:
+
+<syntaxhighlight lang="haskell">
+not True
+</syntaxhighlight>
+
+This expression applies logical negation (''not'') to the Boolean literal ''True''. (For what it matters, the result of the function application would be ''False''.) This expression type-checks because the associated rule of the type system succeeds, which is that '''the type of a function application is the result type of the applied function where the actual argument must be of the declared formal argument type'''.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming language]]
+* [[identifies::http://en.wikipedia.org/wiki/Type_system]]
+* [[instanceOf::Namespace:Concept]]

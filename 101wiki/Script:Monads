@@ -1,0 +1,31 @@
+== Headline ==
+
+Lecture "Monads" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+Applications of pure functions return the same result whenever provided with the same arguments; they do not have any side effects. This may be viewed as a limitation when we need to model more general computations in functional programming. However, there is a functional programming abstraction, the [[monad]], which comes to rescue. A monad is essentially an abstract data type to facilitate the composition of computations as opposed to functions. There are various monads to deal with all the computations effects that one may encounter, e.g., the [[state monad]], the [[maybe monad]], the [[reader monad]], the [[writer monad]], and the [[IO monad]].
+
+
+
+== Concepts ==
+
+* [[Monad]]
+* [[State monad]]
+* [[Maybe monad]]
+* [[Writer monad]]
+
+== Languages ==
+
+* [[Language:Haskell]]
+== Features ==
+
+* [[Feature:Logging]]
+
+== Contributions ==
+
+* [[Contribution:haskellLogging]]
+* [[Contribution:haskellWriter]]
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

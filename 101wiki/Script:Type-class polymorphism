@@ -1,0 +1,36 @@
+== Headline ==
+
+Lecture "Type-class polymorphism" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+We have looked at parametric polymorphism as a means to describe functionality in a universal way for many types or, in fact, all types of a certain kind. This is appropriate whenever such polymorphic functionality does not need to make any assumptions about the actual types that fill in the type parameters eventually. There is another kind of polymorphism, where the same kind of functionality (in terms of function signatures) needs to be defined for many types, but these definitions may vary per type. For instance, the conversion of values to text is required functionality for many types, but its definition depends on the input type. [[Type class]]  support such polymorphism.
+== Concepts ==
+
+* [[Polymorphism]]
+* [[Parametric polymorphism]]
+* [[Bounded polymorphism]]
+* [[Type-class polymorphism]]
+* [[Type class]]
+* [[Type-class instance]]
+* [[Type-class constraint]]
+* [[Equality]]
+* [[Structural equality]]
+* [[Semantic equality]]
+* [[Total order]]
+* [[Monoid]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Features ==
+
+* [[Feature:Total]]
+* [[Feature:Depth]]
+* [[Feature:Ranking]]
+== Contributions ==
+
+* [[Contribution:haskellProfessional]]
+* [[Contribution:haskellMonoid]]
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

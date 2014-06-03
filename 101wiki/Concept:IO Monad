@@ -1,0 +1,7 @@
+== Headline ==
+
+A [[Monad|monad]] for I/O operations
+
+== Metadata ==
+
+* [[isA::Monad]]

@@ -1,0 +1,22 @@
+== Intent ==
+
+the [[capability]] of maintaining program data beyond the runtime of the program
+
+== Description ==
+
+The (sometimes implicit) assumption is here that data is not simply maintained but there is 
+also support for reading and writing program data incrementally including potentially 
+transaction management and efficient index-based access. Without such additional 
+requirements, persistence may be hard to distinguish from [[serialization]].
+In practice, the capability of persistence is often associated with database technology, 
+but there exist also some technologies in other technical spaces that facilitate proper 
+persistence. The term persistence is even in use in ways to include the capability of 
+[[O/R mapping]] which clearly goes beyond the basic idea of maintaining program data
+beyond the runtime of the program; see, for example, [[Technology:Hibernate]] for the
+Java platform.
+
+
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Persistence_(computer_science)]]
+* [[instanceOf::Namespace:Concept]]

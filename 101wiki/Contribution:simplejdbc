@@ -1,0 +1,27 @@
+== Headline ==
+
+Database programming with [[Technology:JDBC|JDBC]] and [[Technology:H2|H2-Database]]
+
+Follow this [https://github.com/https://github.com/101companies/101simplejava/tree/master/contributions/simplejdbc link] to the repository.
+== Characteristics ==
+
+We use JDBC/SQL for data processing. That is, we use embedded SQL in Java.
+== Usage ==
+In general see the [https://github.com/101companies/101simplejava/blob/master/contributions/simplejdbc/src/test/java/org/softlang/company/SimpleJdbcTests.java testcase] of this contribution for building and connecting to a H2-Database. 
+
+* Notes:
+** Use org.h2.Driver as JDBC driver
+** Connecting to a new URL creates automatically a new database:
+*** URL for local in-memory database: jdbc:h2:mem:databaseName
+*** URL for local not in-memory database: jdbc:h2:path/databaseName
+** Use SQL for queries
+== Metadata ==
+* [[uses::Language:SQL]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JDBC]]
+* [[uses::Technology:Eclipse]]
+* [[uses::Technology:H2]]
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:Sebastian Jackel]]

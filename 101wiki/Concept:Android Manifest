@@ -1,0 +1,8 @@
+== Headline == 
+
+The essential information about the application to the [[Technology:Android]] system
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Android]]
+* [[identifies::http://developer.android.com/guide/topics/manifest/manifest-intro.html]]
+* [[instanceOf::Namespace:Concept]]

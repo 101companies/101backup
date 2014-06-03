@@ -1,0 +1,12 @@
+== Headline == 
+
+A spreadsheet application
+
+== Details ==
+
+There is also the related file format [[Language:XLS]].
+
+== Metadata ==
+* [[instanceOf::Technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Microsoft_Excel]]
+* [[instanceOf::Namespace:Technology]]

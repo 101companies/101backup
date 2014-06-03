@@ -1,0 +1,17 @@
+== Headline ==
+
+The ability of serializing and deserializing program data
+
+== Details ==
+
+[[Serialization]] relies an serialization [[format]], e.g., one that is based on [[Language:XML]] or [[Language:JSON]]. Serialization also necessitates some [[library]] support for routines for serialization and deserialization. Some serialization approaches use [[metadata]] to control details of mapping and representation for serialized data. Serialization may be more or less technology- or platform-dependent; see the distinction of [[open serialization|open]] versus [[closed serialization]].
+
+== Relationships ==
+
+* [[Serialization]] and [[persistence]] are similar concepts. Typically, serialization aims at serializing program data as a monolithic unit, whereas persistence aims at storing and resurrecting program data at a more fine-grained level, also for the benefit of performance. In the case of serialization, data of a given program is often stored in just a single file or transmitted as a stream, whereas in the case of persistence, program data may be stored in a database with several tables also enabling on-demand resurrection.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Serialization]]
+* [[linksTo::Computing]]
+* [[instanceOf::Namespace:Concept]]

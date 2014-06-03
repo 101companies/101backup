@@ -1,0 +1,173 @@
+== Headline ==
+
+An [[abstraction mechanism]] for [[polymorphism]]
+== Illustration ==
+
+Type classes are not to be confused with [[OO class]]es. In fact, type classes may be somewhat compared with [[OO interface]]es. Type classes have been popularized by Haskell. Similar constructs exist in a few other languages. Type classes capture operations that may be defined for many types. The operations can be defined differently for each type, i.e., for each instance of a type class.
+
+All subsequent illustrations leverage Haskell. Let us consider the following datatypes of bits and bitstreams which represent unsigned binary numbers. We are going to enrich these datatypes with some functionality eventually, with the help of type classes:
+
+<syntaxhighlight lang="haskell">
+-- A bit can be zero or one
+data Bit = Zero | One
+
+-- Bit streams of any length
+newtype Bits = Bits { getBits :: [Bit] }
+</syntaxhighlight>
+
+Thus, the binary number "101" would be represented as follows:
+
+<syntaxhighlight lang="haskell">
+Bits [One,Zero,One]
+</syntaxhighlight>
+
+Now suppose that we want to define some standard operations for bits and bitstreams: [[equality]], [[total order]], [[unparsing]] to text, [[parsing]] from text, and possibly others. Let us begin with unparsing (conversion) to text. To this end, we should implement Haskell's type-class-polymorphic function ''show'' so that it produces text like this:
+
+<syntaxhighlight lang="haskell">
+> show (Bits [One,Zero,One])
+"101"
+</syntaxhighlight>
+
+Here is the type class ''Show'' which declares indeed the polymorphic ''show'' function:
+
+<syntaxhighlight lang="haskell">
+class Show a
+  where
+    show :: a -> String
+</syntaxhighlight>
+
+In reality, the type class has not just one member, ''show'', as shown, but we omit the discussion of the other members here for brevity. The type class is parameterized in a type ''a'' for the actual type for which to implement the members. Here are the [[type-class instance]]s for bits and bit streams:
+
+<syntaxhighlight lang="haskell">
+-- Show bits
+instance Show Bit 
+  where
+    show Zero = "0"
+    show One = "1"
+
+-- Show bit streams
+instance Show Bits
+  where
+    show = concat . map show . getBits
+</syntaxhighlight>
+
+Thus, the instance fills the position of the type parameter with an actual type such as ''Bit'' and ''Bits''. Also, the member function ''show'' is actually defined, while assuming the specific type. We show a bit as either "0" or "1". We show a bit stream by showing all the individual bits and concatenating the results.
+
+The inverse of ''show'' is ''read''. There is also a corresponding type class ''Read'', which we skip here for brevity. Let us consider equality instead. There is again a type class which captures the potential of equality for many types:
+
+<syntaxhighlight lang="haskell">
+class Eq a
+  where 
+    (==) :: a -> a -> Bool
+</syntaxhighlight>
+
+The member "(==)" is the infix operation for testing two bit streams to be equal. Arguably, bit streams are equal, if they are of the same length and they agree on each other bit by bit. In fact, the following definition is a bit more general in that it also trims away preceding zero bits:
+
+<syntaxhighlight lang="haskell">
+-- Test bits for equality
+instance Eq Bit
+  where
+    Zero == Zero = True
+    Zero == One = False
+    One == One = True
+    One == Zero = False
+
+-- Test bit streams for equality
+instance Eq Bits
+  where
+    x == y =  length x' == length y'
+           && and (map (uncurry (==)) (zip x' y'))
+      where
+        x' = trim (getBits x)
+        y' = trim (getBits y)
+        trim [] = []
+        trim z@(One:_) = z
+        trim (Zero:z) = trim z
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+-- Test bit streams for equality
+> let b101 = read "101" :: Bits
+> let b0101 = read "0101" :: Bits
+> let b1101 = read "1101" :: Bits
+> b101 == b0101
+True
+> b101 == b1101
+False
+</syntaxhighlight>
+
+Actually, bit streams are (unsigned) binary numbers. Thus, we should also instantiate the corresponding type classes for number types. Operations on number types are grouped in multiple type classes. The type class ''Num'' deals with addition, subtraction, multiplication, and a few other operations, but notably no division:
+
+<syntaxhighlight lang="haskell">
+class (Eq a, Show a) => Num a
+  where
+    (+) :: a -> a -> a
+    (*) :: a -> a -> a
+    (-) :: a -> a -> a
+    negate :: a -> a
+    abs :: a -> a
+    signum :: a -> a
+    fromInteger :: Integer -> a
+</syntaxhighlight>
+
+We would like to instantiate the ''Num'' type class for bit streams. There are different ways of doing this. For instance, we could define addition by bitwise addition, right at the level of bit streams, or we could instead resort to existing number types. For simplicity, we do indeed conversions from and to ''Integer'', in fact, any ''integral'' type:
+
+<syntaxhighlight lang="haskell">
+-- Convert bits to an integer
+bits2integral :: Integral a => Bits -> a
+bits2integral = foldl f 0 . getBits 
+  where
+    f a b = a * 2 + (bit2int b)
+    bit2int Zero = 0
+    bit2int One = 1
+
+-- Convert a (non-negative) integral to bits
+integral2bits :: Integral a => a -> Bits
+integral2bits i | i < 0 = error "Bits are unsigned"
+integral2bits i = Bits (f [] i)
+  where
+    f xs 0 = xs
+    f xs i = f (x:xs) (i `div` 2) 
+      where
+        x = if odd i then One else Zero
+</syntaxhighlight>
+
+On these grounds, we can trivially instantiate the ''Num'' type class for ''Bits'' by simply reusing the existing instance for Integer through systematic conversions.
+
+<syntaxhighlight lang="haskell">
+-- Bits as a Num type
+instance Num Bits
+  where
+    x + y = integral2bits z'
+      where
+        x' = bits2integral x
+        y' = bits2integral y
+        z' = x' + y'
+    x * y = integral2bits z'
+      where
+        x' = bits2integral x
+        y' = bits2integral y
+        z' = x' * y'
+    x - y = integral2bits z'
+      where
+        x' = bits2integral x
+        y' = bits2integral y
+        z' = x' - y'
+    abs = id
+    signum = integral2bits
+           . signum
+           . bits2integral
+    fromInteger = integral2bits
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Type_class]]
+* [[instanceOf::Abstraction mechanism]]
+* [[instanceOf::Vocabulary:Haskell]]
+* [[linksTo::http://www.haskell.org/tutorial/classes.html]]
+* [[relatesTo::Resource:Software_extension_and_integration_with_type_classes]]
+* [[relatesTo::Resource:Haskell%27s_overlooked_object_system]]
+* [[instanceOf::Namespace:Concept]]

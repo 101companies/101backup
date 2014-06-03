@@ -1,0 +1,64 @@
+== Headline ==
+
+the definition of argument and result types for a function, a method, or a procedure
+
+== Details ==
+
+Other terms may be used for referring to type signatures in the context of specific [[programming paradigm]]s and [[programming language]]s, e.g.:
+
+* Function signature
+* Type annotation
+* Method signature ([[OO programming]])
+* Function prototype ([[Language:CPlusPlus]])
+
+== Illustration ==
+
+A [[static method]] in [[Language:Java]] for 
+computing the absolute value of a float may have the following type signature:
+
+<syntaxhighlight lang="java">
+public static float abs(float a)
+</syntaxhighlight>
+
+That is, the method takes an argument of type ''float'' for the value to be mapped to its absolute value. Further, the method's result type is ''float'' for the actual absolute value.
+
+A function in [[Language:Haskell]] for computing the absolute value of a float may have the following type signature:
+
+<syntaxhighlight lang="haskell">
+abs :: Float -> Float
+</syntaxhighlight>
+
+That is, the function takes an argument of type ''Float'' and returns a ''Float'' as well. For what it matters, the actual ''abs'' function in [[Language:Haskell]] is of the following [[polymorphism|polymorphic type]] with a suitable [[type constraint]]:
+
+<syntaxhighlight lang="haskell">
+abs :: Num a => a -> a
+</syntaxhighlight>
+
+An [[instance method]] in [[Language:Java]] for withdrawing money from an account may have the following type signature:
+
+<syntaxhighlight lang="java">
+public boolean withdraw(float amount)
+</syntaxhighlight>
+
+That is, the method takes an argument of type ''float'' for the amount to be withdrawn. Further, the method's result type is ''boolean'' to be able to communicate whether withdrawal was successful or not. 
+
+A function in [[Language:Haskell]] for withdrawing money from an account may have the following type signature:
+
+<syntaxhighlight lang="haskell">
+withdraw :: Account -> Amount -> Maybe Account
+</syntaxhighlight>
+
+That is, the function takes two arguments; one is the actual account to be affected, another one is amount to be withdrawn. Further, the function's result type use a [[Maybe type]] to be able to communicate whether withdrawal was successful or not. 
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Type_signature, 21 April 2013)
+
+In computer science, a type signature or type annotation defines the inputs and outputs for a function, subroutine or method. A type signature includes at least the function name and the number of its arguments. In some programming languages, it may also specify the function's return type, the types of its arguments, or errors it may pass back.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Programming language]]
+* [[identifies::http://en.wikipedia.org/wiki/Type_signature]]
+* [[instanceOf::Namespace:Concept]]

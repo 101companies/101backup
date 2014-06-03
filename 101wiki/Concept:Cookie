@@ -1,0 +1,8 @@
+== Headline ==
+
+A [[client]]-side [[file]] storing data for the [[server]] of a [[web application]]
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Internet]]
+* [[identifies::http://en.wikipedia.org/wiki/HTTP_cookie]]
+* [[instanceOf::Namespace:Concept]]

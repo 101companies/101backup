@@ -1,0 +1,19 @@
+== Headline ==
+
+a computation in the sense of [[monad]]s
+
+== Details ==
+
+Suppose ''m'' is the type constructor for a monad.
+
+Further suppose, ''x'' is some type of values over which we want to construct computations.
+
+Then, ''m x'' is a "computation type".
+
+Any value of ''m x'' is a monadic value.
+ 
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

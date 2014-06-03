@@ -1,0 +1,87 @@
+== Headline ==
+
+Recursive-descent parsing in [[Language:Java]]
+
+== Characteristics ==
+
+Recursive-descent parsing is used to process a text-based representation of companies.
+The underlying lexer is custom-made, too.
+Both lexer and parser use a lookahead of 1.
+The lexer reports all tokens excluding whitespace.
+The parser relies on protected handler methods to allow for injection of semantic actions.
+For instance, [[Feature:Total]] is implemented by defining the handler for employees to aggregate salaries.
+The implementation of [[Feature:Cut]] requires ad hoc pretty printing.
+Such a combination of parsing and pretty printing implements [[Feature:Parsing]] and [[Feature:Unparsing]].
+
+== Illustration ==
+
+The data model is implemented as plain textual files:
+
+<fragment url="inputs/sample.Company"/>
+
+[[Feature:Parsing]] is implemented with helper class org.softlang.company.features.recognizer.Parser:
+
+<fragment url="src/main/java/org/softlang/company/features/Parsing.java/class/Parsing"/>
+
+[[Feature:Unparsing]] is implemented as part of [[Feature:Cut]].
+
+[[Feature:Total]] and [[Feature:Cut]] extend the Parser with semantic actions. For example Total:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total/method/total"/>
+
+Test cases are implemented for all [[Namespace:Feature]]s. There is also an invalid input:
+
+<fragment url="inputs/nonSample.Company"/>
+
+== Relationships ==
+
+For plain syntax checking with [[Technology:ANTLR]] see [[Contribution:antlrAcceptor]].
+
+For lexer-based text processing in pure [[Language:Java]] see [[Contribution:javaScanner]].
+
+
+For lexing/tokenization with [[Technology:ANTLR]] see [[Contribution:antlrLexer]].
+
+For a custom made lexer in pure [[Language:Java]] see [[Contribution:javaLexer]].
+
+
+For parsing with semantic actions with [[Technology:ANTLR]] see [[Contribution:antlrParser]].
+
+For recursive-descent parsing in pure [[Language:Java]]] see [[Contribution:javaParser]].
+
+For parser combinators in pure [[Language:Java]]] see [[Contribution:javaParseLib]].
+
+
+For object/text mapping from test to companies with [[Technology:ANTLR]] see [[Contribution:antlrObjects]].
+
+For object/text mapping from text to trees with [[Technology:ANTLR]] see [[Contribution:antlrTrees]].
+
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+*** org.softlang.company.features.recognizer for lexer, acceptor and parser for companies.
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases for [[Namespace:Feature]]s.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

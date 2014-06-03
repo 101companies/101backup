@@ -1,0 +1,54 @@
+== Intent ==
+
+an implementation in a relational database using [[Technology:SQL Server]]
+
+== Motivation ==
+
+Please note: ''This implementation is prerequisite for
+[[Contribution:ef]].'' A simple relational schema is used to
+model the data part of the [[@system]]. In particular,
+there are tables for companies, departments, employees (and
+persons). Further, there are primary and foreign keys that represent
+different types of relationships. For instance, departments associate
+themselves with a company by a foreign key. The SQL-based
+implementation also includes triggers--to represent
+constrains/cardinality. Finally, there are SQL scripts covering the
+operations for totaling and cutting salaries.  An implementation of
+the query for the depth of departmental nesting is available as well,
+but it is strikingly complex because of SQL's known issues with
+recursion.
+
+== Architecture ==
+
+The following artifacts are used to create relational model for
+101companies:
+
+* Tables (TableName.table.sql)
+* Primary keys (Name.pkey.sql)
+* Foreign keys (Name.fkey.sql)
+* Triggers (Name.trigger.sql)
+
+The scripts/Post-Deployment folder contains script file executed after
+the database schema was created to fill in the database with actual
+101companies data.
+
+== Usage ==
+
+[[Technology:Visual Studio]] 2010 should be used to open a project
+file. The deploy option should be used to create the database. The
+target connection (in project properties) should be adjusted for the
+local database server.
+
+This contribution has been tested with SQL Server 2008 and Visual Studio 2010.
+
+== Metadata ==
+* [[uses::Language:SQL]]
+* [[uses::Technology:SQL Server]]
+* [[uses::Technology:Visual Studio]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Persistence]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

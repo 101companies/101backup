@@ -1,0 +1,13 @@
+== Headline ==
+
+Concerns of a [[program]] that affect other concerns
+
+== Details ==
+
+It is basically correct here to say "[[requirement]]" instead of "concern". [[Crosscutting concern]]s often resist to standard means of [[modularization]]. That is, [[crosscutting concern]]s make it hard to achieve [[separation of concerns]] with [[implementation]]s of [[software system]]s.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Cross-cutting_concern]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,19 @@
+== Headline ==
+
+Aggregate metadata, metrics, et al. per directory in one file index.json
+
+== Description ==
+
+The module aggregates existing data for use in other 101companies components, e.g., the 101explorer. The output is written to a file index.json. Such index.json files are constructed at all directory levels. The module simply iterates over all immediate subdirectories and combines their index.json files and it iterates over all immediate files in the directory and incorporates their *.summary.json files.
+
+== Input ==
+
+*.summary.json files per 101repo file as prepared by Module summary101meta
+
+== Output ==
+
+*.index.json files per 101repo directory
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

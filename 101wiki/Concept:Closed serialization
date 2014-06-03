@@ -1,0 +1,17 @@
+== Headline ==
+
+Technology- and platform-dependent [[serialization]]
+
+== Description ==
+
+[[Closed serialization]] leverages a serialization format that is only well-supported by a specific technology on a specific platform. For instance, the serialization format may involve idiosyncratic aspects that make it hard to be used with diverse technologies on diverse platforms.
+
+== Relationships ==
+
+* See [[open serialization]] for comparison.
+ 
+== Metadata ==
+
+* [[isA::Serialization]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

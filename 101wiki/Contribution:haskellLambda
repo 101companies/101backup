@@ -1,0 +1,53 @@
+== Headline ==
+
+[[Anonymous function]]s in [[Language:Haskell|Haskell]]
+== Characteristics ==
+
+The contribution demonstrates functional programming in Haskell. Specifically, [[anonymous function]]s in the form [[lambda abstraction]]s are put to work as arguments of [[higher-order function]]s for [[list processing]].
+== Illustration ==
+
+Anonymous functions are functions without name. They can be used as "in-place" arguments of higher-order functions, thereby eliminating the need of a definition in a local or a global scope, thereby making some definitions more concise. For comparison, consider the following functions for totaling salaries, as part of [[Contribution:haskellWhere]]:
+
+<syntaxhighlight lang="haskell">
+-- Total all salaries in a company
+total :: Company -> Float
+total (n, es) = sum (map totalE es)
+
+-- Extract the salary from an employee
+totalE :: Employee -> Float
+totalE ( ,  , s) = s
+</syntaxhighlight>
+
+When anonymous functions are put to work, then the same functionality is implemented as follows:
+
+<syntaxhighlight lang="haskell">
+-- Total all salaries in a company
+total :: Company -> Float
+total (n, es) = sum (map (\( , ,s) -> s) es)
+</syntaxhighlight>
+
+Thus, the named helper function ''totalE'' is gone; ''map'' is applied instead to an anonymous function.
+== Relationships ==
+
+* The present contribution revises [[Contribution:haskellWhere]] to use anonymous functions in combination with map and friends.
+* See also [[Contribution:haskellList]] for a variation on [[Contribution:haskellWhere]] without even the use of local scope.
+== Architecture ==
+
+See [[Contribution:haskellEngineer]].
+== Usage ==
+
+See [[Contribution:haskellEngineer]].
+== Metadata ==
+
+
+* [[instanceOf::Theme:Haskell introduction]]
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

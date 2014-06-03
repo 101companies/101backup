@@ -1,0 +1,43 @@
+== Headline ==
+
+A [[monoid]] for appending lists
+
+== Illustration ==
+
+We illustrate the list monoid in [[Language:Haskell]] on the grounds of the [[type class]] ''Monoid'' with the first two members needed for a minimal complete definition:
+
+<syntaxhighlight lang="haskell">
+-- The type class Monoid
+class Monoid a
+  where
+    mempty :: a -- neutral element
+    mappend :: a -> a -> a -- associative operation
+    mconcat :: [a] -> a -- fold
+    mconcat = foldr mappend mempty
+</syntaxhighlight>
+
+Lists form a monoid in the following way:
+
+<syntaxhighlight lang="haskell">
+-- The Monoid instance for lists
+instance Monoid [a]
+  where
+    mempty = []
+    mappend = (++)
+    mconcat = concat
+</syntaxhighlight>
+
+Now it is interesting to observe how ''concat'' is (or could be) defined:
+
+<syntaxhighlight lang="haskell">
+-- Appending many lists
+concat :: [[a]] -> [a]
+concat = foldr (++) []
+</syntaxhighlight>
+
+Please observe the above default definition of ''mconcat'' within the type class ''Monoid''; it  generalizes this sort of fold and thus, the definition of ''mconcat'' would not be needed in the case of the list instance of ''Monoid''.
+
+== Metadata ==
+
+* [[isA::Monoid]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,45 @@
+== Headline ==
+
+A metaprogramming-oriented implementation based on [[Language:Rascal]]
+
+== Motivation ==
+
+This contribution serves as an example of how Rascal can be used to create language implementations and IDEs. We show that one can quickly implement a wide range of features with only small amounts of code. [[Feature:Hierarchical_company]] is implemented as the basic data model in AST form. [[Feature:Cut]] is implement as an AST transformation. [[Feature:Total]] is implemented as an AST visit. [[Feature:Parsing]] is implemented by parsing based on a grammar from which an SGLL parser is generated. (The same syntax as in [[Contribution:antlrParser]] is used.) [[Feature:Visualization]] is implemented such that the company structure is visualized as a tree and nodes provide info on employer salary with the node size correlating with salary. Editing-related features are implemented through IDE support: editor, syntax highlighting, markers, error messages, folding, outline view.
+
+== Illustration ==
+
+=== Screenshot of the editors/IDE ===
+
+https://github.com/101companies/101repo/raw/master/rascal/101Companies Rascal Visualization.png
+
+=== Screenshot of the visualization ===
+
+https://github.com/101companies/101repo/raw/master/rascal/101Companies Rascal IDE.jpg
+
+== Architecture ==
+
+TODO
+
+== Usage ==
+
+TODO
+
+== Issues ==
+
+* Technologies TODO
+* Architecture TODO
+* Usage TODO
+
+== Metadata ==
+* [[uses::Language:Rascal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Visualization]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Restructuring]]
+* [[developedBy::Contributor:Mark Hills]]
+* [[developedBy::Contributor:Paul Klint]]
+* [[developedBy::Contributor:Bas Basten]]
+* [[instanceOf::Namespace:Contribution]]

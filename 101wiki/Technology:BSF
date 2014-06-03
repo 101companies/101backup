@@ -1,0 +1,12 @@
+== Headline ==
+
+a framework for [[Scripting language]] support
+
+== Description ==
+
+BSF stands for Bean Scripting Framework.
+
+== Metadata ==
+* [[instanceOf::Language framework]]
+* [[identifies::http://commons.apache.org/bsf/manual.html]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,140 @@
+
+
+== Intent ==
+
+Web application development with [[Language:Java]] and the [[Technology:Seam]] [[Web-application framework|framework]]
+
+== Motivation == 
+
+[[Technology:Seam]] provides a great support for the development of [[Web application|web applications]] in [[Language:Java]] with easy [[Feature:Access control|access control]] and an integrated persistence layer. It combines the popular [[Technology:JSF]] (please visit [[Contribution:jsf]] for more information) approach for [[User interface|UI]] programming with [[Technology:Hibernate]] and [[Technology:JPA]]. Both [[Persistence technology|persistence technologies]] are directly integrated into the [[Web-application framework|web-application framework]].
+
+== Illustration ==
+
+[[Technology:Seam]] is based on the [[Three-tier architecture|three-tier architecture]]. Since the presentation is covered by [[Technology:JSF]], the focus of the Seam framework is the business and data access layer. This section illustrates the major components of the Seam framework and introduces its rights management.
+
+=== Presentation ===
+
+The presentation layer is based on the [[MVC]] architecture, because it is the main architecture of the [[Technology:JSF]] framework. From this it follows, that the view consists of [[Technology:Facelets]]. We will start our presentation illustration with the first page of the application: the company view. It contains four parts, at which there are two textfields for the name and the total of the company and two buttons for the department list and the cut of the company. In theory, the view is designed to show more than one company, but this is not demanded by the feature model.
+
+<syntaxhighlight lang="xml" source="seam/view/listAllCompanies.xhtml">
+...
+
+<!-- 'c' is mapped to the field 'allCompanies' contained in the CompanyAction.java. -->
+<rich:dataTable value="#{allCompanies}" var="c" width="300px">
+	<rich:column>
+		<f:facet name="header">Name</f:facet>
+		<!-- The field displays the name of the company. -->
+		<h:outputText value="#{c.name}" />
+	</rich:column>
+	<rich:column>
+		<f:facet name="header">Total salaries</f:facet>
+		<!-- The field displays the total value of the company. -->
+		<h:outputText value="#{c.total()}" />
+	</rich:column>
+	<rich:column>
+		<!-- This button opens the view for all departments contained by the company. -->
+		<s:button value="Show details" action="#{companyAction.showDetails()}" />
+	</rich:column>
+	<rich:column>
+		<!-- This is the cut button for the company. -->
+		<s:button value="Cut salaries" action="#{companyAction.cutSalaries()}" />
+	</rich:column>
+</rich:dataTable>
+
+...
+</syntaxhighlight>
+
+The <syntaxhighlight lang="xml" enclose="none"><rich:dataTable ...> ... </rich:dataTable></syntaxhighlight> tags create a new [[Language:HTML]] table with a predefined <syntaxhighlight lang="xml" enclose="none">width="300px"</syntaxhighlight>. The value <syntaxhighlight lang="xml" enclose="none">"#{allCompanies}"</syntaxhighlight> maps the table rows to the <syntaxhighlight lang="java" enclose="none">allCompanies</syntaxhighlight> list contained in the class [this!!src/hot/org/softlang/web/CompanyAction.java CompanyAction.java]. Each entry has a corresponding table row. The attribute <syntaxhighlight lang="xml" enclose="none">var="c"</syntaxhighlight> helps to access one object of the list and get its informations. As mentioned above, the table has four columns: name, total, detail button and cut button. Each column is created by the use of the tags <syntaxhighlight lang="xml" enclose="none"><rich:column> ... </rich:column></syntaxhighlight>. The methods of the class [this!!src/hot/org/softlang/web/CompanyAction.java CompanyAction.java] are directly accessed via the actions of the buttons, for example in <syntaxhighlight lang="xml" enclose="none"><s:button value="Cut salaries" action="#{companyAction.cutSalaries()}"/></syntaxhighlight>. [this!!src/hot/org/softlang/web/CompanyAction.java CompanyAction] is a [[Technology:Java Bean]], which receives the requests of the facelets. 
+
+The following example illustrates the <syntaxhighlight lang="java" enclose="none">cutSalaries()</syntaxhighlight> method implemented by the class [this!!src/hot/org/softlang/web/CompanyAction.java CompanyAction.java]:
+
+<syntaxhighlight lang="java" source="seam/src/hot/org/softlang/web/CompanyAction.java">
+...
+
+public String cutSalaries() {
+	try {
+		// The method cuts the salaries for the selected company.
+		companyService.cutSalaries(selectedCompany);
+		// If the call is successful, a corresponding message is displayed.
+		facesMessages.add(FacesMessage.SEVERITY INFO, "The cut salary operation was successfully applied.");
+	}
+	catch(Exception e) {
+		// If an exception occures, an error message is displayed.
+		facesMessages.add(FacesMessage.SEVERITY ERROR, "Error when trying to cut salaries. " + e.getMessage());
+		e.printStackTrace();
+	}
+	// The framework expects a view name for loading the next view. If this name is 'null', the current view will reloads.
+	return null;
+}
+
+...
+</syntaxhighlight>
+
+The action invokes the <syntaxhighlight lang="java" enclose="none">cutSalaries(selectedCompany)</syntaxhighlight> method of the [this!!src/main/org/softlang/services/CompanyService.java CompanyService] and additionaly manages the loading of further pages. If an exception occurs, it returns an error message to the [[Technology:Facelets|facelet]]. The <syntaxhighlight lang="java" enclose="none">null</syntaxhighlight> return value simply means, that the current view has to be reloaded.
+
+=== Business and Data access ===
+
+The business layer manages the [[Feature:Access control|access control]] of the application. In addition, it is connected to the persistence layer, which is implemented with [[Technology:JPA]]. On cut, the following method of the service class [this!!src/main/org/softlang/services/CompanyService.java CompanyService] is invoked:
+
+<syntaxhighlight lang="java" source="seam/src/main/org/softlang/service/CompanyService.java">
+...
+
+// The annotation manages the access control for this method.
+@Restrict("#{s:hasRole('admin')}") 
+public void cutSalaries(Company company) {
+	company.cut();
+	entityManager.merge(company);
+}
+
+...
+</syntaxhighlight>
+
+A simple [[Annotation|annotation]] <syntaxhighlight lang="java" enclose="none">@Restrict</syntaxhighlight> provides [[Feature:Access control|access controll]] for the different users. The annotated method is restricted to a user or a group of users, in this case to the "admin" user. The cut is performed within the company object directly. The <syntaxhighlight lang="java" enclose="none">entityManager</syntaxhighlight> manages the company entities and provides an easy merge mechanism for all contained entities. In this case all manipulated employees of this company are merged automatically without explicit call.
+
+== Architecture ==
+
+* The [[Technology:Facelets]] defining the view are located in the folder ''[[this!!view]]''. The folder contains layout templates, images and [[Language:CSS|style sheets]] as well, which are provided directly by the [[Technology:Seam]] [[Web-application framework|web-application framework]].
+* The [[Technology:Java Bean|Java bean]] [this!!src/hot/org/softlang/web/CompanyAction.java CompanyAction.java] is located in [this!!src/hot/org/softlang/web] and provides the connection point to the business layer.
+* The entity classes for the company are located in the [this!!src/main/org/softlang/model] package.
+* The [[Technology:Seam]] service class is located in the [this!!src/main/org/softlang/services] package.
+
+There are some necessary configuration files like the ''build.xml'' and the ''build.properties''. Apart from that, everything else is generated or part of the [[Library|libraries]].
+
+
+
+== Usage ==
+
+This application requires the [[Technology:Eclipse]] and [[Technology:JBoss Application Server]] (Version 4.2.x). After downloading and installing both, follow these steps:
+
+* Import the seam project from your file system to [[Technology:Eclipse]] as a java project.
+* Change the [this!!build.properties] file located in the projects base folder. The ''jboss.home''-property must refer to your [[Technology:JBoss Application Server]] location: ''jboss.home = <your JBoss location>''.
+* Run the seam project as ant build in eclipse (Right click on the ''build.xml'' file -> Run As -> Ant Script).
+* Start JBoss using either ''<your JBoss location>/bin/run.bat'' for Windows OS or ''<your JBoss location>/bin/run.sh'' for Unix OS.
+* Start a [[Web browser]] and go to http://localhost:8080/seam
+
+It is possible to access the system with two different users: "admin" (Password: "admin") and "user" (Password: "user"). If you are logged in as "admin", you are allowed to visit all departments and employees contained in the company and cut all salaries. If you are logged in as "user", you are only allowed to visit all elements of the company but not to cut salaries.
+
+== Metadata ==
+* [[instanceOf::Web application]]
+* [[uses::Language:Java]]
+* [[uses::Language:HQL]]
+* [[uses::Language:XHTML]]
+* [[uses::Language:SQL]]
+* [[uses::Language:XML]]
+* [[uses::Language:JavaScript]]
+* [[uses::Technology:Seam]]
+* [[uses::Technology:JBoss Application Server]]
+* [[uses::Technology:Eclipse]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Persistence]]
+* [[implements::Feature:Access control]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Rodrigo Bonifacio]]
+* [[reviewedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Theme:Web applications in Java]]
+* [[instanceOf::Namespace:Contribution]]

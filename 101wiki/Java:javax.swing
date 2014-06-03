@@ -1,0 +1,9 @@
+== Headline == 
+
+primary package of the GUI API [[Technology:Swing]] for the Java platform
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://docs.oracle.com/javase/1.4.2/docs/api/javax/swing/package-summary.html]]
+* [[instanceOf::Namespace:Java]]

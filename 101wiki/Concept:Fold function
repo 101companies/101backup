@@ -1,0 +1,61 @@
+== Headline ==
+
+A [[higher-order function]] for processing a [[data structure]]
+
+== Illustration ==
+
+[[Language:Haskell]]'s ''foldr'' function for lists is defined like as follows:
+
+<syntaxhighlight lang="haskell">
+-- The higher-order function foldr for lists
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z []     = z 
+foldr f z (x:xs) = f x (foldr f z xs)
+</syntaxhighlight>
+
+That is, ''foldr'', applied to a binary operator ''f'', a value ''z'', and a list, returns ''z'' for the empty list, and it recurses on the tail of a non-empty list such that the recursive result is combined with the head by means of ''f''. For instance:
+
+<syntaxhighlight lang="haskell">
+Prelude> foldr (+) 0 [1,2,3,4,5]
+15
+</syntaxhighlight>
+
+The "r" in "foldr" hints at the right-associative bias of the function:
+
+<syntaxhighlight lang="haskell">
+foldr (+) 0 [1,2,3,4,5] = 1 + (2 + (3 + (4 + (5 + 0))))
+</syntaxhighlight>
+
+That is, parenthesization associates to the right. There is also a ''foldl'' function:
+
+<syntaxhighlight lang="haskell">
+-- The higher-order function foldl for lists
+foldl :: (b -> a -> b) -> b -> [a] -> b
+foldl f z []     = z 
+foldl f z (x:xs) = foldl f (f z x) xs
+</syntaxhighlight>
+
+There is yet other fold functions for lists, which we do not discuss here. Conceptually, fold functions are not limited to lists; they make sense for algebraic data types in general.
+
+== Relationhips ==
+
+* The application of a fold function is a [[catamorphism]].
+* [[Fold]] is the dual of [[unfold]]; see the [[unfold function]].
+* A fold function is also illustrated for [[Maybe type]]s.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Fold_(higher-order_function), 18 May 2013)
+
+In functional programming, fold – also known variously as reduce, accumulate, aggregate, compress, or inject – refers to a family of higher-order functions that analyze a recursive data structure and recombine through use of a given combining operation the results of recursively processing its constituent parts, building up a return value. Typically, a fold is presented with a combining function, a top node of a data structure, and possibly some default values to be used under certain conditions. The fold then proceeds to combine elements of the data structure's hierarchy, using the function in a systematic way.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming theory]]
+* [[instanceOf::Common function]]
+* [[instanceOf::Higher-order function]]
+* [[identifies::http://en.wikipedia.org/wiki/Unfold_(higher-order_function)]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Fold]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Foldr_Foldl_Foldl']]
+* [[relatesTo:Unfold function]]
+* [[instanceOf::Namespace:Concept]]

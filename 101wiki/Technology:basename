@@ -1,0 +1,12 @@
+== Headline ==
+
+A standard UNIX program for filename processing
+
+== Details ==
+
+See also [[Technology:dirname]].
+
+== Metadata ==
+* [[instanceOf::Technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Basename]]
+* [[instanceOf::Namespace:Technology]]

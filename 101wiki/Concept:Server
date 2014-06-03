@@ -1,0 +1,14 @@
+== Headline ==
+
+A program that serves requests of [[client]]s
+
+== Details ==
+
+We are often concerned with servers and clients in the sense of the [[client-server architecture]].
+Also, the programs for server and clients are often executed on different machines that are connected through the network or the internet. It is also common to use the term server in a way to include the hardware part, i.e., a machine that runs the server program. (The term server may, in fact, refer to only the hardware part.)
+
+== Metadata ==
+* [[instanceOf::Architectural component]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/Server_(computing)]]
+* [[instanceOf::Namespace:Concept]]

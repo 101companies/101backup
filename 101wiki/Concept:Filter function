@@ -1,0 +1,47 @@
+== Headline ==
+
+A [[higher-order function]] for filtering elements of a list
+
+== Illustration ==
+
+Let's filter a given list of numbers to only retain the odd numbers. In [[Language:Haskell]], we would use the filter function as follows:
+
+<syntaxhighlight lang="haskell">
+Prelude> filter odd [1,2,3,4,5]
+[1,3,5]
+</syntaxhighlight>
+
+That is, ''filter'' is applied to a predicate (i.e., a function to return a Boolean) and a list; ''filter'' returns the list of those elements that satisfy the predicate. The higher-order function ''filter'' can be defined as follows:
+
+<syntaxhighlight lang="haskell">
+-- Define filter via pattern matching
+filter :: (a -> Bool) -> [a] -> [a]
+filter p [] = []
+filter p (x:xs) = if p x then x : ys else ys
+  where
+    ys = filter p xs
+</syntaxhighlight>
+
+For what it matters, the ''filter'' function could also be defined in terms of the [[fold function]], thereby reusing a recursion scheme as opposed to the explicitly recursive definition above.
+
+<syntaxhighlight lang="haskell">
+-- Define filter via foldr
+filter' p = foldr f []
+  where
+    f x = if p x then (:) x else id
+</syntaxhighlight>
+
+Further, we can also define the ''filter'' function in terms of list comprehension; in this manner we hint at the meaning of list comprehensions because, in fact, list comprehensions correspond to syntactic sugar whose elimination also involves the [[Filter function]].
+
+<syntaxhighlight lang="haskell">
+-- Define filter via list comprehension
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p xs = [ x | x <- xs, p x]
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Common function]]
+* [[instanceOf::Higher-order function]]
+* [[identifies::http://en.wikipedia.org/wiki/Filter_(higher-order_function)]]
+* [[instanceOf::Namespace:Concept]]

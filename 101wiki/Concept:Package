@@ -1,0 +1,14 @@
+== Headline ==
+
+A unit of distribution of software
+
+== Illustration ==
+
+See, for example, the package database of [[Technology:HackageDB]] for [[Language:Haskell]].
+
+== Metadata ==
+
+* [[instanceOf::Abstraction mechanism]]
+* [[identifies::http://en.wikipedia.org/wiki/Package_(package_management_system)]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,8 @@
+== Headline ==
+
+A purely functional package manager
+
+== Metadata ==
+* [[instanceOf::Package manager]]
+* [[identifies::http://nixos.org/nix/]]
+* [[instanceOf::Namespace:Technology]]

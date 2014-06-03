@@ -1,0 +1,10 @@
+== Headline ==
+
+A build system used in [[Language:CSharp]] projects
+
+== Description ==
+MSBuild is originally the build system of the Visual Studio IDE. It is also used in other C# IDEs like MonoDevelop. MSBuild describes the build informations in XML.
+
+== Metadata ==
+* [[identifies::http://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx]]
+* [[instanceOf::Namespace:Technology]]

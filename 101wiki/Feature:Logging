@@ -1,0 +1,63 @@
+== Headline ==
+
+Logging and analysis of salary changes
+== Description ==
+
+Salaries of employees may change over time. For instance, a salary cut systematically decreases salaries. Of course, a pay raise could also happen; point-wise salary changes are conceivable as well. Salary changes are to be logged so that they can be analyzed within some window of interest. Specifically, a salary cut is to be logged with names of affected employees, salary before the change, and salary after the change. The log is to be analyzed in a statistical manner to determine the [[median]] and the [[mean]] of all salary deltas.
+== Motivation ==
+
+The feature requires [[logging]] of updates to employee salaries. Depending on the programming language at hand, such logging may necessitate revision of the code that changes salaries. Specifically, logging of salary changes according to a salary cut may necessitate adaptation of the actual [[transformation]] for cutting salaries. Logging may turn out as a [[crosscutting concern]], which may be implemented in a scattered manner, unless some strong means of [[modularization]] can be adopted.
+== Illustration ==
+
+The log for salary cut for the "standard" sample company would look as follows.
+
+<pre>
+[ LogEntry {name = "Craig", oldSalary = 123456.0, newSalary = 61728.0},
+  LogEntry {name = "Erik", oldSalary = 12345.0, newSalary = 6172.5},
+  LogEntry {name = "Ralf", oldSalary = 1234.0, newSalary = 617.0},
+  LogEntry {name = "Ray", oldSalary = 234567.0, newSalary = 117283.5},
+  LogEntry {name = "Klaus", oldSalary = 23456.0, newSalary = 11728.0},
+  LogEntry {name = "Karl", oldSalary = 2345.0, newSalary = 1172.5},
+  LogEntry {name = "Joe", oldSalary = 2344.0, newSalary = 1172.0}
+]
+</pre>
+
+For what it matters, the salary cut operates as a depth-first, left-to-right traversal of the company; thus the order of the entries in the log. Projection of changes to deltas and sorting them results in the following list of deltas:
+
+<pre>
+[ -117283.5,
+  -61728.0,
+  -11728.0,
+  -6172.5,
+  -1172.5,
+  -1172.0,
+  -617.0
+]
+</pre>
+
+Clearly, the [[median]] is the element in the middle:
+
+<pre>
+-6172.5
+</pre>
+
+By contrast, the [[mean]] is much different because of the skewed distribution of salaries:
+
+<pre>
+-28553.355
+</pre>
+
+See [[Contribution:haskellLogging]] for a simple implementation of the feature in [[Language:Haskell]].
+== Relationships ==
+
+* The present feature builds on top of [[Feature:Cut]], as it is required to demonstrate the analysis of logged deltas for the transformation of a salary cut.
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical company]].
+== Guidelines ==
+
+* The ''name'' of the type for logs should involve the term "log".
+* A suitable ''demonstration'' of the feature's implementation should cut the sample company and compute the median of the salary deltas, as indeed stipulated above.
+== Metadata ==
+
+* [[isA::Functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

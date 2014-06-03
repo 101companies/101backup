@@ -1,0 +1,11 @@
+== Headline ==
+
+A distribution unit for [[Language:Haskell]]
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Haskell]]
+* [[relatesTo::Technology:Cabal]]
+* [[relatesTo::Technology:HackageDB]]
+* [[isA::Package]]
+* [[instanceOf::Namespace:Concept]]

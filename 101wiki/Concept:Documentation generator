@@ -1,0 +1,23 @@
+== Headline ==
+
+A programming tool generating [[documentation]] 
+
+
+== Illustration ==
+
+See [[Contribution:haskellEngineer]] for [[Language:Haskell]] style of documentation based on [[Technology:Haddock]].
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Software_documentation, 2 May 2013)
+
+A documentation generator is a programming tool that generates software documentation intended for programmers (API documentation) or end users (End-user Guide), or both, from a set of specially commented source code files, and in some cases, binary files.
+
+== Metadata ==
+
+* [[identifies::https://en.wikipedia.org/wiki/Documentation_generator]]
+* [[isA::Software technology]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

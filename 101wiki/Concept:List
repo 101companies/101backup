@@ -1,0 +1,17 @@
+== Headline ==
+
+An ordered collection of values
+
+== Illustration ==
+
+Lists can be represented in different ways and different sets of operations can be provided. One fundamental choice to be made is whether lists are considered mutable or immutable; see the illustration of [[linked list|linked]] and [[immutable list]]s. 
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/List_(abstract_data_type)]]
+* [[instanceOf::Data structure]]
+* [[instanceOf::Vocabulary:Data]]
+* [[relatesTo::List type]]
+* [[relatesTo::Record]]
+* [[relatesTo::Tuple]]
+* [[instanceOf::Namespace:Concept]]

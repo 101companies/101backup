@@ -1,0 +1,8 @@
+== Headline ==
+
+an algorithm that generates a sequence of [[random number]]s
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/Random_number_generation]]
+* [[instanceOf::Namespace:Concept]]

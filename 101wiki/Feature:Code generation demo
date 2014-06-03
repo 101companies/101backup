@@ -1,0 +1,14 @@
+== Headline ==
+
+Development of a code generation tool
+
+== Description ==
+
+This is a generative programming-related feature for the development and demonstration of a code-generation tool. The developed tool may support technological space travel (see the capability of [[Mapping]]) or some form of model-driven engineering. The tool is to be demonstrated by applying it to a suitable implementation of the [[@system]] so that the [[Feature:Type generation]] is covered in this manner.
+
+== Metadata ==
+* [[instanceOf::Meta-level 101feature]]
+* [[identifies::http://en.wikipedia.org/wiki/Code_generation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Automatic_programming]]
+* [[linksTo::http://gttse.wikidot.com/]]
+* [[instanceOf::Namespace:Feature]]

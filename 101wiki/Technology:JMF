@@ -1,0 +1,10 @@
+== Headline ==
+
+a Java library for handling audio, video and other time-based media
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Media processor]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_Media_Framework]]
+* [[linksTo::http://docs.oracle.com/cd/E17802_01/j2se/javase/technologies/desktop/media/jmf/2.1.1/apidocs/overview-tree.html]]
+* [[instanceOf::Namespace:Technology]]

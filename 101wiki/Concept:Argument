@@ -1,0 +1,19 @@
+== Headline ==
+
+The argument of an [[abstraction]]
+
+== Details ==
+
+For instance, a function may have an argument or several.
+
+There are formal and actual arguments.
+
+A formal argument is declared by the abstraction, e.g., in a function definition.
+
+An actual argument is provided by the use of the abstraction, e.g., in a function application.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Result]]
+* [[instanceOf::Namespace:Concept]]

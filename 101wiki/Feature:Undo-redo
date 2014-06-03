@@ -1,0 +1,12 @@
+== Headline ==
+
+Undo/redo capability in the UI
+
+== Description ==
+
+Modifications of salaries and modifications of other attributes can be undone or redone.
+
+
+== Metadata ==
+* [[instanceOf::UI 101feature]]
+* [[instanceOf::Namespace:Feature]]

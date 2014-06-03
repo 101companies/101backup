@@ -1,0 +1,47 @@
+== Headline ==
+
+A [[tree]] with an arbitrary number of sub-trees per node
+
+== Illustration ==
+
+Such a tree could carry information in all nodes, in which case we speak of a node-labeled rose tree:
+
+<syntaxhighlight lang="haskell">
+data NLTree a = NLTree a [NLTree a]
+  deriving (Eq, Show, Read)
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+sampleTree = 
+  NLTree 1 [
+    NLTree 2 [],
+    NLTree 3 [NLTree 4 []],
+    NLTree 5 []]
+</syntaxhighlight>
+
+Labeling in a rose tree may also be limited to the leaves, in which case we speak of a leaf-labeled rose tree:
+
+<syntaxhighlight lang="haskell">
+data LLTree a = Leaf a | Fork [LLTree a]
+  deriving (Eq, Show, Read)
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+sampleTree = 
+  Fork [
+    Leaf 1,
+    Fork [Leaf 2],
+    Leaf 3]
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Rose_Tree]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Algebraic_data_type#Rose_tree]]
+* [[instanceOf::Data structure]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

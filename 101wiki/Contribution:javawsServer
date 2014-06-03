@@ -1,0 +1,30 @@
+== Headline ==
+
+A [[Language:Java|Java]]-based web service
+
+== Characteristics ==
+
+TBD
+
+== Relationships ==
+
+* See [[Contribution:javawsClient]] for a client that exercises the present server.
+* The object model is inspired by [[Contribution:javaComposition]].
+
+== Usage ==
+
+The implementation is provided as an Eclipse project. 
+
+To run this service locally you need a JBoss v.5.0 installed
+
+The implementation has been tested with Java version 6.
+
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[uses::Technology:JBoss Application Server]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ekaterina Pek]]
+* [[instanceOf::Namespace:Contribution]]

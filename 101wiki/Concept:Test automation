@@ -1,0 +1,15 @@
+== Headline ==
+
+automate the execution of tests including reporrting
+
+== Discussion ==
+
+For instance, a [[Technology:JUnit]]-based test suite serves test automation.
+
+One can also use command-line tools such as ''make'' and ''diff''.
+
+
+
+== Metadata ==
+* [[instanceOf::Development technique]]
+* [[instanceOf::Namespace:Concept]]

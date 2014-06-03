@@ -1,0 +1,16 @@
+== Headline ==
+
+The input/output behavior of a [[software system]] or [[software component]]
+
+== Description ==
+
+An [[IO behavior]] is characterized by the following ingredients:
+* The input (or parameters).
+* The output (or result).
+* Any side effects, e.g., modified data bases or invoked, possibly stateful services.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Input/output]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

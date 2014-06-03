@@ -1,0 +1,14 @@
+== Headline ==
+
+A function whose result only depends on the arguments
+
+== Details ==
+
+See the notion of [[impure function]] for comparison.
+
+For instance, functions in [[Language:Haskell]] are pure.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Pure_function]]
+* [[instanceOf::Namespace:Concept]]

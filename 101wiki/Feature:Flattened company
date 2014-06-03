@@ -1,0 +1,7 @@
+== Headline ==
+
+Represent hierarchical companies in a flat manner
+== Metadata ==
+
+* [[isA::Feature:Company]]
+* [[instanceOf::Namespace:Feature]]

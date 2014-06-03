@@ -1,0 +1,89 @@
+== Headline ==
+
+[[Object-XML mapping]] for [[Language:Java]] and [[Language:XSD]] with [[Technology:JAXB]]
+
+== Characteristics ==
+
+[[Language:XML]] import and export is supported for a Java-based implementation by means of O/X mapping. The primary data model for companies is an XML schema. The schema compiler [[Technology:xjc]] of [[Technology:JAXB]] is used to generate Java classes from the schema. In this manner, operations on an XML representation of companies can be implemented in near-to-regular OO fashion while using a problem-specific object model. In different terms, one can carry out [[XML processing]] while essentially staying in the technological space of [[objectware]]. It is insightful to compare XML schema and schema-derived classes. The XML schema is defined in a manner that the resulting object model systematically leverages [[object composition]] and no [[class inheritance]]. In fact, the schema-derived classes are very similar to a regular OO design; see 
+[[Contribution:javaComposition]]. It is important to note that the operations on companies are not implemented as [[instance method]]s since this would imply modification of schema-derived classes---unless advanced  modularization mechanisms were leveraged. Instead, the operations are implemented as [[static method]]s in non-schema-derived classes.
+
+== Illustration ==
+
+The data model is implemented as xml files (sampleCompany.xml) that conform to a schema (Company.xsd). For example departments:
+
+<syntaxhighlight lang="xml">
+ <xs:element name="department">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="name"/>
+    <xs:element name="manager" type="employee"/>
+    <xs:element ref="department" maxOccurs="unbounded" minOccurs="0"/>
+    <xs:element name="employee"
+        type="employee" maxOccurs="unbounded" minOccurs="0"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>    
+</syntaxhighlight>
+
+Actual [[Language:Java]] classes will be generated using [[Technology:xjc]].
+
+[[Feature:Open serialization]] is implemented using [[Technology:JAXB]] Un-/Marshaller:
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/deserializeCompany"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/serializeCompany"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are implemented as static methods:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Cut.java/class/Cut"/>
+
+Test cases are implemented for all [[Namespace:Feature]]s.
+
+== Relationships ==
+
+For DOM-like implementations of in-memory XML processing see [[Contribution:dom]], [[Contribution:jdom]] and [[Contribution:xom]].
+
+For a query-based implementation of in-memory XML processing see [[Contribution:xpathAPI]].
+
+For push-based XML processing see [[Contribution:sax]].
+
+For Object/XML mapping see [[Contribution:jaxbChoice]] (XSD with choice for different subunits), [[Contribution:jaxbComposition]] (XSD with object composition), [[Contribution:jaxbExtension]] (XSD with type extension) and [[Contribution:jaxbSubstitution]] (XSD with substitution groups).
+
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases for [[Namespace:Feature]]s.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Mapping]]
+* [[implements::Feature:Open serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Java mapping]]
+* [[instanceOf::Theme:XML programming]]
+* [[uses::Language:Java]]
+* [[uses::Language:JAXB annotations]]
+* [[uses::Language:XML]]
+* [[uses::Language:XSD]]
+* [[uses::Technology:JAXB]]
+* [[uses::Technology:xjc]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

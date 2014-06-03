@@ -1,0 +1,9 @@
+== Intent ==
+
+implementations of [[Language:XPath]] and [[Language:XSLT]] languages and [[Technology:JAXP]] interfaces
+
+== Metadata ==
+* [[instanceOf::API implementation]]
+* [[instanceOf::Language implementation]]
+* [[identifies::http://xml.apache.org/xalan-j]]
+* [[instanceOf::Namespace:Technology]]

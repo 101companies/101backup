@@ -1,0 +1,16 @@
+== Headline ==
+
+A few very simple implementation of the [[@system]]
+
+== Description ==
+
+* [[Contribution:argoUML]] - [[Language:UML]]
+* [[Contribution:haskellStarter]] - [[Language:Haskell]]
+* [[Contribution:html5local]] - [[Language:HTML5]]
+* [[Contribution:javaComposition]] - [[Language:Java]]
+* [[Contribution:prologStarter]] - [[Language:Prolog]]
+* [[Contribution:pyjson]] - [[Language:Python]]
+* [[Contribution:xslt]] - [[Language:XSLT]]
+
+== Metadata ==
+* [[instanceOf::Namespace:Theme]]

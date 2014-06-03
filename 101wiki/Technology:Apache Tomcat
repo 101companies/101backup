@@ -1,0 +1,9 @@
+== Intent ==
+
+A [[Language:Java]] based [[Web server|web server]] and container for [[Language:Java]] [[Technology:Servlet API|Servlets]]
+
+== Metadata ==
+* [[instanceOf::Application server]]
+* [[identifies::http://tomcat.apache.org/]]
+* [[linksTo::http://de.wikipedia.org/wiki/Apache_Tomcat]]
+* [[instanceOf::Namespace:Technology]]

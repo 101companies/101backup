@@ -1,0 +1,13 @@
+== Headline ==
+
+A language that stores preferences
+
+== Description ==
+File formats that store different settings come in different flavours. They have all in common that they are key value based. The key and the value are seperated by the letter =. Every key value pair is stored in a new line. Line comments are introduced with the letter #.
+Under Windows, a .ini file is a widely used example. Other examples include .prefs or .properties files.
+
+== Metadata ==
+* [[linksTo::http://en.wikipedia.org/wiki/INI_file]]
+* [[linksTo::http://stackoverflow.com/questions/1539792/eclipse-preference-store-persistance]]
+* [[linksTo::http://en.wikipedia.org/wiki/.properties]]
+* [[instanceOf::Namespace:Language]]

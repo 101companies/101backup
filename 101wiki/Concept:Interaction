@@ -1,0 +1,14 @@
+== Intent ==
+
+the [[capability]] of interaction between the user and the system
+
+== Description ==
+
+The capability is usually realized by means of a [[user interface]].
+
+
+== Metadata ==
+
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Human-computer_interaction]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,118 @@
+== Headline ==
+
+A [[monad]] for [[state]]
+== Illustration ==
+
+Let us put to work the state monad in a simple interpreter.
+
+There are these expression forms:
+
+<syntaxhighlight lang="haskell">
+-- Simple Boolean expressions
+data Expr = Const Bool | And Expr Expr | Or Expr Expr
+  deriving (Eq, Show, Read)
+</syntaxhighlight>
+
+For instance, the following expression should evaluate to true:
+
+<syntaxhighlight lang="haskell">
+-- A sample term with two operations
+sample = And (Const True) (Or (Const False) (Const True))
+</syntaxhighlight>
+
+Here is a simple interpreter, indeed:
+
+<syntaxhighlight lang="haskell">
+-- Straigthforward interpreter
+eval :: Expr -> Bool
+eval (Const b) = b
+eval (And e1 e2) = eval e1 && eval e2
+eval (Or e1 e2) = eval e1 || eval e2
+</syntaxhighlight>
+
+Now suppose that the interpreter should keep track of the number of operations applied. We count ''And'' and ''Or''as operations. Thus, the sample term should count as 2. We may incorporate counting into the initial interpreter as follows:
+
+<syntaxhighlight lang="haskell">
+-- Interpreter with counting operations
+eval' :: Expr -> Int -> (Bool, Int)
+eval' (Const b) i = (b, i)
+eval' (And e1 e2) i = 
+  let 
+   (b1,i') = eval' e1 i
+   (b2,i'') = eval' e2 i'
+  in (b1 && b2, i''+1) 
+eval' (Or e1 e2) i = 
+  let 
+   (b1,i') = eval' e1 i
+   (b2,i'') = eval' e2 i'
+  in (b1 || b2, i''+1)
+</syntaxhighlight>
+
+Alas, the resulting interpreter is harder to understand. The threading of counts is entangled with the basic logic. By conversion to monadic style, we can hide counting except when we need increment the counter. We use the state monad here so that we really track the operations counter along evaluation; this would be useful if we were adding an expression form for retrieving the count. We could also be using the [[writer monad]], if we were only interested in the final count.
+
+<syntaxhighlight lang="haskell">
+-- Monadic style interpreter
+evalM :: Expr -> State Int Bool
+evalM (Const b) = return b
+evalM (And e1 e2) = 
+  evalM e1 >>= \b1 ->
+  evalM e2 >>= \b2 ->
+  modify (+1) >> 
+  return (b1 && b2)
+evalM (Or e1 e2) = 
+  evalM e1 >>= \b1 ->
+  evalM e2 >>= \b2 ->
+  modify (+1) >> 
+  return (b1 || b2)
+</syntaxhighlight>
+
+We can also use do notation:
+
+<syntaxhighlight lang="haskell">
+-- Monadic style interpreter in do notation
+evalM' :: Expr -> State Int Bool
+evalM' (Const b) = return b
+evalM' (And e1 e2) = do
+  b1 <- evalM' e1
+  b2 <- evalM' e2
+  modify (+1)
+  return (b1 && b2)
+evalM' (Or e1 e2) = do
+  b1 <- evalM' e1
+  b2 <- evalM' e2
+  modify (+1)
+  return (b1 || b2)
+</syntaxhighlight>
+
+The data type for the state monad looks like this:
+
+<syntaxhighlight lang="haskell">
+-- Data type for the state monad
+newtype State s a = State { runState :: s -> (a,s) }
+</syntaxhighlight>
+
+Thus, a stateful computation is basically a function on state which also returns a value.
+
+The corresponding instance of the [[type class]] ''Monad'' follows:
+
+<syntaxhighlight lang="haskell">
+-- Monad instance for State
+instance Monad (State s)
+  where
+    return x = State (\s -> (x, s))
+    c >>= f = State (\s -> let (x,s') = runState c s in runState (f x) s')
+</syntaxhighlight>
+
+The definition of ''return'' conveys that a pure computation preserves the state. The definition of ''bind'' conveys that the state is to be threaded from the first argument to the second. Finally, we need to define the state-specific operation ''modify'' for accessing state:
+
+<syntaxhighlight lang="haskell">
+-- Modification of state
+modify :: (s -> s) -> State s ()
+modify f = State (\s -> ((), f s))
+</syntaxhighlight>
+== Metadata ==
+
+* [[isA::Monad]]
+* [[identifies::http://www.haskell.org/haskellwiki/State_Monad]]
+* [[linksTo::http://cvs.haskell.org/Hugs/pages/libraries/mtl/Control-Monad-State.html]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,12 @@
+== Intent == 
+
+a [[Language:JavaScript]] [[API]] for [[Technology:HTTP]]-Requests
+
+== Discussion ==
+
+XMLHttpRequest is an [[API]] for transfering any data over [[Technology:HTTP]]. Most commonly it is used in combination with message formats like [[Language:XML]] or [[Language:JSON]] <cite>W3C2012XMLHttpRequest</cite>.
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://www.w3.org/TR/XMLHttpRequest/]]
+* [[instanceOf::Namespace:Technology]]

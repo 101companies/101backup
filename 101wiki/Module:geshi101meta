@@ -1,0 +1,19 @@
+== Headline ==
+
+Generate HTML representation of 101repo files with GeSHi
+
+== Description ==
+
+This module looks up the GeSHi code from the metadata for a file and applies GeSHi accordingly so that suitable HTML is generated for the file. GeSHi is invoked in a manner that the line numbers are addressable via CSS, if needed, for example, when highlighting some located fragment.
+
+== Input ==
+
+http://data.101companies.org/dumps/matches.json as prepared by [[Module:matches101meta]]
+
+== Output ==
+
+*.geshi.html file per 101repo file with GeSHi code per metadata
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

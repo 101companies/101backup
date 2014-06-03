@@ -1,0 +1,41 @@
+== Headline ==
+
+[[Generic programming]] in [[Language:Haskell|]] with [[SYB]] 
+
+== Motivation ==
+
+The implementation demonstrates [[generic programming]] in [[Language:Haskell]] using "[[Scrap your boilerplate]]" ([[SYB]]) style. Generic programming is useful in so far that several operations of the 101companies features involve traversal over  nested data. For instance, totaling all salaries requires the location of salary subterms at all levels in a given company term. Accordingly, operations for totaling and cutting salaries are implemented as [[generic function]]s that traverse over the company structure while type-specific cases detect employees and access their salaries. (It happens that the original publication on [[SYB]] used these generic programming samples for motivation.) The resulting code is considerably more concise, when compared to a conservative style of functional programming; see [[Contribution:haskellComposition]]. Additional operations are implemented to exercise [[SYB]] for different idioms of query or transformation and to address additional structural concerns; see the implementations of [[Feature:Depth]], [[Feature:Mentoring]], and [[Feature:Depth]].
+
+== Illustration ==
+
+Several of the operations on companies can be implemented in a very concise manner based on the [[SYB]] style of generic programming. For instance, the operation for totaling salaries simply extracts all floats from the given term and reduces them by addition:
+
+<fragment url="src/Company/Total.hs/pattern/total"/>
+
+== Architecture ==
+
+The architecture is exactly the same as the one of [[Contribution:haskellComposition]] with one exception. There is an additional module Company.Generics which hosts stand-alone deriving clauses for instances of Data and Typeable classes, as needed for generic programming with Data.Generics.
+
+== Usage ==
+
+The Haskell module ''Main'' has to be consulted with GHCi, and the ''main'' function has to be applied so that output for the test scenarios is produced. The ''expected'' output is available through the file ''baseline''. There is a ''Makefile'' with a target ''test'' for [[test automation]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Mentoring]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell potpourri]]
+* [[instanceOf::Theme:Scrap your boilerplate]]
+* [[instanceOf::Theme:Haskell genericity]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]
+

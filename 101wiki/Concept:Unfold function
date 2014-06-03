@@ -1,0 +1,19 @@
+== Headline ==
+
+a [[higher-order function]] for building a [[data structure]]
+
+== Synonym ==
+
+* [[Unfold]]
+
+== Details ==
+
+The application of a unfold function is an [[anamorphism]].
+
+Unfold is the dual of [[fold]]; see the [[fold function]].
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming theory]]
+* [[instanceOf::Common function]]
+* [[identifies::http://en.wikipedia.org/wiki/Unfold_(higher-order_function)]]
+* [[instanceOf::Namespace:Concept]]

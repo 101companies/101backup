@@ -1,0 +1,42 @@
+== Headline ==
+
+[[List processing]] with [[Map function|map]] and friends in [[Language:Haskell]]
+== Characteristics ==
+
+The contribution demonstrates functional programming in [[Language:Haskell]]. List processing with map and friends is put to work.
+== Illustration ==
+
+[[Higher-order function]]s for [[list processing]] enable the concise implementation of [[list processing]] functionality in a regular manner, eliminating the need for problem-specific functions to be recursive or to perform pattern matching on lists. For comparison, consider the following code for totaling salaries without the use of map and friends, as part of [[Contribution:haskellEngineer]]:
+
+<fragment url="/contributions/haskellEngineer/src/Company/Total.hs/pattern/total" />
+
+Specifically, the helper function ''getSalaries'' should be regarded as "boilerplate code" because it duplicates a routine scheme of [[recursion]] which is readily generalized by the [[map function]]. Thus, [[Contribution:haskellList]] puts to work the [[map function]] and revises the code for totaling salaries as follows:
+
+<fragment url="src/Company/Total.hs/pattern/total" />
+
+Thus, the [[map function]] is used to iterate the ''getSalary'' function over lists of employees. Since map takes a function as argument, it is clearly a [[higher-order function]]. The result of mapping is a list which is summed up with the [[sum function]], which in itself, is not a higher-order function. However, it is worth noticing that the sum function is actually defined (or definable) in terms of another higher-order function for list processing, i.e., the [[fold function]], more specifically Haskell's ''foldr'' function.
+== Relationships ==
+
+* The present contribution revises [[Contribution:haskellEngineer]] to put to work map and friends.
+* See [[Contribution:haskellLambda]] for a variation which exercises [[anonymous function]]s.
+== Architecture ==
+
+See [[Contribution:haskellEngineer]].
+== Usage ==
+
+See [[Contribution:haskellEngineer]].
+== Metadata ==
+
+
+* [[instanceOf::Theme:Haskell introduction]]
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Median]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

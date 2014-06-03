@@ -1,0 +1,14 @@
+== Headline ==
+
+Data elements organized in vertical columns and horizontal rows
+
+== Details ==
+
+The table is the core [[data structure]] in a [[database]]. Columns are identified by name; they can be of different types. Hence, rows are essentially [[tuple]]s.
+
+== Metadata ==
+
+* [[instanceOf::Data structure]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Table_(database)]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,7 @@
+== Intent ==
+
+the metamodel component of [[Technology:EMF]]
+
+== Metadata ==
+* [[identifies::http://download.eclipse.org/modeling/emf/emf/javadoc/2.7.0/org/eclipse/emf/ecore/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

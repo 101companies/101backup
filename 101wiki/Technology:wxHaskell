@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[Technology:wxWidgets]]-based [[GUI]] [[library]] for [[Language:Haskell]] 
+
+== Discussion ==
+
+The wxHaskell library is built on [[Technology:wxWidgets]] allowing one to implement portable GUI applications in [[Language:Haskell|Haskell]] <cite>leijenwxHaskell</cite>.
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[linksTo::http://doi.acm.org/10.1145/1017472.1017483]]
+* [[instanceOf::Namespace:Technology]]

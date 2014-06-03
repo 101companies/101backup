@@ -1,0 +1,15 @@
+== Headline ==
+
+A problem in [[software design]] to retain [[extensibility]] of different kinds
+
+== Description ==
+
+The [[Expression problem]] is this: Given a system that implements a number of operations on certain data where such data is formed recursively according to a number data variants, can we extend the system modularly (without revising existing code units, possibly without recompilation, possibly with strong guarantees such as static typing for the initial system and any extension in separation) so that additional operations are implemented for the existing data variants or additional data variants are introduced and existing operations are extended for those.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Expression_problem]]
+* [[linksTo::http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt]]
+* [[linksTo::http://channel9.msdn.com/Shows/Going+Deep/C9-Lectures-Dr-Ralf-Laemmel-Advanced-Functional-Programming-The-Expression-Problem]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

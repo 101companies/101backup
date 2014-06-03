@@ -1,0 +1,34 @@
+== Headline ==
+
+A [[testing framework]] for [[unit testing]] for [[Language:Haskell]]
+
+== Illustration ==
+
+Consider the following test suite that tests some properties of logical negation for [[Language:Haskell]] with the help of [[Technology:HUnit]]:
+
+<syntaxhighlight lang="haskell">
+import Test.HUnit
+
+-- The tests
+tests =
+    TestList [
+      TestLabel "notNotTrue" (doubleNegation True),
+      TestLabel "notNotFalse" (doubleNegation False)
+    ]
+  where
+   doubleNegation x = x ~=? not (not x)
+
+-- Run all tests
+main = runTestTT tests
+</syntaxhighlight>
+
+Thus, there are two test cases, one for double negation of ''True'' and another one for ''False'' as the operand. The helper function ''doubleNegation'' illustrates the structure of test cases. That is, an expected value is compared with the actual value as described by an expression or computation. The specific operator "~=?" represents equality but it makes up for monitored test-case execution.
+
+== Metadata ==
+
+* [[identifies::http://hunit.sourceforge.net/]]
+* [[linksTo::http://www.haskell.org/haskellwiki/HUnit_1.0_User's_Guide]]
+* [[linksTo::http://hackage.haskell.org/package/HUnit]]
+* [[instanceOf::Testing framework]]
+* [[relatesTo::Unit testing]]
+* [[instanceOf::Namespace:Technology]]

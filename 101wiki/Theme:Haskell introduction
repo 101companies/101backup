@@ -1,0 +1,27 @@
+== Headline ==
+
+An introductory collection of [[Language:Haskell]]-based contributions
+== Description ==
+
+This theme collects the following relatively basic Haskell-based contributions:
+
+* [[Contribution:haskellStarter|]]: Basics of functional programming
+* [[Contribution:haskellEngineer|]]: Basics of software engineering
+* [[Contribution:haskellList|]]: List processing with [[Map function|map]] and friends
+* [[Contribution:haskellProfessional|]]: Idiomatic code for many features
+* [[Contribution:haskellLambda|]]: [[Anonymous function]]s
+* [[Contribution:haskellComposition|]]: Recursive [[algebraic data type]]s
+* [[Contribution:haskellVariation|]]: Multiple [[constructor]]s per type
+* [[Contribution:haskellMonoid|]]: Queries in [[Monoid|monoidal style]]
+* [[Contribution:haskellLogging|]]: Logging in non-[[Monad|monadic]] style
+* [[Contribution:haskellWriter|]]: Logging in [[Monad|monadic style]]
+* [[Contribution:haskellParsec|]]: Parsing with the [[Technology:Parsec|]] library
+* [[Contribution:haskellSyb|]]: Generic programming à la [[SYB]] style
+== Relationships ==
+
+There are further themes with Haskell-based contributions:
+* [[Theme:Haskell potpourri]]: more advanced and diverse coverage of the Haskell ecosystem.
+* [[Theme:Haskell data]]: mostly simply variations on data modeling in Haskell.
+* [[Theme:Haskell genericity]]: different styles of generic functional programming in Haskell.
+== Metadata ==
+* [[instanceOf::Namespace:Theme]]

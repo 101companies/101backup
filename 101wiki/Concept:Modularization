@@ -1,0 +1,16 @@
+== Headline ==
+
+The process towards [[modularity|modular]] [[software]]
+
+== Illustration ==
+
+Consider, for example, [[Contribution:haskellStarter]], which is a non-modular ([[Language:Haskell]]-based) implementation of the [[@system]]. Also, consider [[Contribution:haskellEngineer]], which is a modular ([[Language:Haskell]]-based) implementation. In fact, the latter was obtained from the former by modularization. That is, both implementations implement the same features with the same code, except that the former implementation collects all code in one monolithic module, whereas the latter [[seperation of concerns|separates concerns]] by dedicating modules to the different implemented features.
+
+== Metadata ==
+
+* [[relatesTo::Modularity]]
+* [[relatesTo::Modular programming]]
+* [[relatesTo::Separation of concerns]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

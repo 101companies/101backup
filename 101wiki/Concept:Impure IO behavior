@@ -1,0 +1,8 @@
+== Headline ==
+
+An [[IO behavior]] that modifies the input or causes some other side effect
+
+== Metadata ==
+
+* [[instanceOf::IO behavior]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,9 @@
+== Intent ==
+
+a language for launch configurations
+
+== Description ==
+
+Launch files contain launch configurations. They are mainly used by Eclipse.
+== Metadata ==
+* [[instanceOf::Namespace:Language]]

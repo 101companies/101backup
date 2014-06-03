@@ -1,0 +1,32 @@
+== Headline ==
+Traversing 101company-structure with [[Technology:JXPath|]]
+
+You have created new contribution using [https://github.com Github]. Source code for this contribution you can find [https://github.com/https://github.com/101companies/101simplejava/tree/master/contributions/jxpath here].
+==Illustration==
+
+This implementation traverse a simple company structure using an API for XPath.
+
+XPath is a query language for finding and altering certain nodes in XML documents.
+
+==Relationships==
+
+For another usage of [[Language:XPath|]] see [[Contribution:xpathAPI]]
+== Usage ==
+
+This contribution uses [[Technology:Gradle|]] for building. [[Technology:Eclipse|]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+== Metadata ==
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[uses::Language:Java]]
+* [[uses::Language:XPath]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:Matthias Paul]]
+<!-- Next link is generated automatically-->
+* [[uses::Language:Plain Text]]

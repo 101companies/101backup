@@ -1,0 +1,12 @@
+== Intent ==
+
+a segment of [[objectware]] serving needs of generic representation
+
+== Description ==
+
+When associating the technical space of Objectware with technologies, it is often the case that objects only serve a generic purpose--as opposed to the use of a problem-specific object model for each use of the technology. For instance, an [[API]] for [[In-memory XML processing]] reifies XML content through objects, but those objects comply with an object model that is generically defined once and for all for all XML content; see, for example, the [[Technology:DOM]] API.
+
+
+== Metadata ==
+* [[instanceOf::Technical segment]]
+* [[instanceOf::Namespace:Concept]]

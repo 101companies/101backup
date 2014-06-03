@@ -1,0 +1,10 @@
+== Headline == 
+
+a Java library for regular expression matching
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://nlp.stanford.edu/nlp/javadoc/gnu-regexp-docs/]]
+* [[linksTo::http://nlp.stanford.edu/nlp/javadoc/gnu-regexp-docs/api/index.html]]
+* [[instanceOf::Namespace:Technology]]

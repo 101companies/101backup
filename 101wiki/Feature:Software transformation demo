@@ -1,0 +1,19 @@
+== Headline ==
+
+Development of a software transformation tool
+
+== Description ==
+
+This is a reverse engineering-related feature for the development and demonstration of a tool for API-related program comprehension. The developed tool serves the analysis of an implementation's sources or other artifacts in terms of API usage, i.e., the usage of API elements such as types and methods. Of course, the exact analysis also depends on the underlying programming paradigm and platform.
+
+This is a reengineering-related feature for the development and demonstration of a tool for coupled software transformation to help with software evolution. The developed tool serves the automated transformation of an implementation's sources or other artifacts with the specific challenge of dealing with coupled artifacts. That is, there are various conceivable reengineering scenarios, but we are interested here specifically in a scenario such that multiple, related artifacts of different kinds must be modified in a consistent manner by a so-called coupled transformation. Of course, the exact transformation also depends on the underlying programming paradigm and platform.
+
+== Example ==
+
+For instance, consider a Java-based implementation with serialized company data. Now consider the scenario that new legislation requires deletion of employee addresses from the system. To this end, a coupled transformation must remove the corresponding data elements (fields, setters, getters, constructor components, etc.) from the source code, but serialized data must be cleaned up as well. The coupled transformation hence must support the migration of source code and serialized data.
+
+== Metadata ==
+* [[instanceOf::Meta-level 101feature]]
+* [[identifies::http://en.wikipedia.org/wiki/Reengineering_(software)]]
+* [[linksTo::http://www.di.univaq.it/CSXW2011]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,31 @@
+== Headline ==
+
+[[Unparsing]] in [[Language:Haskell]] with a pretty-combinator library
+== Characteristics ==
+
+TBD
+== Illustration ==
+
+TBD
+== Relationships ==
+
+* The data model is the same as the one of [[Contribution:haskellComposition]].
+* The textual output format is the same as the one parsed by [[Contribution:haskellParsec]].
+== Architecture ==
+
+TBD
+== Usage ==
+
+See [[Contribution:haskellComposition]].
+== Metadata ==
+
+* [[uses::Language:Haskell]] 
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:HughesPJ]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell potpourri]]
+* [[instanceOf::Namespace:Contribution]]

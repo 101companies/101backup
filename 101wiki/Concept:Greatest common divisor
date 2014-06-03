@@ -1,0 +1,51 @@
+== Headline ==
+
+The greatest common divisor of two integers
+== Illustration ==
+
+We face an [[algorithmic problem]] because the greatest common divisor can be computed by a (simple) algorithm.
+
+* We assume (for simplicity) two positive operands ''x'' and ''y''.
+* Perform the following steps to return the greatest common divisor of ''x'' and ''y''.
+** Repeat the following step until ''x'' equals ''y'':
+*** If ''x'' > ''y'' 
+**** then subtract ''y'' from ''x'' and
+**** else subtract ''x'' from ''y''.
+** Return ''x''.
+
+Here is also an implementation in [[Language:Java]]:
+
+<syntaxhighlight lang="java">
+  // Compute greatest common divisor
+  public static int gcd(int x, int y) {
+    // This version requires positive integers.
+    assert x > 0 && y > 0;
+    while (x != y) {
+      if (x > y)
+        x = x - y;
+      else
+        y = y - x;
+    }
+    return x;
+  }
+</syntaxhighlight>
+
+Here is also an implementation in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- Operands are supposed to be positive integers.
+gcd :: Int -> Int -> Int
+gcd x y | x > y = gcd (x-y) y
+        | x < y = gcd x (y-x)
+        | otherwise = x
+</syntaxhighlight>
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Greatest_common_divisor, 15 April 2013)
+
+In mathematics, the greatest common divisor (gcd), also known as the greatest common factor (gcf), or highest common factor (hcf), of two or more integers (at least one of which is not zero), is the largest positive integer that divides the numbers without a remainder. For example, the GCD of 8 and 12 is 4.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Greatest_common_divisor]]
+* [[instanceOf::Algorithmic problem]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,15 @@
+== Headline ==
+
+the [[primitive data type]] of strings
+
+== Details ==
+
+Conceptually, a string may be regarded as a [[list]] of [[character]]s.
+
+Technically, strings are often implemented as designated data types.
+
+== Metadata ==
+* [[instanceOf::Primitive data type]]
+* [[identifies::http://en.wikipedia.org/wiki/String_(computer_science)]]
+* [[linksTo::http://en.wikipedia.org/wiki/String_literal]]
+* [[instanceOf::Namespace:Concept]]

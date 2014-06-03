@@ -1,0 +1,14 @@
+== Headline ==
+
+a [[data type]] defined through implementation instead of [[invariant]]s
+
+== Details ==
+
+Non-concrete data types are called [[abstract data type]]s.
+
+The term "concrete data type" is similar to term "[[data structure]]".
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://www.haskell.org/haskellwiki/Concrete_data_type]]
+* [[instanceOf::Namespace:Concept]]

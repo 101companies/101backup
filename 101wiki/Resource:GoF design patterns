@@ -1,0 +1,11 @@
+== Headline ==
+
+The [[textbook]] on [[design pattern]]s by the "gang of four"
+
+== Metadata ==
+
+
+* [[instanceOf::Textbook]]
+* [[identifies::http://en.wikipedia.org/wiki/Design_Patterns]]
+* [[relatesTo::Design pattern]]
+* [[instanceOf::Namespace:Resource]]

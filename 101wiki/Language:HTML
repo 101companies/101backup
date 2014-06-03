@@ -1,0 +1,13 @@
+== Intent ==
+
+a markup language for documents on the WWW
+
+== Description ==
+
+HTML supports the domain of web document authoring and publishing.
+
+== Metadata ==
+* [[instanceOf::Markup language]]
+* [[instanceOf::Domain-specific language]]
+* [[identifies::http://en.wikipedia.org/wiki/HTML]]
+* [[instanceOf::Namespace:Language]]

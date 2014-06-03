@@ -1,0 +1,8 @@
+== Headline ==
+
+The [[Language:Haskell]] interpreter as part of [[Technology:GHC]]
+
+== Metadata ==
+
+* [[instanceOf::Interpreter]]
+* [[instanceOf::Namespace:Technology]]

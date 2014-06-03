@@ -1,0 +1,8 @@
+== Headline ==
+
+An identification of the real-world geographic location of an object
+
+== Metadata ==
+* [[instanceOf::UI_101feature]]
+* [[identifies::http://en.wikipedia.org/wiki/Geolocation]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,17 @@
+== Headline == 
+
+Miscellaneous Java libraries
+
+== Description ==
+
+java.util consists of the following sub-APIs:
+* [[Technology:Java collections|Java's collection framework]]
+* [[Technology:Java events|Java's event framework]]
+* [[Technology:Java misc|"the rest of java.util"]]
+
+== Metadata ==
+
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

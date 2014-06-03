@@ -1,0 +1,14 @@
+== Headline ==
+
+A [[fact extractor]] for [[Language:Haskell]]
+
+== Description ==
+
+HsFactExtractor is a [[@technology]]; it is a [[Language:Haskell]]-specific [[fact extractor]]. HsFactExtractor extracts facts from Haskell source code. Currently, facts describe imports and names of declarations. HsFactExtractor is a simple command line tool which consumes source code through stdin and return the extracted facts through stdout using a pseudo-standardized format. That is, all declarations are listed in a "fragments" array; each declaration is classified (see "classifier" link) and its name is given (see key "name"). Currently, nested declarations (such as nested binding groups) are not supported. That is, top-level functions are listed in the output, but not local functions.
+
+== Metadata ==
+
+* [[instanceOf::Fact extractor]]
+* [[instanceOf::@technology]]
+* [[linksTo::https://github.com/101companies/101repo/tree/master/technologies/HsFactExtractor]]
+* [[instanceOf::Namespace:Technology]]

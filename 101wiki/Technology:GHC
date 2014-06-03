@@ -1,0 +1,15 @@
+== Headline ==
+
+A [[Language:Haskell]] [[compiler]]
+
+== Details ==
+
+GHC stands for Glasgow Haskell Compiler. Strictly speaking, GHC is more than just a compiler; it is a distribution that contains other components of language implementation. In particular, the distribution also contains [[Technology:GHCi]] which is an interpreter.
+
+== Metadata ==
+
+* [[instanceOf::Compiler]]
+* [[partOf::Technology:Haskell Platform]]
+* [[identifies::http://www.haskell.org/ghc/]]
+* [[instanceOf::Namespace:Technology]]
+

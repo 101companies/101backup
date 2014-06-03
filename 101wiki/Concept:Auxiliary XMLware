@@ -1,0 +1,12 @@
+== Intent ==
+
+a segment of [[XMLware]] serving an auxiliary role
+
+== Description ==
+
+When associating the technical space of XMLware with technologies, it is often the case that XML content and XML processing only serve an auxiliary role--as opposed to being in the focus of the technology. For instance, an [[O/R mapping technology]] focuses on [[objectware]] and [[tableware]], but XMLware may play an auxiliary role in representing mapping descriptions; see, for example, [[Technology:Hibernate]] or [[Technology:Entity Framework]].
+
+
+== Metadata ==
+* [[instanceOf::Technical segment]]
+* [[instanceOf::Namespace:Concept]]

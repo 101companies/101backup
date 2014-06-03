@@ -1,0 +1,8 @@
+== Headline == 
+
+a file format for executables and associated resources
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://en.wikipedia.org/wiki/EXE]]
+* [[instanceOf::Namespace:Language]]

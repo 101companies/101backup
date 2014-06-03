@@ -1,0 +1,43 @@
+== Headline ==
+
+Dealing with [[large banana]]s in [[Language:Haskell|Haskell]]
+
+== Characteristics ==
+
+[[Large banana]]s are put to work as a means of [[generic programming]] so that operations for cutting or totaling salaries are implemented concisely. Only problem-specific aspects need to be specified. The overall data traversal is provided the [[generalized fold]]s and suitably predefined [[fold algebra]]s.
+
+== Illustration ==
+
+See the concept of [[large banana]]s for an illustration that actually involves the present contribution.
+
+== Architecture ==
+
+There are these modules:
+
+* <file url="src/Company/Data.hs"/>: a data model for [[Feature:Hierarchical_company]]
+* <file url="src/Company/Algebra.hs"/>: support for [[large banana]]s
+* <file url="src/Company/Sample.hs"/>: a sample company
+* <file url="src/Company/Total.hs"/>: the implementation of [[Feature:Total]]
+* <file url="src/Company/Cut.hs"/>: the implementation of [[Feature:Cut]]
+* <file url="src/Company/Depth.hs"/>: the implementation of [[Feature:Depth]]
+* <file url="src/Main.hs"/>: Tests
+
+== Usage ==
+
+See [[Contribution:haskellComposition]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:HUnit]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell genericity]]
+* [[instanceOf::Namespace:Contribution]]

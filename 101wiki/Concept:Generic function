@@ -1,0 +1,17 @@
+== Headline ==
+
+A [[function]] for [[datatype-generic programming]]
+
+== Definition ==
+
+Diverse and even conflicting definitions of "generic function" have been used in the past. The present ontology assumes the notion of generic function in the sense of [[datatype-generic programming]]. Thus, a generic function is a polymorphic function (because it can be applied to many types) that is also able to observe structure of (some of the) types in which it is parameterized.
+
+== Illustration ==
+
+For instance, the "[[Scrap your boilerplate]]" style of generic programming supports the definition of generic functions. See corresponding illustrations.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Generic_function]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

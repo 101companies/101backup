@@ -1,0 +1,26 @@
+== Intent == 
+
+A [[Language:Java]]-based [[Web-application framework]] with [[Technology:JSP]] and [[Technology:Servlet API|Servlets]]
+
+== Description ==
+
+Apache Struts is a [[Web-application framework|web-application framework]] highly dedicated to [[MVC]]. It affects every component of MVC, is it the view ([[Technology:JSP]]), the controller ([[Language:Java]] actions in combination with the [[Technology:Servlet API]]) or the model (Java services). Apache Struts supports [[Ajax]] as well as [[Technology:REST]] and [[Technology:SOAP]] <cite>ApacheStruts2012official</cite>.
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:JavaScript]]
+* [[Language:XML]]
+* [[Language:HTML]]
+
+== Technologies ==
+
+* [[Technology:JSP]]
+* [[Technology:Servlet API]]
+* [[Technology:REST]]
+* [[Technology:SOAP]]
+
+== Metadata ==
+* [[instanceOf::Web-application framework]]
+* [[identifies::http://struts.apache.org/ Apache]]
+* [[instanceOf::Namespace:Technology]]

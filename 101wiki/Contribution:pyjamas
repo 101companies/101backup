@@ -1,0 +1,111 @@
+== Headline ==
+
+[[Web programming]] in [[Language:Python]] with [[Technology:Pyjamas]]
+
+== Motivation ==
+
+[[Technology:Pyjamas]] offers the possibility to generate pure [[Language:JavaScript]]-Code out of [[Language:Python]] source code. One advantage of pyjamas is, that it is very simple to understand. Apart from that, there is no need for complicated [[Language:HTML]] or JavaScript programming. [[Technology:Pyjamas]] is combined with [[Language:CSS]]. It also can be considered as a "spin off" of [[Technology:GWT]].
+
+== Illustration ==
+
+Although pyjamas demands no specific architecture, the main parts of the application are located in a simple [[Language:Python]] file [this!!101Companies.py]. Nevertheless, we have devided the code into two concerns encapsulated into different classes. One class contains the [[GUI]], another class contains the company data and manages the major functionalities of the app. There are further classes for each company, department and employee. The complete Python code illustrated in this section is translated directly to [[Language:JavaScript]].
+
+=== GUI implementation ===
+
+The GUI is implemented with the help of pre defined [[Technology:Pyjamas]] [[Class|classes]]. There is a grid with all necessary components like labels, textfields, listboxes and buttons. The following method of the class <syntaxhighlight lang="python" enclose="none">101CompaniesAppGUI</syntaxhighlight> shows the initialization of the employee part of the GUI:
+
+<syntaxhighlight lang="python" source="pyjamas/101Companies.py">
+# initializes the GUI for the employee view
+def initEmployeeGUI(self):
+	self.grid.clear()
+	self.grid.resize(4, 3)
+		
+	# row 1
+	self.grid.setWidget(0, 0, Label("Name:"))	# column 1 = name
+	self.grid.setWidget(1, 0, Label("Address:"))	# column 2 = address
+	self.grid.setWidget(2, 0, Label("Salary:"))	# column 3 = salary
+	
+	# row 2
+	self.grid.setWidget(0, 1, self.name)
+	self.grid.setWidget(1, 1, self.address)
+	self.grid.setWidget(2, 1, self.total)
+		
+	# row 3
+	self.grid.setWidget(0, 2, self.save)
+	self.grid.setWidget(2, 2, self.cut)
+	self.grid.setWidget(3, 2, self.back)
+
+	# initialize content for current employee
+	self.name.setText(self.current.name)
+	self.address.setText(self.current.address)
+	self.total.setText(self.current.salary)
+</syntaxhighlight>
+
+The three textfields <syntaxhighlight lang="python" enclose="none">self.name</syntaxhighlight>, <syntaxhighlight lang="python" enclose="none">self.address</syntaxhighlight> and <syntaxhighlight lang="python" enclose="none">self.total</syntaxhighlight> and the buttons <syntaxhighlight lang="python" enclose="none">self.save</syntaxhighlight>, <syntaxhighlight lang="python" enclose="none">self.cut</syntaxhighlight> and <syntaxhighlight lang="python" enclose="none">self.back</syntaxhighlight> are initialized in the constructor of the class <syntaxhighlight lang="python" enclose="none">101CompaniesAppGUI</syntaxhighlight>. The <syntaxhighlight lang="python" enclose="none">self</syntaxhighlight> parameter represents the current instance of the class.
+
+=== Feature implementation ===
+
+There is only one handler for each button located in the class 
+<syntaxhighlight lang="python" enclose="none">101CompaniesAppGUI</syntaxhighlight>. The handler is implemented by the function <syntaxhighlight lang="python" enclose="none">onClick</syntaxhighlight>. It contains a control structure, which determines the clicked button:
+
+<syntaxhighlight lang="python" source="pyjamas/101Companies.py">
+def onClick(self, sender):
+	self.errors.clear()
+	if sender == self.cut:
+		self.current.cut()
+		self.total.setText(self.current.total())
+	else if sender == ...
+</syntaxhighlight>
+
+In case of cut, this method cuts the current entity and refreshes the the total textfield. Every class, be it the company, department or employee, implements such a cut method. In case of employee, the specific implementation looks like:
+
+<syntaxhighlight lang="python" source="pyjamas/101Companies.py">
+class Employee:
+	...
+
+	def cut(self):
+	self.salary = self.salary / 2
+
+	...
+</syntaxhighlight>
+
+== Architecture ==
+
+There are three files, which are not generated:
+* The file [this!!101Companies.py] contains the main functionalities of the application.
+* [this!!public/101Companies.html] is the index page for the application.
+* [this!!public/style.css] defines the [[Language:CSS]] attributes for the elements.
+
+The file [this!!101Companies.py 101Companies.py] is divided into three parts:
+* The [[Feature:Hierarchical_company]] and most of the [[Feature:Editing]] is provided by the classes ''company'', ''department'' and ''employee''.
+* The [[GUI]] is provided by the class ''101CompaniesAppGUI''.
+* The company initialization and the low-level management of the departments and employees is provided by the class ''101CompaniesApp''.
+
+== Usage ==
+
+* install pyjamas ([http://pyjs.org/wiki/GettingStarted/ getting started])
+* download the sources
+* open a terminal and move to your local contribution folder
+* type ''pyjsbuild 101companies.py''
+* open [this!!output/101Companies.html] with your [[Web browser]]
+
+If you only want to watch the [[Language:HTML]]/[[Language:JavaScript|JavaScript]]-result of the compile process, please:
+
+* download the sources
+* open [this!!output/101Companies.html] with your [[Web browser]]
+
+== Metadata ==
+
+* [[instanceOf::Theme:Web programming]]
+* [[uses::Language:Python]]
+* [[uses::Language:JavaScript]]
+* [[uses::Language:HTML]]
+* [[uses::Technology:Pyjamas]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

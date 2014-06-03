@@ -1,0 +1,9 @@
+== Intent ==
+
+the [[Technology:Hibernate]]-specific dialect of [[Language:SQL]]
+
+
+
+== Metadata ==
+* [[instanceOf::Query language]]
+* [[instanceOf::Namespace:Language]]

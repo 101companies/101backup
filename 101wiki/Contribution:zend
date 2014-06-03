@@ -1,0 +1,180 @@
+== Headline ==
+
+[[Web programming]] in [[Language:PHP]] with the [[Technology:Zend framework]]
+
+== Motivation ==
+
+[[Language:PHP]] is one of the most commonly used [[Software language|languages]] for [[web programming]]. To get a more structured and valuable implementation, it is reasonable to choose a PHP based [[web-application framework]]. The [[Technology:Zend framework]] provides a good infrastructure and a large amount of pre-assembled components and supports form-based web development. The use of PHP suggests an [[Language:SQL]] [[DBMS]] like [[Technology:MySQL]], to allow persistence. The connection to the DBMS is provided by the database adapter included in the Zend framework.
+
+== Illustration ==
+
+This section is divided into three parts. The first part describes the [[Mapping|mapping]] of the entities, the second part describes the implementation of [[Feature:Total]] and [[Feature:Cut]] and the third part describes the development of the [[GUI]].
+
+=== [[Object-Relational mapping]] ===
+
+[[Feature:Persistence]] is provided by a [[Technology:MySQL]] [[DBMS]] (see [[Contribution:mySqlMany]]) and the ''zend adapter'' for this specific database. The adapter is generated automatically according to the corresponding entries in the file [this!!application/configs/application.ini application.ini]:
+
+<source lang="php">
+resources.db.adapter = "PDO MYSQL"
+resources.db.params.host = "localhost"
+resources.db.params.username = "root"
+resources.db.params.password = ""
+resources.db.params.dbname = "test"
+</source>
+
+The entities of the company are mapped by specific [[Class|classes]], which are extended by the class ''Zend Db Table Abstract''.  They create simple associative arrays out of the declared tables. If we assume, that associative arrays are objects, we can call this process [[Object-Relational mapping]]. To map a table, it is only necessary to specify the name of the designated table within the corresponding class. The class <source lang="php" enclose="none">Application Model DbTable Employee</source> in [this!!zend/application/models/DbTable/Employee.php Employee.php] illustrates the mapping of the employee table:
+
+<source lang="php" source="zend/application/models/DbTable/Employee.php">
+class Application Model DbTable Employee extends Zend Db Table Abstract
+{
+
+    protected $ name = 'employee';
+
+    ...
+
+}
+</source>
+
+=== Feature implementation ===
+
+The features [[Feature:Total]] and [[Feature:Cut]] are both implemented in the model [this!!application/models/DbTable/Employee.php Employee.php] in the sense of [[MVC]]. The reason is, that these methods affect only employees, depend on the corresponding company or department. The following example shows the calculation of the [[Feature:Total]] value for a company with a given ''$id''.
+
+<source lang="php" source="zend/application/models/DbTable/Employee.php">
+class Application Model DbTable Employee extends Zend Db Table Abstract
+{
+
+    ...
+
+    public function getTotalForCompany($id) {
+        // cast the id to integer
+        $id = (int)$id;
+        // get all employees from the database
+        // - with the given company cid
+        // - as an array composed of associative arrays for each employee
+        $rows = $this->fetchAll('cid = ' . $id);
+
+        $total = 0;
+
+        // walk through the array and add every salary
+        foreach ($rows as $row) {
+            $total += $row->salary;
+        }
+        return $total;
+    }
+
+}
+</source>
+
+=== GUI ===
+
+It is possible to create the GUI using a native [[Language:HTML]]-[[Language:PHP]] web page. The other way is to create simple forms by using the extension <syntaxhighlight lang="php" enclose="none">Zend Form</syntaxhighlight>. [[Technology:Zend framework]] offers a great support for form based websites. That means, that it is possible to generate forms with almost no [[Language:HTML]] code, because the web-application framework automatically generates the website out of the pre-defined PHP objects. The objects are initialized and added to the specific form in a developer-defined order. The following example shows the company form. The different GUI components are explained in the comments:
+
+<source lang="php" source="zend/application/forms/Company.php">
+class Application Form Company extends Zend Form
+{
+    var $departmentList;
+    
+    public function init()
+    {
+        
+        // The field helps to identify the form within the application.
+        $this->setName('company');
+        
+        // The hidden field keeps the company id for further use.
+        $id = new Zend Form Element Hidden('id');
+        $id->addFilter('Int');
+
+        // The name field contains the name of the company.
+        $name = new Zend Form Element Text('name');
+        $name ->setLabel('Name')
+                ->setRequired(true)
+                ->addFilter('StripTags')
+                ->addFilter('StringTrim')
+                ->addValidator('NotEmpty');
+        
+        // The button invokes the function to save a new name.
+        $submit = new Zend Form Element Submit('save');
+        $submit ->setAttrib('id', 'submitbutton')
+                ->setOptions(array('class' => 'button'));
+        
+        // The following list shows all subdepartments of the company.
+        $this->departmentList = new Zend Form Element Select('departments');
+        $this->departmentList ->setLabel('Departments');
+        $this->departmentList->setRegisterInArrayValidator(false);
+        
+        // The button is pressed to select a department out of the list.
+        $select = new Zend Form Element Submit('select');
+        $select ->setAttrib('id', 'submitbutton');
+        
+        // The textfield shows the total value.
+        $total = new Zend Form Element Text('total', array("readonly" => "readonly"));
+        $total  ->setLabel('Total');
+        
+        // The button is used to cut the company.
+        $cut = new Zend Form Element Submit('cut');
+        $cut->setAttrib('id', 'submitbutton');
+
+        // There is a block created in the GUI for each array added in the following way:
+        $this->addElements(array($id, $name, $submit));
+        $this->addElements(array($this->departmentList, $select));
+        $this->addElements(array($total, $cut));
+    }
+    ...
+}
+</source>
+
+If the controller wants to fill in some data into the total (<syntaxhighlight lang="php" enclose="none">$total</syntaxhighlight>) field, it must call the method <syntaxhighlight lang="php" enclose="none">populate</syntaxhighlight> of the previously initialized form. If the array parameter of the method contains a field <syntaxhighlight lang="php" enclose="none">total</syntaxhighlight>, the textfield with the identifier "total" is filled automatically with the value contained in the array:
+
+<source lang="php" source="zend/application/forms/Company.php">
+...
+
+$c = $company->getCompany($id);
+$c[total] = $employee->getTotalForCompany($id);
+
+$form->populate($c);
+
+...
+</source>
+
+== Architecture ==
+
+* The entry point for the application is the generated [this!!zend/public/index.php index.php] in the [this!!zend/public] folder. This folder contains the [[Language:CSS|style sheets]], too.
+* All relevant code for the functionality is located in the [this!!zend/application] folder.
+* The architecture is strictly based on the [[MVC]]-pattern. There are different folders for the models ([this!!zend/application/models]), the views ([this!!zend/application/views]) and the controllers ([this!!zend/application/controllers]). This is required, because the [[framework]] automatically identifies the classes and its concerns with the help of these namespaces.
+* The forms are located in the [this!!zend/application/forms] folder.
+
+== Usage ==
+
+This project needs a running [[Technology:MySQL]]-database. We recommend [[Technology:XAMPP]]. It also needs a [[Web browser]].
+You can use the ''company.sql'' and ''sampleCompany.sql'' of [[Contribution:mySqlMany]] for this project.
+
+* Download and install [[Technology:XAMPP]].
+* Open the "XAMPP Control Panel" and start "Apache" and "MySQL".
+* Use the guideline of [[Contribution:mySqlMany]] up to "Populate tables...".
+
+After the database has started:
+
+* Download the sources.
+* Copy the complete zend folder to the htdocs-directory of your XAMPP-installation.
+* Start your [[Web browser]] and go to http://localhost/zend/public/.
+
+If you want to continue with the development of this contribution, please download [[Technology:NetBeans]] and import the project into the [[IDE]].
+
+== Metadata ==
+
+* [[instanceOf:Web application]]
+* [[instanceOf::Theme:Web programming]]
+* [[uses::Language:PHP]]
+* [[uses::Language:HTML]]
+* [[uses::Language:CSS]]
+* [[uses::Technology:Zend framework]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Persistence]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

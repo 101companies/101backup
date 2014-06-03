@@ -1,0 +1,40 @@
+== Intent ==
+
+Object/XML mapping with [[Technology:xsd.exe]] and [[Language:CSharp | C#]]
+
+== Motivation ==
+
+X/O mapping within the .NET platform is exercised. The implementation is also motivated by the [[Contribution:jaxbComposition]] and aims to compare Java and .NET approaches.
+[[Technology:xsd.exe]] is used to generate [[Language:CSharp|C#]] classes from the schema.
+We show one of the xsd.exe usage scenarios, where C# object model generated from XSD schema is used to deserialize XML which match the same XSD. We apply .NET XML serialization API to support X/O mapping of the actual XML data. To this end we say that xsd.exe is used to map XSD/C# type systems, which are used by .NET XML serialization API to se/de-serialize the actual data.
+
+== Architecture ==
+
+Company.xsd is the schema for schema-first mapping. Company.cs is an output produced by applying xsd.exe to the schema file. Features.cs contains a [[partial class]] with [[Feature:Total]] and [[Feature:Cut]] implementations. In fact they are an exact copy of [[Contribution:csharp]]
+SampleCompany.xml contains the serialized company and used in unit tests.
+
+Both XSD and XML files are taken from [[Contribution:jaxbComposition]] with one minor change: types' names are capitalized to follow C# coding best practices.
+
+== Usage ==
+
+[[Technology:Visual Studio]] 2010 should be used to open a project file. The project itself is a class-library and compiles into a DLL. To run a project you must execute at least one unit test (or all at once).
+Nunit GUI or other Visual studio extension (e.g. Resharper) should be used for executing unit tests.
+
+The following command should be used if one wants to re-generate C# sources from xsd file:
+xsd Company.xsd /classes /out:../
+
+This implementation has been tested with C# Version 4.0 and NUnit Version 2.5.
+
+== Metadata ==
+* [[uses::Language:CSharp]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:NUnit]]
+* [[uses::Technology:xsd.exe]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,25 @@
+== Headline ==
+
+A lecture on [[multithreading]] and [[concurrency]] in [[Language:Java|Java]] as part of the [[Course:Programming in Koblenz]]
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/multithreaded-programming"/>
+
+== Concepts ==
+
+* [[Thread]]
+* [[Multithreading]]
+* [[Task parallelism]]
+* [[Data parallelism]]
+* [[Distribution]]
+* [[Concurrency]]
+
+== Contributions ==
+
+* [[Contribution:javaMultithreading]]
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Concept]]

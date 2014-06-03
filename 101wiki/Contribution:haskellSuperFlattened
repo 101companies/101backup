@@ -1,0 +1,12 @@
+== Headline ==
+A variant of [[Contribution:haskellFlattened]].
+
+== Metadata ==
+* [[implements::Feature:Flattened company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Data parallelism]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[cloneOf::Contribution:haskellFlattened]]
+* [[instanceOf::Namespace:Contribution]]
+

@@ -1,0 +1,43 @@
+== Headline ==
+
+A [[polymorphic type]] for handling optional values and errors
+
+== Illustration ==
+
+In [[Language:Haskell]], maybe types are modeled by the following [[type constructor]]:
+
+<syntaxhighlight lang="haskell">
+-- The Maybe type constructor
+data Maybe a = Nothing | Just a
+ deriving (Read, Show, Eq)
+</syntaxhighlight>
+
+''Nothing'' represents the lack of a value (or an error). ''Just'' represent the presence of a value. Functionality may use arbitrary pattern matching to process values of Maybe types, but there is a [[fold function]] for maybes:
+
+<syntaxhighlight lang="haskell">
+-- A fold function for maybes
+maybe :: b -> (a -> b) -> Maybe a -> b
+maybe b _ Nothing = b
+maybe _ f (Just a) = f a
+</syntaxhighlight>
+
+Thus, ''maybe'' inspects the maybe value passed as the third and final argument and applies the first or the second argument for the cases ''Nothing'' or ''Just'', respectively. Let us illustrate a maybe-like fold by means of looking up entries in a map. Let's say that we maintain a map of abbreviations from which to lookup abbreviations for expansion. We would like to keep a term, as is, if it does not appear in the map. Thus:
+
+<syntaxhighlight lang="haskell">
+> let abbreviations = [("FP","Functional programming"),("LP","Logic programming")]
+> lookup "FP" abbreviations 
+Just "Functional programming"
+> lookup "OOP" abbreviations 
+Nothing
+> let lookup' x m = maybe x id (lookup x m)
+> lookup' "FP" abbreviations 
+"Functional programming"
+> lookup' "OOP" abbreviations 
+"OOP"
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Haskell]]
+* [[identifies::http://www.haskell.org/haskellwiki/Maybe]]
+* [[instanceOf::Namespace:Concept]]

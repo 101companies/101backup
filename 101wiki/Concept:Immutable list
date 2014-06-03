@@ -1,0 +1,75 @@
+== Headline ==
+
+A form of lists without mutation in the imperative sense
+
+== Illustration ==
+
+We use [[Language:Haskell]] for illustration.
+
+Here are some lists with an increasing number of elements:
+
+<syntaxhighlight language="haskell">
+[]
+[1]
+[1,2]
+[1,2,3]
+</syntaxhighlight>
+
+Such lists are constructed from two constructor functions.
+
+There is one list constructor to construct the empty list:
+
+<syntaxhighlight language="haskell">
+[]
+</syntaxhighlight>
+
+There is another list constructor ("cons") to construct a non-empty list from a head and a tail. We show the constructor terms corresponding to the sample lists in the beginning:
+
+<syntaxhighlight language="haskell">
+1:[]
+1:(2:[])
+1:(2:(3:[]))
+</syntaxhighlight>
+
+In the example, the head is "1" and the tail is the empty list.
+
+There are functions to retrieve the head and the tail of a list:
+
+<syntaxhighlight language="haskell">
+head :: [a] -> a
+tail :: [a] -> [a]
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight language="haskell">
+Prelude> head (1:[])
+1
+Prelude> tail (1:[])
+[]
+</syntaxhighlight>
+
+There is an operation to test a list for being empty:
+
+<syntaxhighlight language="haskell">
+null :: [a] -> Bool
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight language="haskell">
+Prelude> null []
+True
+Prelude> null (1:[])
+False
+</syntaxhighlight>
+
+Further operations on lists can be expressed in terms of the operations described so far.
+
+== Metadata ==
+
+* [[isA::List]]
+* [[isA::Functional data structure]]
+* [[relatesTo::Linked list]]
+* [[linksTo::http://en.wikipedia.org/wiki/List_(abstract_data_type)]]
+* [[instanceOf::Namespace:Concept]]

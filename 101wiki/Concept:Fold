@@ -1,0 +1,13 @@
+== Headline ==
+
+[[Fold function]] or [[fold transformation]] or [[catamorphism]]
+
+== Details ==
+
+See also the inverse notation of [[unfold]].
+
+<resourcecode resource="RWH/primary/0" index="0" lang="haskell"/>
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Disambiguation]]
+* [[instanceOf::Namespace:Concept]]

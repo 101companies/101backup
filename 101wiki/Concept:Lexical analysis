@@ -1,0 +1,14 @@
+== Headline ==
+
+The process of converting a sequence of characters into a sequence of tokens
+
+== Details ==
+
+The term [[lexer]] is used to refer to the program performing lexical analysis.
+
+See also the notion of [[parsing]].
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[identifies::http://en.wikipedia.org/wiki/Lexical_analysis]]
+* [[instanceOf::Namespace:Concept]]

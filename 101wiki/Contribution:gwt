@@ -1,0 +1,111 @@
+== Headline == 
+
+[[Web programming]] in [[Language:Java]] with [[Technology:GWT]]
+
+== Characteristics ==
+
+The present project provides a simple [[Web Application|WebApp]] for companies by making use of the [[Technology:GWT| Google Web Toolkit]] and therefore [[Technology:Ajax]]. 
+Via [[asynchronous communication]] the server provides functionality for cutting and totaling salaries.
+The server allows the client to retrieve instances of [[Serialization|serializable]] classes of the company's [[object model]].
+The client presents the provided functionality and retrieved data via predefined [[GUI]] components.
+
+== Illustration ==
+
+The connection to the [[Server|server]] is provided by the service of this [[Technology:GWT]]-[[Application|application]]. The pre-requist of this connection is the [[Client|client-side]] invokation of this service:
+
+<syntaxhighlight lang="java">
+	private final ServiceAsync service = GWT.create(Service.class);
+</syntaxhighlight>
+
+After this initialization, the specific methods of this service are called by simply invoking those methods on the [[Client|client]]. The [[Feature:Cut]]-button, for example, creates a cut-request, with two possible results. If it is successfull, the new [[Feature:Total]]-value is returned and the specific field is set. If not, nothing happens. The following example shows the action for the company-cut button, which should, if successfull, refresh the text-field ''salaryInfoValue'':
+
+<syntaxhighlight lang="java">
+	cutButton.addClickHandler(new ClickHandler() {
+
+		@Override
+		public void onClick(ClickEvent event) {
+			service.cutCompany(new AsyncCallback<Double>() {
+
+				@Override
+				public void onSuccess(Double result) {
+					salaryInfoValue.setText("Total salary = " + result
+							+ " $");
+				}
+
+				@Override
+				public void onFailure(Throwable caught) {
+
+				}
+			});
+		}
+	});
+</syntaxhighlight>
+
+On the [[Server|server]] side, the [[method]] is implemented in the following way:
+
+<syntaxhighlight lang="java">
+	@Override
+	public Double cutCompany() {
+		company.cut();
+		return company.total();
+	}
+</syntaxhighlight>
+
+== Architecture ==
+
+'''Client''': 
+Client classes are to be found in the client package. See ''org.softlang.client''.
+There is the GUI and a special [[Feature:Hierarchical_company]] object model for the client with classes that support [[closed serialization]]. See ''org.softlang.client.company'' for the latter.
+This object model holds "shallow" data for the widgets. The entry point for the client is the [this!!src/org/softlang/client/Gwt.java Gwt.java] class.
+Here we describe the app's client side appearance and functionality.
+
+'''Server''': 
+Server classes are to be found in the server package. See ''org.softlang.server''. 
+We use an object model for [[Feature:Hierarchical_company]] very much like in project [[Contribution:java]]
+(We use a cloned object model for the sake of a simple build for this GWT project.)
+The server maintains an index (see class [this!!src/org/softlang/server/Index.java Index.java]) between shallow and proper objects.
+That is, departments and employees are identifiable by their ids (say, names).
+ 
+The communication between client and server is modeled by the [this!!src/org/softlang/client/Service.java Service] interface. See the client package.
+There is also the asynchronous version of it: [this!!src/org/softlang/client/ServiceAsync.java ServiceAsync.java]. 
+These services allow the client to load and save data and perform scenarios [[Feature:Total]] and [[Feature:Cut]].
+
+== Usage ==
+
+The [[@implementation|implementation]] is created with [[Technology:Eclipse]] (3.6/Helios) and the [[Technology:GWT]]-plugin (Version 2.2). If you want to compile the code, you need these versions to run it safely. You can get them at:
+
+* [http://www.eclipse.org/downloads/ Eclipse]
+* [http://code.google.com/intl/de-DE/eclipse/docs/download.html GWT]
+
+After installation and start, simply open this [[web application]] as project into eclipse:
+
+* Please cleanup (Project -> Clean...) the project before running.
+* Right-click on the project, left-click on "Run As" and left-click on "Web-application".
+* Visit http://127.0.0.1:8888/GwtTree.html?gwt.codesvr=127.0.0.1:9997
+
+If you want to recompile it, please end the old server-process by terminating the process in the [[Technology:Eclipse]] console first.
+
+== Metadata ==
+
+* [[instanceOf::Theme:Web programming]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[reviewedBy::Contributor:Ralf Lämmel]]
+* [[reviewedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Theme:Web applications in Java]]
+
+* [[uses::Language:Java]]
+* [[uses::Language:JavaScript]]
+* [[uses::Language:HTML]]
+* [[uses::Language:XML]]
+* [[uses::Language:CSS]]
+* [[uses::Technology:GWT]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Web UI]]
+* [[instanceOf::Namespace:Contribution]]

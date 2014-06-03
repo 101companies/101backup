@@ -1,0 +1,11 @@
+== Headline ==
+
+A [[parsing]] strategy starting at the root of the parse tree
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Top-down_parsing]]
+* [[isA::Parsing]]
+* [[instanceOf::Software language engineering]]
+* [[relatesTo::Bottom-up parsing]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,41 @@
+== Headline ==
+
+A [[Function]] that takes as an argument or returns a function
+
+== Illustration ==
+
+A higher-order function is a [[function]] that takes functions as arguments or returns functions as results. Consider the following [[Language:Haskell]] function which applies a given argument function twice:
+
+<syntaxhighlight lang="haskell">
+twice :: (x -> x) -> x -> x
+twice f = f . f
+</syntaxhighlight>
+
+For instance:
+
+<syntaxhighlight lang="haskell">
+> twice (+1) 40
+42
+</syntaxhighlight>
+
+''twice'' is clearly a higher-order function in that its first argument is of a function type "x -> x". ''twice'' is actually also a higher-order function in that it composes a function that it returns as result, namely "f . f". The [[function composition]] operator "." is another higher-order function, which is obvious from its type, again:
+
+<syntaxhighlight lang="haskell">
+> :t (.)
+(.) :: (b -> c) -> (a -> b) -> a -> c
+</syntaxhighlight>
+
+For what it matters, the type itself already reveals that the second function is applied before the first function because of how type "a" of the third argument equals with the argument type of the second function, etc. Now it would be straightforward to define function composition (except that we do not need to do, as it is predefined evidently):
+
+<syntaxhighlight lang="haskell">
+(.) f g x = f (g x)
+</syntaxhighlight>
+
+See [[list processing]] functions such as [[Map function|map]], [[Fold function|fold]], and [[Filter function|filter]] for more examples of higher-order functions. See the concept of [[currying]] as well.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Higher-order_function]]
+* [[instanceOf::Namespace:Concept]]
+

@@ -1,0 +1,15 @@
+== Headline ==
+
+An [[architectural pattern]] to seperate concerns
+
+== Details ==
+
+These are three tiers in this architecture:
+* [[presentation layer]]
+* [[business layer]]
+* [[data-access layer]]
+
+== Metadata ==
+* [[instanceOf::Architectural pattern]]
+* [[identifies::http://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture]]
+* [[instanceOf::Namespace:Concept]]

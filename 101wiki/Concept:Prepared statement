@@ -1,0 +1,8 @@
+== Headline ==
+
+A parametrized statement for repeated execution on a [[DBMS]]
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://en.wikipedia.org/wiki/Prepared_statement]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,9 @@
+== Headline ==
+
+An ultra-lightweight dependency injection framework
+
+== Metadata ==
+
+* [[instanceOf::Framework]]
+* [[identifies::http://google-guice.googlecode.com/git/javadoc/com/google/inject/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

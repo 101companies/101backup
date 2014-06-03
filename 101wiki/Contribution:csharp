@@ -1,0 +1,49 @@
+== Headline ==
+
+A simple implementation in [[Language:CSharp|C#]] for the [[Technology:.NET]] Framework
+
+== Motivation == 
+
+Basic style of [[OO programming]] is exercised. The C# type system is used to create an in-memory representation, in fact, an [[object model]]  for companies, departments, and employees. There is also an
+extra base class for persons from which employees are derived, thereby illustrating [[class inheritance]]. Operations on companies are implemented as .  XML-based serialization is immediately available for all public [[Technology:.NET]] classes.
+
+== Architecture ==
+
+C# object-oriented representation of 101companies model is located in
+the ''CompanyModel folder''. It contains classes with required
+properties and methods (features implementations).
+
+''Tests'' folder contains:
+* ''FeaturesTest'' class which covers test cases for the features: [[:Feature:Total]], [[:Feature:Cut]], [[:Feature:Depth]].
+* ''SerializationTests'' class which covers test cases for de-/serialization.
+
+Also, helpers for serialization and building the in-memory model for the meganalysis company are implemented.
+
+== Usage ==
+
+[[Technology:Visual Studio]] 2010 should be used to open a project
+file. The project itself is a class-library and compiles into a
+DLL. To run a project you must execute at least one unit test (or all
+at once). The Nunit GUI could be used for executing the unit tests
+conveniently.
+
+The project has been tested with:
+* C# Programming language used for all code (Version 4.0)
+* .NET framework used to execute compiled code (Version 4.0)
+* NUnit testing framework used for testing (Version 2.5)
+* Visual Studio optional IDE (Version 2010)
+
+== Metadata ==
+
+* [[uses::Language:CSharp]] (C#): Programming language used for all code (Version 4.0)
+* [[uses::Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[uses::Technology:.NET]]: framework used to execute compiled code (Version 4.0)
+* [[uses::Technology:NUnit]]: unit testing framework used for testing (Version 2.5)
+* [[uses::Technology:Visual Studio]]: optional IDE (Version 2010)
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

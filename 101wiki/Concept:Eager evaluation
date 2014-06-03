@@ -1,0 +1,19 @@
+== Headline ==
+
+Evaluate an expression as soon as it gets assigned or passed
+
+== Relationshhips ==
+
+See [[lazy evaluation]] for the other major [[evaluation strategy]].
+
+Synonyms (in a broad sense):
+* [[Call-by-value evaluation]]
+* [[Strict evaluation]]
+* [[Eagerness]]
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Eager_evaluation]]
+* [[instanceOf::Evaluation strategy]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

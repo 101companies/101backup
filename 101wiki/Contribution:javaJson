@@ -1,0 +1,34 @@
+== Headline ==
+
+Process [[Language:JSON|]] data with [[Language:Java|]]'s [[Technology:javax.json|]] [[API]]
+
+== Characteristics ==
+
+See [[Contribution:dom]] and [[Contribution:jdom]] for a general motivation for exercising
+[[in-memory XML processing]]. The present contribution simply commits to [[Language:JSON|]] instead of [[Language:XML|]].
+
+== Relationships ==
+
+[[Contribution:javaJsonHttp]] uses HTTP-based access to the input data instead of going through the file system.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Mapping]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Java mapping]]
+* [[uses::Language:Java]]
+* [[uses::Language:JSON]]
+* [[uses::Technology:javax.json]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+

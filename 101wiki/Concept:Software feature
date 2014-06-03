@@ -1,0 +1,14 @@
+== Headline ==
+
+An increment in developing a [[software system]]
+== Details ==
+
+There exist various definitions of "software feature". We make no effort here to adopt any particular definition. In the context of the 101companies Project, it is important though that "software features" are directly related to [[requirement]]s and are loosely related to feature-oriented software development in that one expect features to be actually or potentially implemented according to this paradigm.
+
+The software features of the 101companies System are aggregated by [[Namespace:Feature]].
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Software_feature]]
+* [[linksTo::http://en.wikipedia.org/wiki/Feature_Oriented_Programming]]
+* [[instanceOf::Namespace:Concept]]
+* [[sameAs::Feature]]

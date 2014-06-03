@@ -1,0 +1,31 @@
+== Headline ==
+
+The replacement of a reference to an abstraction by its definition
+
+== Details ==
+
+For instance, consider the following logic program:
+
+<pre>
+a(X) :- e(X), d(X).
+e(X) :- b(X), c(X).
+</pre>
+
+The first clause admits unfolding as follows:
+
+<pre>
+a(X) :- b(X), c(X), d(X).
+</pre>
+
+That is, the reference to e/1 in the body of a/1 is replaced by a suitably substituted body of e/1.
+
+The inverse transformation is the [[fold transformation]].
+
+== Synonyms ==
+
+* [[Unfold]]
+
+== Metadata ==
+* [[instanceOf::Transformation]]
+* [[linksTo::http://dx.doi.org/10.1017/S0960129500001419]]
+* [[instanceOf::Namespace:Concept]]

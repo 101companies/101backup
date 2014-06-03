@@ -1,0 +1,30 @@
+[[imported from::v101:identifies]]
+
+== Headline ==
+
+A correspondence between a wiki page and a web resource
+
+== Description ==
+
+This wiki is concerned with software languages, technologies, and concepts that exist independently of the [[@project]]. For all these entities or concepts, there may exist corresponding resources on the web that can be seen as proxies (as definitions, as download places, etc.) of those entities or concepts. The property at hand helps in maintaining the correspondence between pages (that represent concepts or entities) on this wiki  and the external resources on the web. That is, a page (or, in fact, its wiki URL) can be declared to "identify" some resource (identified already by its URL on the web). Informally, such a property expresses that the wiki page and the web resource "talk about" the same entity or concept.
+
+== Object type ==
+
+[[has type::URL]]
+
+== Illustration ==
+
+The metadata section of the page for [[programming language]]s on this wiki contains the following property, which hence links to Wikipedia's page programming languages:
+
+<pre>
+[[identifies::http://en.wikipedia.org/wiki/Programming_language]]
+</pre>
+
+== Relationships ==
+
+* [[Property:Identifies]] deals with semantically stronger links than [[Property:LinksTo]].
+* [[Property:Cites]] provides another form of semantically strong links.
+
+== Metadata ==
+
+* [[instanceOf::Namespace:Property]]

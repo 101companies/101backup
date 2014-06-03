@@ -1,0 +1,17 @@
+== Headline ==
+
+An [[interface]] for functionality that is reusable by programs
+
+== Details ==
+
+API stands for Application Programming Interface.
+
+An API should not be confused with particular [[API implementation|implementations of the API]].
+
+The reference to the term interface should be understood in a broad sense as opposed to concrete interface constructs in programming languages.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Application_programming_interface]]
+* [[instanceOf::Namespace:Concept]]
+

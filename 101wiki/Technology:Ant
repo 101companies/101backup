@@ -1,0 +1,17 @@
+== Headline ==
+
+A [[build tool]] primarily for the Java platform
+
+== Details == 
+
+There is also an associated Java package for ANT tasks.
+
+== Metadata ==
+
+* [[instanceOf::Framework]]
+* [[instanceOf::Java package]]
+* [[identifies::http://ant.apache.org/]]
+* [[identifies::http://www.jajakarta.org/ant/ant-1.6.1/docs/ja/manual/api/org/apache/tools/ant/package-summary.html]]
+* [[identifies::http://en.wikipedia.org/wiki/Apache_Ant]]
+* [[instanceOf::Build tool]]
+* [[instanceOf::Namespace:Technology]]

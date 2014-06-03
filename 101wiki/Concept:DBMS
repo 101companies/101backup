@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[database]] management system
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://en.wikipedia.org/wiki/DBMS]]
+* [[linksTo::http://en.wikipedia.org/wiki/Database_system]]
+* [[instanceOf::Namespace:Concept]]

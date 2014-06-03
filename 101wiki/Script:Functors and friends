@@ -1,0 +1,30 @@
+== Headline ==
+
+Lecture "Functors and friends" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+Data processing based on [[functor]]s and the [[fold]]s is generalized to apply to a large class of types as opposed to list maps and folds previously. In this manner, we encounter additional data structures such as [[maybe type]]s and [[rose tree]]s. We also deal with the more advanced concept of [[bidirectional transformation]] and we briefly touch aspects of [[data parallelism]].
+== Concepts ==
+
+* [[Monoid]]
+* [[Functor]]
+* [[Rose tree]]
+* [[Maybe type]]
+* [[Foldable type]]
+* [[Higher-kinded polymorphism]]
+* [[Bidirectional transformation]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Features ==
+
+* [[Feature:Total]]
+* [[Feature:Cut]]
+== Contributions ==
+
+* [[Contribution:haskellTree]]
+* [[Contribution:haskellFlattened]]
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

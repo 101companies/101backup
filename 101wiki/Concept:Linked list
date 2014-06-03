@@ -1,0 +1,57 @@
+== Headline ==
+
+A form of lists with mutable links
+
+== Illustration ==
+
+We use [[Language:Java]] for illustration.
+
+<syntaxhighlight language="java">
+// A simple form of linked lists
+public class List {
+    // Nodes in a linked list
+    public class Node {
+	public int info;
+	public Node next; 
+    }
+    public Node first;
+    public Node last;
+    public void add(int info) {
+	Node node = new Node();
+	node.info = info;
+	if (first==null) 
+	    first = node;
+	if (last!=null) 
+	    last.next = node;
+	last = node;
+    }
+}
+</syntaxhighlight>
+
+Thus, linked lists uses nodes that contain the actual info and a "next" pointer to the next node, if any. The list container keeps track of the first and the last element in the list. The first element is needed when the list should walked. The last element is needed when an add operation is supposed to append a new element (efficiently) at the end. Further operations on lists could be defined, e.g., removal of an element. Note that these linked lists are mutable in that next pointers are assigned to over time. 
+
+Here is a simple demo of the linked lists:
+
+<syntaxhighlight language="java">
+public class Demo {
+   public static void main(String[] args) {
+       // Build a list with three elements
+       List list = new List();
+       list.add(1);
+       list.add(2);
+       list.add(3);
+       // Walk the linked list and print it
+       for (List.Node i=list.first; i!=null; i=i.next)
+	   System.out.print(i.info + " ");
+       System.out.println();
+   }
+}
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[isA::List]]
+* [[isA::Imperative data structure]]
+* [[relatesTo::Immutable list]]
+* [[linksTo::http://en.wikipedia.org/wiki/List_(abstract_data_type)]]
+* [[instanceOf::Namespace:Concept]]

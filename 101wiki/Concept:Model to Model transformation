@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[transformation]] that transform a [[model]] into another model
+
+== Metadata ==
+* [[instanceOf::Transformation]]
+* [[instanceOf::MDE_term]]
+* [[instanceOf::Modelware_term]]
+* [[identifies::http://en.wikipedia.org/wiki/Model_transformation]]
+* [[instanceOf::Namespace:Concept]]

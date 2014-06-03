@@ -1,0 +1,23 @@
+== Headline ==
+
+Documentation accompanying programs or software systems
+
+
+== Illustration ==
+
+See [[Contribution:haskellEngineer]] for [[Language:Haskell]] style documentation based on [[Technology:Haddock]].
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Software_documentation, 2 May 2013)
+
+Software documentation or source code documentation is written text that accompanies computer software. It either explains how it operates or how to use it, and may mean different things to people in different roles.
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Software_documentation]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

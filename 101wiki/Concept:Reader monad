@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[monad]] for environment passing
+
+== Metadata ==
+
+* [[isA::Monad]]
+
+* [[linksTo::http://monads.haskell.cz/html/readermonad.html]]
+* [[instanceOf::Namespace:Concept]]

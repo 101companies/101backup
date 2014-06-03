@@ -1,0 +1,30 @@
+== Headline ==
+
+A [[Language:Haskell]]-based data model illustrative for [[data parallelism]]
+
+== Motivation ==
+
+This is a simple variation on [[Contribution:haskellComposition]] such that the tree structure of companies is represented in a flattened manner. To this end, all departments and employees are qualified with names of their ancestor departments and hosting companies. In this manner, the set of all employees is effectively represented as a plain list of tuples. As a result, this representation could be used for data parallelism, e.g., a la [[MapReduce]]. This potential is further illustrated by adding a variation on the functionality for totaling salaries such that subtotals are derived per company and department. Thus, company and department names serve as keys for grouping and aggregating elementary results.
+
+== Architecture ==
+
+See [[Contribution:haskellComposition]].
+
+There is an additional module "MapReduce.hs" capturing the [[MapReduce]] abstraction.
+
+== Usage ==
+
+See [[Contribution:haskellComposition]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]] 
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Flattened company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Data parallelism]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

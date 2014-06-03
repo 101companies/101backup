@@ -1,0 +1,75 @@
+== Headline ==
+
+[[XML processing]] with [[Language:XQuery]]
+
+== Architecture ==
+
+There are two implementations of [[Feature:Cut]]:
+* cut.xq: uses XQuery w/o update facility
+* cut.uf.xq: uses XQuery w/ update facility
+
+== Usage ==
+
+See the Makefile for running some tests.
+
+Versions of Saxon and BaseX are included in the code repository for this implementation.
+
+Tested with this version of BaseX:
+
+<pre>
+$ java -cp basex/BaseX61.jar org.basex.BaseX -h
+BaseX 6.1; DBIS, University of Konstanz
+Usage: BaseX [-dioqsvVxz] [query] [-c]
+  [query]    query file
+  -c<cmd>    database commands
+  -d         debug mode
+  -i<file>   XML input
+  -o<file>   output file
+  -q<expr>   query expression
+  -s<pars>   serialization parameters
+  -v/V       show (all) process info
+  -w         wrap query result to xml
+  -z         skip query output
+</pre>
+
+Tested with this version of Saxon:
+
+<pre>
+$ java -jar saxon/saxon9he.jar
+No source file name
+Saxon-HE 9.2.1.2J from Saxonica
+Usage: see http://www.saxonica.com/documentation/using-xsl/commandline.html
+Options: 
+   ...
+</pre>
+
+Tested on the following machines:
+
+<pre>
+	Darwin ... 9.8.0 Darwin Kernel Version 9.8.0: Wed Jul 15 16:55:01 PDT 2009; root:xnu-1228.15.4~1/RELEASE I386 i386
+		(both test-saxon and test-basex)
+	Darwin ... 10.8.0 Darwin Kernel Version 10.8.0: Tue Jun  7 16:33:36 PDT 
+		(both test-saxon and test-basex)
+2011; root:xnu-1504.15.3~1/RELEASE I386 i386
+	Linux ... 2.6.32-21-generic #32-Ubuntu SMP Fri Apr 16 08:09:38 UTC 2010 x86 64 GNU/Linux
+		(both test-saxon and test-basex-unix)
+	Microsoft Windows XP [Version 5.1.2600]
+		(both with and without update facility)
+</pre>
+
+The project can be opened with Eclipse for convenience.
+		
+== Metadata ==
+* [[uses::Language:XML]]
+* [[uses::Language:XQuery]]
+* [[uses::Technology:Saxon]]: Free XQuery
+* [[uses::Technology:BaseX]]: Free XQuery incl. update facility
+* [[uses::Technology:Java SE]]: Version 6 needed for BaseX
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[developedBy::Contributor:Vadim Zaytsev]]
+[[instanceOf::Theme:XML programming]]
+* [[instanceOf::Namespace:Contribution]]

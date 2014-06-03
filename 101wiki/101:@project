@@ -1,0 +1,35 @@
+== Headline ==
+
+What's the [[@project]]
+
+== Description ==
+
+The 101companies  Project (or "101project" or even just "101" for short) is an open knowledge resource covering [[Software technology|software technologies]], [[technological space]]s, [[software language]]s, and [[software concept]]s. 101 targets programmers, software engineers, teachers, learners, and technologists; they can leverage 101 and they are encouraged to contribute to 101. The project relies on the aggregation, organization, annotation, and analysis of an open-source corpus of [[@contribution|contributions]]: these are implementations and other manifestations of the [[@system]], which is an imaginary ''Human Resource Management System'' with various (mostly) optional [[Namespace:Feature|features]]. Contributions are maintained in the [[@repo]] and documented on the [[@wiki]] and organized in [[Namespace:Theme|themes]]. All available knowledge is processed by the [[@worker]]; derived resources are made available as [[@data]]; all relevant resources are made available as Linked Data explorable through [[@explorer]].
+
+=== Why the name "101companies"? ===
+
+The "companies" postfix in "101companies" refers to the kind of system that is built time again in this project: a system that models companies, department structure, employees, salaries, etc. The "101" prefix in "101companies" refers to the idiom of doing something in "101 ways", namely building said system. Actually, there are more than "101 ways" of building a human resource management system with different software technologies and software languages.
+
+=== History of the [[@project]] ===
+
+* Apr 2008: Ralf Lämmel initiates a related course on programming techniques and technologies at the University of Koblenz-Landau.
+* June 2010: Jean-Marie Favre, Dragan Gasevic, and Ralf Lämmel meet in Malaga to discuss technological spaces and related publication and teaching efforts.
+* Aug 2010: [[@repo]] starts to take shape thanks to Thomas Schmorleiz who enters the [[@project]] for several years to come.
+* Oct 2011: Jean-Marie Favre, Dragan Gasevic, and Ralf Lämmel present a related tutorial at GPCE/SLE 2010 in Eindhoven.
+* Feb 2011: Andrei Varanovich joins the Software Languages Team to focus his research and developer energy around the project.
+* Mar 2011: Ralf Lämmel releases [[@wiki]] at AOSD 2011 in Brazil. Many other [[Information:Presentations|presentations]] of the project have followed.
+* Spring 2012: First publication on the project at TOOLS 2012. Other [[Information:Papers|papers]] have followed at MODELS 2012 and WCRE 2012.
+* Since summer 2012: many [[@contributor]]s have implemented the [[@system]] with their preferred languages and technologies and contributed thus to the [[@repo]].
+* August 2012: The SoTeSoLa summer school leverages the project as part of its design, e.g., for hackathon-like efforts.
+* Winter 2012-Summer 2013: Complete re-design of [[@wiki]], [[@repo]], [[@worker]] underway.
+* April 2013: The project is now used in two [[Namespace:Course|courses]] simultaneously at the University of Koblenz-Landau.
+
+<small>All 101companies content and code is subject to the [[@license]].</small>
+
+<small>[http://www.youtube.com/channel/UCzecm5qz 9KDcxuhgbRDy-w Check out some videos on the YouTube channel of the project.]</small>
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/101 (number)]]
+* [[instanceOf::Namespace:101]]
+

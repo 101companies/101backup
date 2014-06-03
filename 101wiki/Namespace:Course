@@ -1,0 +1,31 @@
+== Headline ==
+
+The namespace for courses that leverage the [[@project]]
+
+== Description ==
+
+Course pages summarize the structure and content of an actual course. Ideally, a course is described as a series of events such as lectures and labs where each event can be described in terms of languages, technologies, concepts, features, contributions, and information covered by the event. 
+
+== Illustration ==
+
+See [[Course:Lambdas in Koblenz]] for a functional programming course that leverages the [[@project]].
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the course.
+* '''Summary''' (optional): a short summary of the course.
+* '''Events''' (optional): any number of subsections of the following form:
+** The subsection is of the form "Event type" (such as lecture) followed by event name (required).
+** "Software concepts" followed by an itemized list of concepts (optional).
+** "Software languages" followed by an itemized list of languages (optional).
+** "Software technologies" followed by an itemized list of technologies (optional).
+** "Features of the 101companies:Project" followed by an itemized list of features (optional).
+** "Contributions of the 101companies:Project" followed by an itemized list of contributions (optional).
+** "Information regarding the 101companies:Project" followed by an itemized list of information (optional).
+* '''Relationships''' (optional): explanations regarding related courses.
+* '''Metadata''' (required):
+** The course must be declared to be, indeed, an instance of [[Namespace:Course]].
+** The course may be linked to relevant online resources.
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

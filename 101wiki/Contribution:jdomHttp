@@ -1,0 +1,33 @@
+== Headline ==
+
+Process [[Technology:HTTP||]]-accessible [[Language:XML|]] data with [[Language:Java|]]'s [[Technology:JDOM|]] API
+
+== Characteristics ==
+
+See [[Contribution:jdom]] for a baseline which processes local XML instead of HTTP-accessible XML data.
+
+== Relationships ==
+
+[[Contribution:jdom]] accesses the XML input data through the file system instead of using HTTP.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Mapping]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Java mapping]]
+* [[uses::Language:Java]]
+* [[uses::Language:XML]]
+* [[uses::Technology:JDOM]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+

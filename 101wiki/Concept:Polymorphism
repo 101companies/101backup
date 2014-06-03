@@ -1,0 +1,26 @@
+== Headline ==
+
+The ability of program fragments to operate on elements of several types
+== Illustration ==
+
+Consider the type of list append in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+(++) :: [a] -> [a] -> [a]
+</syntaxhighlight>
+
+This [[type signature]] uses a type variable ''a'' to express that list append is polymorphic in the element type ''a''. The operation can be applied for as long as the element type of both operand lists for an append are the same. We also speak of [[parametric polymorphism]] in this case. 
+
+Consider the type of addition in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+(+) :: Num a => a -> a -> a
+</syntaxhighlight>
+
+This [[type signature]] uses a [[type constraint]] on the operand type of addition to express that only "suitable" types (i.e., type-class instances of ''Num'') can be used for addition. We also speak of [[type-class polymorphism]] or more generally of [[bounded polymorphism]] in this case. Languages with [[subtyping]] may also use types in a subtyping hierarchy for bounds.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Polymorphism (computer science)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Polymorphism in object-oriented programming]]
+* [[instanceOf::Vocabulary:Programming language]]
+* [[instanceOf::Namespace:Concept]]

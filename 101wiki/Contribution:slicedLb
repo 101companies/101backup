@@ -1,0 +1,36 @@
+== Headline ==
+
+A [[Technology:LogicBlox]]-based implementation with a modular data model 
+
+== Motivation ==
+
+This implementation refactors [[Contribution:basicLb]] to slice up schema and instance. That is, there are separate transactions for companies, departments, employees, and managers so that the schema and the instance are incrementally enhanced. It is important here that each incremental step enhances both schema and instance in the same transaction. In particular, the addition of a constraint that each company must have a manager cannot be committed with actually assigning managers to all existing departments in the same transaction. Such tedious modularization of the data model is practically of limited use, but it shows some extensibility characteristics of [[Technology:LogicBlox]].
+
+== Architecture ==
+
+When compared to [[Contribution:basicLb]], the schema and the instance are broken down into several "transactions" as presented in subdirectory "data". These transactions are represented as .lb files instead .logic files because declarations and deltas are to be combined in the transactions. Thus, the implementation consists of these files:
+* ''data/companies.lb'': schema and instance slice for companies
+* ''data/departments.lb'': schema and instance slice for departments
+* ''data/employees.lb'': schema and instance slice for employees
+* ''data/managers.lb'': schema and instance slice for managers
+* ''total.logic'': the query for totaling salaries
+* ''cut.logic'': the delta for cutting salaries
+* ''Makefile'': script for running the implementation
+* ''baseline'': baseline for regression testing
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+* [[instanceOf::Theme:Datalog basics]]
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,16 @@
+== Headline ==
+
+A [[design pattern]] to separate operations from an object model
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Visitor_pattern, 18 April 2013)
+
+In essence, the visitor allows one to add new virtual functions to a family of classes without modifying the classes themselves; instead, one creates a visitor class that implements all of the appropriate specializations of the virtual function. The visitor takes the instance reference as input, and implements the goal through double dispatch.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Visitor_pattern]]
+* [[linksTo::http://www.oodesign.com/visitor-pattern.html]]
+* [[instanceOf::Design pattern]]
+* [[instanceOf::Namespace:Concept]]

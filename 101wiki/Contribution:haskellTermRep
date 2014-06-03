@@ -1,0 +1,37 @@
+== Headline ==
+
+Data processing in [[Language:Haskell]] with a universal representation
+
+== Characteristics ==
+
+TBD
+
+== Illustration ==
+
+TBD
+
+== Relationships ==
+
+TBD
+
+== Architecture ==
+
+TBD
+
+== Usage ==
+
+See [[Contribution:haskellComposition]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]] 
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Namespace:Contribution]]

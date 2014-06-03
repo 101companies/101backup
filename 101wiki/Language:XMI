@@ -1,0 +1,8 @@
+== Intent ==
+
+an [[Language:XML]]-based interchange format for [[Technology:MOF]]-based [[metadata]] or [[model]]s
+
+== Metadata ==
+* [[instanceOf::Structural_modeling_language]]
+* [[identifies::http://en.wikipedia.org/wiki/XML_Metadata_Interchange]]
+* [[instanceOf::Namespace:Language]]

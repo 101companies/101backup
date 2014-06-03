@@ -1,0 +1,197 @@
+== Headline ==
+
+Advanced [[Technology:Android]] programming
+== Motivation ==
+
+The implementation demonstrates advanced style of [[Technology:Android]] programming using the [[Technology:Android_SDK]] and the [[Technology:Android Development Tool]]. The application uses other approaches compared to the two other implementations [[Contribution:simpleAndroid | simpleAndroid]] and [[Contribution:richerAndroid | richerAndroid]]. This application is intended for employees. It aims to track his worked time. At the end of the month the Employee get an approximate salary expectation. It uses the [[Feature:Geolocation | geolocation]] feature by checking into a [[Android Service]] which is a background application to determine whether the employee is in the workplace. The time difference between the last and current review is added to the working hours.
+
+The application demonstrates how to use...
+
+* ... different [[Activity | activities]] and [[Layout | layouts]] like the Tab activity.
+* ... the [[Feature:Data export | export]] and [[Feature:Data import | import]] features.
+* ... a [[Android Service]] which is a background application.
+* ... the [[Connectivity Manager | connectivity manager]] and [[Location Listener | location listener]]
+* ... a [[Map view]] with different [[Overlay | overlays]]
+* ... the toggle button or table layout which are different [[View | views]]
+* ... [[Android Preference | Android preferences]]
+== Illustration ==
+
+=== [[AppWidget]] ===
+
+<syntaxhighlight lang="xml" source="" line>
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:minWidth="147dip" 
+	android:minHeight="72dip" 
+	android:initialLayout="@layout/main"
+/>
+</syntaxhighlight>
+
+In the XML-Code we define the default properties of our AppWidget. In line three and four we define the size of the AppWidget-Layout and in line five we define the Layout of the AppWidget.
+
+<syntaxhighlight lang="java" source="" line>
+public class CompanyWidget extends AppWidgetProvider{
+   @Override
+   public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+      super.onUpdate(context, appWidgetManager, appWidgetIds);
+      ...
+      appWidgetManager.updateAppWidget(appWidgetIds, views);
+}
+</syntaxhighlight>
+
+In the class CompanyWidget we update the [[AppWidget]]
+
+=== TabActivity ===
+
+<syntaxhighlight lang="java" source="" line>
+intent = new Intent().setClass(this, GeneralSettings.class);
+spec = tabHost.newTabSpec("general").setIndicator("General",
+           res.getDrawable(android.R.drawable.ic_dialog_map))
+           .setContent(intent);
+tabHost.addTab(spec);
+// Do the same for the other tabs
+...
+tabHost.setCurrentTab(1);
+</syntaxhighlight>
+
+In line one we create an Intent to launch an Activity for the tab. In line two till five we initialize a TabSpec for each tab and add it to the TabHost. In the last line we set our default TabSpec.
+
+=== Manager & Provider===
+
+<syntaxhighlight lang="java" source="" line>
+lManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+cManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+</syntaxhighlight>
+
+We use the system services [[Location Manager]] and [[Connectivity Manager]] to get the status of GPS and internet connection. 
+
+=== [[Android_Service | Service]] ===
+
+<syntaxhighlight lang="java" source="" line>
+Intent i = new Intent(this, WorkService.class);
+i.putExtra("profile", profile);
+startService(i);
+</syntaxhighlight>
+
+In line one we create an Intent with the Service Class. In line two we put the profile object in the intent and in line three we start the Service.
+
+=== Geolocation ===
+
+<syntaxhighlight lang="java" source="" line>
+if(gps_enabled) {
+   lManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, UPDATE_TIME, 0, updateListenerForGPS);
+}
+   else
+      if(network_enabled)
+         lManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, UPDATE_TIME, 0, updateListenerForNetwork);
+</syntaxhighlight>
+
+In line two and five we start the requests for the location.
+
+<syntaxhighlight lang="java" source="" line>
+private LocationListener updateListenerForGPS = new LocationListener() {
+   @Override
+   public void onStatusChanged(String provider, int status, Bundle extras) {			
+   }
+   @Override
+   public void onProviderEnabled(String provider) {
+      lManager.removeUpdates(updateListenerForNetwork);	
+   }
+   @Override
+   public void onProviderDisabled(String provider) {
+   }
+   @Override
+   public void onLocationChanged(Location location) {
+   ...
+   profile.addWorkedTime((double)(actualTime-lastUpdateTime)/60000);
+   ...
+   }
+};
+</syntaxhighlight>
+
+In line twelve we get in the onLocationChanged-method the current location. We use it, to look if the Employee is in the company. If he is then he get in line 14 a salary increase.
+
+=== Map view & Overlay ===
+
+==== [[Map view]] ====
+
+<syntaxhighlight lang="xml" source="" line>
+<RelativeLayout
+   ...>
+   <com.google.android.maps.MapView
+      android:id="@+id/mv_google_map"
+      ...
+      android:apiKey="@string/map_key"/>
+</RelativeLayout>
+</syntaxhighlight>
+
+In line 4 we give the [[Map view]] an ID. In line 6 we use a map_key. [https://developers.google.com/maps/documentation/android/mapkey Here] you find more information about the Map key. We show the Map in a MapActivity.
+
+==== [[Overlay]] ====
+
+We use two [[Overlay | overlays]] in our implementation. The MapActivity constructs an rectangle with the CompanyOverlay and the MyLocationOverlay is a standard Android overlay to draw your own position.
+
+<syntaxhighlight lang="java" source="" line>
+MapView mView;
+List<Overlay> mapOverlays;
+MyLocationOverlay myLocationOverlay;
+...
+myLocationOverlay = new MyLocationOverlay(this, mView);
+...
+mView.getOverlays().add(myLocationOverlay);
+</syntaxhighlight>
+
+In line 5 we create a MyLocationOverlay. In line 7 we get a list with overlays and we add the created mylocationOverlay to draw our position.
+
+=== [[Android Preference | Preferences]] ===
+
+<syntaxhighlight lang="xml" source="" line>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+   <PreferenceCategory>
+      <Preference android:key="profile" />
+   </PreferenceCategory>
+</PreferenceScreen>
+</syntaxhighlight>
+
+In line three we define the key for the preference.
+
+<syntaxhighlight lang="java" source="" line>
+private SharedPreferences settings;
+...
+settings = getSharedPreferences(getPackageName()+"_preferences", MODE_PRIVATE);	
+...
+settings.edit().putInt("profile", pos).commit();
+...
+settings.getInt("profile", 0);
+</syntaxhighlight>
+
+In line three we get the preference-object. In line five we edit the preference with putInt(key,value) and we commit the changes. In line seven we get the value with getInt(key,default).
+== Architecture ==
+
+* In the package ''org.softlang.company.mobileAndroid'' we define the app widget provider and the tab activities.
+* In [this!!res/values/strings.xml strings.xml] we specify the Strings of the Application.
+* In [this!!res/layout layout] we define various [[Layout | layouts]] of the different [[View | views]].
+* In the package ''org.softlang.company.services'' we implement the [[Android Service]].
+* In the package ''org.softlang.company.location'' we demonstrate the [[Map view | map view]] and [[Overlay | overlay]].
+* In the package ''org.softlang.company.data'' we define the profile class and the xml Parser to import and export the data.
+* In [this!!res/xml/company_widget_provider.xml company_widget_provider.xml] we have settings for the [[AppWidget]].
+* In  [this!!res/xml/settings.xml settings.xml] we have the [[Android Preference]] xml-file.
+== Usage ==
+
+* See Usage of [[Contribution:simpleAndroid | simpleAndroid]].
+* If you want to use the Google map view, then you need to follow these [https://developers.google.com/maps/documentation/android/start#getting_the_google_maps_android_api_v2 instructions] during development.
+
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Language:XML]]
+* [[uses::Technology:Android]]
+* [[uses::Technology:Android_SDK]]
+* [[uses::Technology:Android Development Tool]]
+* [[implements::Feature:Touch_control]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Geolocation]]
+* [[implements::Feature:Reliability]]
+* [[implements::Feature:Persistence]]
+* [[developedBy::Contributor:Hakan Aksu]]
+* [[instanceOf::Namespace:Contribution]]

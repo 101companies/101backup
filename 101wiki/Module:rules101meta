@@ -1,0 +1,12 @@
+== Headline ==
+
+Collect and validate all 101meta rules scattered over 101repo. 101meta rules are allowed to appear anywhere in 101repo so that these rules can be maintained close to the contribution, language, or technology of interest. The present module collects these scattered rules for simplified processing beyond this point. Also, the module validates the rules in some basic manner to detect some obvious errors. The report for validation is included into the collected rule set. The origin of each rule is preserved also in the collected rule set so that this origin can be used, e.g., for the user's benefit.
+== Description ==
+
+101repo as prepared by [[Module:pull101repo]]
+== Output ==
+
+Collected rules: http://data.101companies.org/dumps/rules.json
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

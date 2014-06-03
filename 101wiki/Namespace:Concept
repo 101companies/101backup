@@ -1,0 +1,28 @@
+== Headline ==
+
+The namespace for [[software concept]]s
+
+== Description ==
+
+On this wiki, the empty namespace (i.e., no prefix) is used for software concepts. The namespace shall not have any immediate instances. Instead, specific vocabularies may express "is-a" relationships to this namespace. In this manner, all concepts are rooted by [[Namespace:Concept]] through their membership in one or more vocabularies.
+
+== Illustration ==
+
+[[Vocabulary:Software engineering]] is a vocabulary that indeed "is-a" sub-classifier for concepts.
+
+[[Software system]] is a specific concept that is an "instance-of" [[Vocabulary:Software engineering]].
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the concept.
+* '''Definition''' (optional): Most concepts are readily defined elsewhere, e.g., on a Wikipedia page. In particular, when the [[Property:Identifies]] is used, then no "definition" section should be required. Otherwise, a "definition" section must be provided though.
+* '''Illustration''' (optional): an illustration of the concept (or a pointer therefore).
+* '''Relationships''' (optional): explanations regarding related concepts.
+* '''Metadata''' (required):
+** The concept must be declared to be, indeed, an instance of [[Namespace:Concept]].
+** The concept should be connected with the ontology.
+** The concept should be linked with online resources for identification.
+** The concept should be linked with other related online resources.
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

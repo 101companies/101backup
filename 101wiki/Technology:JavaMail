@@ -1,0 +1,10 @@
+== Headline ==
+
+a library for handling emails in a Java environment
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Internet technology]]
+* [[identifies::http://www.oracle.com/technetwork/java/javamail/index.html]]
+* [[linksTo::http://docs.oracle.com/javaee/6/api/javax/mail/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

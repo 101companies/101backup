@@ -1,0 +1,12 @@
+== Headline ==
+
+support for advanced media capabilities on the Java platform
+
+== Description ==
+
+For instance, the package [[Java:com.sun.image.codec.jpeg]] is part of the API(s).
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://java.sun.com/javase/technologies/desktop/media/]]
+* [[instanceOf::Namespace:Technology]]

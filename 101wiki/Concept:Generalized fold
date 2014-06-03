@@ -1,0 +1,12 @@
+== Headline ==
+
+A generalization of the [[fold function]] on lists
+== Illustration ==
+
+See the concept of [[fold algebra]]s for an illustration. (For instance, a fold for arithmetic expressions is defined over there.) See also [[Technology:Tabaluga]] for a [[generic programming]] technology that supports generalized folds. Further, see also [[Contribution:tabaluga]] for an illustration of generalized fold in the context of the [[@system]].
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[relatesTo::Catamorphism]]
+* [[linksTo::http://en.wikipedia.org/wiki/Catamorphism]]
+* [[instanceOf::Namespace:Concept]]

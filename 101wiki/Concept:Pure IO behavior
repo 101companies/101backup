@@ -1,0 +1,10 @@
+== Headline ==
+
+An [[IO behavior]] that neither modifies the input and nor causes any other side effect
+== Details ==
+
+The constraint on side effects only applies to data that affects the I/O behavior. For instance, caching (for the purpose of performance improvements) does not count as a side effect.
+== Metadata ==
+
+* [[instanceOf::IO behaviour]]
+* [[instanceOf::Namespace:Concept]]

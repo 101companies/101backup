@@ -1,0 +1,45 @@
+== Headline ==
+
+A [[higher-order function]] to apply an argument function to all elements of a list
+
+== Illustration ==
+
+Let's map over a given list of numbers to increment them. In [[Language:Haskell]], we would use the map function as follows:
+
+<syntaxhighlight lang="haskell">
+>  map (+1) [1,2,3,4,5]
+[2,3,4,5,6]
+</syntaxhighlight>
+
+That is, ''map'' is applied to a function and a list; ''map'' returns a list of the same length as the input list which each element "transformed" by the argument function. The higher-order function ''map'' can be defined as follows:
+
+<syntaxhighlight lang="haskell">
+-- Define map via pattern matching
+map :: (a -> b) -> [a] -> [b]
+map f [] = []
+map f (x:xs) = f x : map f xs
+</syntaxhighlight>
+
+For what it matters, the ''map'' function could also be defined in terms of the [[fold function]], thereby reusing a recursion scheme as opposed to the explicitly recursive definition above.
+
+<syntaxhighlight lang="haskell">
+-- Define map via foldr
+map' :: (a -> b) -> [a] -> [b]
+map' f = foldr ((:) . f) []
+</syntaxhighlight>
+
+Further, we can also define the ''map'' function in terms of list comprehension; in this manner we hint at the meaning of list comprehensions because, in fact, list comprehensions correspond to syntactic sugar whose elimination also involves the [[Map function]].
+
+<syntaxhighlight lang="haskell">
+-- Define map via list comprehension
+map'' :: (a -> b) -> [a] -> [b]
+map'' f xs = [ f x | x <- xs ]
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[instanceOf::Common function]]
+* [[instanceOf::Higher-order function]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Map_(higher-order_function)]]
+* [[instanceOf::Namespace:Concept]]

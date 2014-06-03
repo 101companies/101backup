@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[method]] that does not dispatch on a receiver type
+
+== Illustration ==
+
+See [[Contribution:javaStatic]].
+
+== Metadata ==
+
+[[isA::Method]]
+

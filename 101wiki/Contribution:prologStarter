@@ -1,0 +1,25 @@
+== Headline ==
+
+a simple [[Language:Prolog]]-based implementation
+
+== Motivation ==
+
+We demonstrate the most basic style of logic programming for modeling company structure and basic operations.
+
+== Architecture ==
+
+There is a predicate total/2 to total all salaries in a company.
+There is a predicate cut/2 to cut all salaries in half.
+There is a predicate depth/2 to compute the nesting depth of departments.
+
+== Usage ==
+
+See the Makefile for running the tests.
+
+The code has been tested with SWI-Prolog 5.10.1.
+
+== Metadata ==
+* [[uses::Language:Prolog]]
+* [[uses::Technology:SWI-Prolog]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

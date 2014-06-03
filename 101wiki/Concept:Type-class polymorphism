@@ -1,0 +1,10 @@
+== Headline ==
+
+A form of [[bounded polymorphism]] based on [[type class]]es as in [[Language:Haskell]]
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Type_class]]
+* [[isA::Bounded polymorphism]]
+* [[isA::Ad-hoc polymorphism]]
+* [[instanceOf::Namespace:Concept]]

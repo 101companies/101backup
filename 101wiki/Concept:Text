@@ -1,0 +1,12 @@
+== Headline ==
+
+the text type of data
+
+== Discussion ==
+
+Text plays a role in various areas of computing. For instance, text is an important file format. Also, text is the typical format processed by [[grammarware]].
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/Plain_text]]
+* [[instanceOf::Namespace:Concept]]

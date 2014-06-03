@@ -1,0 +1,9 @@
+== Headline ==
+
+A domain-specific library of [[function]] combinators
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Combinator_library]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

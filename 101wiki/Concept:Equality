@@ -1,0 +1,55 @@
+== Headline ==
+
+Some kind of equality in programming
+
+== Illustration ==
+
+Let us focus here on equality of data as it is used in [[programming]]. Different kinds of equality exist: [[structural equality]], [[semantic equality]], [[reference equality]], and possibly others. For example, trivially, the following equalities or inequalities hold as demonstrated at the interpreter prompt of [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+> 42 == 42
+True
+> 42 == 41
+False
+> True == True
+True
+> "Foo" == "Bar"
+False
+</syntaxhighlight>
+
+In various [[programming language]]s, equality may be defined by the programmer. For instance, [[Language:Haskell]] designates a [[type class]] ''Eq'' to equality (readily defined in the [[Haskell Prelude]]:
+
+<syntaxhighlight lang="haskell">
+-- A type class for equality
+class Eq a
+  where
+    (==) :: a -> a -> Bool
+</syntaxhighlight>
+
+For instance, equality of Booleans would be defined by the following [[type-class instance]]:
+
+<syntaxhighlight lang="haskell">
+-- Equality of Booleans
+instance Eq Bool
+  where
+    True == True = True
+    False == False = True
+    _ == _ = False
+</syntaxhighlight>
+
+More interestingly, equality of lists would be defined such that the two lists need to be of the same length and their elements need to be equal in a pairwise manner; thus we also need equality for the element type, which is expressed by the extra constraint in the instance:
+
+<syntaxhighlight lang="haskell">
+-- Equality of lists
+instance Eq a => Eq [a]
+  where
+    x == y =  length x == length y
+           && and (map (uncurry (==)) (zip x y))
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Equality_(mathematics)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Inequality_(mathematics)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Relational_operator#Equality]]
+* [[instanceOf::Namespace:Concept]]

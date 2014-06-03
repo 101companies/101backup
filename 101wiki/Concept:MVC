@@ -1,0 +1,29 @@
+== Headline ==
+
+an [[Architectural pattern]] dedicated to seperate concerns
+
+== Discussion ==
+
+The  MVC (Model View Controller) [[Pattern|pattern]] divides a program into three major parts:
+
+* View
+* Controller
+* Model
+
+== @View ==
+
+A part of [[partOf::MVC]] that contains the [[user interface]].
+
+== @Controller ==
+
+A part of [[partOf::MVC]] that contains the data.
+
+== @Model ==
+
+A part of [[partOf::MVC]] that handles the user input and notifies both the model and the view, if there are any changes in one of them. If there are changes in the model, the view will collect them directly from the model, when it gets notified. If there are changes in the view, the controller will delegate this to the model <cite>Burbeck1992MVC</cite>.
+
+== Metadata ==
+* [[instanceOf::Architectural pattern]]
+* [[identifies::http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html]]
+* [[instanceOf::Namespace:Concept]]
+

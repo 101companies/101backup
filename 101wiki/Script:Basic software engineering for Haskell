@@ -1,0 +1,47 @@
+== Headline ==
+
+Lecture "Basic software engineering for Haskell" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+Basic [[software engineering]] principles are instantiated for Haskell. That is, Haskell programs are [[modularization|modularized]] (based on a module system), organized (in terms of [[scoping]]), [[documentation|documented]] (based on idiomatic comments), [[packaging|packaged]] (in terms of dependencies), and [[testing|tested]] (specifically unit-tested). To this end, Haskell's where clauses and its [[module system]] as well as the Haskell technologies [[Technology:Haddock]], [[Technology:Cabal]], [[Technology:HackageDB]], and [[Technology:HUnit]] are leveraged.
+== Concepts ==
+
+* [[Software engineering]]
+* [[Modularization]]
+* [[Module]]
+* [[Local scope]]
+* [[Build tool]]
+* [[Package]]
+* [[Haskell package]]
+* [[Package management system]]
+* [[Testing]]
+* [[Unit testing]]
+* [[Testing framework]]
+* [[Documentation]]
+* [[Documentation generation]]
+* [[Documentation generator]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Technologies ==
+
+* [[Technology:Cabal]]
+* [[Technology:HackageDB]]
+* [[Technology:Haddock]]
+* [[Technology:HUnit]]
+== Features ==
+
+* [[Feature:Total]]
+* [[Feature:Median]]
+* [[Feature:History]]
+== Contributions ==
+
+* [[Contribution:haskellStarter]]
+* [[Contribution:haskellEngineer]]
+* [[Contribution:haskellBarchart]]
+== Metadata ==
+
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[linksTo::https://github.com/tibbe/haskell-style-guide/blob/master/haskell-style.md]]
+* [[instanceOf::Namespace:Script]]

@@ -1,0 +1,14 @@
+== Headline == 
+
+Classes for Java networking applications
+
+== Details ==
+
+See also the package [[Technology:java.net]].
+
+== Metadata ==
+
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/javax/net/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

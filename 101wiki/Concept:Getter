@@ -1,0 +1,12 @@
+== Intent ==
+
+read the state (a specific attribute) of an object
+
+== Discussion ==
+
+Oftentimes, a getter is simply an accessor for a non-public field. However, getters may also bridge between internal and external state of an object. In some languages. getters are implemented as instance methods using a name convention. In other languages, there is a designated concept.
+
+
+== Metadata ==
+* [[instanceOf::Instance method]]
+* [[instanceOf::Namespace:Concept]]

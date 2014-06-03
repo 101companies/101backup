@@ -1,0 +1,84 @@
+== Headline ==
+
+Exercise [[Scott encoding]] in [[Language:Haskell|]]
+
+== Characteristics ==
+
+One of the consequences of the [[Scott encoding]] is that [[algebraic data type]]s are not needed; instead [[newtype]]s in combination with "forall" ([[parametric polymorphism]]) can be used to encode the case analysis of algebraic data types. This is illustrated for a Scott-encoded variation on the [[Contribution:haskellVariation]], which involves an algebraic data type for subunits of departments (being either an employee or a department).
+
+== Illustration ==
+
+The data type for subunits is defined as follows:
+
+<syntaxhighlight lang="haskell">
+-- | A sub-unit is either an employee or a sub-department
+newtype SubUnit
+      = SubUnit { getSubUnit ::
+          forall x. (Employee -> x)
+                 -> (Department -> x)
+                 -> x }
+</syntaxhighlight>
+
+Thereby, a value of type ''SubUnit'' would essentially describe case analysis on the forms of subunits. The result type is forall-quantified, as need to perform arbitrary case analyses with arbitrary result types.
+
+The following functions can be used instead of the constructors of an algebraic data type.
+
+<syntaxhighlight lang="haskell">
+-- | Construct a subunit from an employee
+employee :: Employee -> SubUnit
+employee e = SubUnit (\f _ -> f e)
+
+-- | Construct a subunit from a department
+department :: Department -> SubUnit
+department d = SubUnit (\_ f -> f d)
+</syntaxhighlight>
+
+For instance, the ''cut'' function would need to take this form now with the only changes affected the helper function ''cutS'' which directly examines and reconstructs subunits:
+
+<syntaxhighlight lang="haskell">
+-- | Cut all salaries in a company
+cut :: Company -> Company
+cut (n, ds) = (n, (map cutD ds))
+  where
+    -- Cut all salaries in a department
+    cutD :: Department -> Department
+    cutD (n, m, sus)
+      = (n, cutE m, map cutS sus)
+      where
+        -- Cut the salary of an employee in half
+        cutE :: Employee -> Employee
+        cutE (n, a, s) = (n, a, s/2)
+        -- Cut all salaries for a subunit
+        cutS :: SubUnit -> SubUnit
+        cutS s
+          = getSubUnit s
+                       (employee . cutE)
+                       (department . cutD)
+</syntaxhighlight>
+
+== Relationships ==
+
+The present contribution was derived by minimal changes from [[Contribution:haskellVariation]].
+
+== Architecture ==
+
+See [[Contribution:haskellVariation]].
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+* [[uses::Language:Haskell]] 
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell data]]
+* [[instanceOf::Namespace:Contribution]]
+

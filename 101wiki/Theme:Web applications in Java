@@ -1,0 +1,12 @@
+== Headline ==
+
+A theme of [[Language:Java]]-based web applications
+
+== Description ==
+
+The theme collects contributions which exercise different kinds of [[web-application framework]]s for [[Language:Java]]. Different technologies such as [[Technology:Struts]], [[Technology:JSF]], and [[Technology:GWT]] are explored. For some technologies, different options of technology usage are explored, e.g., the use of annotations versus XML-based configuration.
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

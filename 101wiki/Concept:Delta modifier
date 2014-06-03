@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[Language:DatalogLB]] language construct to control changes to a predicate	population
+
+== See also==
+
+{{LogicBlox}}
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:DatalogLB]]
+* [[instanceOf::Namespace:Concept]]

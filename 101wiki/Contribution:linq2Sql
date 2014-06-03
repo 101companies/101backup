@@ -1,0 +1,14 @@
+== Intent ==
+
+a basic implementation for O/R mapping using LINQ2SQL
+
+== Motivation == 
+
+== Architecture ==
+
+== Usage ==
+
+== Metadata ==
+* [[uses::Language:CSharp]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,25 @@
+== Headline ==
+
+A program that executes programs in a software language
+
+== Illustration ==
+
+Let's assume that we want to interpret the [[Language:Python]] variation on the [[Hello world program]].
+
+That is, the source code of the program is available as a file "HelloWorld.py".
+
+We simply invoke the Python interpreter at the command line:
+
+<pre>
+$ python HelloWorld.py 
+Hello, world!
+</pre>
+
+This is different from compilation, where we would first use a [[compiler]] to produce object code that is eventually also interpreted. In fact, Python scripts could also be compiled in the interest of performance. The use of the interpreter may be more convenient in scripting.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Interpreter_(computing)]]
+* [[relatesTo::Compiler]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,20 @@
+== Headline ==
+
+The namespace for 101worker modules
+
+== Description ==
+This module tries to resolve all metadata defined in 101meta rules. It goes over the rules dump of rules101meta and checks for every metadata value if a page on the wiki exists. If there is a page, the link to the page is constructed and the headline is extracted. All found values go into the dump, including the link and, if available, the headline. It then goes over all contributions defined in the wiki and checks if a repo entry exists for this contribution. It constructs the link to the wiki, the link to the repo, and tries to extract the headline from the wiki page. All data is appended to the dump. 
+
+== Output ==
+
+http://data.101companies.org/dumps/resolution.json
+
+== Input ==
+
+* 101meta rules as collected by [[Module:rules101meta]]
+* 101repo as prepared by [[Module:pull101repo]]
+* The wiki data as collected by [[Module:wiki2json]]
+
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

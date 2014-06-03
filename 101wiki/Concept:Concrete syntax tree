@@ -1,0 +1,11 @@
+== Headline ==
+
+A [[syntax tree]] showing concrete syntax
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Parse_tree]]
+* [[isA::Syntax tree]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[relatesTo::Abstract syntax tree]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,14 @@
+== Headline ==
+
+Mapping company data across technological spaces
+== Description ==
+
+For better interoperability and technological space integration, company data must be representable in different types system and a mapping must be supported between type system, or, in fact, technological spaces so that company data can be processed within the space chosen for programming while also supporting another space, be it for parsing, unparsing, serialization, persistence, and others.
+== Motivation ==
+
+The feature can be used to exercise various [[mapping technology|mapping technologies]], e.g., for [[Object-XML mapping]] or [[Object/relational mapping]].
+== Metadata ==
+
+* [[isA::Non-functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

@@ -1,0 +1,16 @@
+== Headline ==
+
+A constraint on the data model of a [[software system]] or a [[software component|component]]
+
+== Description ==
+
+[[Requirements analysis]] is typically focused on [[functional requirement|functional]] and [[non-functional requirement]]s with [[data modeling]] typically seen as a separate activity, possibly initiated only in the design phase. In the context  of this wiki, contraints on the [[data model]], e.g., in terms of its expressiveness or shape, are considered requirements, too, and they are subject to a designated classifier for requirements. 
+
+Arguably, some [[data requirement]]s could be (partially) turned into [[functional requirement]]s. For example, rather than saying "''the [[data model]] of the [[@system]] must support an [[association]] for employee mentorship''" (see [[Feature:Mentoring]]), one could be saying "''the [[@system]] must support data input, storage, and retrieval of mentors and mentees associated with employees''". Possibly, some [[data requirement]]s could be (partially) turned into [[non-functional requirement]]s. In the context of this wiki, [[data requirement]]s are deliberately separated, as it is hoped to lead to good [[separation of concerns]] and instructive [[requirement]]s that are modeled or implemented more easily.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Data_modeling]]
+* [[isA::Requirement]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

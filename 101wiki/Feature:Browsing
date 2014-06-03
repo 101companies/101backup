@@ -1,0 +1,77 @@
+== Headline ==
+
+UI support for browsing company data
+
+== Rationale ==
+
+* '''Simplicity''': The interface is supposed to be simple in that it is not meant to result in a GUI programming challenge. Anyone modestly familiar with a given GUI technology should be able to provide the GUI for the [[@system]]. Anyone modestly familiar with the basic concepts of GUI programming should be able to understand the GUI part of the implementation without much effort. Clearly, the GUI should be functionally correct and architecturally sound as well as usable. Any form of tuning should be avoided in the interest of simplicity.
+
+* '''Data model-driven''': Companies are essentially hierarchical structures that break down into departments and employees. Hence, the GUI should bind companies, departments, and employees, and there should be navigation support to operate at all the levels of departmental nesting. All properties of companies, departments, and employees must be reachable by navigation.
+
+* '''Focus on navigation as opposed to editing''': Read-only navigation is sufficient except that the application of the cut operation should be supported at any level of hierarchical navigation. No other modifications need to be supported. See [[feature:Editing]] for GUI expressiveness that goes beyond navigation. Implementations may make editable basic properties for names, addresses, and salaries. Such over-achievement of the present feature is not encouraged though.
+
+* '''Layer-based versus tree-based approach''': In the layer-based approach, a company, a department, or an employee is shown at the time. Accordingly, there is a company view, a department view, and an employee view. Navigation begins at the company view and selection of view components transfers to other views. In the layer-based approach, the state of navigation can be essentially viewed as a (possibly incomplete) path from the company root to an inner department or employee. Navigation may maintain this path like a stack. In the tree-based approach, the company structure is shown as a tree in terms of the company's departmental nesting. Folding and unfolding may be applied to such a view. When additional relationships for mentoring, see [[Feature:Mentoring]], are involved, then a directed graph as opposed to a plain tree needs to be visualized.
+
+== Description ==
+
+The following description applies well to classic GUI as well as web-based GUI approaches.
+
+=== Data binding for the layer-based approach ===
+
+Labels are shown in ''italics'' in the sequel.
+
+Order of bindings per view suggest order in the actual layout.
+
+* The Company view:
+** A labeled, read-only text field for the ''Name'' of the company.
+** A labeled, listbox for the ''Departments'' of the company.
+* The Department view:
+** A labeled, read-only text field for the ''Name'' of the department.
+** A labeled, read-only text field for the name of the department's ''Manager''.
+** A labeled, listbox for the ''Employees'' of the company.
+** A labeled, listbox for the ''Sub-departments'' of the company.
+* The Employee view:
+** A labeled, read-only text field for the ''Name'' of the employee.
+** A labeled, read-only text field for the ''Address'' of the employee.
+** A labeled, read-only text field for the ''Salary'' of the employee.
+
+=== Navigation for the layer-based approach ===
+
+Navigation in the GUI is to be supported as follows:
+
+* The Company view:
+** The ''Close Window'' handler terminates the application. 
+** When selecting a department from the ''Departments'' listbox, the corresponding Department view is invoked.
+* The Department view:
+** There is a ''Back'' button that navigates back to the previous view.
+** The ''Close Window'' handler copies the action of the ''Back'' button. 
+** The ''Close Window'' terminates the application. 
+** When selecting an employee from the ''Employees'' listbox, the corresponding Employee view is invoked.
+** When selecting a department from the ''Sub-departments'' listbox, the corresponding Department view is invoked.
+* The Employee view:
+** There is a ''Back'' button that navigates back to the previous view.
+** The ''Close Window'' handler copies the action of the ''Back'' button. 
+
+At any point, it should be possible to ''quit'' the application in a way that is in alignment with the OS/GUI technology at hand.
+
+=== Operations ===
+
+[[Feature:Total]] and [[Feature:Cut]] are to be supported by the GUI.
+
+For instance, the layer-based approach may support these operations as follows:
+
+* The Company view:
+** There is a labeled, read-only text field for the company's ''Total''.
+** A ''Cut'' button is attached to the ''Total'' field.
+* The Department view:
+** There is a labeled, read-only text field for the department's ''Total''.
+** A ''Cut'' button is attached to the ''Total'' field.
+* The Employee view:
+** A ''Cut'' button is attached to the ''Salary'' field.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Tree structure]]
+* [[isA::UI requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

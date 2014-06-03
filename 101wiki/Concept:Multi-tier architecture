@@ -1,0 +1,12 @@
+== Headline ==
+
+An architecture organized in layers
+
+== Discussion ==
+
+When compared to [[Model View Controller]], [[multi-tier architecture]]s use a connection between only the adjacent layers.
+
+== Metadata ==
+* [[instanceOf::Architectural pattern]]
+* [[identifies::http://en.wikipedia.org/wiki/Multitier_architecture]]
+* [[instanceOf::Namespace:Concept]]

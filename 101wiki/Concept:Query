@@ -1,0 +1,16 @@
+== Headline ==
+
+A [[pure IO behavior]] that extracts data from given data
+
+== Details ==
+
+The [[IO behavior]] is said to ''extract'' data in that it will essentially compute a result of a type of a more generic shape than the input's type. (Compare this with the concept of [[transformation]].) A query may be ''implemented'' in a [[query language]] or any [[programming language]].
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Query]]
+* [[isA::Pure IO behavior]]
+* [[isA::IO behavior]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

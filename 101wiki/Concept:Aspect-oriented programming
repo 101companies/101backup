@@ -1,0 +1,19 @@
+== Headline ==
+
+an crosscutting concern-centric programming paradigm
+
+== Abbreviation ==
+
+AOP
+
+== Humor ==
+
+* AOP provides modules for crosscutting concerns, i.e., for concerns that cannot be modularized.
+* AOP is also sometimes called LOP (Logging-oriented programming) to hint at an important application domain.
+
+== Metadata ==
+
+* [[instanceOf::Programming paradigm]]
+* [[identifies::http://en.wikipedia.org/wiki/Aspect-oriented_programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Aspect-oriented_software_development]]
+* [[instanceOf::Namespace:Concept]]

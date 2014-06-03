@@ -1,0 +1,20 @@
+== Headline ==
+
+A [[Functional programming|functional]] [[programming idiom]] for composing computations
+
+== Details ==
+
+With arrows, like [[monad]]s, one can compose computations as defined by <cite>hughes2000generalising</cite>. Arrows are more versatile than monads. For instance, arrows can be independent of the input or take multiple inputs. <cite>haskellOrgArrows</cite> In Haskell, arrows are supported by the. [[type class]] <syntaxhighlight lang="haskell" enclose="none">Arrow</syntaxhighlight> An arrow is defined by two functions. <cite>ghcArrows</cite>:
+<syntaxhighlight lang="haskell" enclose="none">Arrow a => arr :: (b -> c) -> a b c</syntaxhighlight>: Lifts a function of type <syntaxhighlight lang="haskell" enclose="none">b -> c</syntaxhighlight> into the arrow space.
+<syntaxhighlight lang="haskell" enclose="none">Arrow a => first :: a b c -> a (b, d) (c, d)</syntaxhighlight>: Applies a computation only to a part of the input and copies the rest to the output. <cite>haskellOrgArrows</cite>
+
+== Metadata ==
+* [[instanceOf::Type class]]
+* [[instanceOf::Programming idiom]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Arrow_(computer_science)]]
+* [[linksTo::http://www.haskell.org/arrows/]]
+* [[linksTo::http://www.haskell.org/ghc/docs/latest/html/libraries/base/Control-Arrow.html]]
+* [[linksTo::http://dl.acm.org/citation.cfm?id=347246]]
+* [[instanceOf::Namespace:Concept]]
+

@@ -1,0 +1,15 @@
+== Headline ==
+
+Type parameters of a higher [[kind]] than "*"
+
+== Illustration ==
+
+Higher-kinded polymorphism is popular in [[Language:Haskell]] with several well-known [[type class]]es being parameterized in [[type constructor]]s rather than [[type]]s, e.g.:
+* Type class ''Monad''; see the concept of [[monad]].
+* Type class ''Functor''; see the concept of [[functor]].
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Type_class#Higher-kinded_polymorphism]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

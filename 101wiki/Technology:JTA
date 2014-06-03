@@ -1,0 +1,9 @@
+== Headline ==
+
+an API for distributed transactions across [[Technology:XA]] resources in a Java environment
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[instanceOf::Data technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_Transaction_API]]
+* [[instanceOf::Namespace:Technology]]

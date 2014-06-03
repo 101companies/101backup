@@ -1,0 +1,13 @@
+== Headline ==
+
+a container for [[file]]s and directories in a [[file system]]
+
+== Synonym ==
+
+* Folder
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://en.wikipedia.org/wiki/Folder_(computing)]]
+* [[instanceOf::Namespace:Concept]]

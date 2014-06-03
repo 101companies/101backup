@@ -1,0 +1,45 @@
+== Headline ==
+
+[[Model to Model transformation]]s with [[ATL plugin]]s
+
+== Motivation ==
+
+[[Model to Model transformation]]s with [[ATL plugin]]s are exercised in this implementation. The main purpose of this implementation is to execute two [[ATL plugin]]s, [[Contribution:atlCutPlugin]] and [[Contribution:atlTotalPlugin]]. 
+
+== Architecture ==
+
+* The transformations are provided by the plugins
+* The "Metamodels" folder contains the two [[metamodel]]s used by the plugins
+* The  "Models" folder contains the [[model]] that is transformed by the plugins
+* RunTransfoPlugins.java contains the code for executing the two transformations
+
+== Usage ==
+A Eclipse version with an installed ATL plugin is needed to execute the transformations (e.g. [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor the EMF version] with the installed ATL Framework).
+Furthermore, this contributions relies on two other contributions, which are plugins that contain the actual transformations. Those contributions are [[Contribution:atlCutPlugin]] and [[Contribution:atlTotalPlugin]].
+
+Steps:
+* Import all three contributions (this one,  [[Contribution:atlCutPlugin]] and [[Contribution:atlTotalPlugin]]) into Eclpise
+* This contribution will provide an executable Java file called "RunTransfoPlugins.java"
+* Right click on that Java file and select "Run as" -> "Java Application"
+
+Comments:
+* The results of the transformations will be in the Models/Plugins folder
+* A refresh of the Eclipse Project (Right click, then select "Refresh") might be needed before Eclipse shows the results
+
+== Metadata ==
+* [[uses::Language:ATL]]
+* [[uses::Language:Ecore]]
+* [[uses::Language:Java]]
+* [[uses::Language:XMI]]
+* [[uses::Technology:Eclipse]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Hugo  Brunelière]]
+* [[reviewedBy::Contributor:Ralf Lämmel]]
+* [[reviewedBy::Contributor:Martin Leinberger]]
+* [[instanceOf::Theme:MDE]]
+* [[instanceOf::Namespace:Contribution]]

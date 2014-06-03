@@ -1,0 +1,41 @@
+== Headline ==
+
+Lecture "Basic data modeling in Haskell" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+Basic concepts of data modeling in Haskell are covered. One important aspect of data modeling is the choice between [[structural typing|structural]] versus [[nominal typing]]. This distinction gives rise to Haskell's [[type synonym]]s, [[algebraic data type]]s, and [[record type]]s. These options are conveniently illustrated with different data models for the [[@system]]. Another important aspect is the choice between different modeling options for recursive data structures, specifically the use of [[data composition]] and [[data variation]]. These options map to certain idioms of using algebraic data types in Haskell. These options are conveniently illustrated with different data models for the [[@system]], when departmental nesting is taken into account. Related to data modeling, there is the potential requirement of [[information hiding]] such as in the context of [[abstract data type]]s. Haskell's module system supports one approach to [[information hiding]]. This is illustrated with [[stack]]s in all detail.
+== Concepts ==
+
+* [[Structural typing]]
+* [[Type synonym]]
+* [[Nominal typing]]
+* [[Algebraic data type]]
+* [[Data constructor]]
+* [[Constructor component]]
+* [[Record type]]
+* [[Newtype]]
+* [[Data composition]]
+* [[Data variation]]
+* [[Information hiding]]
+* [[Abstract data type]]
+* [[Stack]]
+* [[Reverse Polish notation]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Features ==
+
+* [[Feature:Total]]
+* [[Feature:Cut]]
+== Contributions ==
+
+* [[Contribution:haskellEngineer]]
+* [[Contribution:haskellData]]
+* [[Contribution:haskellRecord]]
+* [[Contribution:haskellComposition]]
+* [[Contribution:haskellVariation]]
+== Metadata ==
+
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

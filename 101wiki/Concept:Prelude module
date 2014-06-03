@@ -1,0 +1,8 @@
+== Headline ==
+
+The standard library of [[Language:Haskell]]
+== Metadata ==
+* [[instanceOf::Vocabulary:Haskell]]
+* [[identifies::http://www.haskell.org/ghc/docs/latest/html/libraries/base/Prelude.html]] 
+* [[linksTo::http://www.haskell.org/onlinereport/standard-prelude.html]]
+* [[instanceOf::Namespace:Concept]]

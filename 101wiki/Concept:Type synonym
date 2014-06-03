@@ -1,0 +1,21 @@
+== Headline ==
+
+A declared name to refer to a type without introducing a new type proper
+
+== Illustration ==
+
+The name [[type synonym]] is specifically used in [[Language:Haskell]]. (The same concept goes by the name "typedef" in, for example, [[Language:C]].) For instance, the following Haskell declaration introduces a type synonym for salaries to be represented as floats. 
+
+<syntaxhighlight lang="haskell">
+type Salary = Float
+</syntaxhighlight>
+
+The choice of a type synonym implies that salaries and floats are compatible in a typing sense: any float is immediately acceptable whereever a salary is expected, and vice versa. The type synonym is merely a convenience without any proper effect on typing.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Typedef]]
+* [[identifies::http://www.haskell.org/haskellwiki/Type_synonym]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[relatesTo::Structural typing]]
+* [[instanceOf::Namespace:Concept]]

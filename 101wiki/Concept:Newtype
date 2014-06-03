@@ -1,0 +1,49 @@
+== Headline ==
+
+A special form of [[algebraic data type]] in [[Language:Haskell]]
+== Illustration ==
+
+Consider the following declaration of a salary type:
+
+<syntaxhighlight lang="haskell">
+type Salary = Float
+</syntaxhighlight>
+
+This declaration introduces merely a type synonym, but it enforces no type distinction. Floats and salaries are compatible in the sense of [[structural typing]]. If we were to enforce a type distinction, then the following type declaration could be preferred instead:
+
+<syntaxhighlight lang="haskell">
+data Salary = Salary Float
+</syntaxhighlight>
+
+Thus, salaries and floats are no longer compatible at a typing level; a float may be "wrapped" as a salary; a salary may be "unwrapped" to retrieve a float. Indeed, this special case of using algebraic data types just for making type distinctions is specifically supported by newtypes in Haskell. Accordingly, the following type declaration uses a newtype:
+
+<syntaxhighlight lang="haskell">
+newtype Salary = Salary Float
+</syntaxhighlight>
+
+Syntactically, a newtype is an algebraic data type with only one [[data constructor]] with in turn only one [[constructor component]]. Semantically, this restriction implies that we can think of the constructor as serving for type distinction only without any semantical purpose such as grouping data.
+
+Consider this program:
+
+<syntaxhighlight lang="haskell">
+data X = X ()
+newtype Y = Y ()
+f (X _) = True
+g (Y _) = True
+</syntaxhighlight>
+
+When ''f'' is applied to ''undefined'', then an exception is thrown, as proper pattern matching (term deconstruction) has to be performed in order to confirm the equation. When ''g'' is applied to ''undefined'', then the equation is soundly applied (such that ''True'') is returned because no pattern has to be matched and the undefined argument of ''Y'' is not inspected.
+
+<pre>
+*Main> f undefined
+*** Exception: Prelude.undefined
+*Main> g undefined
+True
+*Main> f (X undefined)
+True
+</pre>
+== Metadata ==
+
+* [[isA::Algebraic data type]]
+* [[identifies::http://www.haskell.org/haskellwiki/Newtype]]
+* [[instanceOf::Namespace:Concept]]

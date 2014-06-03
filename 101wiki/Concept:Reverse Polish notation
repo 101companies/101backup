@@ -1,0 +1,37 @@
+== Headline ==
+
+A mathematical notation where operators follow their operands
+== Illustration ==
+
+Consider the following expression using regular infix operators:
+
+<syntaxhighlight lang="text">
+5 + ((1 + 2) * 4) − 3
+</syntaxhighlight>
+
+In RPN:
+
+<syntaxhighlight lang="text">
+5 1 2 + 4 * + 3 -
+</syntaxhighlight>
+
+RPN can be evaluated by means of a simple iterative, [[stack]]-based algorithm which handles one input item (operator or operand) in each iteration. An operand is pushed on the stack. An operator is immediately applied to the two top-most stack entries. When the (well-formed) input has been consumed, then the result of expression evaluation is the one and only entry on the stack.
+
+The input "5 1 2 + 4 * + 3 -" is processed as follows:
+
+* Push 5 on the stack.
+* Push 1 on the stack.
+* Push 2 on the stack.
+* Apply "+" to second top of stack (1) and top of stack (2); pop twice, push 3.
+* Push 4 on the stack.
+* Apply "*" to second top of stack (3) and top of stack (4); pop twice, push 12.
+* Apply "*" to second top of stack (5) and top of stack (12); pop twice, push 17. 
+* Push 3 on the stack.
+* Apply "-" to second top of stack (17) and top of stack (3); pop twice, push 14. 
+
+See <file url="RPN.hs"/> for a [[Language:Haskell|]]-based implementation of the algorithm.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Reverse_Polish_notation]]
+* [[relatesTo::Stack]]
+* [[instanceOf::Namespace:Concept]]

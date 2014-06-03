@@ -1,0 +1,8 @@
+== Headline ==
+A variant of [[Contribution:haskellProfessional]].
+
+== Metadata ==
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Closed serialization]]
+* [[cloneOf::Contribution:haskellProfessional]]
+* [[instanceOf::Namespace:Contribution]]

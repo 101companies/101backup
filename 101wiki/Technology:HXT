@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[toolkit]] for tree-based XML processing in [[Language:Haskell]]
+
+== Discussion ==
+
+Haskell XML Toolkit is a set of tools for processing XML data by using [[Arrow|arrows]] and arrow combinators  <cite>haskellWikiHXT</cite>. That is, the combinators are a [[Domain-specific_language|DSL]] within [[Language:Haskell]] for XML processing. HXT also enables [[XML data binding]].
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[identifies::http://www.haskell.org/haskellwiki/HXT]]
+* [[instanceOf::Namespace:Technology]]

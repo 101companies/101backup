@@ -1,0 +1,37 @@
+== Headline ==
+
+A program that transforms source code into object code
+== Illustration ==
+
+Let's assume that we want to compile the [[Language:Java]] variation on the [[Hello world program]].
+
+That is, the source code of the program is available as a file "HelloWorld.java".
+
+Compilation can be issued in different ways. For instance, an [[IDE]] may take care of it automatically.
+
+For clarity, we perform compilation at the command line:
+
+<pre>
+$ ls
+HelloWorld.java
+$ javac HelloWorld.java 
+$ ls
+HelloWorld.class	HelloWorld.java
+</pre>
+
+Thus, the compiler produced the object code, in fact, [[Language:Java bytecode|bytecode]], in the file "HelloWorld.class".
+
+The byte code can be executed as follows:
+
+<pre>
+$ java HelloWorld
+Hello, world!
+</pre>
+
+The byte code appears to be interpreted, i.e., "java" appears to be an [[interpreter]] for byte code. In fact, "java" performs [[just-in-time compilation]] so that byte code is translated on the fly to machine code, which is then eventually executed (so to say interpreted) by the actual machine.
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Compiler]]
+* [[relatesTo::Interpreter]]
+* [[instanceOf::Namespace:Concept]]

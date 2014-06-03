@@ -1,0 +1,60 @@
+== Headline ==
+
+The Insertion sort [[sorting algorithm]]
+
+
+== Illustration ==
+
+See the visualization of Insertion sort on Wikipedia: 
+
+http://en.wikipedia.org/wiki/Insertion_sort
+
+See various illustrations of Insertion sort as available on YouTube, e.g.:
+
+<media url="http://www.youtube.com/watch?v=ROalU379l3U"/>
+
+An implementation of Insertion sort is given here for the [[Language:Haskell]]:
+
+<syntaxhighlight language=haskell>
+-- Polymorphic sorting
+sort :: Ord a => [a] -> [a]
+sort xs = inserts xs []
+
+-- Insert given elements in an emerging result
+inserts :: Ord a => [a] -> [a] -> [a]
+inserts [] r = r
+inserts (x:xs) r = inserts xs (insert x r)
+
+-- Insert a given element in a list
+insert :: Ord a => a -> [a] -> [a]
+insert x [] = [x]
+insert x (y:ys) =
+  if x <= y
+    then x : y : ys
+    else y : insert x ys
+</syntaxhighlight>
+
+The main sorting function relies on two helpers to model sorting as repeated insertion. That is, the ''inserts'' helper successfully inserts all elements into an emerging result list; the ''insert'' help perform a single insert operation such that the given element is inserted into a readily sorted list in a way such that the result is sorted, too. The first equation of ''insert'' models that any value can be trivially inserted into an empty list. The second equation of ''insert'' compares the given value ''x'' with the head ''y'' of the sorted list. If ''x<=y'' then ''x'' belongs before ''y''; otherwise ''y'' is maintained as the head and insertion continues into the tail of the list by means of recursion. 
+
+The implementation is illustrated as follows:
+
+<syntaxhighlight language=haskell>
+-- Illustrate sorting
+main = do
+  let input = [2,4,3,1,4]
+  print $ sort input -- [1,2,3,4,4]
+</syntaxhighlight>
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Insertion_sort, 21 April 2013)
+
+Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list. On a repetition, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there. It repeats until no input elements remain.
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Insertion_sort]]
+* [[instanceOf::Sorting algorithm]]
+* [[instanceOf::Namespace:Concept]]

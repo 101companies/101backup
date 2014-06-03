@@ -1,0 +1,13 @@
+== Headline ==
+
+An "or" [[feature]] in [[feature modeling]]
+
+== Illustration ==
+
+[[Feature:Parallelism]] of the [[@system]] is an or feature because one could use both [[Feature:Task parallelism]] and [[Feature:Data parallelism]]].
+
+== Metadata ==
+
+* [[isA::Feature]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

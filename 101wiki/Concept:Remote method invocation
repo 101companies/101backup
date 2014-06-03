@@ -1,0 +1,14 @@
+== Headline ==
+
+The [[OOP]] form of [[remote procedure call]]s
+
+== Illustration ==
+
+[[RMI]] is specifically established for the [[Technology:Java platform|Java platform]].
+
+See [[Contribution:javaRmi]] for an illustration.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Java_remote_method_invocation]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,24 @@
+== Intent ==
+
+a [[toolkit]] for [[modelware]] for the Java platform
+
+== Description ==
+
+TBD
+
+== Components ==
+
+* [[Technology:Ecore]]
+
+To be continued
+
+== Spaces ==
+
+* [[Objectware]]
+* [[Modelware]]
+* [[Auxiliary XMLware]]
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[identifies::http://www.eclipse.org/modeling/emf/]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,16 @@
+== Headline ==
+
+How Wikipedia is used on 101wiki
+
+== Description ==
+
+Wikipedia is considered a key resource on 101wiki. Whenever possible, entities on 101wiki are linked to suitable Wikipedia pages. To this end, the [[Property:Identifies]] is used, when the reference Wikipedia page is judged to deal with exactly the entity (e.g., language, technology, or concept) at hand. The [[Property:LinksTo]] is used for semantically weaker links. Of course, 101wiki also links to other resources (including wikis), but Wikipedia is referenced as much as possible.
+
+Further, Wikipedia is also a popular source for citation. That is, text from Wikipedia pages may end up in the "Citation" section of 101wiki pages.
+
+== Illustration ==
+
+See [[Sorting algorithm]] for a 101wiki pages that indeed links to Wikipedia for the relevant concept and also quotes from the linked Wikipedia page in the "Citation" section.
+
+== Metadata ==
+* [[instanceOf::Namespace:Information]]

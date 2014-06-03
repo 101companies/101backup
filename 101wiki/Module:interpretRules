@@ -1,0 +1,35 @@
+== Headline ==
+abstract module to apply rules to files
+
+== Description ==
+
+Apply the rules gathered by [[Module:rules101meta]] to specified files. This module is abstract and it can not be called directly but is rather used a library for other modules to apply rules to the file system. It could also be used by non-modules as it is independent from the path it is called from. It implements the whole new api, including fpredicates. It can be called in append or overwrite/create mode.
+
+== Output ==
+
+One file per input ".metadata.json"
+
+== Usage ==
+
+The most important function of this module is: 
+<syntaxhighlight lang="python" source="program.py">
+
+def apply_rules(files, rules, filter_function, append):
+    # code omitted
+    pass
+
+</syntaxhighlight>
+
+The application works like this:
+
+<syntaxhighlight lang="python" source="program.py">
+
+apply_rules(['/tmp/antlrParser/contributions/antlrParser/src/file.java'], rules, lambda rule: not any(filter(lambda key: key in ('predicate', 'fpredicate', 'content', 'locator'), rule['rule'].keys())), append=False)
+
+</syntaxhighlight>
+
+The third predicate is a filter function to filter out rules, it is advised to use this parameter instead doing this by hand.
+
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

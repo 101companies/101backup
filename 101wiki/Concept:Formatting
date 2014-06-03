@@ -1,0 +1,12 @@
+== Headline ==
+
+Format data according to some rule
+
+== Details ==
+
+This may be seen as a more liberal term than [[unparsing]] (or "pretty printing").
+
+== Metadata ==
+
+* [[relatesTo::Unparsing]]
+* [[instanceOf::Namespace:Concept]]

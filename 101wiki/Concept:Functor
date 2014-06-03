@@ -1,0 +1,39 @@
+== Headline ==
+
+A [[Functional programming|functional]] [[programming idiom]] for mapping over containers
+== Illustration ==
+
+The term "functor" originates from category theory, but this will be of no further concern in this description. In functional programming, "functor" refers to a programming idiom for mapping over contains or compound data. Functors have been popularized by [[Language:Haskell]]. 
+
+In Haskell, functors are programmed and used with the help of the [[type class]] ''Functor'' which is parametrized by a [[type constructor]] for the actual container type: 
+
+<syntaxhighlight lang="haskell">
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+</syntaxhighlight>
+
+The [[type constructor]] parameter ''f'' is the placeholder for the actual container type. The [[fmap function]] (for "functorial map") is the principle operation of a functor: parametrized by a function for mapping container elements of type ''a'' to elements of type ''b'', it provides a mapping at the level of the container types, from ''f a'' to ''f b''. Algebraically, the following properties are required for any functor (given in Haskell notation):
+
+<syntaxhighlight lang="haskell">
+fmap id = id
+fmap f . fmap g = fmap (f . g)
+</syntaxhighlight>
+
+The following ''Functor'' instance turns lists into a functor:
+
+<syntaxhighlight lang="haskell">
+instance Functor [a] where
+ fmap = map
+</syntaxhighlight>
+
+Thus, the folklore [[map function]] for list processing is a particular example of the notion of functorial map.
+== Metadata ==
+
+* [[isA::Programming idiom]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://www.haskell.org/haskellwiki/Functor]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Category_theory/Functor]]
+* [[linksTo::http://hackage.haskell.org/packages/archive/base/latest/doc/html/Data-Functor.html]]
+* [[linksTo::http://en.wikipedia.org/wiki/Functor]]
+* [[relatesTo::Foldable type]]
+* [[instanceOf::Namespace:Concept]]

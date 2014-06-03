@@ -1,0 +1,38 @@
+== Headline ==
+
+The use of self-reference in defining [[abstraction]]s
+
+== Illustration ==
+
+Clearly, there are different forms of recursions, as they are different [[abstraction mechanism]]s that permit recursion. For instance, in [[functional programming]], both [[Function]]s and [[data type]]s may be defined recursively.
+
+=== Recursive functions ===
+
+Consider the following recursive formulation of the factorial function in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- A recursive definition of the factorial function
+factorial n =
+  if n==0
+    then 1
+    else n * factorial (n-1)
+</syntaxhighlight>
+
+This is essentially a form of primitive recursion: the function definition checks for the argument ''n'' to be "0" for the base case and applies the function recursively to the predecessor of the argument otherwise. For the record, non-recursive formulations are feasible, too, depending on the helper functions we are willing to use. For instance, we may use the ".." operator to enumerate all values in a range and then apply the ''product'' function:
+
+<syntaxhighlight lang="haskell">
+-- A non-recursive definition of the factorial function
+factorial' n = product [1..n]
+</syntaxhighlight>
+
+=== Recursive data types ===
+
+Under construction.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming theory]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Recursion_(computer_science)]]
+* [[identifies::http://mathworld.wolfram.com/Recursion.html]]
+* [[instanceOf::Namespace:Concept]]

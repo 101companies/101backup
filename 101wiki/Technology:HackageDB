@@ -1,0 +1,24 @@
+== Headline ==
+
+A collection of releases of [[Language:Haskell]] packages
+
+== Illustration ==
+
+Have a look at the website of HackageDB:
+
+http://hackage.haskell.org/packages/hackage.html
+
+Specifically, have a look at the packages available at HackageDB:
+
+http://hackage.haskell.org/packages/archive/pkg-list.html
+
+For instance, here is a pointer to a specific package for [[SYB]] style of [[generic programming]]:
+
+http://hackage.haskell.org/package/syb
+
+== Metadata ==
+
+* [[identifies::http://hackage.haskell.org/]]
+* [[instanceOf::Source code repository]]
+* [[relatesTo::Technology:Cabal]]
+* [[instanceOf::Namespace:Technology]]

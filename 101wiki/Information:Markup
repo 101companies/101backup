@@ -1,0 +1,36 @@
+== Headline == 
+
+What markup to use on 101wiki pages
+
+== Description ==
+
+Overall, 101wiki uses [[Technology:MediaWiki]] markup but with some omissions, extensions, and variations.
+
+'''This information is under construction.'''
+
+=== File and fragment selection ===
+
+Files in 101repo and fragments thereof can be addressed so that the corresponding text is rendered. The following examples stem from [[Contribution:haskellStarter]]. 
+
+This is how a complete file could be selected:
+
+<pre>
+<fragment url="/contributions/haskellStarter/src/Main.hs"/>
+</pre>
+
+In fact, the URLs can be relative to the page:
+
+<pre>
+<fragment url="src/Main.hs"/>
+</pre>
+
+A specific type in the file can be selected like this:
+
+<pre>
+<fragment url="src/Main.hs/type/Company"/>
+</pre>
+
+One can use the discovery service to actually capture the URLs for file and fragment selection. For instance, this URL positions the discovery service on the file of interest: http://101companies.org/resources/contributions/haskellStarter/src/Main.hs?format=html Accordingly, one can examine the listed fragments and extract the URLs for inclusion into the fragment markup.
+
+== Metadata ==
+* [[instanceOf::Namespace:Information]]

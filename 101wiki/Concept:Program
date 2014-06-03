@@ -1,0 +1,25 @@
+== Headline ==
+
+An executable [[software artifact]] that solves a certain problem
+
+== Description ==
+
+According to a classic definition, a program is ([[Resource:Principles_of_information_systems]]) "a sequence of instructions written to perform a specified task with a computer". This style of definition is possibly too much focused on an imperative view of programming.
+
+More intuitively, more inclusively, and shorter: '''a [[program]] is an executable [[software artifact]] that solves a certain problem (that is amenable to automation on a computer). For instance, a program may solve an [[algorithmic problem]].'''
+
+A [[program]] may count as a "small" [[software system]] or an (executable) [[software component]]. A "proper" [[software system]] or [[software component|component]] typically comprises of multiple [[software artifact]]s that may be elements of different [[software language]]s, may or may not be elements of [[programming language]]s, may reside at different levels of abstraction, and may interact in various ways.
+
+Strictly speaking, a [[program]], as far as this term is used in practice, may very well also break down into multiple [[software artifact]]s because of, for example, [[modular programming]]. Thus, the line between [[program]]s and [[software system]]s or (executable) [[software component]]s is somewhat blurred.
+
+== Illustration ==
+
+See the [[Hello world program]] for a very simple program.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Computer_program]]
+* [[isA::Software artifact]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

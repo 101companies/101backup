@@ -1,0 +1,15 @@
+== Headline ==
+
+A mandatory [[feature]] in [[feature modeling]]
+== Illustration ==
+
+[[Feature:Company]] of the [[@system]] is a mandatory feature because it is pretty much impossible to have any system without a data model.
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Feature_model]]
+* [[linksTo::http://www2.fiit.stuba.sk/~vranic/pub/FMM.pdf]]
+* [[isA::Feature]]
+* [[memberOf::Vocabulary:Software engineering]]
+* [[relatesTo::Optional feature]]
+* [[relatesTo::Alternative feature]]
+* [[isA::Concept]]

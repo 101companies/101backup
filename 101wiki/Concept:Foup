@@ -1,0 +1,7 @@
+== Bar ==
+
+[[prefix:Foobar]]dd
+[[prefix:Foobar]]
+[[prefix:Foobar]]
+== Metadata ==
+* [[instanceOf::Namespace:Concept]]

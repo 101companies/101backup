@@ -1,0 +1,49 @@
+== Headline ==
+
+simple functional programming in [[Language:Python]]
+
+== Motivation ==
+
+This illustrates simple functional programming in Python. Using this style mostly reduces the code length and is more expressive although [[Language:Python]] doesnt offer full support for functional programming.
+
+== Illustration ==
+
+The company model is implemented by named tuples. One can instantiate the data 
+the same way as using classes.
+
+<syntaxhighlight lang="python">
+Company = namedtuple('Company', ['name', 'departments'])
+Employee = namedtuple('Employee', ['name', 'salary'])
+Department = namedtuple('Department', ['name', 'manager', 'subunits'])
+</syntaxhighlight>
+
+For the implementation of cut new objects have to be created because named tuples
+are immutable.
+
+<syntaxhighlight lang="java">
+def cut(company):
+
+    def cutSubunit(s):
+
+        def cutEmployee(employee):
+            return Employee(employee.name, employee.salary/2.0)
+
+        def cutDepartment(department):
+            return Department(department.name, cutEmployee(department.manager), map(cutSubunit, department.subunits))
+
+        return cutEmployee(s) if isinstance(s, Employee) else cutDepartment(s)
+
+    return Company(company.name, map(cutSubunit, company.departments))   
+</syntaxhighlight>
+
+== Usage ==
+
+Download the source and run <code>python operations.py</code>
+
+== Metadata ==
+
+* [[uses::Language:Python]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,8 @@
+== Intent ==
+
+the [[capability]] of controlling access to data and resources within programs
+
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Access_control]]
+* [[instanceOf::Namespace:Concept]]

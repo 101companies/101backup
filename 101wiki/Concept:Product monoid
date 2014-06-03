@@ -1,0 +1,13 @@
+== Headline ==
+
+A [[monoid]] leveraging multiplication for the associative operation
+== Illustration ==
+
+Number types may be completed into monoids in different ways. Most notably, either addition or multiplication can be used for the associative operation of the monoid. See the concept of the [[sum monoid]] for a detailed illustration when addition is favored. Obviously, all given definitions would be routinely adapted to favor multiplication instead.
+
+== Metadata ==
+
+* [[isA::Monoid]]
+
+* [[relatesTo::Sum monoid]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,168 @@
+== Headline ==
+
+[[Web programming]] based on the [[Language:HTML5]] ecosystem with local [[Technology:Web storage]]
+
+== Metadata ==
+
+* [[instanceOf::Theme:Web programming]]
+
+== Languages ==
+
+* [[Language:HTML5]]
+* [[Language:JavaScript]]
+* [[Language:JSON]]
+
+== Technologies ==
+
+* [[Technology:Web storage]]
+* [[Web browser]]
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Cut]]
+* [[Feature:Total]]
+* [[Feature:Browsing]]
+* [[Feature:Editing]]
+* [[Feature:Web UI]]
+
+== Motivation == 
+
+This implementation illustrates the use of [[client]] side data storage within a [[web application]]. Specifically, HTML5 offers a [[Language:JavaScript]] [[API]] for [[Technology:Web storage]] to permanently store data as ''key-value pairs'' on the [[client]] side. While this implementation supports session-independent storage, there is a similar implementation [[Contribution:html5session]] which supports session storage instead.
+
+== Illustration ==
+
+The illustration section is devided into two parts. The first section shows the method of data storage, the second section shows the implementation of the [[Feature:Total]]. Most of the [[Web application|web application]] is written in [[Language:JavaScript]].
+
+=== Web storage ===
+
+The [[Technology:Web storage]] [[API]] provides the <syntaxhighlight lang="javascript" enclose="none">localStorage</syntaxhighlight> and the <syntaxhighlight lang="javascript" enclose="none">sessionStorage</syntaxhighlight> objects. This application uses <syntaxhighlight lang="javascript" enclose="none">localStorage</syntaxhighlight>, at which the use of <syntaxhighlight lang="javascript" enclose="none">sessionStorage</syntaxhighlight> in [[Contribution:html5session]] is completely the same. We initialize our own variable <syntaxhighlight lang="javascript" enclose="none">storageObject</syntaxhighlight> in order to keep the possibility for a simple exchange of the storage principe:
+
+<syntaxhighlight lang="javascript">
+    var storageObject = localStorage;
+</syntaxhighlight>
+
+The value of the key-value pairs provided by web storage have to be primitive data types or a string. Since [[Language:JavaScript]] provides a great [[Language:JSON]] support, we store the [[Feature:Hierarchical_company]] data as  JSON encoded string within the web storage. But first we have to create the company objects. Since JavaScript does not provide classes, there is a possibility to emulate classes with functions. The example shows one of these emulated classes for the company:
+
+<syntaxhighlight lang="javascript" source="html5local/company.js">
+function Company(id, name) {
+	this.id = id;
+	this.name = name;
+	this.departments = new Array();
+}
+</syntaxhighlight>
+
+After providing the functions for each company, department and employee, we are now able to instantiate the company structure:
+
+<syntaxhighlight lang="javascript" source="html5local/company.js">
+function loadData(reset) {
+	// If the company does not exist, it must be created locally.
+	if (storageObject.company == null || reset == true) {
+		// create company ...
+		var company = new Company(0, "Meganalysis");
+	
+		...
+
+		// save company
+		storageObject.setItem('company', JSON.stringify(company));
+
+	}
+	return JSON.parse(storageObject.getItem('company'));
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="javascript" enclose="none">setItem('company', JSON.stringify(company))</syntaxhighlight> call encodes the company as JSON string and stores it to a variable <syntaxhighlight lang="javascript" enclose="none">company</syntaxhighlight> within our <syntaxhighlight lang="javascript" enclose="none">storageObject</syntaxhighlight>. If this <syntaxhighlight lang="javascript" enclose="none">company</syntaxhighlight> variable already exists, the method simply returns the stored company. To get the company string, the <syntaxhighlight lang="javascript" enclose="none">getItem('company')</syntaxhighlight> [[Method|method]] has to be invoked on the <syntaxhighlight lang="javascript" enclose="none">storageObject</syntaxhighlight>.
+
+=== Feature implementation ===
+
+The data-structure is a tree, which can be traversed to cut salaries or determine the total of the whole company or individual departments. The following example shows the method for totalling companies with the help of totalling departments:
+
+<syntaxhighlight lang="javascript" source="html5local/companyModel.js">
+// This method calculates the total for a company.
+function totalCompany(company) {
+ 	var total = 0;
+ 	var len = company.departments.length;
+ 	for (var i = 0; i < len; i++) {
+ 	 	// To get the total for the company, this method calls the total method for departments and adds the results.
+ 		total += totalDepartment(company.departments[i]);
+ 	}
+ 	return total;
+}
+
+// This method calculates the total value for departments.
+function totalDepartment(department) {
+ 	var total = 0;
+ 	var len = department.subdepartments.length;
+ 	// Here, the total values of all subdepartments are added recursively.
+ 	for (var i = 0; i < len; i++) {
+ 		total += totalDepartment(department.subdepartments[i]);
+ 	}
+ 	var lenEmp = department.employees.length;
+ 	// Here, the salaries of all contained employees are added.
+ 	for (var i = 0; i < lenEmp; i++) {
+ 		total += department.employees[i].salary;
+ 	}
+ 	return total;
+}
+</syntaxhighlight>
+
+The function <syntaxhighlight lang="javascript" enclose="none">totalCompany</syntaxhighlight> uses the function <syntaxhighlight lang="javascript" enclose="none">totalDepartment</syntaxhighlight>, to get the values of its subdepartments. This total values are calculated recursively.
+
+=== [[GUI]] generation ===
+
+The [[Language:HTML]] code for the [[GUI]] is completely generated with JavaScript. The following code generates the name textfield for the company view:
+
+<syntaxhighlight lang="javascript" source="html5local/companyView.js">
+...
+
+// Create a form for the company view.
+var content = "<form name=\"company\">";
+
+// Create a table within the company view.
+content += "<table border=0>";
+
+// Create a table row with the name textfield and a save button.
+content += "<tr><td align=\"right\">Name: </td>";
+content += "<td><input type=\"text\""
+	+ " class=\"text\" name=\"name\" value='"
+	+ model.headline
+	+ "'>";
+content += " <input type=\"button\" name=\"save\""
+	+ " class=\"button\" value=\"save\""
+	+ " onclick=\"controller.changeName(this.form.name.value)\">"
+	+ "</td></tr>";
+...
+
+// Close table and form tags.
+content += "</table>";
+content += "</form>";
+
+// Move the content to the 'content' division of the company.html file.
+document.querySelector('#content').innerHTML = content;
+
+...
+</syntaxhighlight>
+
+The first step is to create an HTML form (<syntaxhighlight lang="xml" enclose="none"><form name="company"></syntaxhighlight>) including the table as a grid for proper alignment of the GUI components. The table row starting with the <syntaxhighlight lang="xml" enclose="none"><tr></syntaxhighlight> tag contains the name label, the name textfield and the save button. The textfield (the first <syntaxhighlight lang="xml" enclose="none"><input ... /></syntaxhighlight>) is initialized with the value <syntaxhighlight lang="javascript" enclose="none">model.headline</syntaxhighlight>, which contains the name of the company. The save button (second <syntaxhighlight lang="xml" enclose="none"><input ... /></syntaxhighlight>) invokes the method <syntaxhighlight lang="javascript" enclose="none">changeName</syntaxhighlight>, where the <syntaxhighlight lang="javascript" enclose="none">this.form.name.value</syntaxhighlight> parameter contains the current content of the name textfield. Finally, the last allocation (<syntaxhighlight lang="javascript" enclose="none"> ... = content;</syntaxhighlight>) moves the generated HTML code to the ''content'' division of the document [this!!company.html].
+
+== Architecture ==
+
+All files of the application are contained in one folder:
+
+* There is an initial [[Language:HTML]] page for each company entity of the [[Feature:Hierarchical_company]]: [this!!company.html], [this!!department.html] and [this!!employee.html]. The content is generated by [[Language:JavaScript]]. Both, the HTML pages and [this!!companyView.js], [this!!departmentView.js] and [this!!employeeView.js] form the view of this [[MVC]] based implementation.
+* The controller (the files [this!!companyController.js], [this!!departmentController.js] and [this!!employeeController.js]) passes the data to the model and refreshes the [[GUI]]. It is very lightweight, based on the character and limited use of the [[101feature|features]] and on the pure [[Client|client]] side implementation.
+* The model ([this!!companyModel.js], [this!!departmentModel.js], [this!!employeeModel.js]) handles the access to the [[Technology:Web storage]].
+* The company is initialized in [this!!company.js].
+
+== Usage ==
+
+* Download the complete folder content.
+* Open the local [this!!index.html] with your [[Web browser|web browser]].
+
+
+
+== Contributors ==
+
+* {{101contributor|Tobias Zimmer|developer}}
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,33 @@
+== Headline ==
+
+A lecture on [[data parallelism]] as part of the [[Course:Programming in Koblenz]]
+
+== Material ==
+
+Forthcoming.
+
+== Concepts ==
+
+* [[Data parallelism]]
+
+== Languages ==
+
+* [[Language:Java|Java]]
+
+== Technologies ==
+
+* [[Technology:Hadoop|Hadoop]]
+
+== Features ==
+
+* [[Feature:Data parallelism]]
+* [[Feature:Flattened company]]
+
+== Contributions ==
+
+* [[Contribution:hadoop]]
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

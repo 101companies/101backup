@@ -1,0 +1,20 @@
+== Headline ==
+
+A method of software testing
+
+
+
+
+== Illustration ==
+
+See [[Contribution:haskellEngineer]] for [[Language:Haskell]] style of unit testing based on [[Technology:HUnit]].
+
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Unit_testing]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[isA::Testing]]
+* [[instanceOf::Namespace:Concept]]

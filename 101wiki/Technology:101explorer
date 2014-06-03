@@ -1,0 +1,55 @@
+== Headline ==
+
+an explorer for 101companies contributions
+
+== Summary ==
+
+The classic experience of exploring the [[@project]] is based on the straightforward use of the [[101wiki]] and a repository explorer or a file-system explorer for the [[101repo]]. The [[Technology:101explorer]] incorporates metadata into exploration. Each encountered file is associated with metadata for language, technology, and tag usage. Also, additional perspectives are provided so that contributions can be explored in a more language-, technology-, or tag-centric manner. 
+
+== Views ==
+
+The separation of the following views is made here for conceptual clarity. The actual explorer integrates these views into an integrated, interactive experience. 
+
+=== The file system-centric view ===
+
+The view departs from the basic organization of all contributions in a hierarchical directory structure. The exploration of the hierarchical structure is enriched with metadata for each file and directory. More specifically, for each given file the following metadata is reported: the corresponding language, if known; any technology implied by the file; any tag associated with the file. This metadata is gathered from metadata files using the designated metadata languages [[Language:LaTaLa]], [[Language:TeTaLa]], and [[Language:FraTaLa]]. For each given directory, such metadata is aggregated. For instance, a directory is associated with a language, if any of the files in the directory or any of its subdirectories are associated with the language.
+
+=== The language-centric view ===
+
+The explorer can ''list all the languages used by the given contribution''. The ''selection of a language'' translates into a list of files, as part of the contribution, that use the selected language. The ''selection of a file'' translates into rendering the file's content. Thus, exploration is language-centric and flat as opposed to the hierarchical, file system-centric approach in a file/repository viewer.
+
+The view is enabled by metadata according to the [[Language:LaTaLa]] language because such metadata, for example, maps file extensions to languages. Arguably, some files may not be associated with any language in this manner, and they may be listed separately, or they may be accessible through a file system-centric view.
+
+Clearly, the language-centric view is not limited to the specific focus on a contribution. It may be useful at any level of exploration of the hierarchical file system for contributions. This is also true for the following two views, i.e., the technology- and the tag-centric views.
+
+=== The technology-centric view ===
+
+The explorer can ''list all the technologies used by the given contribution''. The ''selection of a technology'' translates into a list of files, as part of the contribution, that imply usage of the selected technology. The ''selection of a file'', perhaps subject to restrictions on the file type, translates into rendering the file's content. Thus, exploration is technology-centric and flat as opposed to the hierarchical, file system-centric approach in a file/repository viewer.
+
+This view is enabled by metadata according to the [[Language:TeTaLa]] language for the recognition of files that imply a certain's technology's usage. When listing files, the role of each file (in terms of [[Language:TeTaLa]] roles "input", "output", or "support") is also shown. Quite likely, some files may not be associated with any technology in this manner, and they may be listed separately, or they may be accessible through a file system-centric view.
+
+=== The tag-centric view ===
+ 
+The explorer can ''list all the tags used by the given contribution''. The ''selection of a tag'' translates into a list of files, as part of the contribution, that use (in fact, that are associated with) the selected tag. The ''selection of a file'' translates into rendering the file's content. If tagging involved a fragment description, then the tagged fragment is highlighted. Thus, exploration is tag-centric and flat as opposed to the hierarchical, file system-centric approach in a file/repository viewer.
+
+This view is enabled by metadata according to the [[Language:FraTaLa]] language for non-invasive tagging of files and fragments thereof. Tags may correspond to features of the [[@system]] or entities and categories in the [[101companies:Ontology]]. Quite likely, some files may not be associated with any tag in this manner, and they may be listed separately, or they may be accessible through a file system-centric view.
+
+== Components ==
+
+* Languages
+** [[Language:101meta]]
+* Technologies
+** [[Technology:CSharpFragmentLocator]]
+** [[Technology:GeFLo]]
+** [[Technology:HsFragmentLocator]]
+** [[Technology:HsImportMatcher]]
+** [[Technology:JFragmentLocator]]
+** [[Technology:XmlFragmentLocator]]
+
+
+
+
+== Metadata ==
+* [[instanceOf::@technology]]
+* [[instanceOf::Comprehension technology]]
+* [[instanceOf::Namespace:Technology]]

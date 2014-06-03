@@ -1,0 +1,13 @@
+== Headline ==
+
+Programming with type-parametric abstractions
+
+== Definition ==
+
+The term "generic programming" is somewhat overloaded. Thus, a particular definition is established here. In a simple case, generic programming is concerned with functionality that is parameterized by a type, possibly with an associated type bound. For example, generics in Ada or Java address this form of generic programming. In a more advanced case, type parameters may also control compile-time code generation as in the case of [[generative programming]], e.g., with [[template metaprogramming]]. Ultimately, generic programming also exploits parameterization in the shape of data types à la [[datatype-generic programming]].
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Generic_programming]]
+* [[instanceOf::Programming paradigm]]
+* [[instanceOf::Namespace:Concept]]

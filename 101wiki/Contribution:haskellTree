@@ -1,0 +1,117 @@
+== Headline ==
+
+Data processing in [[Language:Haskell]] with [[functor]]s and [[foldable type]]s
+
+== Characteristics ==
+
+The data structure of a company is converted to a leaf-labeled [[rose tree]] which preserves the tree-like shape of the input but otherwise only represents the salary values at the leaves. Thus, names and other properties of departments and employees are not exposed. Such trees are declared as a [[functor]] and a [[foldable type]]. A [[bidirectional transformation]] is then employed to model a salary cut. That is, the company structure is converted to the leaf-labeled tree, then, in turn, to a list, on which to perform salary cut so that finally the modified salaries are integrated back into the company structure.
+
+== Illustration ==
+
+Consider the following sample company:
+
+<syntaxhighlight lang="haskell">
+sampleCompany :: Company
+sampleCompany =
+  Company
+    "Acme Corporation"
+    [
+      Department "Research"
+        (Employee "Craig" "Redmond" 123456)
+        []
+        [
+          (Employee "Erik" "Utrecht" 12345),
+          (Employee "Ralf" "Koblenz" 1234)
+        ],
+      Department "Development"
+        (Employee "Ray" "Redmond" 234567)
+        [
+          Department "Dev1"
+            (Employee "Klaus" "Boston" 23456)
+            [
+              Department "Dev1.1"
+                (Employee "Karl" "Riga" 2345)
+                []
+                [(Employee "Joe" "Wifi City" 2344)]
+            ]
+            []
+        ]
+        []
+    ]
+</syntaxhighlight>
+
+When converted to a leaf-labeled rose tree, the sample company looks as follows:
+
+<syntaxhighlight lang="haskell">
+sampleTree :: LLTree Float
+sampleTree =
+  Fork [
+    Fork [
+      Leaf 123456.0,
+      Leaf 12345.0,
+      Leaf 1234.0],
+    Fork [
+      Leaf 234567.0,
+      Fork [
+        Leaf 23456.0,
+        Fork [
+          Leaf 2345.0,
+          Leaf 2344.0]]]]
+</syntaxhighlight>
+
+Here is the corresponding conversion function; it is a get function in the terminology of bidirectional transformation:
+
+<syntaxhighlight lang="haskell">
+get :: Company -> LLTree Float
+get (Company n ds) = Fork (map getD ds)
+  where
+    getD :: Department -> LLTree Float
+    getD (Department n m ds es) =  Fork (   [getE m]
+                                         ++ map getD ds
+                                         ++ map getE es )
+      where
+        getE :: Employee -> LLTree Float
+        getE (Employee     s) = Leaf s
+</syntaxhighlight>
+
+Because ''LLTree'' is a foldable type, it is trivial to further convert the tree to a plain list. Accordingly, salary cut can be expressed at the level of lists. The modified salaries are then put back into the tree with a put function, which we skip here for brevity.
+
+<syntaxhighlight lang="haskell">
+cut :: Company -> Company
+cut c = put fs' c
+  where
+    fs = toList (get c)
+    fs' = map (/2) fs
+</syntaxhighlight>
+
+== Architecture ==
+
+There are these modules:
+
+* <file url="src/Company/Data.hs"/>: a data model for [[Feature:Hierarchical_company]]
+* <file url="src/Company/Sample.hs"/>: a sample company
+* <file url="src/Company/Total.hs"/>: the implementation of [[Feature:Total]]
+* <file url="src/Company/Cut.hs"/>: the implementation of [[Feature:Cut]]
+* <file url="src/Company/BX.hs"/>: a bidirectional transformation.
+* <file url="src/Data/LLTree.hs"/>: leaf-labeled rose trees.
+* <file url="src/Main.hs"/>: Tests
+
+The types of <file url="src/Company/Data.hs"/> implement [[Feature:Closed serialization]] through Haskell's read/show.
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell genericity]]
+* [[instanceOf::Namespace:Contribution]]

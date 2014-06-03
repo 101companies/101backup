@@ -1,0 +1,21 @@
+== Intent ==
+
+A [[Language:Python]]-[[Web-application framework]] for [[Language:JavaScript]]-[[Web application|web applications]]
+
+== Description ==
+
+Pyjamas provides a [[Language:Python]]-to-[[Language:JavaScript]] [[Compiler|compiler]], and many other components including [[Ajax]] and a widget-set library. It is based on the idea of the [[Technology:GWT]], which is creating JavaScript web applications without programming JavaScript code <cite>Pyjamas2012official</cite>.
+
+== Languages ==
+
+* [[Language:Python]]
+* [[Language:CSS]]
+
+== Technologies ==
+
+* [[Technology:DOM]]
+* [[Technology:XMLHttpRequest]]
+
+== Metadata ==
+* [[identifies::http://seamframework.org/]]
+* [[instanceOf::Namespace:Technology]]

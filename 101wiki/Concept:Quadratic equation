@@ -1,0 +1,26 @@
+== Headline ==
+
+An elementary algebra concept
+
+== Illustration ==
+
+In the domain of real numbers, such equations have 0 to 2 solutions that can be computed follows:
+
+<syntaxhighlight lang="haskell>
+-- Solve a quadratic equation
+solve a b c
+  = if d < 0
+      then Nothing
+      else Just ((-b + s) / (2 * a), (-b - s) / (2 * a))
+  where
+    -- Discriminant
+    d = b^2 - 4 * a * c
+    -- Possibly undefined sqare root of discriminant
+    s = sqrt d
+</syntaxhighlight>
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Quadratic_equation]]
+* [[relatesTo::Algorithmic problem]]
+* [[instanceOf::Namespace:Concept]]

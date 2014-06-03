@@ -1,0 +1,12 @@
+== Headline == 
+
+An algebra dealing with sets of finitary relations 
+
+== Details ==
+
+Relational algebra is particularly relevant in the context of [[database]] [[query|queries]].
+
+== Metadata ==
+* [[instanceOf::Algebra]]
+* [[identifies::http://en.wikipedia.org/wiki/Relational_algebra]]
+* [[instanceOf::Namespace:Concept]]

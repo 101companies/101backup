@@ -1,0 +1,39 @@
+== Headline ==
+
+HBase is an open-source [[Technology:Column-oriented database]] modeled after Google's BigTable.
+
+== Description ==
+
+HBase is a database which models data as a multi-dimensional map of strings to an array of bytes. Each entry in a database table is specified by a row key, a column key and a timestamp. Additionally, columns are grouped into column families.
+
+HBase is written in Java and built on top of [[Technology:Hadoop]]. Beyond using Java to query HBase, it can also be accessed from a shell using [[Language:Ruby|JRuby]].
+A query from the JRuby shell may look like this:
+
+<syntaxhighlight lang="ruby">
+hbase(main):001:0> get 'meganalysis_employees', 'Craig'
+COLUMN                    CELL                                                                     
+ corporate:salary         timestamp=1347568664910, value=@\xFE$\x00\x00\x00\x00\x00                
+ personal:address         timestamp=1347568664910, value=Redmond                                   
+ personal:name            timestamp=1347568664910, value=Craig                                     
+3 row(s) in 0.0090 seconds
+
+hbase(main):002:0> get 'meganalysis_employees', 'Craig', 'corporate:salary'
+COLUMN                    CELL                                                                     
+ corporate:salary         timestamp=1347568664910, value=@\xFE$\x00\x00\x00\x00\x00                
+1 row(s) in 0.0210 seconds
+</syntaxhighlight>
+
+The get query takes up to four parameters: The target table, the target row key, target column family:column key and a timestamp.
+
+Note that for the employees salary, there is just a string of Unicode escape sequences, because HBase stores only raw bytes and so the double value for the salary is not interpreted by the DB. HBase's Java libraries come with a number of helper functions to convert between byte arrays and other data types to address this.
+
+Since HBase is built on top of it, [[Technology:Hadoop]] is used to realize [[Technology:Data Aggregation]] meaning, MapReduce jobs can be implemented as a Hadoop worker in plain Java. It is also possible to run Java or JRuby code directly on the database server.
+
+== Spaces ==
+
+* [[Nonrelationalware]]
+
+== Metadata ==
+* [[instanceOf::Column-oriented database]]
+* [[identifies::http://hbase.apache.org/]]
+* [[instanceOf::Namespace:Technology]]

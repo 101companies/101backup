@@ -1,0 +1,13 @@
+== Headline ==
+
+a type construct for constructing new types from existing ones
+
+== Synonyms ==
+
+* [[Constructor]]
+* Data-type constructor
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://www.haskell.org/haskellwiki/Constructor]]
+* [[instanceOf::Namespace:Concept]]

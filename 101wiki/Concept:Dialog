@@ -1,0 +1,10 @@
+== Headline ==
+
+A small window that appears in front of the current [[Activity]]
+
+== Metadata ==
+* [[instanceOf::Android_UI]]
+* [[identifies::http://developer.android.com/guide/topics/ui/dialogs.html]]
+* [[linksTo::http://developer.android.com/reference/android/app/Dialog.html]]
+* [[linksTo::http://developer.android.com/reference/android/app/AlertDialog.html]]
+* [[instanceOf::Namespace:Concept]]

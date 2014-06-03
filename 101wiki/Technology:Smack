@@ -1,0 +1,9 @@
+== Headline ==
+
+an Open Source, Java-based XMPP (Jabber) client library for instant messaging and presence
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Messaging technology]]
+* [[identifies::http://www.igniterealtime.org/projects/smack/]]
+* [[instanceOf::Namespace:Technology]]

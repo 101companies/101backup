@@ -1,0 +1,20 @@
+== Headline ==
+
+A basic [[operation]] on a [[list]] to return its [[tail]]
+
+== Illustration ==
+
+Here is an application of [[Language:Haskell]]'s tail operation:
+
+<syntaxhighlight lang="haskell">
+Prelude> tail [1,2,3]
+[2,3]
+</syntaxhighlight>
+
+There is the related [[head function]].
+
+
+
+== Metadata ==
+* [[instanceOf::Common function]]
+* [[instanceOf::Namespace:Concept]]

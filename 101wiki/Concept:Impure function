@@ -1,0 +1,14 @@
+== Headline ==
+
+an implemented function that computes the result with side effects on data
+
+== Details ==
+
+See the notion of [[pure function]] for comparison.
+
+For instance, a method in [[OO programming]], with access to instance or static attributes, describes an impure function.
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

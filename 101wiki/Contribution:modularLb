@@ -1,0 +1,40 @@
+== Headline ==
+
+A [[Technology:LogicBlox]]-based implementation that makes good use of [[Language:DatalogLB]] modules
+
+== Motivation ==
+
+This is a fully modularized variation on [[Contribution:basicLb]]. There are modules for the schema, the instance, the query for totaling salaries, the transformation for cutting salaries. The modules for query and transformation use inactive blocks. [[Technology:LogicBlox]] also enables modularity and separate compilation for basic [[Language:DatalogLB]] files; see [[Contribution:projectLb]] for an illustration. The present implementation uses proper module syntax though; each module declares explicitly the module and visibility of declarations and rules.
+
+== Architecture ==
+
+The implementation consists of these modules:
+* ''oneOone/Schema.logic'': the schema for companies
+* ''oneOone/Instance.logic'': the Acme company (and another company for testing)
+* ''oneOone/total.logic'': the query for totaling salaries
+* ''oneOone/cut.logic'': the delta for cutting salaries
+
+There are these additional files:
+* ''modularLb.project'': LogicBlox project description
+* ''Makefile'': script for running the implementation
+* ''baseline'': baseline for regression testing
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+This implementation requires that lb-services is running.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+* [[instanceOf::Theme:Datalog basics]]
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Thiago Tonelli Bartolomei]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

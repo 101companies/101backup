@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[build tool]] for [[Language:Java]] with enhanced dependency management
+
+== Metadata ==
+
+* [[identifies::http://maven.apache.org/]]
+* [[identifies::http://en.wikipedia.org/wiki/Apache_Maven]]
+* [[instanceOf::Build tool]]
+* [[instanceOf::Namespace:Technology]]

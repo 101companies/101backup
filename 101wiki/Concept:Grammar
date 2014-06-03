@@ -1,0 +1,14 @@
+== Headline ==
+
+A set of formation rules for strings
+
+== Illustration ==
+
+See the concept of [[context-free grammar]]s for a more specific form of grammars and an associated illustration.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Formal_grammar]]
+* [[linksTo::http://en.wikipedia.org/wiki/Grammar]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,40 @@
+== Headline ==
+
+The namespace of moderated collections of [[Namespace:Contribution|contributions]] to the [[@project]]
+
+== Description ==
+
+A theme is a moderated collection of [[Namespace:Contribution|contributions]] to the [[@project]]. Themes are meant to be helpful in accessing contributions by collecting selected contributions according to some perspective, likely of interest to some stakeholders. 
+
+== Illustration ==
+
+Here are typical patterns for theme headlines with some emphasis added to better convey the assumed focus of a theme:
+
+* Contributions that demonstrate ''basics'' of a ''specific programming language''
+* Contributions that demonstrate a ''specific programming domain'' across ''different programming languages''
+* Contributions that demonstrate ''different programming technologies'' for the ''same programming problem''
+
+See [[Theme:Scrap your boilerplate]] for a recommended illustration.
+
+See the actual instances of this namespace for more concrete illustrations.
+
+== Guidelines ==
+
+To help comprehension, themes should be of a manageable size. As a guideline, 5-10 contributions per theme. Accordingly, the composition of a theme needs to be selective in identifying theme members. For instance, [[Theme:XML programming]] covers presumably all fundamental approaches to XML processing, but it leaves out variations in terms of APIs and languages. Such variations can still be discovered easily by users because contributions are richly tagged and cross-referenced.
+
+== Relationships ==
+
+* [[Namespace:Contribution]] is concerned with contributions whereas [[Namespace:Theme]] is concerned with collections of contributions. 
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the theme.
+* '''Description''' (required): the description of the theme which explains selection criteria for the inclusion of contributions into the theme and which also identifies the perspective or the stakeholders served by the theme. Information may also be provided regarding the order in which the contributions should be approached.
+* '''Relationships''' (optional): explanations regarding related themes.
+* '''Metadata''' (required):
+** The theme must be declared to be, indeed, an instance of [[Namespace:Theme]].
+** The theme may be linked to relevant online resources.
+** The theme may also be related to any relevant [[software concept]]s.
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

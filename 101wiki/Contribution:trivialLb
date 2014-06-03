@@ -1,0 +1,35 @@
+== Headline ==
+
+A very basic [[Technology:LogicBlox]]-based implementation
+
+== Motivation ==
+
+This is a very basic [[Language:DatalogLB]]-based implementation. The goal was here to set up a first [[Language:DatalogLB]] example that is as easy as it can be in terms of 101companies features to be demonstrated, data modeling to be considered, and [[Technology:LogixBlox]] technology footprint to surface. In terms of features, the implementation totals and cuts salaries based on the basic tree structure for companies. The data model is kept very simply by assuming a single company and leaving out the issue of management. In terms of technology usage, all relevant blocks are installed and executed in the workspace consecutively with the help of bloxbatch. No modules are used.
+
+== Architecture ==
+
+The implementation consists of these files:
+* ''schema.logic'': the schema for companies
+* ''instance.logic'': the Acme company (and another company for testing)
+* ''total.logic'': the query for totaling salaries
+* ''cut.logic'': the delta for cutting salaries
+* ''Makefile'': script for running the implementation
+* ''baseline'': baseline for regression testing
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Thiago Tonelli]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Datalog basics]]
+* [[instanceOf::Namespace:Contribution]]

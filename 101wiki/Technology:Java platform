@@ -1,0 +1,17 @@
+== Intent == 
+
+a collection of software and specifications for developing and deploying Java software
+
+== Discussion ==
+
+An important instance of the Java platform is the [[Technology:Java SE]].
+
+== Links ==
+
+* [http://en.wikipedia.org/wiki/Java_(software_platform) Wikipedia]
+
+
+
+== Metadata ==
+* [[instanceOf::Platform]]
+* [[instanceOf::Namespace:Technology]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+An archive file format
+
+== Details ==
+
+[[Technology:gzip]] is also the name of a technology for compression and decompression.
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://en.wikipedia.org/wiki/Gzip]]
+* [[instanceOf::Namespace:Language]]

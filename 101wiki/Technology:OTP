@@ -1,0 +1,8 @@
+== Intent ==
+
+an implementation of the [[Language:Erlang]] programming language with libraries
+
+== Metadata ==
+* [[instanceOf::Language implementation]]
+* [[identifies::http://www.erlang.org/download.html]]
+* [[instanceOf::Namespace:Technology]]

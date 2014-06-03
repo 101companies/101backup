@@ -1,0 +1,28 @@
+== Intent ==
+
+A [[Toolkit]] for [[web programming]] in [[Language:Java]]
+
+== Description ==
+
+GWT is a [[Web-application framework|web-application framework]] for developing [[Language:JavaScript]] [[Web application|web applications]] in [[Language:Java]]. It provides a Java-to-JavaScript compiler (see also: [[Technology:Pyjamas]]) as well as [[Technology:DOM]] and [[Ajax]] support in combination, and other useful components for [[Web programming|web programming]] <cite>GWT2012official</cite>.
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:JavaScript]]
+* [[Language:HTML]]
+* [[Language:XML]]
+* [[Language:CSS]]
+* [[Language:JSON]]
+
+== Technologies ==
+
+* [[Technology:DOM]]
+* [[Technology:XMLHttpRequest]]
+
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[instanceOf::Web-application framework]]
+* [[identifies::http://code.google.com/intl/de-DE/webtoolkit/]]
+* [[instanceOf::Namespace:Technology]]

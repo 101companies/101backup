@@ -1,0 +1,68 @@
+== Headline ==
+
+[[Logging]] in [[Language:Haskell]] with the [[Writer monad]]
+== Characteristics ==
+
+Salary changes are logged in a [[Language:Haskell]]-based implementation with the help of a [[writer monad]]. Compared to a non-monadic implementation, the code is more concise. Details of logging are localized such that they only surface in the context of code that actually changes salaries.
+== Illustration ==
+
+See [[Contribution:haskellLogging]] for a simpler, non-monadic implementation.
+
+The present, monadic implementation differs only with regard to the cut function:
+
+<syntaxhighlight lang="haskell">
+cut :: Company -> Writer Log Company
+cut (Company n ds) =
+  do
+     ds' <- mapM cutD ds
+     return (Company n ds')
+  where
+    cutD :: Department -> Writer Log Department
+    cutD (Department n m ds es) =
+      do
+         m' <- cutE m
+         ds' <- mapM cutD ds
+         es' <- mapM cutE es
+         return (Department n m' ds' es')
+      where
+        cutE :: Employee -> Writer Log Employee
+        cutE (Employee n a s) =
+          do 
+             let s' = s/2
+             let log = [ LogEntry { 
+                           name = n,
+                           oldSalary = s,
+                           newSalary = s'
+                       } ]
+             tell log
+             return (Employee n a s')
+</syntaxhighlight>
+
+Thus, the family of functions uses a [[writer monad]] in the result types. The sub-traversals are all composed by monadic bind (possibly expressed in do-notation). The function for processing departments totally abstracts from the fact that logging is involved. In fact, that function could be defined to be parametrically polymorphic in the monad at hand.
+== Relationships ==
+
+* See [[Contribution:haskellComposition]] for the corresponding contribution that does not yet involve logging. The data model is preserved in the present contribution, but the functions for cutting salaries had to be rewritten since the logging concern crosscuts the function.
+* See [[Contribution:haskellLogging]] for a variation on the present contribution which does not yet use monadic style.
+== Architecture ==
+
+See [[Contribution:haskellLogging]].
+
+In addition, a trivialized implementation of the standard writer monad is included into the contribution.
+== Usage ==
+
+See [[Contribution:haskellLogging]].
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:HUnit]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Logging]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell potpourri]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]
+

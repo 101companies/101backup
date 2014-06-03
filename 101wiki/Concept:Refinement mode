@@ -1,0 +1,13 @@
+== Headline ==
+
+A special mode of execution for [[Language:ATL]]
+
+== Details ==
+
+In this mode of operation, only elements for which rules exist are altered. All other elements are carried along the transformation.
+
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:ATL]]
+* [[instanceOf::Namespace:Concept]]

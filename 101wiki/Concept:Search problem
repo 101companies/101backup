@@ -1,0 +1,22 @@
+== Headline ==
+
+The problem of determining whether a given value occurs in a given list
+
+== Illustration ==
+
+The problem can be described, for example, as follows:
+
+* Input:
+** A list ''l'' of values
+** A value ''v''
+* Output:
+** ''True'': ''v'' occurs in ''l''.
+** ''False'': otherwise.
+
+This is an [[algorithmic problem]] because one can obviously define an [[algorithm]] to iterate over the elements of ''l'' and to check for an occurrence of ''v'' along the way. This simple idea is the foundation for [[linear search]]. When additional constraints are imposed on the input, then search may also be more efficient; see [[binary search]] for example.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Search_problem]]
+* [[isA::Algorithmic problem]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,13 @@
+== Headline == 
+
+support for Java's annotation facility
+
+== Description ==
+
+See also the Java package [[Java:java.lang.annotation]].
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/javax/annotation/package-summary.html]]
+* [[instanceOf::Namespace:Java]]

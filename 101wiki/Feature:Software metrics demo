@@ -1,0 +1,28 @@
+== Headline ==
+
+Development of a software metrics tool
+
+== Description ==
+
+This is a software analysis-related feature for the development and demonstration of a tool for complexity metrics. The developed tool serves the analysis of an implementation's sources or other artifacts in terms of complexity metrics, e.g., metrics based on structural properties such as number of modules, classes, or functions. Of course, the choice also depends on the programming paradigm that is chosen as a target for tool development.
+
+== Example ==
+
+For instance, consider a Java-based implementation. 
+
+One may be interested in these metrics:
+* NCLOC total
+* Number of .java files
+* Number of classes
+* Number of interfaces
+* Number of methods
+* Depth of inheritance tree
+* Min, Max, Median, Average number of methods per class/interface
+* Min, Max, Median, Average NCLOC per class and method
+
+The results may be summarized in tables (.csv) or visualized.
+
+
+== Metadata ==
+* [[instanceOf::Meta-level 101feature]]
+* [[instanceOf::Namespace:Feature]]

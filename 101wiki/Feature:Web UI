@@ -1,0 +1,14 @@
+== Headline ==
+
+A web-based user interface
+
+== Description ==
+
+The feature applies when an implementation of the [[@system]] uses a Web-based user interface subject to execution in a [[Web browser]]. Such a Web-based implementation may be a self-contained local implementation or it may rely on [[distribution]] such that it accesses remote data and operations on an appropriate server; see [[Feature:Distribution]].
+
+== Metadata ==
+
+* [[isA::UI requirement]]
+* [[isA::Optional feature]]
+* [[implies::Feature:Browsing]]
+* [[instanceOf::Namespace:Feature]]

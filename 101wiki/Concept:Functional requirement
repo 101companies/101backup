@@ -1,0 +1,10 @@
+== Headline ==
+
+A required [[IO behavior]] of a [[software system]] or a [[software component|component]]
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Functional requirement]]
+* [[isA::Requirement]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

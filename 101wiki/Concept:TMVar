@@ -1,0 +1,8 @@
+== Headline ==
+
+A transactional [[MVar]] of [[Language:Haskell]]'s [[STM]] [[monad]]
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Haskell]]
+* [[identifies::http://hackage.haskell.org/packages/archive/stm/2.1.1.2/doc/html/Control-Concurrent-STM-TMVar.html]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,32 @@
+== Headline ==
+
+[[Model-driven engineering]] theme of implementations
+
+== Description ==
+
+Several aspects and flavors of developing of model-driven engineering components are exercised. In particular, [[Model to Model transformation]]s, [[Model to Text transformation]]s and [[Text to Model transformation]]s are exercised. Different styles of [[Model to Model transformation]], like the declarative style used by [[Language:ATL]] or the imperative style of [[Technology:EMF]] in [[Language:Java]] are considered. For [[Text to Model transformation]]s, the shown contributions rely on mapping  grammar elements on model elements.
+
+== Current implementations ==
+
+* [[Contribution:emfGenerative]]: This implementation uses [[Technology:Ecore]]-generated [[Language:Java]] classes to perform [[Model to Model transformation]]s in [[Language:Java]].
+* [[Contribution:emfReflexive]]: This implementation uses the [[Technology:Ecore]] API to perform [[Model to Model transformation]]s in [[Language:Java]].
+* [[Contribution:atl]]: This implementation uses [[Language:ATL]] to perform [[Model to Model transformation]]s.
+* [[Contribution:atlPluginUsage]]: This implementation uses two [[ATL plugin]]s, [[Contribution:atlCutPlugin]] and [[Contribution:atlTotalPlugin]] to perform [[Model to Model transformation]]s
+* [[Contribution:jgralab]]: Use of TGraphs with JGraLab to perform [[Model to Model transformation]]s in [[Language:Java]].
+* [[Contribution:gra2mol]]: A [[Model to Text transformation]] with the gra2mol technology is demonstrated.
+* [[Contribution:xtext]]: [[IDE Creation]] with the xtext technology are demonstrated.
+
+
+== TODO ==
+
+The theme is under construction. The following contributions are to be worked out:
+
+* Alternatives for ATL: RubyTL, some GT languages.
+* Implementations of [[Meta-level 101feature]] features with [[Technology:MoDisco]].
+* Implementations around the openarchitectureware framework:
+* Some technology to be determined for model-to-text.
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

@@ -1,0 +1,23 @@
+== Headline ==
+
+A validator for [[Language:XML]]
+
+== Description ==
+
+XMLValidator is a [[@technology]]; it is a XML-specific validator. XMLValidator relies on System.Xml API to report errors in the XML document. Zero exit code is to be interpreted as successful validation; non-zero exit code as failure.
+
+== Usage ==
+
+To build and execute the validator, you need to have Mono SDK (2.10 +) installed.
+Use 'make build' to build the project.
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+
+
+== Metadata ==
+* [[instanceOf::Validator]]
+* [[instanceOf::@technology]]
+* [[linksTo::https://github.com/101companies/101repo/tree/master/technologies/XMLValidator]]
+* [[instanceOf::Namespace:Technology]]

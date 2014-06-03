@@ -1,0 +1,16 @@
+== Headline ==
+
+Tokenize 101repo files and compute some basic metrics
+== Description ==
+This module looks up the GeSHi code from the metadata for a file and applies GeSHi and MegaLib to extract a token sequence from the the file contents. What GeSHi considers a token for a given language is quite likely not exactly what a proper lexer for the language would consider a token. This is because GeSHi does not perform proper lexical analysis. In addition to the token sequence, this module also computes also basic metrics such as "lines of code".
+== Input == 
+
+http://data.101companies.org/dumps/matches.json as prepared by Module matches101meta
+== Output ==
+
+
+* *.tokens.json file per 101repo file with GeSHi code per metadata
+* *.metrics.json file per 101repo file with GeSHi code per metadata
+== Metadata ==
+
+[[instanceOf::Namespace:Module]]

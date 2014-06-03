@@ -1,0 +1,25 @@
+== Headline ==
+
+A generic programming style
+== Illustration ==
+
+"Scrap Your Boilerplate" ([[SYB]]) refers to a generic programming style where highly polymorphic function combinators are leveraged in assembling data-processing operations that recurse into compound data while being customized by type-specific cases. Consider the following implementation of [[Feature:Cut]] as part of [[Contribution:haskellSyb]]:
+
+<fragment url="/contributions/haskellSyb/src/Company/Cut.hs/pattern/cut" />
+
+''everywhere'' is a highly polymorphic function combinator which takes a polymorphic argument function to transform all immediate and non-immediate subterms of a given term of possibly any type. The actual traversal is provided by ''everywhere''; the per-subterm functionality is to be described by the polymorphic argument of ''everywhere''. Thus, the following type is needed:
+
+<syntaxhighlight lang="haskell">
+everywhere :: forall a. Data a => (forall b. Data b => b -> b) -> a -> a
+</syntaxhighlight>
+
+In the Haskell context, the combinators for SYB turn out to be polymorphic in an interesting manner from a typing perspective: they are rank-2 polymorphic and customization requires a form of type case. The rank-2 status can be observed in the above function signature: the inner "forall" is to the left of a function arrow. The use of type case is evident from the above application of ''everywhere''. In particular, ''extT'' models type case such that the type-specific second argument is applied when possible and otherwise the generic first argument is applied. In general terms, ''extT g s x'' translates to ''s x'' if the argument type of ''s'' equals (or generalizes) the type of ''x''; otherwise ''extT g s x'' translates to ''g x''.
+
+SYB has been conceived in a [[Language:Haskell|Haskell]] setting, but the style has been applied to other programming languages as well. SYB is particularly helpful in describing all kinds of transformations and queries for compound data in a concise manner, without involving conceptually irrelevant details of the data structures involved.
+== Metadata ==
+
+* [[relatesTo::Generic programming]]
+* [[identifies::http://dx.doi.org/10.1145/640136.604179]]
+* [[linksTo::http://www.haskell.org/haskellwiki/Scrap_your_boilerplate]]
+* [[linksTo::http://en.wikipedia.org/wiki/Generic_programming]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,8 @@
+== Intent ==
+
+a library for scanning text in [[Language:Java]]
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://download.oracle.com/javase/1.5.0/docs/api/java/util/Scanner.html]]
+* [[instanceOf::Namespace:Technology]]

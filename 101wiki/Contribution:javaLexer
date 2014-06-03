@@ -1,0 +1,93 @@
+== Headline ==
+
+[[lexer]]-based text processing in [[Language:Java]]
+
+== Characteristics ==
+
+A simple custom-made lexer is used to process a text-based representation of companies.
+The lexer uses a lookahead of 1.
+The lexer reports all tokens including whitespace.
+Such processing implements [[Feature:Parsing]].
+[[Feature:Total]] is implemented by means of finding token sequences 
+consisting of keyword "salary" followed by a number while ignoring whitespace
+in between. (Just looking for a number would be sufficient for the situation at hand
+because numbers are used for salaries only, but the extra test makes the
+point that ad hoc tests may be needed when lexers are used for data processing.)
+[[Feature:Cut]] copies lexemes to an output stream while
+modifying salaries. The lexemes for whitespace token transport layout from 
+input to output. Such processing implements [[Feature:Unparsing]].
+
+== Illustration ==
+
+The data model is implemented as plain textual files:
+
+<fragment url="inputs/sample.Company"/>
+
+[[Feature:Parsing]] is implemented using the helper class Recognizer to enable step-by-step lexing:
+
+<fragment url="src/main/java/org/softlang/company/features/Parsing.java/class/Parsing"/>
+
+[[Feature:Unparsing]] demonstrates the use of the Recognizer to execute semantic actions (only write lexemes) during [[Feature:Parsing]]
+
+<fragment url="src/main/java/org/softlang/company/features/Unparsing.java/class/Unparsing"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are implemented using [[Feature:Parsing]] with semantic actions:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Cut.java/class/Cut"/>
+
+Test cases are implemented for all [[Namespace:Feature]]s.
+
+== Relationships ==
+
+For plain syntax checking with [[Technology:ANTLR]] see [[Contribution:antlrAcceptor]].
+
+For lexer-based text processing in pure [[Language:Java]] see [[Contribution:javaScanner]].
+
+
+For lexing/tokenization with [[Technology:ANTLR]] see [[Contribution:antlrLexer]].
+
+For a custom made lexer in pure [[Language:Java]] see [[Contribution:javaLexer]].
+
+
+For parsing with semantic actions with [[Technology:ANTLR]] see [[Contribution:antlrParser]].
+
+For recursive-descent parsing in pure [[Language:Java]]] see [[Contribution:javaParser]].
+
+For parser combinators in pure [[Language:Java]]] see [[Contribution:javaParseLib]].
+
+
+For object/text mapping from test to companies with [[Technology:ANTLR]] see [[Contribution:antlrObjects]].
+
+For object/text mapping from text to trees with [[Technology:ANTLR]] see [[Contribution:antlrTrees]].
+
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+*** org.softlang.company.features.parsing for helper classes for [[Feature:Parsing]] and [[Feature:Unparsing]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

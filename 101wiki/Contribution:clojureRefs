@@ -1,0 +1,60 @@
+== Headline ==
+
+A [[Language:Clojure|Clojure]]-based implementation that uses [[Refs|transactional references]]
+
+== Motivation == 
+
+[[Language:Clojure|Clojure]] provides a number of interesting approaches to 
+the development with [[concurrency]]. One of these approaches is the use of 
+programmable [[transactions]], analogous to [[database]] [[transactions]]. 
+This functionality is implemented by means of transaction-specific functions 
+and references. To maintain a consistent memory state, 
+[[Language:Clojure|Clojure]] relies on a [[Technology:STM|STM]]. This project 
+is based on the implementation [[Contribution:clojure]] and changes it 
+so that [[Refs]] and [[transactions]] are used.
+
+== Illustration ==
+
+Changes to [[Refs]] by a transformation like [[Feature:Cut]] have to be
+encapsulated into a [[transaction]]. In [[Language:Clojure|Clojure]] the 
+function ''dosync'' starts such a transaction allowing to alter [[Refs]] by 
+an update function. 
+
+ <nowiki>
+(defn cutCompany [c]
+    (dosync
+        ;; alter ref function
+        (alter c #(update-in % [:depts] (partial map cutDept))))
+    ;; returning changed ref
+    c)
+</nowiki>
+
+== Architecture ==
+
+* ''company.clj'' definitions of the companies structure using clojure's defrecord
+* ''scenarios.clj'' functionalities: [[Feature:Cut]], [[Feature:Total]]
+* ''meganalysis.clj'' a sample company (i.e. a [[Refs|Ref]] to a [[Feature:Hierarchical_company]])
+
+== Usage ==
+
+You need to install the [[Technology:Eclipse|Eclipse]] plugin [[Technology:CounterClockwise|CounterClockwise]]. 
+Update Site: [http://ccw.cgrand.net/updatesite]
+
+Then open ''meganalysis.clj'', hit "run" and excute the function you like:
+* ''(totalCompany meganalysis)'' 
+* ''(cutCompany meganalysis)''
+
+The implementation has been tested with Eclipse version 3.7 and [[Technology:CounterClockwise]]  Eclipse plugin (Version 0.3.0).
+
+== Metadata ==
+
+* [[uses::Language:Clojure]] 
+* [[uses::Technology:Eclipse]]
+* [[uses::Technology:CounterClockwise]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Task parallelism]]
+* [[developedBy::Contributor:Jan Baltzer]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

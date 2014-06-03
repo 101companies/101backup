@@ -1,0 +1,60 @@
+== Headline ==
+
+An association for mentorship between employees
+== Description ==
+
+Employees may sign up for a mentor. The idea is that mentors help their mentees generally with career management. Operationally, a mentee may consult his or her mentor, for example, to interpret results of a performance appraisal and to draw appropriate conclusions. As far as the [[@system]] is concerned, it suffices to merely maintain mentors so that management knows about everything.
+
+The association for mentorship is constrained as follows:
+* Each employee may have one associated ''mentor''.
+* Each employee may have any number of associated ''mentees''.
+* Mentors and mentees are employees (managers or not).
+* ''A'' is mentor of ''B'' iff ''B'' is mentee of ''A''.
+* An employee cannot be a mentor of him- or herself.
+
+Arguably, further constraints could be added. (For instance, it may be reasonable to require that if ''A'' is mentor of ''B'', then ''B'' must not be mentor of ''A''. In this manner, direct cycles would be forbidden.)
+
+Bidirectional navigation is required for the mentorship association.
+== Motivation ==
+
+The feature is interesting in so far that it requires more general associations and graph shape as opposed to just composition and tree shape for the basic hierarchical organization of companies according to [[Feature:Hierarchical_company]]. That is, while companies and departments are decomposed in a tree-like manner, mentorship links may reach across the organizational structure. Further, bidirectional navigation as opposed to the simpler unidirectional navigation is required. In a [[Language:UML]] class diagram, for example, the mentorship association can be modeled in a straightforward way. In a [[functional programming language]] and pure style, the association's implementation necessitates look-up functions for locating linked employees, possibly identified by name. In an [[OO programming language]] with references, the mere links for mentorship are implemented easily, but bidirectional navigation and the above constraints necessitates encoding, unless first-class relationships were available in the programming language.
+== Illustration ==
+
+The feature is illustrated with predicates in [[Language:Datalog]]. That is, there are declarations of predicates mentorOf/2 and menteeOf/2 to relate employees in both navigation directions of the association. The clauses implement the above description; see the comments for clarification.
+
+<pre>
+// Each employee may have a mentor (in the same company or not).
+mentorOf[tee] = tor -> Employee(tee), Employee(tor).
+
+// Each employee may have several mentees.
+menteeOf(tor,tee) -> Employee(tor), Employee(tee).
+
+// mentorOf and menteeOf are compatible one way.
+mentorOf[tee] = tor -> menteeOf(tor,tee).
+
+// mentorOf and menteeOf are compatible the other way.
+menteeOf(tor,tee) -> mentorOf[tee] = tor.
+
+// In fact, menteeOf is derived from mentorOf.
+menteeOf(tor,tee) <- mentorOf[tee] = tor.
+
+// One must not mentor her- or himself.
+mentorOf[tee] = tor -> ! tor = tee.
+</pre>
+
+The snippet originates from [[Contribution:heavyLb]].
+== Relationships ==
+
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical_company]].
+== Guidelines ==
+
+* Bidirectional navigation is required for the mentorship association. 
+* The ''name'' for the direction from mentees to mentors should involve the term "mentor" (e.g., "getMentor"). The ''name'' for the opposite direction should involve the term "mentee" or "mentees" (e.g., "getMentees").
+* A suitable ''demonstration'' of the feature's implementation should link some employees according to the association and navigate the association in both directions for some employees.
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Mentorship]]
+* [[linksTo::http://en.wikipedia.org/wiki/Performance appraisal]]
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

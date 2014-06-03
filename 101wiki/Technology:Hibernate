@@ -1,0 +1,22 @@
+== Headline == 
+
+an [[Object-Relational mapping]] technology for [[Language:Java]]
+
+== Spaces ==
+
+* [[Objectware]]
+* [[Relationalware]]
+* [[Auxiliary XMLware]]
+
+== Links ==
+
+* [http://www.hibernate.org Home page]
+* [http://en.wikipedia.org/wiki/Hibernate (Java) Wikipedia]
+
+
+
+
+== Metadata ==
+* [[instanceOf::Persistence technology]]
+* [[instanceOf::Mapping technology]]
+* [[instanceOf::Namespace:Technology]]

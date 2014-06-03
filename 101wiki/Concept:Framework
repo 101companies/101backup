@@ -1,0 +1,13 @@
+== Headline ==
+
+A structured collection of reusable abstractions for programming
+
+== Details ==
+
+Given the lack of a well-agreed and strong definition of the term "framework", some assumptions are submitted here. That is, it is assumed that a framework organizes reusable abstractions in a manner that they can be completed into an application (or a component thereof). In this context, one also speaks of inversion of control in that the framework may be in control of the application. This is to be contrasted with a simple [[library]] where the application itself remains in control such that it consistently calls library procedures when required.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Software technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Software_framework]]
+* [[linksTo::http://martinfowler.com/bliki/InversionOfControl.html]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,22 @@
+== Headline ==
+
+Introduction to functional programming at the University of Koblenz-Landau
+== Events ==
+
+* Lecture [[Script:First steps in Haskell | First steps]]
+* Lecture [[Script:Basic software engineering for Haskell | Basic software engineering]]
+* Lecture [[Script:Searching and sorting in Haskell | Searching and sorting]]
+* Lecture [[Script:Basic data modeling in Haskell | Basic data modeling]]
+* Lecture [[Script:Higher-order functions in Haskell | Higher-order functions]]
+* Lecture [[Script:Type-class polymorphism|Type-class polymorphism]]
+* Lecture [[Script:Functors and friends|Functors and friends]]
+* Lecture [[Script:Monads|Monads]]
+* Lecture [[Script:Parsing and unparsing in Haskell | Parsing and unparsing]]
+* Dry run for final
+* Lecture [[Script:Generic functions|Generic functions]]
+* Final
+== Metadata ==
+
+
+* [[identifies::http://softlang.wikidot.com/course:fp]]
+* [[instanceOf::Namespace:Course]]

@@ -1,0 +1,64 @@
+== Headline ==
+
+[[Text to Model transformation]] with [[Technology:Gra2Mol]]
+
+== Motivation ==
+
+A [[Text to Model transformation]] from a [[grammar]] into a [[model]] with Gra2MoL is exercised in this implementation. [[Technology:ANTLR]] is used to create a [[lexer]] and a [[parser]] based on a [[grammar]]. Then, the [[Technology:Gra2Mol]] specific rules are used to convert the parsing results into a [[model]] that conforms to a given [[Language:Ecore]] [[metamodel]].
+
+== Illustration ==
+
+The grammar used in the example is a normal [[Technology:ANTLR]] grammar. For example, the line for parsing companies looks like
+<syntaxhighlight lang="text">
+company :
+  'company' STRING '{' department* '}' EOF;
+</syntaxhighlight>
+
+The results of the parsing process are then converted into a model by using rules like
+<syntaxhighlight lang="text">
+rule 'mapCompany'
+	from company c
+	to   Company
+	queries
+	  dElem : /c//#department;    
+	mappings
+	  name  = removeQuotes c.STRING;
+	  depts = dElem;
+end rule
+</syntaxhighlight>
+The rule takes the result "c" from the  [[Technology:ANTLR]] rule and converts it into an element of type "Company" in the resulting model. To do so, it queries all departments in "c". It then maps the String from the  [[Technology:ANTLR]] rule on the name property of the Company element. The departments "dElem" are mapped on the property "deps" of the Company element.
+
+== Architecture ==
+
+* The "Company.ecore" metamodel models companies (see "grammars" folder)
+* transformation rules are defined in "transformation.g2m" (see "src" folder)
+* The grammar used is called "Company.g" (see "grammars" folder)
+* example1.101 in the directory "src" is the input file for the transformation
+
+== Usage ==
+
+To this end, the [http://www.eclipse.org/modeling/ Eclipse Modeling Project] or a standard Eclipse with the [http://download.eclipse.org/modeling/m2m/updates/site.xml MDE Plugin] is needed.
+
+Steps:
+* The project should be imported into Eclipse ("File" -> "Import")
+* The project provides an Ant file called build.xml. This file can be used to apply the transformation. 
+* Right click on the build.xml and select "Run As" -> "1 Ant build". This may fail the first time, but it should succeed the second time.
+
+Comments:
+* In order to see the output, it may be needed to refresh the Package Explorer View in Eclipse. To do that, right click on the project and choose "Refresh".
+
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Language:Ecore]]
+* [[uses::Language:XMI]]
+* [[uses::Technology:ANTLR]]
+* [[uses::Technology:Gra2Mol]]
+* [[uses::Technology:EMF]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[developedBy::Contributor:Javier Luis Cánovas Izquierdo]]
+* [[reviewedBy::Contributor:Martin Leinberger]]
+* [[instanceOf::MDE]]
+* [[instanceOf::ANTLR]]
+* [[instanceOf::Namespace:Contribution]]

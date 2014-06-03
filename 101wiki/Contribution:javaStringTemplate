@@ -1,0 +1,10 @@
+== Headline ==
+
+Unparsing company structure using [[Technology:StringTemplate|]] in [[Language:Java|]]
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[uses::Technology:StringTemplate]]
+* [[developedByContributor::Matthias Paul]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Unparsing]]

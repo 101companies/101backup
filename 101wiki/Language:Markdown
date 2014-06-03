@@ -1,0 +1,9 @@
+== Headline ==
+
+A lightweight markup language used on github and elsewhere
+
+== Metadata ==
+* [[instanceOf::Markup language]]
+* [[identifies::http://en.wikipedia.org/wiki/Markdown]]
+* [[linksTo::http://daringfireball.net/projects/markdown/]]
+* [[instanceOf::Namespace:Language]]

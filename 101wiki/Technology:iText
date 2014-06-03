@@ -1,0 +1,12 @@
+== Headline ==
+
+a library for creation and manipulation of PDF documents
+
+== Description ==
+
+iText is available in [[Language:Java]] as well as in [[Language:CSharp|C#]].
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://itextpdf.com/]]
+* [[instanceOf::Namespace:Technology]]

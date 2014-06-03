@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[monad]]-based computation
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://www.haskell.org/haskellwiki/Introduction_to_Haskell_IO/Actions]]
+* [[instanceOf::Namespace:Concept]]

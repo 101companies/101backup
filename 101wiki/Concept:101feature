@@ -1,0 +1,13 @@
+== Headline ==
+
+A feature of the [[@system]]
+
+== Description ==
+
+The feature set could be subdivided in a classic manner into functional and non-functional requirements. Instead, a richer categorization is applied such that structure-related, behavior-related, quality-like, and ui-related features are distinguished. A special sub-category of feature concerns tool development and demonstration.
+
+== Metadata ==
+* [[instanceOf::101main]]
+* [[linksTo::http://en.wikipedia.org/wiki/Feature_model]]
+* [[linksTo::http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.96.8398]]
+* [[instanceOf::Namespace:Concept]]

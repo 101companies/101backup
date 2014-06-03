@@ -1,0 +1,134 @@
+== Headline ==
+
+Advanced [[Technology:Android]] programming
+
+== Motivation ==
+
+The implementation demonstrates advanced style of [[Technology:Android]] programming using the [[Technology:Android SDK]] and the [[Technology:Android Development Tool]]. It is based on [[Contribution:simpleAndroid | simpleAndroid]] with more features and functionalities. The application is in the position to explore and edit the company structure. The feature [[Feature:Closed serialization]] can save and load company objects. The [[Feature:Type-driven query | total]] and [[Feature:Type-driven transformation | cut]] features are also implemented. The application demonstarates more [[Listener | listener]] like the onLongClickListener. This implementation shows how to use defferent [[Dialog | dialogs]] and how to use [[Android Menu | options menu]]. Also there are more [[View | views]] like the edit text. The feature [[Feature:Localization]] is also implemented. If you change your system language then the application language will also change.
+
+== Illustration ==
+
+=== [[Dialog | Dialogs]] ===
+
+==== AlertDialog ====
+
+<syntaxhighlight lang="java" source="" line>
+Builder build = new Builder(DepartmentClickActivity.this);
+	build.setTitle(R.string.areyousure)
+	.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+		...
+	})
+	.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			dialog.dismiss();
+		}
+	})
+	.show();
+</syntaxhighlight>
+
+An alert dialog is generated with a builder. In line two we set the title of the [[Dialog | dialog]] and in the next lines we set two buttons with their [[Listener | on click listener]]. In the last line we show the Dialog in front of the active [[Activity | activity]].
+
+==== Custom Dialog ====
+
+<syntaxhighlight lang="java" source="" line>
+Dialog dialog = new Dialog(this);
+dialog.setTitle(R.string.createtheemployee);
+dialog.setContentView(R.layout.newemployee);
+((Button)dialog.findViewById(R.id.bt Cancel newemployee)).setOnClickListener(new OnClickListener() {
+	@Override
+	public void onClick(View arg0) {
+		dialog.dismiss();
+	}
+});				
+dialog.show();
+</syntaxhighlight>
+
+In a custom Dialog we put a [[View | view]] in line three, which we have created in the [[Android Resource | resources]] as [[Layout |  XML layout]]. In the last line we show the dialog in front of the active [[Activity | activity]].
+
+=== [[Android Menu | Options Menu]] ===
+
+==== Create Menu ====
+
+<syntaxhighlight lang="java" source="" line>
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+	getMenuInflater().inflate(R.menu.menue, menu);
+	menu.getItem(1).setTitle(R.string.addEmployee);
+	menu.getItem(0).setTitle(R.string.addDepartment);
+	return super.onCreateOptionsMenu(menu);
+}
+</syntaxhighlight>
+
+If we click on the options button of our Smartphone then the onCreateOptionsMenu method will be started. In line three we put the created menu layout with the [[Menu Inflater | menu inflater]]. In line four and five we edit the entries of the Menu.
+
+==== Give functionality ====
+
+<syntaxhighlight lang="java" source="" line>
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+	switch (item.getItemId()) {
+		case R.id.opt total:{
+			Toast.makeText(this, dept.total()+"", Toast.LENGTH SHORT).show();
+			return true;
+		}
+		case R.id.opt cut:{
+			dept.cut();
+			Toast.makeText(this,R.string.successful, Toast.LENGTH SHORT).show();
+			return true;
+		}
+		...
+	}
+	return false;
+}
+</syntaxhighlight>
+
+With the method onOptionsItemSelected we give the elements of the [[Android Menu | menu]] a funtionality.
+
+=== Edittext ===
+<syntaxhighlight lang="java" source="" line>
+EditText ed name = ((EditText)findViewById(R.id.ed name));
+...
+ed name.setText(employee.getName());
+...
+((EditText)findViewById(R.id.ed name)).getText().toString().trim();
+</syntaxhighlight>
+
+With an EditText we can edit the data of an Employee, the name of a Department and the name of the Company. In line three we put a String for example the employee's name, address or salary. After changing the String or after an action of the user we get the String from the edit text in line five.
+
+== Architecture ==
+
+* In the package ''org.softlang.company'' we define the Object-Model of the company.
+* The [[Feature:Total]] and [[Feature:Cut]] is integrated in the Object-Model of the Company.
+* In [this!!res/values/strings.xml values/strings.xml] we specify the Strings of the application.
+* In [this!!res/values-de/strings.xml values-de/strings.xml] we specify the Strings of the application to demonstrate the 101feature [[Feature:Localization]].
+* In [this!!res/layout layout] we define various [[Layout | layouts]] of the different [[View | views]].
+* We implement the [[Activity | activities]] in the package ''org.softlang.activities''.
+* Package ''org.softlang.features'' provides functionality for the [[Feature:Restructuring]] and [[Feature:Serialization]].
+* The sample company is in the package ''org.softlang.tests''.
+
+== Usage ==
+
+* See Usage of [[Contribution:simpleAndroid | simpleAndroid]].
+
+== Metadata ==
+* [[uses::Language:Java]]
+* [[uses::Language:XML]]
+* [[uses::Technology:Android]]
+* [[uses::Technology:Android SDK]]
+* [[uses::Technology:Android Development Tool]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Touch control]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Restructuring]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Localization]]
+* [[implements::Feature:Reliability]]
+* [[implements::Feature:Persistence]]
+* [[developedBy::Contributor:Hakan Aksu]]
+* [[instanceOf::Namespace:Contribution]]

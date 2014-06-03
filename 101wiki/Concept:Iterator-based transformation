@@ -1,0 +1,17 @@
+== Headline ==
+
+A [[transformation]] that is essentially driven by the types of affected data
+
+== Description ==
+
+Transformations may be arbitrarily complicated in how they transform given data. A [[type-driven transformation]] is relatively simple (and common) in so far that it only cares about specific types for the windows of transformation.
+
+== Illustration ==
+
+[[Feature:Cut]] illustrates the concept of [[type-driven transformation]].
+
+== Metadata ==
+
+* [[isA::Transformation]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

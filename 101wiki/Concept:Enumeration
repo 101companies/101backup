@@ -1,0 +1,13 @@
+== Headline ==
+
+A collection with ordered listing 
+
+== Illustration ==
+
+TBD
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Enumeration]]
+* [[linksTo::http://hackage.haskell.org/packages/archive/base/3.0.3.1/doc/html/GHC-Enum.html]]
+* [[instanceOf::Namespace:Concept]]

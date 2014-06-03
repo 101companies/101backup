@@ -1,0 +1,61 @@
+== Headline ==
+
+Lecture "First steps in Haskell" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+Functional programming in [[Language:Haskell]] is introduced in this lecture. First, basic concepts of programming (such as [[program]] and [[algorithm]]) are briefly rehashed. Then, key concepts of functional programming (such as [[function]], [[recursion]], [[list]], and [[pattern matching]]) are introduced. Some basic examples are used for illustrations (such as the factorial function and [[linear search]]). Eventually, a major running example of this course is introduced, the so-called [[@system]], which is essentially a trivial information system for human resource management.
+== Material ==
+
+Some version of the lecture has been recorded.
+
+<media url="http://www.youtube.com/watch?v=AWIO3nPInzg" />
+== Concepts ==
+
+* [[Software system]]
+* [[Requirement]]
+* [[Program]]
+* [[Programming language]]
+* [[Compiler]]
+* [[Interpreter]]
+* [[Algorithm]]
+* [[Algorithmic problem]]
+* [[Factorial]]
+* [[Greatest common divisor]]
+* [[Search problem]]
+* [[Search algorithm]]
+* [[Functional programming]]
+* [[Function]]
+* [[Function definition]]
+* [[Function application]]
+* [[Function composition]]
+* [[Data structure]]
+* [[List]]
+* [[Immutable list]]
+* [[Pattern matching]]
+* [[Linear search]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Technologies ==
+
+* [[Technology:Haskell platform]]
+* [[Technology:GHC]]
+* [[Technology:GHCi]]
+== Features ==
+
+* [[Feature:Total]]
+* [[Feature:Cut]]
+== Contributions ==
+
+* [[Contribution:haskellStarter]]
+== Information ==
+
+* [[Information:Download]]
+* [[Information:Wikipedia]]
+* [[Information:Translate]]
+* [[Information:Contact]]
+== Metadata ==
+
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

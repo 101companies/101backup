@@ -1,0 +1,13 @@
+== Headline ==
+
+All elements of a list except the first
+
+== Details ==
+
+In [[functional programming]], there is typically a designated [[tail function]].
+
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Namespace:Concept]]

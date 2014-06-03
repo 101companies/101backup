@@ -1,0 +1,12 @@
+== Intent ==
+
+a ASP.NET configuration language 
+
+== Description ==
+
+Config files are XML files that contain settings for a all web applications on a server, single ones, single folders or single sites of the web applciation. Settings can be compiler options, options for debugging, but also user authentification and error messages. They are usually called Web.config, but several .config files for the different compilation targets are also common.
+
+== Metadata ==
+
+* [[identifies::http://msdn.microsoft.com/de-de/library/ff400235%28VS.100%29.aspx]]
+* [[instanceOf::Namespace:Language]]

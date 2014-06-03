@@ -1,0 +1,21 @@
+== Headline ==
+
+A validator for multiple W3C languages
+
+== Description ==
+
+W3CValidator is a [[@technology]]; it uses the online validators that are provided by the W3C to validate several languages. The online validators can validate CSS, HTML, XHTML, SVG and MathML. The W3CValidator distinguishes the different languages by the language extension of the input file and calls the corresponding online validator. Zero exit code is to be interpreted as successful validation; non-zero exit code as failure.
+
+== Contributors ==
+
+* {{101contributor|Martin Leinberger|developer}}
+* {{101contributor|Ralf Lämmel|author}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Validator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/W3CValidator]]
+* [[instanceOf::Namespace:Technology]]

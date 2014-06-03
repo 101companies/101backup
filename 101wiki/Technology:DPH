@@ -1,0 +1,13 @@
+== Headline ==
+
+A [[Technology:GHC]] extension for [[data parallelism]]
+
+== Details ==
+
+
+This extensions allows GHC to provide support for nested [[data parallelism]] <cite>jones2008harnessing, haskellWikiDPH</cite>. DPH (Data Parallel Haskell) uses [[Vectorisation|vectorised]] [[Module|modules]] to encapsulate data parallel code. In these modules one can make use of [[Parallel array|parallel arrays]] and various data parallel operations on these arrays <cite>jones2008harnessing</cite>.
+
+== Metadata ==
+* [[identifies::http://www.haskell.org/haskellwiki/GHC/Data_Parallel_Haskell]]
+* [[linksTo::http://drops.dagstuhl.de/opus/volltexte/2008/1769]]
+* [[instanceOf::Namespace:Technology]]

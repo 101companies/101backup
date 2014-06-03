@@ -1,0 +1,11 @@
+== Example ==
+
+This works:
+
+<fragment url="/contributions/haskellStarter/src/Main.hs/type/Company"/>
+
+This doesn't and look at how big the error message is:
+
+<fragment url="/contributions/haskellStarter/src/Main.hs/type/Foo"/>
+== Metadata ==
+* [[instanceOf::Namespace:Issue]]

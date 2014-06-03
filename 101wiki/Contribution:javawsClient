@@ -1,0 +1,23 @@
+== Headline ==
+
+Client side of a [[Language:Java|Java]]-based web service
+
+== Characteristics ==
+
+This client consumes a [[Language:Java|Java]]-based web service for the [[@system]].
+
+== Relationships ==
+
+See [[Contribution:javawsServer]] for the server side.
+
+== Usage ==
+
+The implementation is provided as an Eclipse project. 
+
+The implementation has been tested with Java version 6.
+
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[developedBy::Contributor:Ekaterina Pek]]
+* [[instanceOf::Namespace:Contribution]]

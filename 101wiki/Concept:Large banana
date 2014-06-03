@@ -1,0 +1,31 @@
+== Headline ==
+
+[[Generalized fold]]s for system of [[algebraic data type]]s
+
+== Illustration ==
+
+A [[data model]] for companies of the [[@system]] requires a system of [[algebraic data type]]s such as follows:
+
+<fragment url="/contributions/tabaluga/src/Company/Data.hs/data/Company"/>
+
+<fragment url="/contributions/tabaluga/src/Company/Data.hs/data/Department"/>
+
+<fragment url="/contributions/tabaluga/src/Company/Data.hs/data/Employee"/>
+
+Thus, a [[generalized fold]] for companies also needs to be parameterized in multiple types: one for each type in the system:
+
+<fragment url="/contributions/tabaluga/src/Company/Algebra.hs/data/CompanyAlgebra"/>
+
+We can set up some interesting baseline behavior on companies. The following algebra models deep identity over companies such that the company structure is fully traversed and rebuilt:
+
+<fragment url="/contributions/tabaluga/src/Company/Algebra.hs/pattern/mapCompany"/>
+
+An operation for cutting salaries in half can now be derived from ''mapCompany'' simply by record update such that the case for employees realizes salary cut:
+
+<fragment url="/contributions/tabaluga/src/Company/Cut.hs/pattern/cut"/>
+
+== Metadata ==
+
+* [[relatesTo::Generic programming]]
+* [[identifies::http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.36.627]]
+* [[instanceOf::Namespace:Concept]]

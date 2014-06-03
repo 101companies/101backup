@@ -1,0 +1,13 @@
+== Headline ==
+
+A [[Monad|monadic]] implementation of the [[zipper]] concept in [[Language:Haskell|Haskell]]
+
+== Discussion ==
+
+In Haskell zippers for binary trees are implemented by means of a monad <cite>haskellWikiZipper</cite>.
+
+== Metadata ==
+
+* [[isA::Monad]]
+* [[identifies::http://www.haskell.org/haskellwiki/Zipper]]
+* [[instanceOf::Namespace:Concept]]

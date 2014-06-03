@@ -1,0 +1,18 @@
+== Headline ==
+
+A [[programming]] technique aiming at [[separation of concerns]] in [[implementation]]s
+
+
+== Illustration ==
+
+Consider the ([[Language:Haskell]]-based) [[Contribution:haskellEngineer]] which puts to work modular programming indeed. In fact, the contribution was obtained from another contribution, i.e., [[Contribution:haskellStarter]], by [[modularization]].
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Modular_programming]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Modularity]]
+* [[relatesTo::Modularization]]
+* [[relatesTo::Separation of concerns]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,20 @@
+== Headline ==
+
+Report salary distribution for different grouping criteria
+== Description ==
+
+Management needs to understand the distribution of salaries over the employees in the company and apply different criteria (dimensions) for grouping. Employees could be grouped by gender, age (in fact, age range), department, and job role. For any given criterion, an appropriate chart may be used to visualize the distribution. For instance, distribution for age ranges could be visualized with a bar chart with one bar per age range.
+== Motivation ==
+
+This feature calls for a number of extensions to the data model: gender (male, female, or unspecified), date of birth (to be able to compute the age of an employee), and job role (such as developer, tester, and program manager). These extension are not in any way interesting on their own, but they prepare the data model for multi-dimensional data aggregation for reporting as commonly used in the area of Business Intelligence possibly with the use of OLAP cubes. Here, the addition of the gender is the most basic as it corresponds to a simple enumeration type. The addition of the date of birth is somewhat more interesting because age or age range need to be computed from the date of birth. The addition of job roles triggers the need for extra joins in data aggregation, if we assume that job roles are organized, for example, in a designated table in a database with a normalized schema.
+== Illustration ==
+
+Under construction.
+== Relationships ==
+
+* See [[Feature:Reporting]] for the abstact base feature of [[Feature:Charting]].
+* See [[Feature:Median]] and [[Feature:Charting]] for further aspects of reporting.
+== Metadata ==
+
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

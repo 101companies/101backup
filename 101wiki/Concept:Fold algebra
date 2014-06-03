@@ -1,0 +1,106 @@
+== Headline ==
+
+A [[data type]] for holding the ingredients of a [[fold]]
+
+== Illustration ==
+
+Consider the (right-associative) [[fold function]] as a point of departure:
+
+<syntaxhighlight lang="haskell">
+-- Recalling the foldr combinator
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [] = z
+foldr f z (x:xs) = f x (foldr f z xs)
+</syntaxhighlight>
+
+Informally, the first two arguments are designed to essentially replace occurrences of the two possible constructors for lists. Even their types follow the types of the constructors, except that the list type has been replaced by a type parameter ''b'' in order to be parametric in the result type of the fold. We can also group the first two arguments in an algebra as follows:
+
+<syntaxhighlight lang="haskell">
+-- The fold algebra for lists
+data ListAlg a b
+   = ListAlg {
+       nil :: b,
+       cons :: a -> b -> b
+     }
+</syntaxhighlight>
+
+For comparison, we also show an explicit declaration of lists so that the correspondence between algebra and data type becomes strikingly clear:
+
+<syntaxhighlight lang="haskell">
+-- An explicit declaration of lists
+data List a = Nil | Cons a (List a)
+</syntaxhighlight>
+
+Suppose we would have invoked the normal fold for summation as follows:
+
+<syntaxhighlight lang="haskell">
+> foldr (+) 0 [1,2,3]
+6
+</syntaxhighlight>
+
+We can factor the arguments of such a fold as follows:
+
+<syntaxhighlight lang="haskell">
+-- A fold algebra for summation
+sumAlg :: Num a => ListAlg a a
+sumAlg = ListAlg { nil = 0, cons = (+) }
+</syntaxhighlight>
+
+It remains to actually define a fold function that processes fold algebras:
+
+<syntaxhighlight lang="haskell">
+-- The algebraic list fold
+foldList :: ListAlg a b -> [a] -> b
+foldList alg [] = nil alg
+foldList alg (x:xs) = cons alg x (foldList alg xs)
+</syntaxhighlight>
+
+Thus, we can again sum up elements in a list as follows:
+
+<syntaxhighlight lang="haskell">
+> foldList sumAlg [1,2,3]
+6
+</syntaxhighlight>
+
+The concept of fold algebra generalizes for (almost) arbitrary algebraic data types. Here is a development for simple arithmetic expressions where we implement the evaluation function by means of a fold:
+
+<syntaxhighlight lang="haskell">
+-- A datatype for expression forms
+data Expr = Literal Int 
+          | Add Expr Expr
+  deriving (Eq, Show, Read)
+
+-- The fold algebra for expressions
+data ExprAlg a
+   = ExprAlg {
+       literal :: Int -> a,
+       add :: a -> a -> a
+     }
+
+-- Folds over expressions
+foldExpr :: ExprAlg a -> Expr -> a
+foldExpr alg (Literal i) = literal alg i
+foldExpr alg (Add x y)
+  = add alg (foldExpr alg x) (foldExpr alg y)
+
+-- A fold algebra for evaluation
+evalAlg :: ExprAlg Int
+evalAlg = ExprAlg {
+    literal = id,
+    add = (+) 
+  }
+</syntaxhighlight>
+
+Thus, expression evaluation is available as follows:
+
+<syntaxhighlight lang="haskell">
+> foldExpr evalAlg (Add (Add (Literal 20) (Literal 2)) (Literal 20))
+42
+</syntaxhighlight>
+
+Fold algebras are convenient for a number of reasons. First, recursion is captured, once and for all, by the fold function; the problem-specific parts in the fold algebra do not need to express recursion. Second, fold algebras, once they are first-class citizens, can be reused and adapted via record update; see [[Contribution:tabaluga]].
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

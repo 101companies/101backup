@@ -1,0 +1,66 @@
+== Headline ==
+
+The process of matching values against [[pattern]]s and bind variables
+
+== Illustration ==
+
+Pattern matching may be concerned with different kinds of types, e.g., [[text]] or [[tree]]s. In the case of text, [[regular expression]]s provide the foundation for patterns. In the case of tree and specifically in the context of [[functional programming]], [[algebraic data type]]s provide the foundation for patterns.
+
+=== Pattern matching in functional programming ===
+
+Let us demonstrate pattern matching for [[tuple]]s in [[Language:Haskell]].
+
+<syntaxhighlight lang="haskell">
+-- Project a pair to first component
+fst :: (a,b) -> a
+fst (x,_) = x
+
+-- Project a pair to second component
+snd :: (a,b) -> b
+snd (_,x) = x
+</syntaxhighlight>
+
+These two functions ''fst'' and ''snd'' are defined like this (or similarly) in the [[Prelude module]] of [[Language:Haskell]]. They are defined by pattern matching on the structure of tuples; see the the left-hand sides of the [[function definition]]s. The idea of such pattern matching is of course that variables in the pattern (on the left-hand side) can be used in the expression of the definition (on the right-hand side).
+
+Let us also demonstrate pattern matching for [[list]]s.
+
+<syntaxhighlight lang="haskell">
+-- Retrieve head (first element) of a list
+head :: [a] -> a
+head (x:_) = x
+
+-- Retrieve tail (all but first element) of a list
+tail :: [a] -> [a]
+tail (_:xs) = xs
+</syntaxhighlight>
+
+These two functions ''head'' and ''tail'' are defined like this (or similarly) in the [[Prelude module]] of [[Language:Haskell]]. They demonstrate that non-empty lists are constructed with the cons constructor ":" from a head and a tail.
+
+Pattern matching is particularly convenient, when functions should be defined by case discrimination on the different patterns for a data type. Consider, for example, the length function (again borrowed from the Prelude); this definition consists of two equations: one for the case of an empty list "[]" and another case for non-empty lists:
+
+<syntaxhighlight lang="haskell">
+-- Determine length of list
+length :: [a] -> Int
+length [] = 0
+length (_:xs) = length xs + 1
+</syntaxhighlight>
+
+Pattern matching is not limited to the use on left-hand sides of equations. Instead, pattern matching can also be performed in a few other syntactic forms, depending on the language at hand. For instance, we can also use case expressions in [[Language:Haskell]] to discriminate on the grounds of patterns. This is demonstrated with the following variation on the ''length'' function:
+
+<syntaxhighlight lang="haskell">
+length' :: [a] -> Int
+length' l = case l of 
+              [] -> 0
+              (_:xs) -> length' xs + 1
+</syntaxhighlight>
+
+Much more remains to be said about pattern matching, when dealing with a proper programming language. For instance, Haskell provides different forms of patterns to deal with [[laziness]]. Also, Haskell patterns may involve so-called [[guard]]s to control the selection of equations (cases) not just purely on the grounds structure but also computations on top of bound variables.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://en.wikipedia.org/wiki/Pattern_matching]]
+* [[linksTo::http://en.wikibooks.org/wiki/Haskell/Pattern_matching]]
+* [[instanceOf::Namespace:Concept]]
+

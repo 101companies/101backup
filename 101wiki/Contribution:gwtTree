@@ -1,0 +1,224 @@
+== Intent == 
+
+[[Feature:Browsing]] [[web programming]] with [[Technology:GWT]]
+
+== Motivation ==
+
+[[Technology:GWT]] is a framework for creating [[Language:JavaScript]] [[Web application|web applications]] with [[Ajax]] support in [[Language:Java]]. Thereby, the complete JavaScript code is generated out of the Java code. The result is a complete [[Client-server architecture|client-server-based]] web application with a tree based [[GUI]]. Additionaly, the implementation extends the basic [[Contribution:gwt]] adding the [[Feature:Editing]] and [[Feature:Restructuring]].
+
+== Illustration ==
+
+The main difference to the [[Contribution:gwt]] implementation is the improvement of the [[Feature:Browsing]]. Hence, the focus of this section is the development of the GUI and the implementation of the new features.
+
+=== GUI implementation ===
+
+The supervising component of the GUI is the parent class implemented in [this!!src/org/softlang/client/GwtTree.java GwtTree.java]. This component manages the visibility of the three panels [this!!src/org/softlang/client/CompanyPanel.java CompanyPanel.java], [this!!src/org/softlang/client/DepartmentPanel.java DepartmentPanel.java] and [this!!src/org/softlang/client/EmployeePanel.java EmployeePanel.java] and, additionaly, contains the panel [this!!src/org/softlang/client/TreePanel.java TreePanel.java]. The method <syntaxhighlight lang="java" enclose="none">onModuleLoad()</syntaxhighlight> initializes all these panels on application start.
+
+==== Tree ====
+
+The class <syntaxhighlight lang="java" enclose="none">Tree</syntaxhighlight>, included in [[Technology:GWT]], provides great support for a tree based view. Every tree item contains a user object with the identifier of the specific entity. The tree generation starts with the company as root:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/client/TreePanel.java">
+...
+
+for (CompanyItem item : info.getCompanies()) {
+	TreeItem root = new TreeItem(item.getName());
+	root.setUserObject(item);
+	appendDepsAndEmps(root, item.getDepartments());
+	addItem(root);
+}
+
+...
+</syntaxhighlight>
+
+First, the tree item for the company is generated with the name of the company. The <syntaxhighlight lang="java" enclose="none">setUserObject</syntaxhighlight> method adds the <syntaxhighlight lang="java" enclose="none">CompanyItem</syntaxhighlight> with the identifier of the company. The method <syntaxhighlight lang="java" enclose="none">appendDepsAndEmps</syntaxhighlight> appends all departments and employees to the company root. At last, this root is added to the tree.
+
+The selection handler of the tree invokes the displaying of the additional informations for each entity included in the company:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/client/TreePanel.java">
+...
+
+this.addSelectionHandler(new SelectionHandler<TreeItem>() {
+
+	@Override
+	public void onSelection(SelectionEvent<TreeItem> event) {
+		Object obj = event.getSelectedItem().getUserObject();
+		if (obj instanceof CompanyItem) {
+			TreePanel.this.main.showCompany(((CompanyItem)obj).getId());
+		} else if (obj instanceof DepartmentItem) {
+			TreePanel.this.main.showDepartment(((DepartmentItem)obj).getId());
+		} else if (obj instanceof EmployeeItem) {
+			TreePanel.this.main.showEmployee(((EmployeeItem)obj).getId());
+		}
+	}
+});
+
+...
+</syntaxhighlight>
+
+The <syntaxhighlight lang="java" enclose="none">TreePanel.this.main</syntaxhighlight> member provides the main class [this!!src/org/softlang/client/GwtTree.java GwtTree.java]. There is a different method <syntaxhighlight lang="java" enclose="none">TreePanel.this.main.show...</syntaxhighlight> for each different entity class. This method includes the specific company, department or employee panel into the GUI and initializes it with the corresponding data.
+
+==== Panel ====
+
+The following section illustrates the main functionalities of the department panel. This panel containes two textfields for the name and the total value and two listboxes for the parent department and the manager. These elements are encapsulated within a <syntaxhighlight lang="java" enclose="none">grid</syntaxhighlight>:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/client/DepartmentPanel.java">
+...
+
+Grid grid = new Grid(4, 3);
+
+...
+
+Label lname = new Label("Name:");
+lname.setWidth("60px");
+
+// add labels
+grid.setWidget(0, 0, lname);
+grid.setWidget(1, 0, new Label("Total:"));
+grid.setWidget(2, 0, new Label("Manager:"));
+grid.setWidget(3, 0, new Label("Parent:"));
+
+// add textboxes
+grid.setWidget(0, 1, name);
+grid.setWidget(1, 1, total);
+grid.setWidget(2, 1, manager);
+grid.setWidget(3, 1, parent);
+
+...
+
+add(grid);
+
+HorizontalPanel buttons = new HorizontalPanel();
+
+...
+
+buttons.add(save);
+buttons.add(cut);
+buttons.add(delete);
+
+add(buttons);
+
+...
+</syntaxhighlight>
+
+The Grid constructor has two parameters for the table rows and columns. First, the labels are added and second, the textfields and listboxes are added. The buttons cut, save and delete are added within a seperate <syntaxhighlight lang="java" enclose="none">HorizontalPanel buttons</syntaxhighlight>.
+
+=== Feature implementation ===
+
+The following part shows the implementation of the [[Feature:Cut]] for departments. We assume, that a user has clicked on the "Cut" button to create a corresponding request. All [[Client|client]] side requests are handled via [[Asynchronous communication|asynchronous communication]]. First we need a connection to the server-side service:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/client/DepartmentPanel.java">
+private final DepartmentServiceAsync departmentService = GWT.create(DepartmentService.class);
+</syntaxhighlight>
+
+This simple initialisation provides an easy possibility to connect the [[Client|client]] to the [[Server|server]]. The next step is to create a [[Feature:Cut]] request. We have implemented this feature with the [this!!src/org/softlang/client/interfaces DepartmentService.java] interface. By calling this method, the request is created and the corresponding [[Server|server]] side method is invoked. The two parameters of the method are in first the department identifier ("''department''") and in second an object for the asynchronous callback.
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/client/DepartmentPanel.java">
+departmentService.cut(department, new AsyncCallback<Double>() {
+
+	// If the server responds an error, this method is invoked.
+	@Override
+	public void onFailure(Throwable caught) {
+		Window.alert(caught.getMessage());
+	}
+
+	// If the request is successfully executed on server side, this method is invoked with a new total value as parameter.
+	@Override
+	public void onSuccess(Double result) {
+		DepartmentPanel.this.total.setText(Double.toString(result));
+	}
+});
+</syntaxhighlight>
+
+If the request fails, the ''onFailure'' method simply returns an adequate error message. If the request succeeds, the server returns the new total value for the department. The server side request handler is implemented as a method:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/server/DepartmentServiceImpl.java">
+	@Override
+	public double cut(Integer id) {
+		// This statement loads the department with the given id.
+		Department department = CompanyApp.getInstance().getDepartments().get(id);
+		
+		// The department gets cutted.
+		department.cut();
+		
+		// The new total value for the department is returned.
+		return department.total();
+	}
+</syntaxhighlight>
+
+This method first calls amethod cut for the specific department and then returns the new total value to the client. The method for one department is implemented the following way:
+
+<syntaxhighlight lang="java" source="gwtTree/src/org/softlang/server/company/Department.java">
+public class Department implements Parent {
+	
+	// Members
+	private int id;
+	private String name;
+	private List<Department> departments;
+	private List<Employee> employees;
+	private Parent parent;
+
+	...
+
+	// This method cuts the salary of all contained employees and all contained subdepartments.
+	public void cut() {
+		for (Employee employee : employees) {
+			// The employees salary is devided by 2.
+			employee.cut();
+		}
+		for (Department department : departments) {
+			// The subdepartments are cutted recursively.
+			department.cut();
+		}
+	}
+
+	...
+
+}
+</syntaxhighlight>
+
+== Architecture ==
+
+* The application architecture is devided into client and server packages: [this!!src/org/softlang/client org.softlang.client] and [this!!src/org/softlang/server org.softlang.server]. While the server package contains all relevant data for the representation of the [[Feature:Hierarchical_company]], the client package contains all relevant informations to generate a [[user interface]].
+* The interfaces for [[asynchronous communication]] between client and server are defined in [this!!src/org/softlang/client/interfaces org.softlang.client.interfaces]. These interfaces are also implemented by the service classes of the server. 
+* The communication between server and client is provided with [[Serialization|serialized]] classes, which can be interpreted by the client implementation. Therefore, we have two classes for each company, department and employee to submit the data from the server to the client. The first class, provided in [this!!src/org/softlang/client/guiinfo org.softlang.client.guiinfo], delivers the data needed for the whole set of information for an entity like name, address, salary and parent for a given employee. The second class, provided in [this!!src/org/softlang/client/guiinfo/tree org.softlang.client.guiinfo.tree], delivers the data needed for generating a tree-based [[GUI]].
+* The GUI is divided into panels for each concern. They are located in [this!!src/org/softlang/client org.softlang.client]. The panels are initialized in the class [this!!src/org/softlang/client/GwtTree.java GwtTree.java]. The panels [this!!src/org/softlang/client/CompanyPanel.java CompanyPanel.java], [this!!src/org/softlang/client/DepartmentPanel.java DepartmentPanel.java] and [this!!src/org/softlang/client/EmployeePanel.java EmployeePanel.java] are exchangeable with each other, while the panels [this!!src/org/softlang/client/TreePanel.java TreePanel.java] and the [this!!src/org/softlang/client/ButtonPanel.java Buttonpanel.java] are always visible.
+
+== Usage ==
+
+The [[@implementation|implementation]] is created with [[Technology:Eclipse]] (3.7/Indigo) and the [[Technology:GWT]]-plugin (Version 2.5). If you want to compile the code, you need these versions to run it safely. You can get them at:
+
+* [http://www.eclipse.org/downloads/ Eclipse]
+* [http://code.google.com/intl/de-DE/eclipse/docs/download.html GWT]
+
+After installation and start, simply open this [[web application]] as project in Eclipse:
+
+* Please clean up (Project -> Clean...) the project before running.
+* Right-click on the project, left-click on "Run As" and left-click on "Web-application".
+* Visit http://127.0.0.1:8888/GwtTree.html?gwt.codesvr=127.0.0.1:9997
+
+If you want to recompile it, please end the old server-process by terminating the process in the [[Technology:Eclipse]] console first.
+The web browser is required to exersise the contribution.
+The implementation has been tested with GWT version 2.5.
+
+== Metadata ==
+
+* [[uses::Language:Java]]
+* [[uses::Language:JavaScript]]
+* [[uses::Language:HTML]]
+* [[uses::Language:XML]]
+* [[uses::Language:CSS]]
+* [[uses::Technology:GWT]] 
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Restructuring]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Web application]]
+* [[instanceOf::Theme:Web applications in Java]]
+* [[instanceOf::Namespace:Contribution]]

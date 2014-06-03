@@ -1,0 +1,13 @@
+== Headline ==
+
+A [[program generator]] that derives [[Language:Haskell]] types from [[database]] schemas
+
+== Discussion ==
+
+DBDirect is used in [[Technology:HaskellDB|HaskellDB]] to generate [[Module|modules]] describing a running database. These modules are the basis for defining [[Query|queries]] on this database <cite>leijen1999domain</cite>.
+
+
+== Metadata ==
+* [[instanceOf::program generator]]
+* [[linksTo::http://hackage.haskell.org/packages/archive/haskelldb/0.12/doc/html/Database-HaskellDB-DBDirect.html]]
+* [[instanceOf::Namespace:Technology]]

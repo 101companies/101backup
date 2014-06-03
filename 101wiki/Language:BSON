@@ -1,0 +1,15 @@
+== Headline ==
+
+A binary [[Format language|format language]] for data exchange, based on [[Language:JSON]]
+
+
+
+== Description ==
+
+BSON is a binary format based on the [[Language:JSON]] specification, also extending it by several other admissible datatypes such as ISO dates. It is primarily used as the storage format of [[Technology:MongoDB]].
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[instanceOf::Format language]]
+* [[identifies::http://bsonspec.org/]]
+* [[instanceOf::Namespace:Language]]

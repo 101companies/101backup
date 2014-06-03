@@ -1,0 +1,11 @@
+== Headline ==
+
+Syntax used for concrete representation
+
+== Metadata ==
+
+* [[isA::Syntax]]
+* [[relatesTo::Abstract syntax]]
+* [[linksTo::https://en.wikipedia.org/wiki/Abstract_syntax]]
+* [[linksTo::http://en.wikipedia.org/wiki/Parse_tree]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,17 @@
+== Headline ==
+
+A software development methodology which focuses on domain models
+
+== Acronym ==
+
+* [[MDE]]
+
+== Details ==
+
+Domain models are contrasted here with concepts of programming and computing.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Model-driven_engineering]]
+* [[instanceOf::Vocabulary:MDE]]
+* [[instanceOf::Namespace:Concept]]

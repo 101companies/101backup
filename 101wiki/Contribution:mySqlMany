@@ -1,0 +1,30 @@
+== Headline ==
+
+[[Language:SQL|SQL]]-based implementation tailored to [[Technology:MySQL|MySQL]]
+
+== Motivation ==
+
+A [[relational schema]] provides the [[data model]] of the [[@system]]. Some [[functional requirement]]s of the system are modeled as [[Language:SQL|SQL]] statements.
+
+== Relationships ==
+
+* See [[Contribution:mySqlOne]] for a slightly simpler variation which does not support multiple companies.
+* Various contributions (see the backlinks) use the present contribution (or its variant [[Contribution:mySqlOne]]) for their database components.
+
+== Usage ==
+
+See [[Contribution:mySqlOne]].
+
+== Metadata ==
+
+* [[uses::Language:SQL]]
+* [[uses::Technology:MySQL]]
+* [[uses::Technology:XAMPP]]
+* [[uses::Technology:MySQL Workbench]]
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:NoSQL]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Namespace:Contribution]]

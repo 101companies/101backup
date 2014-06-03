@@ -1,0 +1,250 @@
+== Headline ==
+
+a generic fragment locator based on [[Technology:GeSHi]]
+
+== Description ==
+
+GeFLo is a part of the [[101companies:Explorer]]; it is a generic tool for fragment location. The technology supports the token-aware, and regular expression-based location of fragments for all languages that are supported by [[Technology:GeSHi]]. The input/output behavior of GeFLo is the following:
+
+* Input:
+** a source file
+** a fragment description using regexp-like syntax on tokens
+* Output:
+** the line range of the located fragment
+
+Suppose we are in need of fragment location for Ruby. Consider the following code [https://github.com/101companies/101repo/blob/master/contributions/ruby/company/company.rb]:
+
+<pre>
+class Company
+  
+  attr_accessor :name, :topDepts
+  
+  def total
+    ttl = 0.0
+    topDepts.each do |topDept|
+      ttl += topDept.total
+    end
+    ttl
+  end
+  
+  def cut
+    topDepts.each do |topDept|
+      topDept.cut
+    end
+  end
+end
+</pre>
+
+A GeFLo-based fragment description for the function "total" takes this form:
+
+<pre>
+def total ^[def]*
+</pre>
+
+The expression matches with the leftmost, longest substring of the input that consists of "def", followed by "total", followed by any number of tokens that are different from "def". Fragment location hence returns the line range 5-11.
+
+A GeFLo-based fragment description for the function "cut" takes this form:
+
+<pre>
+def cut .* > end $
+</pre>
+
+The expression matches with the leftmost, longest substring of the input that consists of "def", followed by "cut", followed by any number of tokens, where the substring must be followed by "end" and "$" (the end of the input). The operator ">" does not carry any semantics in matching; it only denotes the separation between matched input to be returned by fragment location as opposed to additional matched content. (We may also use the notion of "follow restriction".) Fragment location hence returns the line range 13-17.
+
+Special conventions regarding comments and whitespace:
+* Comments and whitespace are skipped in the input during matching.
+* Whitespace in regular expressions serves for sequential composition.
+
+Summary of regexp syntax:
+* Metasymbol " " for sequential composition.
+* Metasymbol "." for any token.
+* Metasymbol "^" for start of input.
+* Metasymbol "$" for end of input.
+* Metasymbol ">" for separating the appended matched substring from follow restriction. (look-ahead)
+* Metasymbol "<" for separating the prepended matched substring from follow restriction. (look-behind)
+* Metasymbol "\" for escpaping metasymbols for use in token.
+* Metasymbols "?", "+", "*" as usual quantifiers for optional parts and iteration.
+* Metasyntax "^[''e'']" for negation; ''e'' is a regular expression.
+
+== Grammatic of GeFLo ==
+
+This grammatic is only one possibility, but it is very near to the implementation, where some exceptions had to be made. There exists interfaces or classes in the implementation for all these rules.
+So it is ambiguous because of StarAnyToken and PlusAnyToken, which could be also interpreted as concrete rule, e.g. "Star = AnyToken '*'".
+But these both have a semantic difference to a regular quantified AnyToken: They can also match beyond the token limit.
+<pre>
+Pattern = Start? LookBehind? SubPattern LookAhead? End?
+
+Start = '^'
+End = '$'
+LookBehind =  SubPattern '<'
+LoonAhead = SubPattern '>'
+
+SubPattern =
+      '(' SubPattern ')'
+    | Sequence
+    | Negation
+    | Quantifier
+    | Token
+
+Sequence = SubPattern (WhiteSpace SubPattern)+
+Negation = '^' '[' SubPattern ']'
+
+Quantifier = QuestionMark | Plus | Star
+QuestionMark = SubPattern '?'
+Plus = SubPattern '+'
+Star = SubPattern '*'
+
+Token = AnyToken | StarAnyToken | PlusAnyToken | SpecificToken
+AnyToken = '.'
+StarAnyToken = '.' '*'
+PlusAnyToken = '.' '+'
+SpecificToken = (~MetaSymbol | Escape MetaSymbol)+
+
+(* Symbols *)
+MetaSymbol = '(' | ')' | '^' | '[' | ']' | '.' | '<' | '>' | '$' | '?' | '*' | '+' | WhiteSpace | Escape
+WhiteSpace = ' ' | '\t' | '\r' | '\n'
+Escape = '\'
+</pre>
+
+== Technical details ==
+
+Matching GeFLo-patterns against source code is implementend in several stages:
+# Script preparation:
+## Tokenize script in token array by GeSHi
+## Joining the token array to a string with line numbers and delimiters
+# Pattern preparation:
+## Parsing GeFLo-pattern char-by-char and building an abstract syntax-tree
+## Building a Java-Pattern compatible regular expression from the syntax-tree
+# Execution and post-processing:
+## Applying the Java-Pattern on the joined token string by java.util.regex.Matcher#replaceAll
+## Splitting the result string to start and end line number
+
+=== Script preparation ===
+
+Input:
+  See the ruby script[https://github.com/101companies/101repo/blob/master/contributions/ruby/company/company.rb] above.
+
+Output:
+<pre>
+{
+  "tokens": [
+    {
+      "text": "class",
+      "class": "kw",
+      "line": 1,
+      "i": 0
+    },
+    {
+      "text": "Company",
+      "class": "de",
+      "line": 1,
+      "i": 1
+    },
+    ...,
+    {
+      "text": "def",
+      "class": "kw",
+      "line": 13,
+      "i": 1
+    },
+    {
+      "text": "cut",
+      "class": "de",
+      "line": 13,
+      "i": 2
+    },
+    ...,
+    {
+      "text": "end",
+      "class": "kw",
+      "line": 17,
+      "i": 1
+    },
+    {
+      "text": "end",
+      "class": "kw",
+      "line": 18,
+      "i": 0
+    }
+}
+</pre>
+
+This token array will be joined to a string with a more simple syntax, so it will be easier to extract the line numbers by regular expressions.
+This joined form may look like this without any line breaks or whitespaces:
+<pre>
+%1§class%1§Company%3§attr_accessor%3§:name%3§,%3§:topDepts%5§def%5§total%6§ttl%6§=%6§0.0
+%7§topDepts%7§.%7§each%7§do%7§|%7§topDept%7§|%8§ttl%8§+=%8§topDept%8§.%8§total%9§end
+%10§ttl%11§end%13§def%13§cut%14§topDepts%14§.%14§each%14§do%14§|%14§topDept%14§|
+%15§topDept%15§.%15§cut%16§end%17§end%18§end
+</pre>
+There you see that all tokens and linenumbers got replaced by "%LINE_NUMBER§TOKEN". Internally there is a step before that. Each token string will be quoted, which means all special chars for regular expressions ("\" and "$" for backreferences) are prefixed by a backslash. This includes also that the line number delimiter chars (% and $) are replaced by invisible unicode-chars. This would not be used in any known programming language as valid names or tokens. Usage in strings is not from interest, because they are not contained in the token array.
+
+=== Pattern preparation ===
+
+On base of the example pattern from above:
+<pre>
+  def cut .* > end $
+</pre>
+
+the following syntax-tree will be build:
+<pre>
+LookaroundPattern:
+    |- Pattern:
+    |    |- Sequence:
+    |    |    |- SpecificToken: "def"
+    |    |    |- SpecificToken: "cut"
+    |    |    |- StarAnyToken
+    |
+    |- Lookahead:
+    |    |- SpecificToken: "end"
+    |
+    |- End
+</pre>
+
+The Java-Pattern which is compiled from this syntax-tree looks rather complex:
+<pre>
+^.*?%(\d+)§(?:%\d+§)?\Qdef\E(?:%\d+§)?\Qcut\E(?:%\d+§)?(?:.*)%(\d+)§(?:[^%]+)?(?:%\d+§)\Qend\E$
+
+Explained:
+^.*?        => Added to apply pattern on the whole script
+%(\d+)§     => Matching region starts
+(?:%\d+§)?  => Sequence: optional non-matching line number pattern
+\Qdef\E     => SpecificToken: "def" (quoted by \Q...\E)
+(?:%\d+§)?  => Sequence: optional non-matching line number pattern
+\Qcut\E     => SpecificToken: "cut"
+(?:%\d+§)?  => Sequence: optional non-matching line number pattern
+(?:.*)      => StarAnyToken
+%(\d+)§     => Matching region ends
+(?:[^%]+)?  => Lookahead: optional non-matching line number pattern
+(?:%\d+§)   => Line number pattern
+\Qend\E     => SpecificToken: "end"
+$           => End
+</pre>
+
+=== Execution and post-processing ===
+
+If you apply the resulting regular expression on the joined token array with java.util.regex.Matcher#replaceAll(),
+where the replace pattern is "$1:$2", the returned string will be:
+<pre>
+13:17
+</pre>
+This is split into "13" and "17", the numbers are parsed as integers and a JSON-output is built, which could look like:
+<pre>
+{"from":13, "to":17}
+</pre>
+
+== Contributors ==
+
+* {{101contributor|Ralf Lämmel|author}}
+* {{101contributor|Marius Rackwitz|developer}}
+* {{101contributor|Jean-Marie Favre|proposer}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Fragment locator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/GeFLo]]
+* [[linksTo::http://en.wikipedia.org/wiki/Regular_expression]]
+* [[instanceOf::Namespace:Technology]]

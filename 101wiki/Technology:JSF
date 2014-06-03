@@ -1,0 +1,26 @@
+== Intent ==
+
+[[Web-application framework]] for web-based [[user interface]]s with [[Technology:Java EE]]
+
+== Description ==
+
+"''JavaServer Faces'' (JSF) is a standard [[Language:Java]] [[Web-application framework|web-application framework]] for building [[user interface]]s for [[Web application|web applications]]" <cite>schalk2007javaserver</cite>. In terms of [[MVC]] it is focused on the view ([[Technology:JSP]], [[Technology:Facelets]]), the model ([[Technology:Java Bean]]) and the controller (provided by the [[Technology:Servlet API]]). [[Ajax]] is included from version 2.0. ''JavaServer Faces'' controls the navigation between different pages and connects the pages to Java components implemented as Java Bean <cite>schalk2007javaserver, JSF2012official</cite>.
+
+== Languages ==
+
+* [[Language:Java]]
+* [[Language:JavaScript]]
+* [[Language:HTML]]
+* [[Language:XML]]
+
+== Technologies ==
+
+* [[Technology:Java Bean]]
+* [[Technology:Servlet API]]
+* [[Technology:JSP]] / [[Technology:Facelets]]
+
+== Metadata ==
+* [[instanceOf::Web-application framework]]
+* [[linksTo::http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html]]
+* [[linksTo::http://jsfcompref.com/]]
+* [[instanceOf::Namespace:Technology]]

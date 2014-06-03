@@ -1,0 +1,11 @@
+== Intent ==
+
+a metadata language Java
+
+== Description ==
+
+Manifest files usually contain metadata about Java archives. It often describes the Java archive, the contents of it is used for or how it is used.  
+
+== Metadata ==
+* [[identifies::http://www.fileinfo.com/extension/mf]]
+* [[instanceOf::Namespace:Language]]

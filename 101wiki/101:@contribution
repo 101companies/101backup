@@ -1,0 +1,17 @@
+== Headline ==
+
+A contribution to the [[@project]]
+
+== Description ==
+
+An [[implementation]] or a [[model]] of the [[@system]]. (Of course, [[@contributor]]s may contribute in yet other ways to the [[@project]].)
+
+== Metadata ==
+
+
+* [[relatesTo::@contributor]]
+* [[instanceOf::Namespace:101]]
+
+
+* [[instanceOf::Namespace:Concept]]
+

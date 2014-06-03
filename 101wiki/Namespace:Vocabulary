@@ -1,0 +1,12 @@
+== Headline ==
+
+The namespace for vocabularies
+
+== Description ==
+
+Within the context of the 101companies project and this wiki specifically, the notion of vocabulary is used in the simple sense of a collection of terms that are characterized by some common context of usage, as captured by the name of the vocabulary. By associating individual terms (concepts) with vocabularies, their use within the wiki is hence disambiguated.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Vocabulary]]
+* [[instanceOf::Namespace:Namespace]]

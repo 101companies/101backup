@@ -1,0 +1,74 @@
+== Headline == 
+
+A unit of composition and separation of concerns
+
+
+== Illustration ==
+
+Consider the following "naive" (inefficiently recursive) definition of the [[Fibonacci number]]s in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- Naive definition of Fibonacci numbers
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib x = fib (x-2) + fib (x-1)
+</syntaxhighlight>
+
+For what it matters, we may place the function in a module as follows:
+
+<syntaxhighlight lang="haskell">
+module Fibonacci.Inefficient where
+
+-- The Fibonacci numbers
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib x = fib (x-2) + fib (x-1)
+</syntaxhighlight>
+
+Suppose you want to compute the [[Fibonacci number]]s more efficiently. To this end, you need an auxiliary function which keeps track of the two previous [[Fibonacci number]]s so that binary (exponential) recursion can be avoided:
+
+<syntaxhighlight lang="haskell">
+-- The Fibonacci numbers
+fib :: Int -> Int
+fib x = fib2 x 0 1
+
+-- Helper function for efficient Fibonacci numbers
+fib2 :: Int -> Int -> Int -> Int
+fib2 0 y _ = y
+fib2 1 _ y = y
+fib2 x y1 y2 = fib2 (x-1) y2 (y1+y2)
+</syntaxhighlight>
+
+These two functions are reasonably embedded into a module as follows:
+
+<syntaxhighlight lang="haskell">
+module Fibonacci.Efficient (
+  fib
+) where
+
+-- The Fibonacci numbers
+fib :: Int -> Int
+fib x = fib2 x 0 1
+
+-- Helper function for efficient Fibonacci numbers
+fib2 :: Int -> Int -> Int -> Int
+fib2 0 y _ = y
+fib2 1 _ y = y
+fib2 x y1 y2 = fib2 (x-1) y2 (y1+y2)
+</syntaxhighlight>
+
+Notably, the primary function for the [[Fibonacci number]]s is exported while the helper function isn't. In this manner, we express that one function is of general interest whereas the other one is an implementational artifact.
+
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Software architecture]]
+* [[instanceOf::Abstraction mechanism]]
+* [[relatesTo::Modularization]]
+* [[relatesTo::Modular_programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Modular_programming]]
+* [[linksTo::http://www.haskell.org/tutorial/modules.html]]
+* [[instanceOf::Namespace:Concept]]

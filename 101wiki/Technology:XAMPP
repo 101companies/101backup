@@ -1,0 +1,17 @@
+== Headline ==
+
+A cross-plattform open-source [[Web server]] package for local [[Web programming]]
+
+== Description ==
+
+XAMPP packages the following components:
+* an [[Technology:Apache HTTP Server]],
+* a [[Technology:MySQL]] [[DBMS]],
+* a [[Language:PHP]] [[interpreter]], and
+* a [[Language:Perl]] [[interpreter]].
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Xampp]]
+* [[identifies::http://www.apachefriends.org/en/xampp.html]]
+* [[instanceOf::Namespace:Technology]]

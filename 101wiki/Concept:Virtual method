@@ -1,0 +1,9 @@
+== Intent ==
+
+[[Instance method]]s that may be overridden and dispatch is based on runtime receiver types
+
+
+
+== Metadata ==
+* [[instanceOf::Instance method]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+Plain text as opposed to formatted text
+
+== Details ==
+
+A plain text file contains readable text. Plain text in the context of the 101companies projects is used, for example, for readme files, which may be called README.txt or README.md.
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://en.wikipedia.org/wiki/Plain_text]]
+* [[instanceOf::Namespace:Language]]

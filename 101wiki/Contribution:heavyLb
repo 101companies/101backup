@@ -1,0 +1,36 @@
+== Headline ==
+
+A [[Technology:LogicBlox]]-based implementation that is rich on functional requirements
+
+== Motivation ==
+
+This implementation enhances [[Contribution:basicLb]] to cover additional structural and behavioral features: computation of the depth of companies, support for mentoring, enforcement of the precedence-like constraint for salaries to get higher within the company hierarchy. In fact, this implementation can serve as an executable specification for the functional requirements and the data model of 101companies. It is both specification and implementation because the specification is executable in a pretty useful manner: in terms of efficiency and provided persistence.
+
+== Architecture ==
+
+When compared to [[Contribution:basicLb]], there are these additional files:
+* ''depth.logic'': determine the depth of department nesting.
+* ''precedence.logic'': check whether salaries with position in hierarchy.
+There is no additional file for mentoring, as all related code is integrated into ''schema.logic'' and ''instance.logic''.
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+
+* [[instanceOf::Theme:Datalog basics]]
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Mentoring]]
+* [[developedBy::Contributor:Thiago Tonelli Bartolomei]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

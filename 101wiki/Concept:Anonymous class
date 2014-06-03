@@ -1,0 +1,11 @@
+== Headline ==
+
+A [[nested class]] that is anonymous
+
+== Metadata ==
+
+* [[linksTo::http://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html]]
+* [[linksTo::http://en.wikipedia.org/wiki/Inner_class]]
+* [[relatesTo::Nested class]]
+* [[retatesTo::Closure]]
+* [[instanceOf::Namespace:Concept]]

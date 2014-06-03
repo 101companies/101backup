@@ -1,0 +1,9 @@
+== Headline ==
+
+an API for [[Technology:Java Servlet]]s
+
+== Metadata ==
+* [[instanceOf::Server technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_Servlet]]
+* [[linksTo::http://docs.oracle.com/javaee/6/api/javax/servlet/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

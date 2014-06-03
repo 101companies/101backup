@@ -1,0 +1,27 @@
+== Headline ==
+
+Java's event framework
+
+== Description ==
+
+The framework is hosted by the [[Technology:java.util]] package.
+
+=== Interfaces ===
+
+* EventListener
+* Observer
+
+=== Classes ===
+
+* EventListenerProxy
+* EventObject
+* Observable
+
+=== Exceptions ===
+
+* TooManyListenersException
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

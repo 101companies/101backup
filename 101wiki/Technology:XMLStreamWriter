@@ -1,0 +1,8 @@
+== Intent ==
+
+a [[Language:Java]] [[API]] for writing [[Language:XML]]
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[identifies::http://download.oracle.com/javase/6/docs/api/javax/xml/stream/XMLStreamWriter.html]]
+* [[instanceOf::Namespace:Technology]]

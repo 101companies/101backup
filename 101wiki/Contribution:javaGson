@@ -1,0 +1,18 @@
+== Headline ==
+
+Working on JSON with Google Gson API, mapping Json to a JsonTree representation
+
+==Temporary==
+[https://github.com/https://github.com/101companies/101simplejava/tree/master/contributions/javaGson Gitlink]
+== Metadata ==
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:Matthias Paul]]
+<!-- Next link is generated automatically-->
+* [[uses::Language:JSON]]
+<!-- Next link is generated automatically-->
+* [[uses::Language:Plain Text]]
+<!-- Next link is generated automatically-->
+* [[uses::Language:Java]]
+

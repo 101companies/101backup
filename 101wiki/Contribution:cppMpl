@@ -1,0 +1,12 @@
+== Intent ==
+
+demonstrate template metaprogramming with C++
+
+== Motivation ==
+
+This is an esoteric implementation in C++ using template metaprogramming. It isn't how you would ''want'' to ever do this, but there are some pretty simple examples of C++ MPL, so it might be a good example for people wanting to learn C++ MPL.
+
+== Metadata ==
+
+* [[developedBy::Contributor:Travis Gockel]]
+* [[instanceOf::Namespace:Contribution]]

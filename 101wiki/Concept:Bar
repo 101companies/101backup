@@ -1,0 +1,7 @@
+== Some section ==
+
+[[NS:Foop]] [[NS:Foop|another]]
+
+== Metadata ==
+* [[linksTo::NS:Foop]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+Basic [[Technology:Android]] programming
+
+== Motivation ==
+
+The implementation demonstrates basic style of [[Technology:Android]] programming using the [[Technology:Android SDK]] and the [[Technology:Android Development Tool]]. The application is programmed in a way that [[Feature:Touch control]] is used exlusivly. It shows basic concepts like the [[Android Manifest]], the [[layout]] and the use of [[Activity | activities]]. Other concepts are demonstrated that are needed to represent the 101features [[Feature:Hierarchical_company]] and [[Feature:Browsing]]. This includes the [[View | views]] like buttons, the [[Listener | click listener]] and the use of an [[Adapter | adapter]] with a list view. For the communication between [[Activity | activities]] and to start them are used [[Intent | intents]]. The application uses text [[View | views]] to display the name, address and salary of an [[@term:Employee | employee]]. It shows [[Toast | toasts]] for any notifications.
+
+== Metadata ==
+* [[instanceOf::Namespace:Contribution]]

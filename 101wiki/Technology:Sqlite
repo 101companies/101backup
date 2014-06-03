@@ -1,0 +1,18 @@
+== Intent ==
+
+a library, implementing a relational model database server 
+
+
+== Spaces ==
+
+* [[Relationalware]]
+
+== Links ==
+
+* http://www.sqlite.org/
+
+
+
+== Metadata ==
+* [[instanceOf::DBMS]]
+* [[instanceOf::Namespace:Technology]]

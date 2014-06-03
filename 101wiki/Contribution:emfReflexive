@@ -1,0 +1,67 @@
+== Headline ==
+
+reflexive [[Technology:EMF]] [[Model to Model transformation]]
+
+== Motivation ==
+
+This implementation demonstrates [[Model to Model transformation]]s with [[Technology:EMF]] for [[Language:Java]]. Contrary to [[Contribution:emfGenerative]], the [[model]]s properties are accessed and modified by [[reflexive]] method calls to the EMF [[Model]] itself. The [[metamodel]]s used in this implementation are given in [[Language:Ecore]], models are in [[Language:XMI]]. The implementation uses the Total scenario to show a [[exogenous model transformation]]. The Cut scenario shows an [[endogenous model transformation]]. 
+
+== Illustration ==
+
+The structure of a company can be modeled as a metamodel. By doing so, one can load any company conforming to this metamodel by first loading the metamodel and then loading the actual model:
+<syntaxhighlight lang="java">
+/* Load metamodel */
+Resource companyMetamodel = resourceSet.createResource(URI.createFileURI("Metamodels/Company.ecore"));
+companyMetamodel.load(null);
+EPackage.Registry.INSTANCE.put("http://www.company.com", companyMetamodel.getContents().get(0));
+
+/* code ommited */
+
+/* Load model */
+Resource companySampleModel = resourceSet.createResource(URI.createFileURI("Models/sampleCompany.xmi"));
+companySampleModel.load(null);
+</syntaxhighlight>
+
+
+Then, attributes can be modified using reflexive calls. For example, the Cut operation can be implemented by iterating over all elements of the model, retrieving the value for the salary if the current element is a Employee and then setting the salary attribute for this employee to the half of what was returned earlier:
+<syntaxhighlight lang="java">
+if( currentModelElement.eClass().getName().equals("Employee") ) {
+   EStructuralFeature salaryAttribute = currentModelElement.eClass().getEStructuralFeature("salary");
+   double currentSalary = (Double) currentModelElement.eGet(salaryAttribute);
+   currentModelElement.eSet(salaryAttribute, currentSalary/2);
+}
+</syntaxhighlight>
+
+== Architecture ==
+
+Company.ecore is the implements the data model for [[Feature:Hierarchical_company]]. It is the metamodel used for the transformation and can be found in the "Metamodels" directory. 
+
+The model that holds the actual data is sampleCompany.xmi and can be found in the "Models" directory. 
+
+The model sampleCompany holds the data for the [[Feature:Hierarchical_company]].
+
+The metamodel Total is used for the [[Feature:Cut]] feature.
+
+
+The actual transformations are implemented in the class RunTransfo.
+
+== Usage ==
+In order to execute the transformations, a Eclipse version with EMF support is needed (e.g. [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/junor the Eclipse EMF version]).
+
+The project can then be imported in Eclipse. To excercise the transformations, compile and execute the Java class RunTransfo.java.
+
+== Metadata ==
+
+* [[uses::Language:Ecore]]
+* [[uses::Language:Java]]
+* [[uses::Language:XMI]]
+* [[uses::Technology:EMF]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Mapping]]
+* [[developedBy::Contributor:Hugo Brunelère]]
+* [[reviewedBy::Contributor:Martin Leinberger]]
+* [[instanceOf::Theme:MDE]]
+* [[instanceOf::Namespace:Contribution]]

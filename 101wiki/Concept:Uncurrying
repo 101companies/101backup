@@ -1,0 +1,48 @@
+== Headline ==
+
+Transformation of a function to take its multiple arguments at once
+
+== Illustration ==
+
+In [[Language:Haskell]], functions are typically in curried form. Consider, for example, the signature of addition:
+
+<syntaxhighlight lang="haskell">
+> :t (+)
+(+) :: Num a => a -> a -> a
+</syntaxhighlight>
+
+Thus, addition takes one argument at a time. If we were to define addition in uncurried form, then this would look as follows:
+
+<syntaxhighlight lang="haskell">
+add :: Num a => (a, a) -> a
+add (x,y) = x + y
+</syntaxhighlight>
+
+In fact, the uncurrying transformation can be represented by the following [[higher-order function]]:
+
+<syntaxhighlight lang="haskell">
+uncurry :: (a -> b -> c) -> (a, b) -> c
+uncurry f (a,b) = f a b
+</syntaxhighlight>
+
+(We would need such an uncurry(ing) function for each number of arguments.) Thus, we can express the uncurrying transformation as follows:
+
+<syntaxhighlight lang="haskell">
+add' :: Num a => (a, a) -> a
+add' = uncurry (+)
+</syntaxhighlight>
+
+== Relationships ==
+
+See [[currying]] for the dual transformation.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Currying, 18 May 2013)
+
+Uncurrying is the dual transformation to currying, and can be seen as a form of defunctionalization. It takes a function ''f''(''x'') which returns another function ''g''(''y'') as a result, and yields a new function ''f′''(''x'',''y'') which takes a number of additional parameters and applies them to the function returned by function ''f''.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Currying]]
+* [[instanceOf::Namespace:Concept]]

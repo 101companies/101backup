@@ -1,0 +1,8 @@
+== Intent ==
+
+JAXB's set of annotations for [[Object-XML mapping]]
+
+== Metadata ==
+* [[instanceOf::Metadata language]]
+* [[identifies::http://docs.oracle.com/javase/6/docs/api/javax/xml/bind/annotation/package-summary.html]]
+* [[instanceOf::Namespace:Language]]

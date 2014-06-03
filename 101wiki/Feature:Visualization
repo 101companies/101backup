@@ -1,0 +1,12 @@
+== Headline ==
+
+The visualization of company data
+
+== Description ==
+
+Users of the [[@system]] may want to examine the company data to gain certain insights. For instance, employees and managers may find it equally interesting to understand overall the different salaries across the company structure. Hence, the company structure may be essentially visualized as a tree where the size of the employee nodes correlates with the salary. Optionally, the department nodes may also be scaled to convey additional information such that, for example, the node's size correlates with the average salary of employees in the department. Other ideas for visualization are welcome, too.
+
+
+== Metadata ==
+* [[instanceOf::Behavioral 101feature]]
+* [[instanceOf::Namespace:Feature]]

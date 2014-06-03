@@ -1,0 +1,12 @@
+== Headline ==
+
+A [[data structure]] for location-based manipulation of a data structure
+== Metadata ==
+
+* [[isA::Data structure]]
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Zipper_(data_structure)]]
+* [[identifies::http://www.haskell.org/haskellwiki/Zipper]]
+* [[identifies::http://dx.doi.org/10.1017/S0956796897002864]]
+* [[instanceOf::Namespace:Concept]]

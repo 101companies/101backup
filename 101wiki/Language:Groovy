@@ -1,0 +1,17 @@
+== Headline ==
+
+a dynamically typed [[OO programming language]] on the [[Language:Java]] Virtual Machine
+
+== Details ==
+
+Groovy is a dynamically typed language running on the JVM. It tries to be a superset of Java and therefore, most (but not all) Java code is also valid Groovy code.
+It also provides first-class functions and can therefore be treated as a [[functional programming language]].
+
+== Links ==
+
+* <primary>[http://groovy.codehaus.org/ Groovy Homepage]</primary>
+* <secondary>[http://en.wikipedia.org/wiki/Groovy_(programming_language) Groovy] @ Wikipedia</secondary>
+* <related>[http://www.gradle.org/ Gradle], a project automation ("build") tool based on Groovy</related>
+* <related>[https://github.com/tinkerpop/gremlin/wiki Gremlin], a Groovy-based graph traversal DSL</related>
+== Metadata ==
+* [[instanceOf::Namespace:Language]]

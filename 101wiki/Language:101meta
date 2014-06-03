@@ -1,0 +1,762 @@
+== Headline ==
+
+A language for associating metadata with files in a file system
+
+== Summary ==
+
+[[Language:101meta]] is a rule-based language for associating metadata with files and fragments thereof. The constraints of a rule say what files to match, e.g., in terms of constraining the actual filename. Metadata consists of key-value pairs. In the [[@project]], metadata is concerned with usage of languages and technologies, with claims about the implementation of features, with tagging for terms of the [[101companies:Vocabulary]] and general concepts, as available on the [[101wiki]]. Conceptually, the language is not tied to the [[@project]]. The metadata is directly used for exploration of the [[101repo]], as supposed by the [[101companies:Explorer]]. The official syntax of [[Language:101meta]] is JSON-based with arbitrary JSON expressions for metadata values. The metadata language [[Language:101meta]] is primarily meant to facilitate the representation of rules in a form that is directly useful for automated processing; usability of the notation for the end user is also concern, but a secondary one in the view of extra tool support helping with the use of the mechanism. For instance, the [[101companies:Explorer]] provides support for authoring rules in an interactive manner so that the notation does not need to be manipulated directly.
+
+=== Constraints ===
+
+There are the following contraint forms:
+
+* '''filename''': the name of a file to be matched. The name can also be specified by a pattern.
+* '''basename''': the basename of a file to be matched. The name can also be specified by a pattern. As usual, a basename is a filename without any directory part.
+* '''suffix''': the suffix of a file to be matched. This is essentially a shorthand for a pattern to constrain only the suffix (typically, the extension) of a filename.
+* '''dirname''': the name of the directory of a file to be matched. The name can also be specified by a pattern. The file must be contained in the specified directory or a subdirectory thereof.
+* '''content''': the content of a file to matched based on regular expression to be applied to the text of the file.
+* '''fragment''': a fragment of a matched file to which to apply to metadata, subject to a suitable fragment description.
+* '''predicate''': the name of an executable to be applied to files for deciding on matching.
+
+=== Metadata ===
+
+In the [[@project]], the following forms of metadata are used:
+
+* '''language''' for declaring an artifact as being an element of a language on the [[101wiki]].
+* '''partOf''' for declaring an artifact as being a part of a technology on the [[101wiki]].
+* '''inputOf''' for declaring an artifact as being consumed by a technology as input.
+* '''outputOf''' for declaring an artifact as being produced by a technology as output.
+* '''dependsOn''' for declaring an artifact as depending on a technology.
+* '''feature''' for declaring a feature of the [[@system]] as being implemented.
+* '''term''' for association with a term of the [[101companies:Vocabulary]].
+* '''phrase''' for association with a phrase built from the [[101companies:Vocabulary]].
+* '''concept''' for association with a concept on the [[101wiki]].
+* '''nature''': for association of file nature, e.g., "binary" for use by the [[101companies:Explorer]].
+* '''geshi''': for association with a language code as used when rendering with [[Technology:GeSHi]].
+* '''locator''': for association with an executable to be used as [[fragment locator]].
+* '''validator''': for association with an executable to be used as [[validator]].
+* '''extractor''': for association with an executable to be used as [[fact extractor]].
+* '''dominator''': meta-metadata for sorting out priorities.
+* '''relevance''': metadata for indicating the importance of a file.
+
+== Metadata scenarios ==
+
+We introduce [[Language:101meta]] here by a series of examples that illustrate essential metadata scenarios in the [[@project]].
+
+=== Language-related metadata ===
+
+The first example concerns matching of files with ''suffix'' ".java" to be associated with the language "Java".
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".java", 
+  "metadata" : { "language" : "Java" } 
+}
+</syntaxhighlight>
+
+The ''suffix'' constrains the suffix (the extension) of files to be matched.  Metadata takes the form of a key-value pair with "language" as key and "Java" as value. In a conceptual sense, such metadata submits that the file in question is an element of the language specified; see the "elementOf" relationship of [[Language:MegaL]]. We assume that a 101companies-specific interpreter, such as the [[101companies:Explorer]], links the key-value pair to the resource [[Language:Java]] as it is manifest on the [[101wiki]].
+
+The example specifies a single rule. In general, an [[Language:101meta]] specification is a ''list'' of rules. Here is a specification with two rules to match both [[Language:JavaScript]] and [[Language:Java]] files; array notation is used to this end:
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "suffix" : ".java", 
+    "metadata" : { "language" : "Java" } 
+  },
+  { 
+    "suffix" : ".js", 
+    "metadata" : { "language" : "JavaScript" } 
+  },
+]
+</syntaxhighlight>
+
+=== Technology-related metadata ===
+
+We will be concerned now with technologies as opposed to languages. We define rules related to the parser generator [[Technology:ANTLR]] for illustration. In the case of using ANTLR with Java, the technology is packaged as a ".jar" archive. Hence, let us associate, for example, the (version-specific) file "antlr-3.2.jar" with the technology "ANTLR".
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : "antlr-3.2.jar",
+  "metadata" : { "partOf" : "ANTLR" } 
+}
+</syntaxhighlight>
+
+The ''basename'' constraint implies that we do not care about the directory of the matched file here. Metadata takes the form of a key-value pair with "partOf" as key and "ANTLR" as value. We use "partOf" here in the sense that a concrete artifact, such as a ".jar" archive, can be considered part of a technology, which is a conceptual (abstract) entity; see the "partOf" relationship of [[Language:MegaL]]. We assume that a 101companies-specific interpreter, such as the [[101companies:Explorer]], links the value "ANTLR" to [[Technology:ANTLR]] as it is manifest on the [[101wiki]].
+
+Let us cover two versions of ANTLR:
+
+<syntaxhighlight lang="javascript">
+[ 
+  {
+    "basename" : "antlr-2.7.6.jar",
+    "metadata" : { "partOf" : "ANTLR" } 
+  },
+  { 
+    "basename" : "antlr-3.2.jar",
+    "metadata" : { "partOf" : "ANTLR" } 
+  }
+]
+</syntaxhighlight>
+
+The example applies the same metadata to two different files. For conciseness' sake, the constraint keys for file matching (i.e., ''suffix'' and ''basename'') may also be associated with lists of alternatives for matching. Thus, the two rules may be factored into one as follows:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : [ "antlr-2.7.6.jar", "antlr-3.2.jar" ],
+  "metadata" : { "partOf" : "ANTLR" } 
+}
+</syntaxhighlight>
+
+We may also use [[regular expression]] matching on file names. In this manner, we can even match all possible versions of ANTLR with a single rule. To this end, we allow for any substring between "antlr-" and ".jar". Thus:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : "#^antlr-.*\.jar$#",
+  "metadata" : { "partOf" : "ANTLR" } 
+}
+</syntaxhighlight>
+
+Here, "^" marks the beginning of the string, "$" marks the end of the string, and "\" escapes a metasymbol (because "." is metasymbol for any character). The regular expression is enclosed by "#...#" thereby expressing unambiguously that regular expression matching as opposed to literal name matching is to be applied.
+
+The ".jar" file for ANTLR is by no means the only way how files could be associated with ANTLR. In general, technologies deal with various kinds of files: input, output, configuration files, or others. Consider ".g" files, which are an indicator of ANTLR usage because ANTLR's grammar files use this extension. Thus:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".g",
+  "metadata" : { "inputOf" : "ANTLR" }
+}
+</syntaxhighlight>
+
+This time, the metadata declares that the given file is input for the parser generator ANTLR. We assume that a 101companies-specific interpreter, e.g., [[101companies:Explorer]] for the exploration of contributions, prioritizes input files over output files such as generated source code that is not meant for human consumption. The use of ANTLR may also be inferred on the grounds of generated files. When ANTLR is used in a common manner, then generated code parser and lexer are to be found in files with specific names as follows:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : [ "#^.*Parser\\.java$#", "#^.*Lexer\\.java$#" ],
+  "metadata" :  { "outputOf" : "ANTLR" }
+}
+</syntaxhighlight>
+
+(As an exercise, one may attempt a simplification of the patterns. Hint: the beginning of the file does not need to be matched explicitly.) This time, the files at hand are tagged as resulting from the application of ANTLR as an output. We assume that a 101companies-specific interpreter, e.g., [[101companies:Explorer]] for the exploration of contributions, de-prioritizes "output" files as opposed to "input" files.
+
+There is a major problem with the rule for generated files: the rule relies on insufficiently distinctive filename patterns. The use of "Parser" or "Lexer" in naming source files for parsers and lexers does not reasonably imply usage of ANTLR. Thus, we need to further constrain the rule in a way that the content of the files can be checked to support the assumption about ANTLR usage. We will return to this problem later in the context of a more complete discussion of metadata mechanics.
+
+=== Feature-related metadata ===
+
+We may want to "tag" files with features of the [[@system]], as they are implemented in the file. The following example deals with [[Contribution:javaStatic]], which is a simple and modular Java-based implementation of the [[@system]]:
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Company.java",
+    "metadata" : { "feature" : "Tree structure" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Department.java",
+    "metadata" : { "feature" : "Tree structure" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Employee.java",
+    "metadata" : { "feature" : "Tree structure" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Total.java",
+    "metadata" : { "feature" : "Type-driven query" } 
+ },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+    "metadata" : { "feature" : "Type-driven transformation" } 
+  }
+]
+</syntaxhighlight>
+
+=== Domain-related metadata ===
+
+We may also want to "tag" files with terms of the [[101companies:Vocabulary]] which collects nouns and verbs of the 101companies "domain". This may be, in fact, an alternative to tagging files with features. For instance, we may want to express that certain modules define the 101companies-specific operations [[101term:Cut]] and [[101term:Total]]. Again, we apply tagging to [[Contribution:javaStatic]].
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Total.java",
+    "metadata" : { "term" : "Total" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+    "metadata" : { "term" : "Cut" } 
+  }
+]
+</syntaxhighlight>
+
+One may think of these 101companies-specific tags as being more concise than the feature-oriented tags that we used earlier. That is, term [[101term:Total]] is a proxy for feature [[Feature:Total]] and term [[101term:Cut]] is a proxy for feature  [[Feature:Cut]]. As a guideline, such concise terms are to be preferred over features for tagging, whenever applicable.
+
+We continue the previous example, by tagging also structure-related modules. That is, we associate the tags for the terms [[101term:Company]], [[101term:Department]], and [[101term:Employee]] with the appropriate ".java" files. Incidentally, such tagging is more precise than the earlier tagging with the feature [[Feature:Hierarchical_company]], which did not distinguish the different domain concepts for companies, departments, and employees.
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Company.java",
+    "metadata" : { "term" : "Company" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Department.java",
+    "metadata" : { "term" : "Department" } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/model/Employee.java",
+    "metadata" : { "term" : "Employee" } 
+  }
+]
+</syntaxhighlight>
+
+Terms can also be composed to provide more accurate descriptions. For instance, we may want to express that the module for cutting salaries actually does so by breaking down functionality into cutting company objects, department objects, and employee objects. Thus:
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+    "metadata" : { "phrase" : ["Cut", "Company"] } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+    "metadata" : { "phrase" : ["Cut", "Department"] } 
+  },
+  { 
+    "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+    "metadata" : { "phrase" : ["Cut", "Employee"] } 
+  }
+]
+</syntaxhighlight>
+
+Such phrases are even more useful when attached to specific file fragments as opposed to entire files. We will return to this opportunity later in the context of a more complete discussion of metadata mechanics.
+
+=== Concept-related metadata ===
+
+Further, we may also want to "tag" files with any concepts in the broader areas of software technologies and software languages. Ideally, such concepts should be readily modeled on the [[101wiki]]. For instance, we may want to express that certain modules define a [[parser]], a [[GUI]], or use a [[MVC]] architecture. 
+
+Consider again [[Contribution:antlrObjects]] which clearly contains program components for parsing and lexing. Accordingly, we tag the corresponding files:
+
+<syntaxhighlight lang="javascript">
+[
+  { 
+    "filename" : "contributions/antlrObjects/org/softlang/parser/CompanyParser.java",
+    "metadata" :  { "concept" : "Parser" }
+  },
+  { 
+    "filename" : "contributions/antlrObjects/org/softlang/parser/CompanyLexer.java",
+    "metadata" :  { "concept" : "Lexer" }
+  }
+]
+</syntaxhighlight>
+
+In this context, if not earlier, the question may arise as to whether tags may also be associated automatically on the grounds of data mining techniques. That is, some [[Language:101meta]] does not need to be authored if it may be inferred. This is clearly possible for domain terms and concepts and even features. The [[@project]] involves related efforts.
+
+=== Processing-related metadata ===
+
+In addition to the more conceptual forms of metadata, as we discussed them so far, there is more technical metadata that is specifically concerned with processing files and metadata. Most prominently, such metadata is used by the [[101companies:Explorer]]. 
+
+For instance, the [[101companies:Explorer]] uses the generic syntax highlighter [[Technology:GeSHi]] for rendering code. The application of the highlighter requires a "language code". Such GeSHi codes may be different from the language names on the [[101wiki]]. Here are rules for a few languages to provide their GeSHi codes:
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "suffix" : ".java", 
+    "metadata" : { "geshi" : "java" }
+  },
+  { 
+    "suffix" : ".js", 
+    "metadata" : { "geshi" : "javascript" }
+  },
+  { 
+    "suffix" : ".json", 
+    "metadata" : { "geshi" : "javascript" }
+  }
+]
+</syntaxhighlight>
+
+Please note that the GeSHi codes are in lower case. Also, there is no designated GeSHi code for [[Language:JSON]], but it is best practice to reuse the GeSHi code of JavaScript, which makes sense, since the JSON syntax is effectively part of the JavaScript syntax.
+
+Another kind of metadata controlling file processing concerns the declaration of the nature of a file as to whether it is binary, archive, text, or possibly others. Arguably, any file with an associated GeSHi code, as discussed above, has already an implicitly associated nature "text to be rendered with GeSHi". All other files may be associated with a suitable nature explicitly. Consider this illustrative rule:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".exe", 
+  "metadata" : { "nature" : "binary" }
+}
+</syntaxhighlight>
+
+Thus, ".exe" files are tagged as "binary" files, which are certainly not to be viewed during exploration. Arguably, it could be useful to initiate their execution, as in a regular file explorer. Such handling is up to the decision of the interpreter for such metadata. The [[101companies:Explorer]] does not view or execute binaries in any way; it does show them in the file explorer-like view, but they are visually de-emphasized to help with focusing on artifacts of interest during exploration.
+
+Here is a rule dealing with archives based on the file format [[Language:JAR]]:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".jar", 
+  "metadata" : [ 
+    { "language" : "JAR" },
+    { "nature" : "archive" }
+  ]
+}
+</syntaxhighlight>
+
+At the very least, an interpreter of such metadata is informed that ".jar" files are not trivially presentable (as text specifically) and they may actually encapsulate files. The rule also connects the file extension to a language for the format on the [[101wiki]]. Whether or not an interpreter of such metadata further examines archives is a matter of the interpreter itself. For instance, the interpreter may be able to decode the archive format and hence drill into archives.
+
+A related form of metadata describes the "relevance" of a file. A file can be "system" code, which indicates that this file directly belongs to the contribution. This is implicitly assumed for every file that isn't marked otherwise. A file can also be marked with "reuse", indicating that this file was reused and can appear in other systems as well. This is the typical case for a library, which is used in a contribution. A file can also be marked with "derive", indicating that this file wasn't directly created in the development process, but rather automatically derived from some other file. The last option is to mark a file as "ignore", which means that this file isn't directly associated with a contribution (e.g. a IDE settings file). In the following example, Parsers generated by ANTLR are marked with "derive".
+
+<syntaxhighlight lang="javascript">
+  { 
+    "basename" : "#^.*Parser\\.java$#",
+    "content" : "// \\$ANTLR.*\\.g",
+    "metadata" : [
+      {
+        "outputOf" : "ANTLR",
+        "comment" : "An ANTLR-generated parser"
+      },
+	  { "relevance" : "derive" },
+      { "concept" : "Parser" }
+    ]
+  } 
+</syntaxhighlight>
+
+In general, such a rule marks all files in the given directory and its subdirectories (recursively) as being "external". In the example, there are only JavaScript sources in the given directory. Arguably, we could also use the "filename" form of constraint as opposed to the "dirname" form above. The result would be the same:
+
+<syntaxhighlight lang="javascript">
+{
+  "filename" : "#^contributions/csharpAspNetMvc/Scripts/.*\\.js$#",
+  "metadata" : {
+    "assignment" : "external"
+  }
+}
+</syntaxhighlight>
+
+Arguably, the distinction between "internal" and "external" could be refined to make more specific assignments. For instance, one could distinguish "system" versus "tests versus "demo" versus "documentation" and possibly others. In the [[@project]], explicit assignments are limited to "external".
+
+As another form of metadata, a [[validator]] may be associated with each file. The meaning of validation is here that matched files are to be validated to essentially verify assumptions implied by matching. For instance, we can be reasonably sure that files with suffix ".java" contain Java source code, but if we wanted to validate this assumption, then we may register a validator.
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".java", 
+  "metadata" : { "validator" : "../../technologies/JValidator" }
+}
+</syntaxhighlight>
+
+The validator is an executable that is applied to the file in question. In the example, we use a simple validator for Java, i.e., [[Technology:JValidator]], which is a [[@technology]]. It essentially parses the source code; it does not attempt compilation; it does not enforce any static semantics rules. Zero exit code is to be interpreted as successful validation; non-zero exit code as failure. Validation must not be confused with the predicate form of constraint as validation is applied past successful rule matching whereas constraint checking is part of matching itself. The [[101companies:Explorer]] leverages validation in a manner that all failed validation is highlighted to receive the user's attention, thereby suggesting eventual revision of the relevant rule for matching or making a change to the relevant file or its filename.
+
+As another form of metadata, a [[fact extractor]] may be associated with each file. In this manner, files may be processed by fact extractors and thereby enable further functionality. For instance, we may assume that the fact extractor determines all imports made by some source code so that rules for constraining imports may rely on such facts as opposed to performing text matching of fact extraction themselves. For instance:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".java", 
+  "metadata" : { "extractor" : "../../technologies/JFactExtrator" }
+}
+</syntaxhighlight>
+
+The fact extractor is an executable that is applied to the file in question. In the example, we use a simple fact extractor for Java, i.e., [[Technology:JFactExtractor]], which is part of the [[@project]]. It extracts basic facts about imports and declared abstractions (classes, interfaces, methods).
+
+We will later also see a form of metadata controlling metadata processing in the sense descriptions for [[fragment location]] are assigned an interpreter that can be used, for example, by the [[101companies:Explorer]] to locate fragments described in appropriate matching constraints for metadata association with fragment scope.
+
+== Metadata mechanics ==
+
+We discuss the more technical aspects of using [[Language:101meta]].
+
+=== Programmable matching constraints ===
+
+The earlier example of tagging certain Java files as "output" generated by ANTLR exposed the problem of filenames not being sufficient for decision making at times. [[Language:101meta]] includes a mechanism that may take into account the content of files to ultimately decide on matching. 
+
+Specifically, looking at files actually generated by ANTLR, a simple signature stands out. Consider, for example, the generated parser code of [[Contribution:antlrObjects]], which is a simple ANTLR-based implementation of the [[@system]]; it parses textual syntax for companies into objects for companies:
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/contributions/antlrObjects
+$ more CompanyParser.java
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 Company.g 2011-05-04 01:08:48
+...
+</syntaxhighlight>
+
+We ony show the first line because it is indeed enough here to help with decision making. We would like to "grep" for the pattern "// \$ANTLR.*\\.g" to search both for "$ANTLR" and the distinguished extension ".g" in the same line. [[Language:101meta]] provides a corresponding form of constraint which applies to the content of a file. Thus, we can check on ANTLR-generated files as follows: 
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : [ "#^.*Parser\\.java$#", "#^.*Lexer\\.java$#" ],
+  "content" : "#// \$ANTLR.*\\.g#",
+  "metadata" : { "outputOf" : "ANTLR" }
+}
+</syntaxhighlight>
+
+Thus, the ''basename'' constraint is only sufficient to determine candidates for matching while regular expression matching for the given pattern must "succeed" for the rule to match. Arguably, it may not be sufficient to use regular expression as means of examining the content of a file. Hence, [[Language:101meta]] also provides means of executing predicates, in fact, executables to perform more arbitrary tests on files. Let us place the earlier regular expression in a shell script, say "grepAntlrOutput.sh" as follows:
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/technologies/ANTLR
+$ more grepAntlrOutput.sh
+#!/bin/sh
+grep -q "// \$ANTLR.*\.g" $1
+</syntaxhighlight>
+
+We assume here that the file for examination is passed as an argument; see "$1". The way we invoke the grep tool here, we obtain a return code 0 to mean that the string pattern was matched, and non-zero otherwise. We revise the previous rule to use the shell script as a predicate:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : [ "#^.*Parser\\.java$#", "#^.*Lexer\\.java$#" ],
+  "predicate" : "technologies/ANTLR/grepAntlrOutput.sh",
+  "metadata" : { "outputOf" : "ANTLR" }
+}
+</syntaxhighlight>
+
+Thus, the ''basename'' constraint is only sufficient to determine candidates for matching while the execution of the ''predicate'' constraint must "succeed" for the rule to match.
+
+There is yet another form of "ANTLR" evidence that we may encounter. That is, let as also identify files that reference ANTLR in the sense of importing its runtime API "org.antlr.runtime". Such reference/import detection may be modelled with a content constraint as follows:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".java",
+  "content" : "#^[ \t]*import[ \t]*org.antlr.runtime\.#",
+  "metadata" : { "dependsOn" : "ANTLR" } 
+}
+</syntaxhighlight>
+
+Thus, the pattern searches for the token "import" followed by the string "org.antlr.runtime.". We use the metadata key "dependsOn" to represent the import-based dependence between the matched file and the technology at hand; see the "dependsOn" relationship of [[Language:MegaL]]. 
+
+For what it matters, we enforce that "import" appears in the beginning of a line and matching is liberal in terms of whitespace. Clearly, such import matching could be useful for many other technologies, in fact, APIs. Thus, the notion should be properly generalized by parametrizing in the package name in question. Thus, we obtain a script that is essentially meaningful for the entire Java platform. Consider the following script:
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/technologies/Java platform
+$ more javaImport.sh
+#!/bin/sh
+grep -q "^[ \t]*import[ \t]*$1\." $2
+</syntaxhighlight>
+
+If we later decide to check for imports differently, perhaps in a more syntax-aware manner, then we can readily focus on the adaptation of the shell script; all rules remain valid. The invocation of the script relies on fixing the parameter for the package name within rules. There is indeed an additional "args" key to pass literal arguments to a predicate. We can revise the earlier rule for ANTLR to make use of the generalized script:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".java",
+  "predicate" : "technologies/Java platform/javaImport.sh",
+  "args" : ["org.antlr.runtime"],
+  "metadata" : { "dependsOn" : "ANTLR" } 
+}
+</syntaxhighlight>
+
+We assume that the the Java-import checker belongs to [[Technology:Java platform]] whereas the rule in question belongs to [[Technology:ANTLR]], and thus, the rule is stored in "101repo/technologies/ANTLR" while it refers to the shell script for import checking in "101repo/technologies/Java platform".
+
+=== Fragment scope of metadata ===
+
+In all examples, so far, we really meant to associate metadata with complete files. In general, it may be necessary to limit the scope of metadata to apply only to ''fragments'' of files. [[Language:101meta]] includes a mechanism that expands matching to incorporate the notion of [[fragment location]]. The actual format of fragment descriptions is not in any way prescribed by [[Language:101meta]]. The individual [[fragment locator]]s of the [[@project]] define the formats for fragment description.
+
+Consider, for example, the data model for companies in [[Contribution:haskellComposition]], which is a trivial Haskell-based implementation of the [[@system]]. One file contains all the data types for companies, departments, and employees:
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/contributions/haskell
+$ more Company.hs 
+</syntaxhighlight>
+<syntaxhighlight lang="haskell">
+module Company where
+data Company = Company Name [Department]
+data Department = Department Name Manager [SubUnit]
+data Employee = Employee Name Address Salary
+data SubUnit = EUnit Employee | DUnit Department
+...
+</syntaxhighlight>
+
+(The actual Haskell code was slightly edited for simplicity of the present discussion.) We would like to tag the file with the appropriate terms for companies, departments, and employees. With the existing [[Language:101meta]] expressiveness, such tagging would take the following form:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "filename" : "contributions/haskell/Company.hs",
+  "metadata" : [ 
+    { "term" : "Company" },
+    { "term" : "Department" }
+    { "term" : "Employee" }
+  ] 
+}
+</syntaxhighlight>
+
+In this example, we demonstrate that even a single rule can associate multiple units of metadata of the same kind with a file; we simply use the list form to this end. (We think of this rule as abbreviating three more primitive rules.) The given description may be sufficient for some purposes, but it does not scope very well the terms "Company", "Department", and "Employee". For each data type, we would like to specify the ''fragment'' that defines it. To this end, [[Language:101meta]] provides an extra kind of constraint; see the key "fragment" below. That is, we can constrain the scope of metadata to a specific fragment, subject to some linguistic support for [[fragment location]]:
+
+<syntaxhighlight lang="javascript">
+[ 
+  { 
+    "filename" : "contributions/haskell/Company.hs",
+    "fragment" : { "data" : "Company" },
+    "metadata" : { "term" : "Company" } 
+  },
+  { 
+    "filename" : "contributions/haskell/Company.hs",
+    "fragment" : { "data" : "Department" },
+    "metadata" : { "term" : "Department" } 
+  },
+  { 
+    "filename" : "contributions/haskell/Company.hs",
+    "fragment" : { "data" : "Employee" },
+    "metadata" : { "term" : "Employee" } 
+  }
+]
+</syntaxhighlight>
+
+In general, fragments are specified by the JSON value that is associated with the "fragment" key. In the example, we use Haskell-specific notation for fragment location. That is, we use the "data" key with a data type name as value to select indeed the corresponding top-level declaration for the data type in the given file. In a similar manner, we could select top-level function definitions. There is also a more lexical and generic approach to fragment selection based on [[Technology:GeFLo]], a 101companies-specific technology for generic fragment location, which in turn is based on [[Technology:GeSHi]].
+
+We assume that a 101companies-specific interpreter checks the feasibility of fragment selection. In fact, the [[101companies:Explorer]] for the exploration of contributions even locates the selected fragments and renders them in the view for the user. To this end, the explorer invokes fragment locators; these are technologies for applying a fragment specification on a given file and returning the actual fragment, if selection succeeds. The association between files and fragment locators is again expressed with metadata. The following rule associates language-related metadata with Haskell source files; there is the "locator" key specifically:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".hs", 
+  "metadata" : [ 
+    { "language" : "Haskell" },
+    { "geshi" : "haskell" },
+    { "locator" : "technologies/HsFragmentSelector/locator.py" }
+  ] 
+}
+</syntaxhighlight>
+
+The expected I/O behavior of a locator program is that it takes a fragment specification (via a file), an input file, and returns the line range for the selected fragment (via file), if selection succeeded.
+
+Let us also exercise fragment scope for a Java module for cutting salaries as in [[Contribution:javaStatic]]; here is a sketch of the module for clarity:
+
+<syntaxhighlight lang="java">
+public class Cut {
+
+        public static void cut(Company that) {
+                for (Department d : that.getDepts())
+                        cut(d);
+        }       
+        
+        public static void cut(Department that) {
+           ...
+        }       
+
+        public static void cut(Employee that) {
+           ...
+        }       
+}
+</syntaxhighlight>
+
+Subject to a suitable format for Java fragment description, we can refer to the individual methods and assign phrases as follows:
+
+<syntaxhighlight lang="javascript">
+{
+  "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+  "fragment" : {
+   "class" : "Cut",
+   "method" : "cut",
+   "overload" : 0
+  },
+  "metadata" : { "phrase" : [ "Cut", "Company" ] }
+}
+</syntaxhighlight>
+
+The fragment description establishes the class name and the method name. The "cut" method is overloaded and hence one overload must be selected; "0" refers to first overload. In this context, we may discuss the difference between "multiple terms" versus "phrases". That is, arguably, we may also want to tag the module as follows:
+
+<syntaxhighlight lang="javascript">
+{
+  "filename" : "contributions/javaStatic/org/softlang/behavior/Cut.java",
+  "fragment" : ...,
+  "metadata" : [
+    { "term" : "Cut" },
+    { "term" : "Company" }
+  ]
+}
+</syntaxhighlight>
+
+The difference is that the method would be tagged with both "Cut" and "Company" in a symmetric manner, as if the method implemented both "Cut" and "Company". However, the module is essentially concerned with "Cut" while the reference to the "Company" should be subordinated. This is exactly what the use of a phrase achieves.
+
+=== Comments on metadata rules === 
+
+It is good practice to provide comments for metadata helping human consumption of metadata. To this end, metadata may contain a special key  "comment" with the comment as value. This is not a language extension; it is merely a convention, subject to interpretation by metadata-based tools such as [[101companies:Explorer]].
+
+For example, in an earlier example for matching with an archive for ANTLR, it may be helpful to note that the match is about "The ANTLR library". Thus:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : "#^antlr-.*\.jar$#",
+  "metadata" : { 
+    "dependsOn" : "ANTLR",
+    "comment" : "The ANTLR library"
+  } 
+}
+</syntaxhighlight>
+
+[[Language:101meta]] provides a related feature for picking up substrings from matched patterns for filenames or basenames in rules. That is, common regular expression notation can be used demarcate parts of a pattern and to bind corresponding substrings to $1, $2, .... For instance, we may write "#^antlr-(.*)\.jar$#" instead "#^antlr-.*\.jar$#" to bind the version string of the ANTLR library to $1. [[Language:101meta]] allows us to use such variables in string literals of the metadata:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : "#^antlr-(.*)\.jar$#",
+  "metadata" : { 
+    "dependsOn" : "ANTLR",
+    "comment" : "The ANTLR library, Version $1"
+  }
+}
+</syntaxhighlight>
+
+Hence, if this rules matches with a basename "antlr-3.2.jar", then the metadata contains the comment "The ANTLR library, Version 3.2". Any key-value pairs of metadata with a string-typed value may pick up matched substrings in this manner.
+
+=== Citations for metadata rules === 
+
+It is also good practice to provide citations for metadata helping with validation of the rule by others and with traceability generally. To this end, metadata may contain a special key  "citation" with a URL as value. Just like with comments above, this is not a language extension; it is merely a convention.
+
+Here is a revision of the earlier ANTLR example with a citation added. The cited page is part of the ANTLR documentation and specifically explains the role of the JAR in the process of running the parser generator.
+
+<syntaxhighlight lang="javascript">
+{ 
+  "basename" : "#^antlr-.*\.jar$#",
+  "metadata" : { 
+    "dependsOn" : "ANTLR",
+    "comment" : "The ANTLR library",
+    "citation" : "http://www.antlr.org/wiki/pages/viewpage.action?pageId=729"
+  } 
+}
+</syntaxhighlight>
+
+=== Priorities for metadata ===
+
+In rare circumstances, rules may compete for some metadata or specific files may call for exceptions from otherwise general rules. [[Language:101meta]] solves this problem with a specific form of metadata. Consider the following example, which is concerned with the [[Contribution:csharpAspNetMvc]] with some JavaScript files which happen to be hard to process with [[Technology:GeSHi]]:
+
+<syntaxhighlight lang="javascript">
+{
+  "filename" : "#^contributions/csharpAspNetMvc/Scripts/.*\\.js$#",
+  "metadata" : {
+    "dominator" : "geshi",
+    "geshi" : "text",
+    "comment" : "GeSHi cannot handle all JavaScript files."
+  }
+}
+</syntaxhighlight>
+
+The metadata declares a key-value pair "dominator" : "geshi" and the intended meaning of domination is that the metadata unit at hand effectively removes all those (non-dominating) metadata units from the file which mention the key in question. A different [[Technology:GeSHi]] code is assigned, but dominator can also be used for removal, when the dominating rule does not declare the dominated key.
+
+=== Metadata organization ===
+
+In the interest of metadata management and collaborative authoring of metadata in the [[@project]], metadata should be directly associated with languages, technologies, and contributions in the appropriate directory of the repository. For instance, language-related metadata for language ''L'' should be directly saved in the corresponding subdirectory ''L'' of "101repo/languages":
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/languages/Haskell
+$ more .101meta 
+</syntaxhighlight>
+<syntaxhighlight lang="javascript">
+{ 
+  "suffix" : ".hs", 
+  "metadata" : [ 
+    { "language" : "Haskell" },
+    { "geshi" : "haskell" },
+    { "locator" : "../../technologies/HsFragmentSelector/locator.py" }
+  ] 
+}
+</syntaxhighlight>
+
+Likewise, technology-related metadata for technology ''T'' should be directly saved in the corresponding subdirectory ''T'' of "101repo/technologies". We show several rules for [[Technology:ANTLR]]; all rules contain comments:
+
+<syntaxhighlight lang="text">
+$ pwd
+/home/me/101repo/technologies/ANTLR
+$ more .101meta 
+</syntaxhighlight>
+<syntaxhighlight lang="javascript">
+[
+  { 
+    "basename" : "#^antlr-(.*)\.jar$#",
+    "metadata" : {
+      "partOf" : "ANTLR",
+      "comment" : "The ANTLR library, Version $1"
+    } 
+  },
+  { 
+    "suffix" : ".g",
+    "metadata" : {
+      "inputOf" : "ANTLR",
+      "comment" : "An ANTLR grammar"
+    } 
+  },
+  { 
+    "basename" : "#^.*Parser\\.java$#",
+    "content" : "#// \$ANTLR.*\.g#",
+    "metadata" : [
+      {
+        "outputOf" : "ANTLR",
+        "comment" : "An ANTLR-generated parser"
+      },
+      { "concept" : "Parser" }
+    ]
+  },
+  { 
+    "basename" : "#^.*Lexer\\.java$#",
+    "content" : "#// \$ANTLR.*\\.g#",
+    "metadata" : [
+      {
+        "outputOf" : "ANTLR",
+        "comment" : "An ANTLR-generated lexer"
+      },
+      { "concept" : "Lexer" }
+    ]
+  },
+  { 
+    "suffix" : ".java",
+    "predicate" : "technologies/Java platform/javaImport.sh",
+    "args" : ["org.antlr.runtime"],
+    "metadata" : {
+      "dependsOn" : "ANTLR",
+      "comment" : "A source that imports ANTLR"
+    } 
+  }
+]
+</syntaxhighlight>
+
+Likewise, contribution-related metadata for contribution ''C'' should be directly saved in the corresponding subdirectory ''C'' of "101repo/contributions".
+
+=== Metadata collection ===
+
+We explain now the process of applying [[Language:101meta]] rules to a file system. The end result of this process is the annotation of the file system with metadata as described by the rules together with the applied rules for traceability.
+
+The file system is considered as a tree-like structure with components as follows:
+
+* The root directory (namely "101repo" for the application of [[Language:101meta]] to the [[@project]]).
+* Subdirectories (such as "contributions" and in turn subdirectories thereof).
+* Files (such as source files).
+* Fragments of files.
+
+The first step is the actual ''accumulation of the rules from the file system''. [[Language:101meta]] files are scattered over the file system and each file may potentially include multiple rules. All these scattered rules are collected in a list structure with components per element as follows:
+
+* "filename": the filename of the hosting file of the rule (relative to the root of the file system subject to matching).
+* "rule": the actual rule.
+
+The application of [[Language:101meta]] rules may associate metadata with any component at any level of the tree-like structure of the file system, as described above. For instance, consider the (generated) parser module [https://github.com/101companies/101repo/blob/master/contributions/antlrObjects/org/softlang/parser/CompanyParser.java] as part of [[Contribution:antlrObjects]]. Since this file is a "Java" file by its suffix, the corresponding language-related metadata applies. Since this file has been generated by ANTLR (also subject to inspection of its content), the corresponding technology-related metadata applies. Further, let us assume that the file was also tagged with the feature [[Feature:Parsing]] and the phrase "[[101term:Parse]] [[101term:Company]]". Thus, the following metadata is associated with the file:
+
+<syntaxhighlight lang="javascript">
+[
+  { "language" : "Java", "comment" : "A Java source file" },
+  { "geshi" : "java", "comment" : "The GeSHi language code for Java" },
+  { "outputOf" : "ANTLR", "comment" : "An ANTLR-generated parser" },
+  { "concept" : "Parser" },
+  { "feature" : "Data import" },
+  { "phrase" : ["Parse", "Company"] }
+]
+</syntaxhighlight>
+
+In general, any component at any level of the tree-like structure of the file system, including fragments of files, is associated with a list structure with components per element as follows:
+
+* "dirname": name of the directory, if the current component is a directory.
+* "filename": name of the file, if the current component is a file.
+* "fragment": fragment description, if the current component is a fragment.
+* "metadata": the list of all metadata units qualified with rule ids as follows:
+** "id": the 0-based position of the applicable rule in the list of all accumulated rules.
+** "unit": the actual metadata unit.
+
+The ''dominator'' feature of [[Language:101meta]] is handled in this context. That is, given all metadata units for a given component of the file system, including fragments of files, the list of metadata units is possibly contracted as follows. For all dominated metadata keys, the metadata units with non-dominating occurrences of such keys are removed.
+
+We may also be interested in aggregated metadata in the sense that all metadata of a component is effectively also associated with composites at a higher hierarchical level. This is important for the efficient exploration such as the exploration of contributions in the [[101companies:Explorer]]. For instance, if there is any "Java" file in the directory for a contribution to the [[@project]], then the "Java" tag should also be discoverable at the level of the contribution. Hence, we distinguish ''immediate'' versus ''aggregated'' metadata.
+
+=== Operational issues of matching ===
+
+For most part, the [[Language:101meta]] language is declarative: files and rules could be matched in any order. However, the predicate form of constraint combined with the role of metadata to enable the derivation of information implies that order may matter. For instance, a predicate may want to consult the facts extracted from a file when matching the file. However, the fact extractor is defined by [[Language:101meta]] rules itself. Hence, rules without predicate constraints should be attempted before rules with predicates constraints while also assuming that the the execution of predicates has access to the matches obtained before.
+
+== Contributors ==
+
+* {{101contributor|Jean-Marie Favre|author}}
+* {{101contributor|Ralf Lämmel|author}}
+* {{101contributor|Martin Leinberger|author}}
+
+
+
+* [[instanceOf::101language]]
+* [[instanceOf::Metadata language]]
+* [[instanceOf::Namespace:Language]]

@@ -1,0 +1,49 @@
+== Headline ==
+
+The language construct for [[anonymous function]]s according to the lambda calculus
+== Illustration ==
+
+Suppose you want to increment all numbers in a list. Let us use [[Language:Haskell]] for illustration:
+
+<syntaxhighlight lang="haskell">
+-- Sample input
+sample = [1,3,5,7,11,13,17]
+-- Expected output
+expected = [2,4,6,8,12,14,18]
+</syntaxhighlight>
+
+We shall use the [[map function]] to increment all elements of the input. We may apply the map function to a suitable increment function as follows:
+
+<syntaxhighlight lang="haskell">
+-- Use a plain increment function
+output = map inc sample
+  where
+    inc :: Int -> Int
+    inc x = x + 1
+</syntaxhighlight>
+
+Arguably, we may want to omit an explicit declaration of the increment function as its definition is trivial, not much insight can be gained from its definition, and no further reuse is intended (as we assume here). Thus, we may use an [[anonymous function]] instead of an extra increment function:
+
+<syntaxhighlight lang="haskell">
+-- Use an anonymous increment function
+output' = map (\x -> x + 1) sample
+</syntaxhighlight>
+
+Thus, increment is expressed inline by an anonymous function that takes one argument ''x'' which is mapped to ''x + 1''. Arguably, a Haskell programmer may actually also consider the following form where addition is refined into increment by means of [[partial application]], possibly even using Haskell's specific section notation:
+
+<syntaxhighlight lang="haskell">
+-- Use partial application of (+) for increment
+output'' = map ((+) 1) sample
+
+-- Use a section for increment
+output''' = map (+1) sample
+</syntaxhighlight>
+
+All these attempts compute the expected result.
+== Metadata ==
+
+* [[identifies::http://www.haskell.org/haskellwiki/Lambda_abstraction]]
+* [[linksTo::http://en.wikipedia.org/wiki/Lambda_calculus]]
+* [[instanceOf::Language construct]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,8 @@
+== Headline ==
+
+Provides access to the system location services
+
+== Metadata ==
+* [[instanceOf::Android_Location]]
+* [[identifies::http://developer.android.com/reference/android/location/LocationManager.html]]
+* [[instanceOf::Namespace:Concept]]

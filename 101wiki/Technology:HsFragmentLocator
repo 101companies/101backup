@@ -1,0 +1,12 @@
+== Headline ==
+
+A fragment locator for Haskell
+== Description ==
+
+HsFragmentLocator is an [[@technology]]; it is a Haskell-specific tool for fragment location. That is, the technology supports the syntax-aware location of a fragment in a Haskell module.
+== Metadata ==
+
+* [[instanceOf::@technology]]
+* [[instanceOf::Fragment locator]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/HsFragmentLocator]]
+* [[instanceOf::Namespace:Technology]]

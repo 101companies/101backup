@@ -1,0 +1,16 @@
+== Headline ==
+
+A kind of [[functor]] that models some [[monad]]-like computations
+
+=== Details ===
+
+[[media:http://images6.fanpop.com/image/photos/32900000/Cat-cats-32958715-1440-900.jpg]]
+
+Applicative functors enhance normal functors so that they enable the composition of computations, much like [[monad]]s <cite>mcbrideP08</cite>. Monads are more general but also more difficult to use than applicative functors. In particular, monadic actions may depend on the outcomes of earlier actions; this is not the case for applicative functors.
+
+== Metadata ==
+* [[instanceOf::Programming idiom]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://www.haskell.org/haskellwiki/Applicative_functor]]
+* [[linksTo::http://dx.doi.org/10.1017/S0956796807006326]]
+* [[instanceOf::Namespace:Concept]]

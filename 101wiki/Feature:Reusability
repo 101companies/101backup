@@ -1,0 +1,12 @@
+== Headline ==
+
+Reusability for some behavior
+
+== Description ==
+
+This is a loosely defined [[101design|design quality]] of the system to support reusability for some provided features. For instance, consider a typical OO implementation of [[Feature:Total]]. Arguably, the feature is likely to be implemented in a reusable manner because other components may easily invoke the corresponding operation on a given object graph. Hence, we only speak of proper coverage of [[Feature:Reusability]] if reuse is supported through distinguished means of packaging or deployment as in the case of an implementation which is usable through SOA or as a plugin.
+
+== Metadata ==
+* [[instanceOf::101design]]
+* [[identifies::http://en.wikipedia.org/wiki/Reusability]]
+* [[instanceOf::Namespace:Feature]]

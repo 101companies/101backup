@@ -1,0 +1,9 @@
+== Intent ==
+
+a toolkit for development of external textual DSLs
+
+== Metadata ==
+* [[instanceOf::Toolkit]]
+* [[identifies::http://www.eclipse.org/Xtext]]
+* [[linksTo::http://wiki.eclipse.org/Xtext]]
+* [[instanceOf::Namespace:Technology]]

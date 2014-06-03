@@ -1,0 +1,14 @@
+== Headline ==
+
+An indexed collection of component values
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Tuple]]
+* [[instanceOf::Data structure]]
+* [[instanceOf::Vocabulary:Data structure]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Tuple type]]
+* [[relatesTo::List]]
+* [[relatesTo::Record]]
+* [[instanceOf::Namespace:Concept]]

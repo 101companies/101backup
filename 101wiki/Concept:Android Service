@@ -1,0 +1,9 @@
+== Headline ==
+
+A component that runs in the background without Android-UI
+
+== Metadata ==
+* [[instanceOf::Android_term]]
+* [[identifies::http://developer.android.com/guide/components/services.html]]
+* [[linksTo::http://developer.android.com/reference/android/app/Service.html]]
+* [[instanceOf::Namespace:Concept]]

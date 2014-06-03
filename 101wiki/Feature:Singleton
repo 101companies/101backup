@@ -1,0 +1,61 @@
+== Headline ==
+
+A requirement to model a single company as opposed to many companies
+== Description ==
+
+The [[@system]] is required to support a single company as opposed to many companies.  Support for many companies is appropriate when the system provides services to multiple companies, e.g., in the sense of a [[web service]] or [[cloud application]]. There are cases when a constraint for a single company may be preferable, e.g., in the case of a [[@system]] that serves a specific company because of in-house development or a local installation.
+
+For a system to implement [[Feature:Singleton]], the system should guarantee that it is not possible to instantiate multiple companies. Also, any functionality could readily assume that all data is evidently associated with the one and only company, thereby eliminating the need to include constraints on the company into queries or transformations. Accordingly, when a system does not implement [[Feature:Singleton]], the system allows for the instantiation of multiple companies and no confusion arises as to what company is processed, e.g., within a query or an update.
+== Motivation ==
+
+Various [[data modeling]] approaches may naturally lead to an initial data model that would enable the representation of many companies. For instance, an object model would typically dedicate a class to companies. Also, the algebraic datatypes in a functional program would typically dedicate one type to companies, i.e., to many companies. Further, a relational schema would typically dedicate a relation to companies, and thereby also enable the representation of multiple companies.
+
+The restriction to one company may often require extra effort. For instance, an object model would need to apply the [[singleton pattern]] to the companies class. In other cases, the restriction to one company may be implemented in a straightforward manner. For instance, an XML-based model of companies would immediately enforce the restriction to one company, if the company element is associated with cardinality 1. 
+
+The issue of one company versus many companies goes well beyond data modeling: the implementation of functional requirements is affected also. Queries and transformations may need to involve constraints on the company in some cases. For instance, a database query for totaling salaries is simple, when multiple companies are not permitted, whereas it requires grouping or a selection condition for the company, when multiple companies are permitted.
+
+Overall, this situation promises good opportunities for demonstrating options and capabilities in design and implementation. Simple implementations of the [[@system]] may be largely oblivious to the issue of one company versus many companies in that they come with the ability of representation of multiple companies, while this is not exploited in any way, neither does the possibility of multiple companies arise in any way that would need to be addressed by the other feature implementations.
+== Illustration ==
+
+Consider a relational table for employees, when the constraint for a single company is intended; this example stems from [[Contribution:mySqlOne]]:
+
+<syntaxhighlight lang="sql">
+CREATE TABLE IF NOT EXISTS employee (
+        id INTEGER AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        address VARCHAR(50) NOT NULL,
+        salary DOUBLE NOT NULL,
+        manager BOOL NOT NULL,
+        did INTEGER NOT NULL,
+        FOREIGN KEY (did) REFERENCES department(id)
+);
+</syntaxhighlight>
+
+A query for totaling salaries does not need to refer, in any way, to any company id, since all employees belong to one and only company:
+
+<syntaxhighlight lang="sql">
+SELECT SUM(salary) FROM employee;
+</syntaxhighlight>
+
+For comparison, consider a relational table for employees, when support for many companies is permitted. The employee table should carry a foreign key for the company of an employee; this example stems from [[Contribution:mySqlMany]]:
+
+<syntaxhighlight lang="sql">
+CREATE TABLE IF NOT EXISTS employee (
+        # ... as before ...
+        FOREIGN KEY (cid) REFERENCES company(id)
+);
+</syntaxhighlight>
+
+(Alternatively, such a foreign key could be managed by the department table alone, which would make queries even more complicated than what is shown in the sequel.) A query for totaling salaries needs to refer to a specific company, unless we were interested in totaling salaries of all companies:
+
+<syntaxhighlight lang="sql">
+SELECT SUM(salary) FROM employee
+ WHERE cid = 
+  (SELECT id FROM company
+   WHERE name = "Acme Corporation");
+</syntaxhighlight>
+== Metadata ==
+
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

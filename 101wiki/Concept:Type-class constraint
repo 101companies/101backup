@@ -1,0 +1,44 @@
+== Headline ==
+
+Constraint on the type parameter of a [[type class]] or an [[type-class instance|instance]]
+== Illustration ==
+
+Type-class constraints define bounds on type parameters used in the declaration of [[type class]]es or [[type-class instance]]s (à la [[Language:Haskell]]). In this manner, type-class constraints feed into another form of [[bounded polymorphism]]. 
+
+Consider, for example, the following [[type-class instance]] for [[equality]] of pairs:
+
+<syntaxhighlight lang="haskell">
+-- Equality of pairs
+instance (Eq a, Eq b) => Eq (a,b)
+  where
+    x == y = fst x == fst y && snd x == snd y
+</syntaxhighlight>
+
+Clearly, such equality needs to be defined in a component-wise manner: for the first ("fst") and the second ("snd") project of a pair. In the interest of polymorphism, the type of the components should not be fixed, but the availability of equality needs to be assumed for the component types. Thus, the two constraints in the head of the instance:
+
+<syntaxhighlight lang="haskell">
+instance (Eq a, Eq b) => ...
+</syntaxhighlight>
+
+Likewise, a [[type class]] may also be constrained. Consider, for example, the following [[type class]] for comparison:
+
+<syntaxhighlight lang="haskell">
+class Eq a => Ord a where
+  compare :: a -> a -> Ordering
+  (<) :: a -> a -> Bool
+  (>=) :: a -> a -> Bool
+  (>) :: a -> a -> Bool
+  (<=) :: a -> a -> Bool
+  max :: a -> a -> a
+  min :: a -> a -> a
+</syntaxhighlight>
+
+Please observe the constraint:
+
+<syntaxhighlight lang="haskell">
+class Eq a => ...
+</syntaxhighlight>
+
+This class contains a constraint such that total order (comparison) can only be defined for types with equality. This is effectively a sanity check for the programmer because comparison subsumes the case for equality, conceptually. Without the constraint, a programmer may accidentally forget to implement equality, explicitly.
+== Metadata ==
+* [[instanceOf::Namespace:Concept]]

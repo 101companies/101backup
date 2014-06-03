@@ -1,0 +1,19 @@
+== Headline ==
+
+A dynamic, prototype-based scripting language with first-class functions
+
+== Discussion ==
+
+JavaScript counts as (imperative) [[OO programming language]]; it is prototype-based, though.
+
+JavaScript provides first-class functions; hence it counts also as [[functional programming language]].
+
+The official name of JavaScript is ECMAScript.
+
+== Metadata ==
+* [[instanceOf::Functional programming language]]
+* [[instanceOf::OO programming language]]
+* [[instanceOf::Multi-paradigm programming language]]
+* [[instanceOf::Scripting language]]
+* [[identifies::http://en.wikipedia.org/wiki/JavaScript]]
+* [[instanceOf::Namespace:Language]]

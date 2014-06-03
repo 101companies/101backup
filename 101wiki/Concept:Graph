@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[data structure]] consisting of nodes and edges
+
+== Metadata ==
+
+* [[isA::Data structure]]
+* [[linksTo::http://en.wikipedia.org/wiki/Graph_(mathematics)]]
+* [[instanceOf::Namespace:Concept]]

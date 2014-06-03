@@ -1,0 +1,36 @@
+== Intent ==
+
+[[Web programming]] based on the [[Language:HTML5]] ecosystem with session storage
+
+== Languages ==
+
+* [[Language:HTML5]]
+* [[Language:JavaScript]]
+* [[Language:JSON]]
+
+== Technologies ==
+
+* [[Technology:Web storage]]
+* [[Web browser]]
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Cut]]
+* [[Feature:Total]]
+* [[Feature:Browsing]]
+* [[Feature:Editing]]
+* [[Feature:Web UI]]
+
+== Motivation == 
+
+This implementation provides session [[Technology:Web storage|web storage]]. Apart from that, it is identical to [[Contribution:html5local]]. The illustration, architecture and usage is explained on that implemenation page.
+
+
+
+== Contributors ==
+
+* {{101contributor|Tobias Zimmer|developer}}
+== Metadata ==
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

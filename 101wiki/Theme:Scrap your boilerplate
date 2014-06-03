@@ -1,0 +1,23 @@
+== Headline ==
+
+Contributions that exercise "[[Scrap your boilerplate]]" style of [[generic programming]]
+== Description ==
+
+The "[[Scrap your boilerplate]]" (SYB) style of generic programming was originally conceived in a [[Language:Haskell|Haskell]] context, but similar coding styles were subsequently proposed for other programming languages. In fact, even for Haskell alone, variations on SYB style were proposed. Accordingly, the present theme features contributions that exercise SYB style across different host languages. In some cases, these contributions actually include libraries that support SYB style for the host language at hand. Certain [[Namespace:Feature|features]] of the [[@system]] are particularly relevant for the present theme. These are the features for cutting and totaling salaries which actually have their origin in the SYB literature. Thus, [[Feature:Total]] and [[Feature:Cut]] make up the baseline set of features to be covered by any member contribution of this theme. Implementations of yet other features may benefit from SYB style, too.
+
+There are the following members in the theme:
+
+* [[Contribution:haskellSyb|]]: Illustration of SYB for [[Language:Haskell|]]
+* [[Contribution:jsSyb|]]: Illustration of SYB for [[Language:JavaScript|]]
+* [[Contribution:pythonSyb|]]: Illustration of SYB for [[Language:Python|]]
+* [[Contribution:javaSyb|]]: Illustration of SYB for [[Language:Java|]]
+
+== Relationships ==
+
+* See [[Theme:Haskell genericity]] for other generic programming styles with only [[Language:Haskell|Haskell]]-based contributions.
+== Metadata ==
+
+
+* [[relatesTo::Feature:Total]]
+* [[relatesTo::Feature:Cut]]
+* [[instanceOf::Namespace:Theme]]

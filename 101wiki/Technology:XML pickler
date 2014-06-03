@@ -1,0 +1,17 @@
+== Headline ==
+
+An [[XML data binding]] technology for [[Language:Haskell]]
+
+== Discussion ==
+
+XML picklers come with the [[Technology:HXT|Haskell XML Toolbox]]. They allow one to "pickle" values of an [[algebraic data type]] to [[Language:XML]] data, and "unpickle" this data back to Haskell values <cite>haskellWikiHX</cite>. Both transformations are realized by using [[arrow]]s:
+
+<syntaxhighlight lang="haskell">
+xunpickleDocument :: PU a -> SysConfigList -> String -> IOStateArrow s b a
+</syntaxhighlight>
+
+That is, given a pickler <syntaxhighlight lang="haskell" enclose="none">PU a</syntaxhighlight> for a datatype <syntaxhighlight lang="haskell" enclose="none">a</syntaxhighlight>, a configuration list and a filename this function returns a stateful I/O arrow. This is an arrow from an arbitrary type <syntaxhighlight lang="haskell" enclose="none">b</syntaxhighlight> to the type in question <syntaxhighlight lang="haskell" enclose="none">a</syntaxhighlight>.
+
+== Metadata ==
+* [[linksTo::http://www.haskell.org/haskellwiki/HXT/Conversion_of_Haskell_data_from/to_XML]]
+* [[instanceOf::Namespace:Technology]]

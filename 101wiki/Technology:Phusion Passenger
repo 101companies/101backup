@@ -1,0 +1,23 @@
+== Headline ==
+
+Phusion Passenger is a web server and application server
+== Description ==
+
+Phusion Passenger currently [[supports::Language:Ruby | Language:Ruby]] (Rack), [[supports::Language:Python]] (WSGI) and Node.js.
+
+see http://www.modrails.com/documentation/Users%20guide%20Standalone.html.
+
+It exists in 3 different modes.
+== @Passenger nginx module  ==
+
+TBD
+
+[[supports::Nginx module specification]]
+== @Usage with Apache ==
+
+[[supports::Apache module specification]]
+== @Usage Standalone ==
+
+TBD
+== Metadata ==
+* [[instanceOf::Web server]]

@@ -1,0 +1,9 @@
+== Headline ==
+
+a library for [[XML serialization]]
+
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[identifies::http://xstream.codehaus.org/]]
+* [[instanceOf::Namespace:Technology]]

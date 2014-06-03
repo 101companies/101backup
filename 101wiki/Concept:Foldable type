@@ -1,0 +1,28 @@
+== Headline ==
+
+A type for which a [[fold function]] can be defined
+
+== Illustration ==
+
+Obviously, a [[fold function]] can be defined for lists. See also the concept of [[Maybe type]] for another simple example of a [[foldable type]].
+
+In [[Language:Haskell]], there is a [[type class]] of foldable types:
+
+<syntaxhighlight lang="haskell">
+class Foldable t
+  where
+    fold :: Monoid m => t m -> m
+    foldMap :: Monoid m => (a -> m) -> t a -> m
+    foldr :: (a -> b -> b) -> b -> t a -> b
+    foldl :: (a -> b -> a) -> a -> t b -> a
+    foldr1 :: (a -> a -> a) -> t a -> a
+    foldl1 :: (a -> a -> a) -> t a -> a
+</syntaxhighlight>
+
+Please observe how the members ''foldr'' and ''foldl'' generalize the function signatures of the folklore fold functions for lists.
+
+== Metadata ==
+
+* [[linksTo::http://www.haskell.org/haskellwiki/Foldable_and_Traversable]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+A script file for command-line processing
+
+== Details ==
+
+See also the concept of [[shell script]]s.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Batch_file]]
+* [[instanceOf::Namespace:Concept]]

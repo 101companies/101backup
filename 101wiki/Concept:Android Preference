@@ -1,0 +1,10 @@
+== Headline ==
+
+An Android feature to save and load settings
+
+== Metadata ==
+* [[instanceOf::Android_term]]
+* [[identifies::http://developer.android.com/guide/topics/ui/settings.html]]
+* [[linksTo::http://developer.android.com/reference/android/preference/Preference.html]]
+* [[linksTo::http://developer.android.com/reference/android/preference/package-summary.html]]
+* [[instanceOf::Namespace:Concept]]

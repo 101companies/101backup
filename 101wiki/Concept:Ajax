@@ -1,0 +1,23 @@
+== Intent ==
+
+Concept for [[asynchronous communication|asynchronous]] requests in web applications
+
+== Description ==
+
+''Asynchronous JavaScript + XML'' <cite>ajaxJJGarrett</cite> or ''Asynchronous JavaScript and XMLHttpRequest'' <cite>schalk2007javaserver</cite> (AJAX) is a concept for [[web programming]]. The core idea is to manipulate page content ([[Language:HTML]] and [[Language:CSS]]) instead of reloading the whole page. Hence, the advantage is a more fluent interaction between user and application. The basic language for Ajax is [[Language:JavaScript]], the basic technology is [[Technology:XMLHttpRequest]]. The data exchange is handled via [[asynchronous communication]].
+
+== Technologies ==
+
+The main parts of AJAX are:
+
+* [[Language:HTML]], [[Language:XHTML]], [[Language:CSS]]
+* [[Technology:DOM]]
+* [[Language:XML]], [[Language:JSON]], ... (depends on the message format)
+* [[Technology:XMLHttpRequest]]
+* [[Language:JavaScript]]
+
+== Metadata ==
+* [[instanceOf::Language concept]]
+* [[linksTo::http://www.adaptivepath.com/ideas/ajax-new-approach-web-applications]]
+* [[linksTo::http://jsfcompref.com/]]
+* [[instanceOf::Namespace:Concept]]

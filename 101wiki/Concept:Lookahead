@@ -1,0 +1,20 @@
+== Headline ==
+
+Incoming tokens used by a parser for decision making
+
+== Illustration ==
+
+Consider the following trivial context-free grammar:
+
+<syntaxhighlight lang="text">
+s : 'a' 'x' | 'b' 'x' ;
+</syntaxhighlight>
+
+A [[parser]] needs lookahead of length 1 to decide on what alternative to select. If the lookahead token is 'a', then the first alternative is chosen; if the lookahead token is 'b', then the second alternative is chosen; otherwise, a syntax error is evident.
+
+== Metadata ==
+
+* [[relatesTo::Parsing]]
+* [[linksTo::http://en.wikipedia.org/wiki/Parsing#Lookahead]]
+* [[linksTo::https://github.com/slecourse/slecourse/tree/master/sources/grammarClassesForANTLR]]
+* [[instanceOf::Namespace:Concept]]

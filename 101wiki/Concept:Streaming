@@ -1,0 +1,8 @@
+== Intent ==
+
+the [[capability]] of processing data in a stream as opposed to in-memory
+
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Stream_(computing)]]
+* [[instanceOf::Namespace:Concept]]

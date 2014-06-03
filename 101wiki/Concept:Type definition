@@ -1,0 +1,15 @@
+== Headline ==
+
+the definition of a [[concrete data type]]
+
+== Details ==
+
+Type definitions are manifestations of some sort of [[abstraction mechanism]] for types.
+
+The specifics of type definition depend on the [[programming language]] at hand.
+
+
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

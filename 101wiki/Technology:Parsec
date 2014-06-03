@@ -1,0 +1,58 @@
+== Headline ==
+
+A [[parser combinator]] [[Library|library]] in [[Language:Haskell|Haskell]]
+
+== Illustration ==
+
+Parsec is a combinator library in Haskell to construct parsers.
+
+Parsers are of a type as captured by the following [[monad transformer]]:
+
+<syntaxhighlight lang="haskell">
+data ParsecT s u m a
+</syntaxhighlight>
+
+The type parameters serve these roles:
+* ''s'': stream type
+* ''u'': user state type
+* ''m'': underlying monad
+* ''a'': return type
+
+When actual parsing does not involve any underlying monad, then the identity monad is used:
+
+<syntaxhighlight lang="haskell">
+type Parsec s u = ParsecT s u Identity
+</syntaxhighlight>
+
+In simple applications of Parsec, the parameters ''s'' and ''u'' could be instantiated as follows, i.e., strings as input and no user state:
+
+<syntaxhighlight lang="haskell">
+type P = Parsec String ()
+</syntaxhighlight>
+
+The combinators essentially model expressiveness of [[EBNF]]-like grammar construction. Thus, there are combinators, for example, for sequential composition, choice, and iteration. In the following list of combinator signatures, we use the specialized type ''P'' for readability:
+
+<syntaxhighlight lang="haskell">
+-- Sequential composition
+(>>=) :: P a -> (a -> P b) -> P b
+
+-- Sequential composition; forget first result
+(>>) :: P a -> P b -> P b
+
+-- Predictive choice
+(<|>) :: P a -> P a -> P a
+
+-- EBNF "*"
+many :: P a -> P [a]
+</syntaxhighlight>
+
+See [[Contribution:haskellParsec]] for an illustration of using Parsec.
+
+== Metadata ==
+
+* [[instanceOf::Library]]
+* [[instanceOf::Haskell technology]]
+* [[identifies::http://www.haskell.org/haskellwiki/Parsec]]
+* [[linksTo::http://research.microsoft.com/en-us/um/people/daan/download/parsec/parsec-letter.pdf]]
+* [[linksTo::http://hackage.haskell.org/package/parsec-3.1.3]]
+* [[instanceOf::Namespace:Technology]]

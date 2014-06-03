@@ -1,0 +1,61 @@
+== Headline ==
+
+A [[data model]] for companies with nested departments
+
+== Description ==
+
+The data model of the [[@system]] is required to support ''companies'' and ''employees'', just as in the case of [[Feature:Flat company]], but in addition,  ''employees'' are organized in nested ''departments''. A company breaks down into (top-level) departments, each of which may recursively break down into (sub-) departments. Such nesting of departments enables the hierarchical organization of companies.
+
+== Motivation ==
+
+The specific contribution of hierarchical companies is that they require a recursive treatment of departments as they aggregate both, sub-departments and employees. When using an abstraction mechanism of a programming language for modeling departments (e.g., classes or types), then the corresponding abstraction has to be accordingly recursive. When processing hierarchical companies, then the corresponding functionality must be accordingly recursive, too.
+
+There is more than one way of modeling such hierarchical companies. One approach is to use separate (homogenous) containers for the sub-departments and the employees of a department. Another approach is to use one (heterogeneous) container for both kinds of sub-units: sub-departments and employees. In the former case, (recursive) [[data composition]] is used; in the latter case, [[data variation]] is taken into account. [[Data composition]] alone may be particularly simple to implement in some contexts, e.g., with non-[[virtual method]]s  in the context of [[OO programming]] and [[object composition]]. Functionality may be implemented differently because of [[data variation]]. For instance, in the context of [[OO programming]], [[data variation]] may correspond to [[type generalization]] giving rise to [[subtype polymorphism]] and [[virtual method]]s. Further, added [[data variation]] may enable extra extensibility of genericity.
+
+== Illustration ==
+
+The feature is illustrated with a data model in [[Language:Haskell]]. [[Algebraic data type]]s are used for the type of departments; a type synonym cannot be used because departments can be nested and thus, a recursive type is needed:
+
+<syntaxhighlight lang="haskell">
+type Company = (Name, [Department])
+data Department = Department Name Manager [Department] [Employee]
+type Employee = (Name, Address, Salary)
+type Manager = Employee
+type Name = String
+type Address = String
+type Salary = Float
+</syntaxhighlight>
+
+A sample company takes the following form:
+
+<fragment url="/contributions/haskellComposition/src/Company/Sample.hs/pattern/sampleCompany" />
+
+These snippets originate from [[Contribution:haskellComposition]].
+
+Hence, there are two top-level departments, "Research" and "Development". The "Development" department further breaks down further into sub-departments. All departments have managers. Some departments have employees. Each employee has a name, an address, and a salary.
+
+An alternative illustration of the feature shows departments with [[data variation]] such that there is a general type of sub-units with derivations for employees and sub-departments, i.e., employee units and sub-department units:
+
+<syntaxhighlight lang="haskell">
+data Department = Department Name Manager [SubUnit]
+data SubUnit = EUnit Employee | DUnit Department
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:haskellVariation]].
+
+== Relationships ==
+
+See [[Feature:Flat company]] for flat, i.e., non-hierarchical companies. The features [[Feature:Flat company]] and [[Feature:Hierarchical_company]] are mutually exclusive and either of them must be selected for any realization of the [[@system]]. Some features may effectively require [[Feature:Hierarchical_company]]. For instance, [[Feature:Depth]] for the computation of the nesting depth of departments  implies a non-trivial depth only for non-flat companies.
+
+== Guidelines ==
+
+* See [[Feature:Flat company]] for some guidelines.
+* The ''name'' of the base type for subunits, if any such name is needed, should be essentially "subunit".
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Hierarchical organization]]
+* [[isA::Data requirement]]
+* [[isA::Feature:Company]]
+* [[instanceOf::Namespace:Feature]]
+

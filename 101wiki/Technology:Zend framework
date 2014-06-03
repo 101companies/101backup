@@ -1,0 +1,24 @@
+== Intent ==
+
+An [[MVC]] framework for [[web programming]] with [[Language:PHP]]
+
+== Description ==
+
+Zend framework is one of the most popular [[Web-application framework|web-application frameworks]] for [[Language:PHP]]. It offers a good infrastructure based on the [[MVC]] pattern and an amount of component libraries supporting [[Web application|web application]] development <cite>Zend2012official, FC2011ZendArcBlog</cite>.
+
+== Languages ==
+
+* [[Language:PHP]]
+* [[Language:HTML]]
+* [[Language:CSS]]
+
+== Technologies ==
+
+* [[Technology:REST]]
+* [[Technology:SOAP]]
+
+== Metadata ==
+* [[instanceOf::Web-application framework]]
+* [[identifies::http://framework.zend.com/]]
+* [[linksTo::http://blog.fedecarg.com/2008/07/28/zend-framework-architecture/]]
+* [[instanceOf::Namespace:Technology]]

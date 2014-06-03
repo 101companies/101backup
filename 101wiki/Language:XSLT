@@ -1,0 +1,10 @@
+== Headline ==
+
+An XML language for XML processing, specifically for transformation
+
+== Metadata ==
+
+* [[identifies::http://www.w3.org/TR/xslt]]
+* [[instanceOf::XML language]]
+* [[instanceOf::Functional programming language]]
+* [[instanceOf::Namespace:Language]]

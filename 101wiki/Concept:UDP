@@ -1,0 +1,15 @@
+== Headline ==
+
+A protocol for network/internet-based data connections
+
+== Details ==
+
+UDP stands for User Datagram Protocol.
+
+See [[TCP]] for another such protocol.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Computing]]
+* [[identifies::http://en.wikipedia.org/wiki/User_Datagram_Protocol]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+an API for providing CORBA capabilities in a Java environment
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[instanceOf::Network technology]]
+* [[identifies::http://en.wikipedia.org/wiki/RMI-IIOP]]
+* [[linksTo::http://docs.oracle.com/javase/7/docs/api/javax/rmi/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

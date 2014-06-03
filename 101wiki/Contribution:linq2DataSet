@@ -1,0 +1,23 @@
+== Intent ==
+
+an implementation with O/R mapping using LINQ2DataSet
+
+== Languages ==
+
+* [[Language:CSharp]] (C#): Programming language used for all code (Version 4.0)
+
+== Technologies ==
+
+== Features ==
+
+== Motivation == 
+
+== Architecture ==
+
+== Usage ==
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+== Metadata ==
+* [[instanceOf::Namespace:Contribution]]

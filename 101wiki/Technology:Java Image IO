@@ -1,0 +1,10 @@
+== Headline ==
+
+an API for loading and saving images in different formats
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[instanceOf::Image processor]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/technotes/guides/imageio/index.html]]
+* [[linksTo::http://docs.oracle.com/javase/7/docs/api/javax/imageio/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

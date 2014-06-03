@@ -1,0 +1,44 @@
+== Headline ==
+
+The namespace for namespaces used on this wiki
+== Description ==
+
+The entities on 101wiki are organized in namespaces. Namespaces are helpful in avoiding name clashes (disambiguation), overall classification, and provision of metamodels (documentation models) for wiki pages. Technically, the namespace is used as a prefix for page names, except for the namespace of software concepts which maps to the empty prefix. The most important namespaces are summarized as follows:
+
+* [[Namespace:Namespace|Namespace]]: all namespaces including those listed below.
+* [[Namespace:Language|Language]]: software languages such as [[Language:Haskell|Haskell]], [[Language:XML|XML]], or [[Language:UML|UML]].
+* [[Namespace:Technology|Technology]]: software technologies such as [[Technology:JUnit|JUnit]], [[Technology:GitHub|GitHub]], or [[Technology:Ruby on Rails|Ruby on Rails]].
+* [[Namespace:Concept|Concept]]: software concepts such as [[parsing]], [[abstraction]], or [[visitor pattern]].
+* [[Namespace:Feature|Feature]]: features (requirements) of the [[@system]] such as [[Feature:Cut|Cut]] or [[Feature:Total|Total]].
+* [[Namespace:Contribution|Contribution]]: implementations, models, etc. of the [[@system]].
+* [[Namespace:Contributor|Contributor]]: open-source developers and wiki authors contributing to the [[@project]].
+* [[Namespace:Theme|Theme]]: themes (collections) of contributions addressing stakeholder perspectives.
+* [[Namespace:Vocabulary|Vocabulary]]: vocabularies of software concepts, e.g., for [[Vocabulary:Software engineering|Software engineering]].
+* [[Namespace:Course|Course]]: open online courses leveraging resources of the [[@project]].
+* [[Namespace:Script|Script]]: scripts for individual lectures, labs, etc. in courses.
+* [[Namespace:Module|Module]]: modules of the [[@worker]] deriving resources and dumps.
+* [[Namespace:Resource|Resource]]: other external resources with a 101wiki reification.
+
+(This is not a complete list.)
+== Illustration ==
+
+This page itself is an illustration of an instance of [[Namespace:Namespace]].
+
+See [[Namespace:Feature]] for another recommended illustration.
+== Relationships ==
+
+This namespace is essentially a container for all other namespaces.
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the namespace.
+* '''Description''' (required): the description of the namespace.
+* '''Illustration''' (optional): an illustration of the namespace (or a pointer therefore).
+* '''Guidelines''' (optional): further guidelines regarding the instances of the namespace.
+* '''Relationships''' (optional): explanations regarding related namespaces.
+* '''Metamodel''' (required): the listing of sections for instances of the page. Each section should be marked as being either "required" or "optional". A short description of each section should be provided.
+* '''Metadata''' (required):
+** The namespace must be declared to be, indeed, an instance of [[Namespace:Namespace]].
+** The namespace may be linked to relevant online resources.
+** The namespace may also be related to any relevant [[software concept]]s.
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]

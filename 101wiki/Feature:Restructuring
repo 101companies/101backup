@@ -1,0 +1,39 @@
+== Headline ==
+
+UI support for restructuring company data
+
+== Rationale ==
+
+This feature is supposed to make the UI complete in the sense of allowing insertion, deletion, moves for departments and employees (on top of more basic editing facilities according to [[Feature:Editing]]). That is, it should be possible to delete departments and employees, to insert departments and employees into existing departments, to move departments and employees from their current department to another department (be it by drag and drop or by selecting the department from a drop-down list). As to employees, it should be possible to change the status of an employee to be a manager or not. Along such restructuring, it may happen that the company may become temporarily inconsistent because, for example, a department may mis a manager. Ideally, the UI should highlight such inconsistency (through some coloring, for example) so that problematic departments could be easily observed in the UI.
+
+== Description ==
+
+=== CRUD operations ===
+
+==== Create ====
+
+* Create a department either as top-level department the company or as a sub-department of another department.
+* Create an employee in a department.
+
+==== Move ====
+
+* Move a department within the company to another parent, which is either the company or another department, 
+* Move an employee to another department.
+* Change the manager of a department.
+
+==== Delete ====
+
+* Delete a department including all its direct and indirect employees and sub-departments.
+* Delete an employee.
+
+=== Miscellaneous ===
+
+Some implementations may also provide an undo capability.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Create, read, update and delete]]
+* [[isA::UI requirement]]
+* [[isA::Optional feature]]
+* [[implies::Feature:Editing]]
+* [[instanceOf::Namespace:Feature]]

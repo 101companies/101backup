@@ -1,0 +1,36 @@
+== Headline ==
+
+A technique to compose compound data from parts
+
+== Note ==
+
+[[Data composition]] is not an established term, but it naturally arises as a generalization of existing notions that are used in [[data modeling]] and [[programming]]. A common form of [[data composition]] is [[object composition]], which is actually sometimes also defined in a broad enough sense, not to be limited to [[object]]s in the sense of [[OO programming]]. For clarity, the general term [[data composition]] is used on this wiki, whenever appropriate.
+
+== Description ==
+
+[[Data composition]] entails component entities (e.g., primitive data or previously composed data) and compound entities (e.g., [[object]]s, [[tuple]]s, or [[record]]s). Composition means that the components (say, the parts) are combined to form a compound (say, a whole). A principle means of going beyond [[data composition]] is to leverage [[data variation]].
+
+== Illustration ==
+
+The following [[Language:Haskell]]-based data model for the [[@system]] leverages [[data composition]] systematically. The [[data model]] is based on [[algebraic data type]]s. The data types for companies, departments, and employees declare a single constructor to serve for [[data composition]]. Basic types for numbers and strings are used for some components. List types are also used.
+
+<syntaxhighlight lang="haskell">
+data Company = Company Name [Department]
+data Department = Department Name Manager [Department] [Employee]
+data Employee = Employee Name Address Salary
+type Manager = Employee
+type Name = String
+type Address = String
+type Salary = Float
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:haskellComposition]].
+
+== Metadata ==
+
+* [[instanceOf::Composition]]
+* [[instanceOf::Vocabulary:Data modeling]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Object composition]]
+* [[relatesTo::Data variation]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[top-down parsing | top-down]] [[parser]] using mutually recursive procedures
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Recursive_descent_parser]]
+* [[instanceOf::Software language engineering]]
+* [[isA::Parser]]
+* [[instanceOf::Namespace:Concept]]

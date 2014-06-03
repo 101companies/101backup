@@ -1,0 +1,8 @@
+== Intent ==
+
+The [[Technology:Hibernate]] Query Language
+
+== Metadata ==
+* [[instanceOf::Query language]]
+* [[identifies::http://docs.jboss.org/hibernate/core/3.3/reference/en/html/queryhql.html]]
+* [[instanceOf::Namespace:Language]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+An advanced purely-[[functional programming language]]
+== Details ==
+
+There are plenty of Haskell-based contributions to the [[@project]]. This is evident from corresponding back-links. More selective sets of Haskell-based contributions are organized in themes: [[Theme:Haskell data]], [[Theme:Haskell potpourri]], and [[Theme:Haskell genericity]]
+== Metadata ==
+
+* [[identifies::http://www.haskell.org/]]
+* [[identifies::http://en.wikipedia.org/wiki/Haskell_(programming_language)]]
+* [[instanceOf::Functional programming language]]
+* [[instanceOf::Namespace:Language]]

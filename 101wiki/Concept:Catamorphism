@@ -1,0 +1,15 @@
+== Headline ==
+
+A recursion scheme for [[data type]]s generalizing the [[fold function]] for lists
+
+== Illustration ==
+
+See the concepts of [[fold algebra]] and [[generalized fold]] for related illustrations.
+
+The dual concept is [[anamorphism]].
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Catamorphism]]
+* [[instanceOf::Namespace:Concept]]

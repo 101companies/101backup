@@ -1,0 +1,34 @@
+== Intent ==
+
+GUI programming with [[Language:CPlusPlus]] and [[Technology:QT]]
+
+== Motivation ==
+
+TBD
+
+== Illustration ==
+
+TBD
+
+== Architecture ==
+
+TBD
+
+== Usage ==
+
+TBD
+
+== Metadata ==
+* [[uses::Language:CPlusPlus]]
+* [[uses::Technology:QT]]
+* [[uses::Technology:QTCreator]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Browsing]]
+* [[developedBy::Contributor:Alexander Anthes]]
+* [[developedBy::Contributor:Ina Schroeder]]
+* [[developedBy::Contributor:Katharina Naujokat]]
+* [[developedBy::Contributor:Martina Sekulla]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

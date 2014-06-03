@@ -1,0 +1,16 @@
+== Headline ==
+
+the description of local entities to be made available externally
+
+== Details ==
+
+The construct serves [[module]]-based software reuse controlled by [[import]]/[[export]] declarations.
+
+The construct specifically enables the actual identification of abstractions made available for reuse.
+
+
+
+== Metadata ==
+* [[instanceOf::Language construct]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Namespace:Concept]]

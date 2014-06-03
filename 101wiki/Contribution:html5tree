@@ -1,0 +1,220 @@
+== Intent ==
+
+[[Web programming]] based on the [[Language:HTML5]] ecosystem using [[Ajax]] style and a tree view
+
+== Languages ==
+
+* [[Language:HTML5]]
+* [[Language:JavaScript]]
+* [[Language:PHP]]
+* [[Language:SQL]]
+* [[Language:JSON]]
+
+== Technologies ==
+
+* [[Technology:MySQL]]
+* [[Technology:XAMPP]]
+* [[Technology:Apache HTTP Server|Apache HTTP Server]]
+* [[Technology:XMLHttpRequest]]
+* [[Technology:jQuery]]
+* [[Web browser]]
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+* [[Feature:Ranking]]
+* [[Feature:Persistence]]
+* [[Feature:Browsing]]
+* [[Feature:Distribution]]
+* [[Feature:Editing]]
+* [[Feature:Restructuring]]
+* [[Feature:Web UI]]
+
+== Motivation ==
+
+This [[Web application|web application]] extends the [[Contribution:html5ajax|html5ajax]] implementation with a tree view, thereby improving the [[Feature:Browsing]]. This is necessary to guarantee a clear overview while deleting, moving and creating departments and employees due to [[Feature:Restructuring]]. [[Language:JavaScript]] is very suitable for trees, because it allows [[Client|client side]] [[Technology:DOM]] manipulation. This is necessary for creating fast, expandable tree structures. We have used the [[Technology:jQuery]] [[Library|library]] to gain proper [[Technology:DOM]] manipulation.
+
+== Illustration ==
+
+The first part of this illustration shows, how the tree view is created. The second part illustrates the deletion of a department as it is part of the [[Feature:Restructuring]] feature.
+
+=== Tree creation ===
+
+As shown in [[Contribution:html5ajax]], the data is stored within a [[Technology:MySQL]] database. After the client creates the initial request, a [[Server|server]] side [[Language:PHP]] script called [this!!server/treeServer.php] prepares the data for a [[Language:JSON]] response. The initial [[Technology:XMLHttpRequest]] is rather simple:
+
+<syntaxhighlight lang="java" source="html5tree/client/javascript/model/treeModel.js">
+...
+
+treeModel.load = function(strategy, id) {
+    treeModel.initCompany(id);
+    treeModel.company.action = "load";
+
+    requestUnit.sendRequest(strategy, treeModel.url, treeModel.company);
+}
+
+...
+</syntaxhighlight>
+
+The <syntaxhighlight lang="java" enclose="none">requestUnit</syntaxhighlight> (file: [this!!client/javascript/model/XMLHttpRequest.js]) is developed to create generic requests. The given strategy updates the tree view with the retrieved data.
+
+==== Server ====
+
+The server side [[Language:PHP]] script [this!!/server/treeServer.php treeServer.php] creates the objects necessary for the tree. Therefore, it loads the entities from the database with the ids and names, bacause there is no need for total oder address values within the tree display. The following function illustrates the initialization of the [[Feature:Hierarchical_company]]:
+
+<syntaxhighlight lang="php" source="html5tree/server/treeServer.php">
+
+...
+
+function perform($jsonObject) {
+    $action = $jsonObject->action;
+
+    switch ($action) {
+        case "load":
+            return loadCompany($jsonObject);
+    }
+}
+
+function loadCompany($jsonObject) {
+    // The $jsonObject contains the request of the client.
+    $id = $jsonObject->id;
+        
+    // This is the SQL statement to get the company with a given id.
+    $request = "SELECT * FROM company WHERE id = $id";
+    $result = mysql query($request);
+    $row = mysql fetch object($result);
+      
+    // These few commands create a new company and set the id and the name.
+    $company = new Company();
+    $company->setId($row->id);
+    $company->setName($row->name);
+      
+    // The subdepartments are added to the company.
+    $company->setDepartments(loadDepartmentsForCompany($id));
+
+    return $company;
+}
+
+...
+</syntaxhighlight>
+
+The <syntaxhighlight lang="php" enclose="none">perform($jsonObject)</syntaxhighlight> method interprets the request of the [[Client|client]]. After the server retrieves the company id, it is able to select the company out of the [[Technology:MySQL]] [[DBMS]]. After that, a new company object is filled with id and name. The subdepartments are added to the company within a nested tree structure. The <syntaxhighlight lang="php" enclose="none">$company</syntaxhighlight> is transformed to [[Language:JSON]] before the response is returned to the client:
+
+<syntaxhighlight lang="php" source="html5tree/server/databaseConnection/connection.php">
+...
+
+echo json encode(perform($jsonObject));
+
+...
+</syntaxhighlight>
+
+==== Client ====
+
+In the introduction of the tree creation section we have introduced the parameter <syntaxhighlight lang="java" enclose="none">strategy</syntaxhighlight>, which is used for the views callback initialization after the response is returned [[Asynchronous communication|asynchronously]]. This strategy is initialized in the [this!!client/javascript/controller.js controller.js] and simply invokes the method <syntaxhighlight lang="java" enclose="none">refresh</syntaxhighlight> of the [this!!client/javascript/view/treeView.js treeView.js]:
+
+<syntaxhighlight lang="java" source="html5tree/client/javascript/view/treeView.js">
+...
+
+// This method refreshs the tree view.
+treeView.refresh = function() {
+    // The content variable contains the generated html string for a nested unordered list.
+    content = "<ul>";
+  
+    // If there are subdepartments, create a list item with a 'plus' symbol
+    if (treeModel.response.departments.length > 0) {
+        // The 'plus' symbol is the button for expanding the tree.
+        content += "<li> <input id=\"0\" "
+            + "type=\"image\" src=\"symbols/plus.gif\" "
+            + "onclick=\"treeNavigation.toggleList(this)\">";
+        // The name of the company is the button for company load.
+        content += "<input type=\"button\" class=\"companyButton\" value=\""
+            + treeModel.response.name
+            + "\" onclick=\"controller.loadCompany("
+            + treeModel.response.id
+            + ")\">";
+        // The subdepartments are added as sublists of the company list item.
+        content += treeView.showDepartments(treeModel.response.departments);
+        content += "</li>";
+    // If there are no subdepartments, create a list item with a 'dot' symbol
+    } else {
+        content += "<li> <img src=\"symbols/leaf.gif\"> <b>"
+            + treeModel.response.name
+            + "</b></li>";
+    }
+   
+    content += "</ul>";
+    
+    // This replaces the content of the tree division with the generated html code in 'content'.
+    document.querySelector('#tree').innerHTML = content;
+}
+
+...
+</syntaxhighlight>
+
+Every tree item is a list item of a nested unordered list and consists of two visible parts, a symbol and a name. The symbol refers to the position of the item within the tree. There are ''dots'' for leafs and ''plus'' and ''minus'' symbols for unexpanded and expanded tree items. The name is a link, which refers to a load function. This function returns a complete data set for the requested entity.
+
+=== Delete department ===
+
+The following part illustrates an example for the deletion of a department according to the [[Feature:Restructuring]]. Please visit [[Contribution:html5ajax]] to get an overview over loading company entities with XMLHttpRequest and JSON. Keep in mind, that there is no need to load subdepartments or employees for a specific department, since the tree provides the structure to pick these subelements.
+
+After a department is selected, the user can press the ''delete'' button to invoke the corresponding [[Client|client]] side delete method implemented in [this!!/client/javascript/model/departmentModel.js departmentModel.js]:
+
+<syntaxhighlight lang="java" source="html5tree/client/javascript/model/departmentModel.js">
+departmentModel.deleteEntity = function(strategy) {
+	departmentModel.initDepartment(departmentModel.response.id);
+	departmentModel.department.action = "delete";
+	requestUnit.sendRequest(strategy, departmentModel.url, departmentModel.department);
+}
+</syntaxhighlight>
+
+This method will send a request in the JSON format, which contains all necessary informations to delete a department with a given id. Most of the JSON messages in the web application are simplified versions of the messages in [[Contribution:html5ajax]].
+
+<syntaxhighlight lang="text">
+{
+	"id":1,
+	"table":"department",
+	"action":"delete"
+}
+</syntaxhighlight>
+
+This request is received by the [[Server|server]] side [[Language:PHP]] script, which deletes the department with the id 1. The cascading delete anchored in the database provides a recursive deletion for all containing subdepartments. Hence, the following shows the simple delete request:
+
+<syntaxhighlight lang="php" source="html5tree/server/departmentServer.php">
+$request = "DELETE FROM department WHERE id = " . $id;
+mysql query($request);
+</syntaxhighlight>
+
+== Architecture ==
+
+The basic architecture is similar to the architecture of [[Contribution:html5ajax]]. It is based on the [[MVC]] [[Architectural pattern|architectural pattern]] in combination with a [[Client-server architecture|client-server architecture]]. The key difference is the encapsulation of all views within one [[Language:HTML]] file named [this!!client/index.html index.html], controlled by different [[Language:JavaScript]] files, which are located in [this!!client/javascript/view] and the [this!!client/javascript/controller.js].
+
+== Usage ==
+
+You need a web and [[Technology:MySQL]] server to run this application. In this tutorial both will be taken care of by XAMPP: http://www.apachefriends.org/en/xampp.html
+
+This tutorial adopts some parts of [[Contribution:mySqlMany]]. The company.sql and sampleCompany.sql are modified for this project. They are located in the "sqlScripts" folder.
+
+* Download and install XAMPP
+* Open the "XAMPP Control Panel" and start "Apache" and "MySQL"
+* Use the guideline of [[Contribution:mySqlMany]] up to "Populate tables..." with the modified sql scripts.
+
+Once the database is running, follow the next steps:
+
+* To start the application, you need to download all project files except the README
+* Put the files into the htdocs directory of your XAMPP (a new subdirectory in "htdocs" is recommended)
+* Run index.html
+
+The project is provided as a netbeans project. If you want to change the code, you have to:
+
+* Download (http://netbeans.org/) and install [[Technology:NetBeans]]
+* "Open project" and select the html5tree folder
+
+
+
+== Contributors ==
+
+* {{101contributor|Tobias Zimmer|developer}}
+== Metadata ==
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

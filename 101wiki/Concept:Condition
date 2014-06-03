@@ -1,0 +1,17 @@
+== Headline ==
+
+A condition on control-flow and others
+
+== Details ==
+
+Conditions occur in various contexts of programming and computing. A database query may involve conditions. Imperative procedural abstractions may involve control-flow condition, preconditions, postconditions, or assertions. Equations (say, rules) in functional programming or term rewriting may involve conditions for rule selection. A UML model may involve OCL constraints.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Vocabulary:Programmming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Condition_(SQL)]]
+* [[linksTo::http://en.wikipedia.org/wiki/Precondition]]
+* [[linksTo::http://en.wikipedia.org/wiki/Postcondition]]
+* [[linksTo::http://en.wikipedia.org/wiki/Assertion_(computing)]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,67 @@
+== Headline ==
+
+Check salaries to follow ranks in company hierarchy
+
+== Description == 
+
+Any company needs a pay structure (say, pay model). The present feature describes a constraint for a particular pay structure. Within each department, the salary of the department's manager is higher than all salaries of a department's immediate and sub-immediate employees. The constraint needs to be checked or enforced along construction and the modification of company data. Clearly, this is just one possible and arguably rather rigid and unrealistic pay structure.
+
+== Motivation ==
+
+Conceptually, the feature imposes a global invariant on company data. Straightforward expressiveness of type systems is not sufficient to model the constraint. Simple contracts in the sense of pre- and post-conditions or class invariants on local state are also not sufficient; we need to allow for traversal of object graphs. Of course, the constraint can be expressed more or less easily as a recursive computation, very much like a query over the hierarchical structure of companies; see [[Feature:Depth]].
+
+== Illustration ==
+
+The feature is illustrated with a [[Function]] in [[Language:Haskell]] that works on top of appropriate [[algebraic data type]]s for company data; the function recurses into company data in a straightforward manner and it counts departments along the way:
+
+<syntaxhighlight lang="haskell">
+align :: Company -> Bool
+align (Company   ds) = and (map (align' Nothing) ds)
+  where
+    align' :: Maybe Float -> Department -> Bool
+    align' v (Department   m ds es)
+      =  maybe True (>getSalary m) v
+      && and (map (align' (Just (getSalary m))) ds)
+      && and (map ((<getSalary m) . getSalary) es)
+    getSalary :: Employee -> Float
+    getSalary (Employee     s) = s
+</syntaxhighlight>
+
+Further, in some code locations the constraint needs to be invoked. Here is some snippet that shows how the constraint is invoked past cutting salaries:
+
+<syntaxhighlight lang="haskell">
+main = do 
+      ... -- code omitted
+
+      -- Cut all salaries
+      let company' = cut company
+
+      -- Test that salaries align with hierarchy
+      if not (align company')
+        then error "constraint violated"
+        else return ()
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:haskellComposition]].
+
+== Relationships ==
+
+* The present feature can only usefully instantiated on top of [[Feature:Hierarchical_company]], as it assumes nesting of departments for non-trivial results. 
+* A straightforward scenario for testing the present feature would check the constraint past cutting salaries according to [[Feature:Cut]].
+
+== Guidelines ==
+
+* The ''name'' of a constrain for checking alignment of salaries with hierarchical company structure should involve the term "align".
+* A suitable ''demonstration'' of the feature's implementation should show the constraint is to be invoked (explicitly or implicitly) past construction or modification of company data.
+
+== Metadata ==
+
+* [[linksTo::http://www.aafp.org/fpm/2000/0200/p30.html]]
+* [[linksTo::http://www.ehow.com/info 12076331 alternative-pay-structures-salaried-employees.html]]
+* [[linksTo::http://www.slideshare.net/aaronphamilton/strategic-compensation-structure-egalitarian-v-hierarchical]]
+* [[linksTo::http://papers.ssrn.com/sol3/papers.cfm?abstract id=74303]]
+* [[linksTo::http://en.wikipedia.org/wiki/Hierarchical organization]]
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[implies::Feature:Hierarchical_company]]
+* [[instanceOf::Namespace:Feature]]

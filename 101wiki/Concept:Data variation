@@ -1,0 +1,35 @@
+== Headline ==
+
+A technique to build data according to variants
+
+== Note ==
+
+[[Data variation]] is not an established term, but it naturally arises as a generalization and dualization of existing notions that are used in [[data modeling]] and [[programming]]. Common forms of [[data variation]] are based on [[variant type]]s and [[type generalization]]. For clarity, the general term [[data variation]] is used on this wiki, whenever appropriate.
+
+== Description ==
+
+[[Data variation]] entails data variants, of which one must be chosen when actual data is constructed. The data variants may be specified, for example, as a [[variant type]] or as OO types related to a common base type through [[type generalization]]. [[Data variation]] may be seen as a principle means of going beyond [[data composition]].
+
+== Illustration ==
+
+The following [[Language:Haskell]]-based data model for the [[@system]] leverages [[data variation]] in one spot and otherwise [[data composition]]. The [[data model]] is based on [[algebraic data type]]s. The data type for subunits declare two constructors to model different types of subunits, as needed for aggregating subunits of departments.
+
+<syntaxhighlight lang="haskell">
+data Company = Company Name [Department]
+data Department = Department Name Manager [SubUnit]
+data Employee = Employee Name Address Salary
+data SubUnit = EUnit Employee | DUnit Department
+type Manager = Employee
+type Name = String
+type Address = String
+type Salary = Float
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:haskellVariation]].
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Data modeling]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Data composition]]
+* [[instanceOf::Namespace:Concept]]

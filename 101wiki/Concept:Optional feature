@@ -1,0 +1,10 @@
+== Headline ==
+
+An optional [[feature]] in [[feature modeling]]
+== Illustration ==
+
+Pretty much all features of the [[@system]] are optional (except for the [[mandatory feature]] [[Feature:Company]] with its subfeatures) because an actual implementation of the [[@system]] may freely choose to implement or not to implement certain [[data requirement|data]], [[functional requirement|functional]], [[non-functional requirement|non-functional]], and [[UI requirement]]s.
+== Metadata ==
+
+* [[isA::Feature]]
+* [[instanceOf::Vocabulary:Software engineering]]

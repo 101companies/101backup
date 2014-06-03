@@ -1,0 +1,28 @@
+== Headline ==
+
+Equivalence of types based on their structure
+
+== Illustration ==
+
+Consider the following declarations in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+type Point = (Float, Float) -- A Cartesian point
+type Rectangle = (Float, Float) -- A rectangle with width and height
+</syntaxhighlight>
+
+Because both types are defined as [[type synonym]]s, they are subject to structural typing. Thus, points and rectangles are compatible such that a point can be used whereever a rectangle is expected, and vice versa. This is arguably not intended. We may instead define the types as follows:
+
+<syntaxhighlight lang="haskell">
+data Point = Point Float Float -- A Cartesian point
+data Rectangle = Rectangle Float Float -- A rectangle with width and height
+</syntaxhighlight>
+
+While both types are structurally equivalent, as both types declare one [[data constructor]] with the exact same types for the [[constructor component]]s, the types are still different as [[nominal typing]] applies for Haskell's [[algebraic data type]]s.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Structural_type_system]]
+* [[linksTo::http://c2.com/cgi/wiki?NominativeAndStructuralTyping]]
+* [[relatesTo::Nominal typing]]
+* [[instanceOf::Namespace:Concept]]

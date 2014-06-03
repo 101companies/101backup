@@ -1,0 +1,10 @@
+== Headline ==
+
+[[Technology:ANTLR|ANTLR]]-centric [[grammarware]] theme
+
+== Description ==
+
+This theme collects [[@contribution]]s that involve [[Technology:ANTLR]] in different ways. ANTLR supports different kinds of grammars and different usage scenarios which are exercised by members of the theme. [[Contribution:antlrAcceptor]] describes a concrete syntax for companies; several of the other implementations can be viewed as enhancements. [[Contribution:antlrParser]] uses a global variable and semantic actions total salaries. [[Contribution:antlrObjects]] uses synthesized attributes to map concrete syntax to company objects using a straightforward object model adopted from [[Contribution:javaComposition]]. [[Contribution:antlrTrees]] constructs trees of the kind that can be than further processed by ANTLR-trees grammars. [[Contribution:antlrLexer]] demonstrates a more lexical approach by modeling and operating on a token stream as opposed to full concrete syntax. [[Contribution:gra2mol]], [[Contribution:xtext]], and [[Contribution:yapg]] deal with more advanced scenarios essentially involving ANTLR as the target for code generation.
+
+== Metadata==
+* [[instanceOf::Namespace:Theme]]

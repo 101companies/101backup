@@ -1,0 +1,8 @@
+== Intent ==
+
+retroactive declaration of contributions to a type declaration
+
+== Metadata ==
+* [[instanceOf::Declaration]]
+* [[identifies::http://www.eclipse.org/aspectj/doc/released/progguide/language-interType.html]]
+* [[instanceOf::Namespace:Concept]]

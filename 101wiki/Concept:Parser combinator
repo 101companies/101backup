@@ -1,0 +1,8 @@
+== Headline ==
+
+A [[combinator]] for the [[composition]] of [[parser]] [[Function]]s
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Parser_combinator]]
+* [[instanceOf::Namespace:Concept]]

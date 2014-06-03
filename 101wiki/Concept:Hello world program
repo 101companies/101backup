@@ -1,0 +1,33 @@
+== Headline ==
+
+A computer program that outputs "Hello, world!"
+
+== Illustration ==
+
+Consider this [[Language:Java]] class:
+
+<fragment url="HelloWorld.java"/>
+
+When [[Compiler|compiled]] and executed, indeed the program produces this output:
+
+<pre>
+Hello, world!
+</pre>
+
+Consider this [[Language:Python]] script:
+
+<fragment url="HelloWorld.py"/>
+
+When executed with the Python [[interpreter]], the program produces the same output:
+
+<pre>
+Hello, world!
+</pre>
+
+== Metadata ==
+
+* [[isA::Program]]
+* [[identifies::http://en.wikipedia.org/wiki/Hello_world_program]]
+* [[linksTo::http://en.wikipedia.org/wiki/List_of_Hello_world_program_examples]]
+* [[instanceOf::Namespace:Concept]]
+

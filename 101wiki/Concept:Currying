@@ -1,0 +1,62 @@
+== Headline ==
+
+Transformation of a function on multiple arguments to take one at a time
+
+== Illustration ==
+
+In [[Language:Haskell]], functions are typically in curried form. Consider, for example, the signature of addition:
+
+<syntaxhighlight lang="haskell">
+> :t (+)
+(+) :: Num a => a -> a -> a
+</syntaxhighlight>
+
+Curried form is generally convenient as it directly enables [[partial application]]. For instance, we can define an increment function, just by passing one argument to addition:
+
+<syntaxhighlight lang="haskell">
+inc :: Int -> Int
+inc = (+) 1
+</syntaxhighlight>
+
+If we were to define addition in uncurried form, then this would look as follows:
+
+<syntaxhighlight lang="haskell">
+add :: Num a => (a, a) -> a
+add (x,y) = x+y
+</syntaxhighlight>
+
+We can easily perform currying:
+
+<syntaxhighlight lang="haskell">
+add' :: Num a => a -> a -> a
+add' x y = add (x,y)
+</syntaxhighlight>
+
+In fact, the currying transformation can be represented by the following [[higher-order function]]:
+
+<syntaxhighlight lang="haskell">
+curry :: ((a, b) -> c) -> a -> b -> c
+curry f a b = f (a,b)
+</syntaxhighlight>
+
+(We would need such a curry(ing) function for each number of arguments.) Thus, we can express the currying transformation as follows:
+
+<syntaxhighlight lang="haskell">
+add'' :: Num a => a -> a -> a
+add'' = curry add
+</syntaxhighlight>
+
+== Relationships ==
+
+See [[uncurrying]] for the dual transformation.
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Currying, 18 May 2013)
+
+In mathematics and computer science, currying is the technique of transforming a function that takes multiple arguments (or a tuple of arguments) in such a way that it can be called as a chain of functions, each with a single argument (partial application). It was originated by Moses Schönfinkel [...] and later re-discovered by Haskell Curry.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Currying]]
+* [[instanceOf::Namespace:Concept]]

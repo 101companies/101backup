@@ -1,0 +1,46 @@
+== Headline ==
+
+UI support for editing company data
+
+== Description ==
+
+Users of the [[@system]] expect to be able to edit attributes for names, addresses, and salaries. For instance, the name of an employee may need to be change when the employee gets married. Also, the address of the employee may need to changed when the employee moves to a new house. No structural edits of the company are yet anticipated here, but see [[Feature:Restructuring]]. That is, employees cannot move, for example, from one department to another one. We also consider the status of an employee to be a manager or not as a structural property.
+
+== Details ==
+
+=== Change propagation ===
+
+There are two options for committing changes from text fields to the underlying data (model):
+
+* ''Option 1 is to commit changes immediately'': this option may be sometimes more reasonable for a classic, GUI-based standalone application. (For instance, a change event on a text field may be translated, perhaps with the help of a controller in the sense of MVC, into an actual property change on the data model.)
+* ''Option 2 is to commit changes when a "Save" button on the view is pushed'': this option may be sometimes more reasonable for a web-based application. (For instance, a web client may want to limit the communication with a server, and hence rely on an explicit "Save" action for the propagation of the data changes.)
+
+=== Validation ===
+
+Once editing is enabled, then some constraints must be validated as suggested by [[Feature:Hierarchical_company]]. A notification for the constraint violation may be shown, for example, in the view one line below the offending field. The salary validation (such that salaries are positive decimal values) may be realized via field input restriction. In the following, we describe such validation for the case of a client/server architecture, as this appears to be a more involved scenario.
+
+==== Company ====
+* [[client-side]] validation:
+** The name of a company is not empty.
+
+==== Department ====
+* [[client-side]] validation:
+** The name of a department is not empty.
+* [[server-side]] validation:
+** The name of a department is unique for all departments of the company.
+
+==== Employee ====
+* [[client-side]] validation:
+** A salary is a positive, double value.
+** A salary is not empty.
+* [[server-side]] validation:
+** Uniqueness of names may need to be checked for some implementations of [[Feature:Hierarchical_company]].
+** Additional salary constraints apply when [[Feature:Ranking]] is implemented.
+
+== Metadata ==
+
+* [[isA::UI requirement]]
+* [[isA::Optional feature]]
+* [[implies::Feature:Browsing]]
+* [[instanceOf::Namespace:Feature]]
+

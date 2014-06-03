@@ -1,0 +1,94 @@
+== Headline ==
+
+Basic software engineering for [[Language:Haskell]]
+
+== Characteristics ==
+
+The contribution demonstrates basic means of modularization (using Haskell's native [[module]] system), code organization (using where clauses for [[local scope]]), packaging (using [[Technology:Cabal]]), documentation (using [[Technology:Haddock]]), and unit testing (using [[Technology:HUnit]]). Other than that, only basic language constructs are exercised and a very limited feature set of the [[@system]] is implemented. The contribution is indeed more of a showcase for a pattern for modularization, code organization, packaging, documentation, and unit testing.
+
+== Illustration ==
+
+=== Modular organization ===
+
+The contribution consists of the following modules as listed in <file url="haskellEngineer.cabal"/>:
+
+<syntaxhighlight lang="text">
+    Main
+    Company.Data
+    Company.Sample
+    Company.Total
+    Company.Cut
+</syntaxhighlight>
+
+The modules implement features as follows:
+* <file url="src/Company/Data.hs"/>: [[Feature:Flat_company]].
+* Company/Sample.hs: A sample company.
+* Company/Total.hs: [[Feature:Total]].
+* Company/Cut.hs: [[Feature:Cut]].
+* Main.hs: Unit tests for demonstration.
+
+For instance, the implementation of [[Feature:Total]] takes this form:
+
+<fragment url="src/Company/Total.hs"/>
+
+Please note how "where clauses" are used to organize the declarations in such a way that it is expressed what function is a helper function to what other function. The declaration of such [[local scope]] also implies that the helper functions do not feed into the interface of the module.
+
+=== Haddock comments ===
+
+[[Technology:Haddock]] comments are used to enable [[documentation generation]]. Consider again the module shown above. Haddock comments are used for the functions ''total'' and ''salaries'' but not for the remaining functions, as they are not exported and thus, they do not need to be covered by the generated documentation.
+
+=== External dependencies ===
+
+The contribution has the following dependencies as listed in <file url="haskellEngineer.cabal"/>:
+
+<syntaxhighlight lang="text">
+build-depends: base >=4.4 && < 5.0, HUnit
+</syntaxhighlight>
+
+These packages serve the following purposes:
+* base: This is the Haskell base package; a range of versions is permitted.
+* HUnit: This is the package for [[Technology:HUnit]]; its version is not explicitly constrained.
+
+=== HUnit testcases ===
+
+The contribution is tested by the following test cases:
+
+<fragment url="src/Main.hs/pattern/tests"/>
+
+For instance, the test case for serialization looks as follows:
+
+<fragment url="src/Main.hs/pattern/serializationTest"/>
+
+== Relationships ==
+
+* The present contribution is an "engineered" variation on [[Contribution:haskellStarter]]. That is, modularization, packaging, documentation, and unit testing was applied.
+* Several other contributions derive from the present contribution more or less directly by demonstrating additional language or technology capabilities or implementing additional features of the [[@system]].
+
+== Architecture ==
+
+Modules to feature mapping:
+* Company.Data: [[Feature:Flat_company]]
+* Company.Sample: A sample company
+* Company.Total: [[Feature:Total]]
+* Company.Cut: [[Feature:Cut]]
+* Main: Unit tests for demonstration
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md
+
+== Metadata ==
+
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:HUnit]]
+* [[uses::Technology:Haddock]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

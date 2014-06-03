@@ -1,0 +1,14 @@
+== Headline ==
+
+a refactoring tool for [[Technology:MediaWiki]] content
+
+== Description ==
+
+The tool currently supports advanced forms of renaming.
+
+See the technical documentation for details.
+
+== Metadata ==
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101dev/tree/master/tools/wikiRefactoring]]
+* [[instanceOf::Namespace:Technology]]

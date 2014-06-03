@@ -1,0 +1,13 @@
+== Headline ==
+
+The basic functions of persistent storage
+
+== Details ==
+
+CRUD stands for Create, read, update, and delete.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Data]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Create,_read,_update_and_delete]]
+* [[instanceOf::Namespace:Concept]]

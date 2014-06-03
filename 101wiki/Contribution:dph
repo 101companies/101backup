@@ -1,0 +1,82 @@
+== Headline ==
+
+[[Data parallelism]] in [[Language:Haskell]] with [[Technology:DPH]]
+
+== Motivation ==
+The implementation demonstrates [[data parallelism]] in [[Language:Haskell]] with [[Technology:DPH]]. The operations for totaling and cutting salaries are implemented on top of DPH's [[parallel array]]s. In this manner, we encounter some limitations of DPH with regard to data parallelism. In particular, data parallelism is limited to arrays over primitive types from a DPH-specific [[Prelude module]]; there is no support for user-defined types. Hence, we need to flatten the company to a list of salary values, which are of a DPH-specific type for floating point numbers, before salaries can be totaled and cut. The resulting list of cut salaries needs to be reintegrated into the company in question. These conversions obviously take more time than we gain by data parallelism. Hence, the present illustration of DPH is of limited use.
+
+== Illustration ==
+
+=== Cutting in Parallel ===
+
+As we mentioned in the motivation section, data parallelism can only be applied to arrays.
+We therefore flatten the company to become a list of salaries (see [this!!SalaryFlattener.hs] for details).
+
+==== Non-parallel code ====
+
+Unfortunately the normal Prelude list type <syntaxhighlight lang="haskell" enclose="none">[a]</syntaxhighlight> is not amenable to data parallelism, but a special array type called <syntaxhighlight lang="haskell" enclose="none">PArray a</syntaxhighlight>. We therefore need a special function in a non-parallel module for converting between <syntaxhighlight lang="haskell" enclose="none">[Float]</syntaxhighlight> and <syntaxhighlight lang="haskell" enclose="none">PArray Float</syntaxhighlight> before we can cut in parallel:
+
+<syntaxhighlight lang="haskell" source="dph/Cut.hs">
+cut :: Company -> Company
+cut c = (consumeSalaries c) (toList $ cutV $ fromList $ flattenSalaries c)
+</syntaxhighlight>
+
+We first flatten the company, then convert the salary list to <syntaxhighlight lang="haskell" enclose="none">PArray Float</syntaxhighlight> and call the cut function <syntaxhighlight lang="haskell" enclose="none">cutV</syntaxhighlight> from a parallelism-ready module. After that we convert back to <syntaxhighlight lang="haskell" enclose="none">[Float]</syntaxhighlight> and call <syntaxhighlight lang="haskell" enclose="none">consumeSalaries</syntaxhighlight> to replace all salaries in the company tree.
+
+==== Parallel code ====
+
+Parallel and non-parallel code cannot be mixed in the same module. Hence, we set up separate modules.
+In the module for parallel for cut, we declare:
+
+<syntaxhighlight lang="haskell" source="dph/CutV.hs">
+{-# LANGUAGE ParallelArrays #-}
+{-# OPTIONS GHC -fvectorise #-}
+</syntaxhighlight>
+
+This tells [[Technology:GHC]] to vectorise this module, i.e., to apply data parallelism, and that this module uses parallel arrays. We then define the interface function between vectorised and non-vectorised code <syntaxhighlight lang="haskell" enclose="none">cutV</syntaxhighlight>:
+
+<syntaxhighlight lang="haskell" source="dph/CutV.hs">
+cutV :: PArray Float -> PArray Float
+{-# NOINLINE cutV #-}
+cutV v = toPArrayP (cutVP (fromPArrayP v))
+</syntaxhighlight>
+
+This function converts from <syntaxhighlight lang="haskell" enclose="none">PArray Float</syntaxhighlight> to a parallel array <syntaxhighlight lang="haskell" enclose="none">[:Float:]</syntaxhighlight>, calls the
+parallel code and converts back to <syntaxhighlight lang="haskell" enclose="none">PArray Float</syntaxhighlight>. A parallel array can only be used in a vectorised module, so only here can we convert to it. Marking this function <syntaxhighlight lang="haskell" enclose="none">{-# NOINLINE cutV #-}</syntaxhighlight> makes it usable in non-vectorised modules. <syntaxhighlight lang="haskell" enclose="none">cutP</syntaxhighlight> calls the actual data parallel function <syntaxhighlight lang="haskell" enclose="none">cutVP</syntaxhighlight>, which uses a parallel map function to cut all list values:
+
+<syntaxhighlight lang="haskell" source="dph/CutV.hs">
+cutVP :: [:Float:] -> [:Float:]
+cutVP = mapP (/2)
+</syntaxhighlight>
+
+== Architecture ==
+
+The module in [this!!SalaryFlattener.hs] contains functionality to flatten a company and to replace all salaries.
+[this!!Total.hs] and [this!!Cut.hs] host the code for converting between <syntaxhighlight lang="haskell" enclose="none">[Float]</syntaxhighlight> and <syntaxhighlight lang="haskell" enclose="none">PArray Float</syntaxhighlight> and calling data parallel functions for totaling and cutting salaries, which can be found in [this!!TotalV.hs] and [this!!CutV.hs].
+The algebraic datatype for companies can be found in [this!!Company.hs]. [this!!SampleCompany.hs] holds a sample company.
+[this!!Main.hs] collects test scenarios for totaling and cutting.
+
+== Usage ==
+
+Tested with GHC/GHCi version 7.2.1.
+
+* All sources have to be compiled using the GHC-options <syntaxhighlight lang="make" enclose="none">-c -Odph -fdph-seq</syntaxhighlight>.
+* [this!!Main.hs] has to be loaded into GHCi. 
+* The <syntaxhighlight lang="haskell" enclose="none">main</syntaxhighlight> function has to be applied.
+* The output should be equal to the content of the file [this!!baseline]. 
+One can also use the [this!!Makefile] with a target ''test'' for [[test automation]].
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:GHCi]]
+* [[uses::Technology:DPH]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Data parallelism]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[instanceOf::Theme:Data parallelism]]
+* [[instanceOf::Namespace:Contribution]]
+

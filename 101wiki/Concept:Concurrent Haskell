@@ -1,0 +1,8 @@
+== Headline ==
+
+An extension of [[Language:Haskell 98]] with explicit concurrency
+
+== Metadata ==
+* [[instanceOf::Functional programming language]]
+* [[identifies::http://en.wikipedia.org/wiki/Concurrent_Haskell]]
+* [[instanceOf::Namespace:Concept]]

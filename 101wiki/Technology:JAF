@@ -1,0 +1,15 @@
+== Headline ==
+
+a library for MIME handling and related problems
+
+== Description ==
+
+JAF stands for "JavaBeans Activation Framework".
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Data technology]]
+* [[identifies::http://en.wikipedia.org/wiki/JavaBeans_Activation_Framework]]
+* [[linksTo::http://www.oracle.com/technetwork/java/javase/downloads/index-135046.html]]
+* [[linksTo::http://docs.oracle.com/javaee/1.3/api/javax/activation/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

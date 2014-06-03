@@ -1,0 +1,41 @@
+== Headline ==
+
+Use of [[record type]]s in [[Language:Haskell]]
+== Characteristics ==
+
+A data model for flat companies is defined in terms of Haskell's [[record type]]s. Such record types are essentially [[algebraic data type]]s. We only use record types for compound data. Otherwise, we use Haskell's [[newtype]]s, which is a special form of algebraic data type. Other than that, the contribution is a simple variation on [[Contribution:haskellData]] which uses plain algebraic data types for all types.
+== Illustration ==
+
+The data model looks like this:
+
+<fragment url="src/Company/Data.hs"/>    
+
+A sample company looks like this:
+
+<fragment url="src/Company/Sample.hs"/>    
+
+[[Feature:Total]] is implemented as follows:
+
+<fragment url="src/Company/Total.hs"/>
+== Relationships ==
+
+The present contribution is a variation on [[Contribution:haskellData]] and thus in turn on [[Contribution:haskellEngineer]].
+== Architecture ==
+
+See [[Contribution:haskellEngineer]].
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+== Metadata ==
+
+
+* [[instanceOf::Theme:Haskell data]]
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHCi]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[View | view]] containing a quick little message for the user
+
+== Metadata ==
+* [[instanceOf::Android_UI]]
+* [[identifies::http://developer.android.com/guide/topics/ui/notifiers/toasts.html]]
+* [[linksTo::http://developer.android.com/reference/android/widget/Toast.html]]
+* [[instanceOf::Namespace:Concept]]

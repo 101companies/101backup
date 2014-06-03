@@ -1,0 +1,14 @@
+== Headline ==
+
+A [[data type]] defined through [[invariant]]s instead of implementation
+
+== Illustration ==
+
+See the abstract data type [[Stack]] for illustration.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Data]]
+* [[identifies::http://en.wikipedia.org/wiki/Abstract_data_type]]
+* [[relatesTo::Concrete data type]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,27 @@
+== Headline ==
+
+Structural modeling in UML with [[Technology:ArgoUML]]
+
+== Motivation ==
+
+The class diagrams of this contribution can serve as a specification of the [[Feature:Hierarchical_company]]. Different models are exercised to favor either composition or generalization. In addition, methods for the features [[Feature:Total]] and [[Feature:Cut]] are indicated.
+
+== Architecture ==
+
+The contribution contains .zargos files with the actual models.
+
+The class diagrams are also persisted as .pdf files.
+
+== Usage ==
+
+Open the .zargo files with ArgoUML, if necessary.
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]] 
+* [[uses::Language:UML]]
+* [[uses::Technology:ArgoUML]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Model]]
+* [[instanceOf::Namespace:Contribution]]
+

@@ -1,0 +1,87 @@
+== Headline ==
+
+a fragment locator for Java
+
+== Description ==
+
+JFragmentLocator is a part of the [[101companies:Explorer]]; it is a Java-specific tool for fragment location. That is, the technology supports the syntax-aware location of a fragment in Java compilation unit. The input/output behavior of JFragmentLocator is the following:
+
+* Input:
+** a Java compilation unit
+** a fragment description
+* Output:
+** the line range of the located fragment
+
+JFragmentLocator leverages JSON for the description of fragments and the derived line ranges. Consider, for example, the following Java compilation unit:
+
+<pre>
+package org.softlang.trivia;
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, World");
+    }
+
+}
+</pre>
+
+The following fragment description locates the main method of the class:
+
+<pre>
+{ 
+ "method" : "main"
+}
+</pre>
+
+If we wanted to make explicit the hosting class (which may be necessary in case there are multiple classes in the same compilation unit), then the description may take the following form instead:
+
+<pre>
+{
+ "class" : "HelloWorld", 
+ "method" : "main"
+}
+</pre>
+
+The class name is unqualified in this example. It may also be desirable to explicitly specify the package qualifier of the class. Hence, the fragment description may also take the following form:
+
+<pre>
+{
+ "package" : "org.softlang.trivia",
+ "class" : "HelloWorld", 
+ "method" : "main"
+}
+</pre>
+
+Further, the method of interest may be overloaded. In this case, some sort of overloading resolution is needed. A simple, position-oriented approach is assumed here. That is, the 0-based index of the intended overload can be defined. In the example, the main method is not overloaded, but we can still demonstrate the extra description element at hand:
+
+<pre>
+{
+ "package" : "org.softlang.trivia",
+ "class" : "HelloWorld", 
+ "method" : "main",
+ "overload" : "0"
+}
+</pre>
+
+All fragment descriptions locate the same fragment: the line range 3-5. Thus:
+
+<pre>
+{"to": 3, "from": 5}
+</pre>
+
+It may also be necessary to deal with fields, nested classes, anonymous classes, enum types, interfaces, statement sequences, expressions, and yet other language elements. The description of such fragments is not described here, but we refer to the implementation.
+
+== Contributors ==
+
+* {{101contributor|Ralf Lämmel|author}}
+* {{101contributor|Martin Leinberger|developer}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Fragment locator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/JFragmentLocator]]
+* [[instanceOf::Namespace:Technology]]

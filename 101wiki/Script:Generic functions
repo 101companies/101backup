@@ -1,0 +1,32 @@
+== Headline ==
+
+Lecture "Generic functions" as part of [[Course:Lambdas in Koblenz]]
+
+== Summary ==
+
+[[Generic function]]s à la [[datatype-generic programming]] are functions that are parameterized in the shape of data types. This is to be compared with [[polymorphic function]]s that are parameterized in types. We introduce a simple form of [[datatype-generic programming]] with the help of [[generalized fold]]s ([[catamorphism]]s) which in turn are based on the notion of [[fold algebra]]s. In passing, we also sketch the "[[Scrap your boilerplate]]" ([[SYB]]) style of generic programming.
+
+== Concepts ==
+
+* [[Generic function]]
+* [[Datatype-generic programming]]
+* [[Generic programming]]
+* [[Fold algebra]]
+* [[Generalized fold]]
+* [[Catamorphism]]
+* [[Large banana]]
+* [[Scrap your boilerplate]]
+
+== Languages ==
+
+* [[Language:Haskell]]
+
+== Contributions ==
+
+* [[Contribution:tabaluga]]
+* [[Contribution:haskellSyb]]
+
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

@@ -1,0 +1,13 @@
+== Headline ==
+
+A special form of [[Language:ATL]] transformations
+
+== Details ==
+
+[[Language:ATL]] can create a Plugin from an ATL [[transformation]]. This plugin can then easily be reused by other implementations. The plugin is created by creating a new ATL plugin project in Eclipse. The wizard let's you then choose an existing ATL transformation. The rest is done automatically.
+For using the plugin in another project, it needs to be added to the dependencies of this project.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:ATL]]
+* [[identifies::http://wiki.eclipse.org/ATL/User_Guide_-_The_ATL_Tools#ATL_Plugins]]
+* [[instanceOf::Namespace:Concept]]

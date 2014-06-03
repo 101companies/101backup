@@ -1,0 +1,30 @@
+== Headline ==
+
+A basic [[Technology:LogicBlox]]-based implementation
+
+== Motivation ==
+
+This implementation is a good starting point for demonstrating [[Technology:LogicBlox]]. The most basic structural and behavioral features are implemented. Other [[Technology:LogicBlox]]-based implementations may start from here. There is an even simpler implementation,  [[Contribution:trivialLb]], from which the present implementation is derived as a straightforward extension. That is, some simplifying restrictions on data modeling are lifted: absence of managers and limitation to a simple company. 
+
+== Architecture ==
+
+This implementation inherits its architecture from [[Contribution:trivialLb]].
+
+== Usage ==
+
+Tested with [[Technology:LogicBlox]] 3.7.
+
+Run "make" for a self-testing illustration.
+
+== Metadata ==
+
+* [[uses::Language:DatalogLB]]
+* [[uses::Technology:LogicBlox]]
+* [[uses::Technology:make]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[developedBy::Contributor:Thiago Tonelli Bartolomei]]
+* [[instanceOf::Theme:Datalog basics]]
+* [[instanceOf::Namespace:Contribution]]

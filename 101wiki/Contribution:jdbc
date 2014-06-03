@@ -1,0 +1,30 @@
+== Headline ==
+
+Database programming with [[Technology:JDBC|JDBC]]
+
+== Characteristics ==
+
+We use JDBC/SQL for data processing. That is, we use embedded SQL in Java.
+
+== Usage ==
+
+* You need a suitable JDBC Driver for MySQL
+** An appropriate driver is available here: http://dev.mysql.com/downloads/connector/j/
+** Some version of that driver is readily included into the project.
+* Set up a company database.
+** Follow the steps described here [[Contribution:mySqlMany]] to set up the company database. That is, stop after populating the tables. 
+* There are JUnit tests available as the package ''org.softlang.tests''.
+** Run class ''Query'' first to exercise query features.
+** Run class ''Transform'' next to modify the database state.
+** ''Query'' does not succeed anymore once ''Transform'' was executed.
+
+== Metadata ==
+
+* [[uses::Language:SQL]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JDBC]]
+* [[uses::Technology:MySQL]]
+* [[uses::Technology:Eclipse]]
+* [[developedBy::Contributor:Thomas Schmorleiz]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

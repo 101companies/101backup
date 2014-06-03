@@ -1,0 +1,36 @@
+== Headline ==
+
+A lecture on the [[generative programming]] (mainly [[parser generation]]) as part of the [[Course:Programming in Koblenz]]
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/pgen"/>
+== Concepts ==
+
+* [[Grammar]]
+* [[Syntax]]
+* [[Concrete syntax]]
+* [[Abstract syntax]]
+* [[Abstract syntax tree]] ([[AST]])
+* [[Lexer]]
+* [[Acceptor]]
+* [[Parser]]
+* [[Parser generator]]
+* [[Parser generation]]
+* [[Program generator]]
+* [[Program generation]]
+* [[Generative programming]]
+* [[Design pattern]]
+* [[Bootstrapping]]
+== Contributions ==
+
+* [[Contribution:antlrLexer]]
+* [[Contribution:antlrAcceptor]]
+* [[Contribution:antlrParser]]
+* [[Contribution:antlrObjects]]
+* [[Contribution:antlrTrees]]
+* [[Contribution:yapg]]
+== Metadata ==
+
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

@@ -1,0 +1,12 @@
+== Headline ==
+
+[[Language:Java]] theme of implementations that travel technological spaces
+
+== Description ==
+
+Subject to appropriate bridges, i.e., subject to [[Mapping|mapping]] facilities, any programming language can be made to access and process [[model]]s, [[Language:XML]], relational database [[table]]s, and [[text]] (concrete syntax) in a type-based (say, schema-aware or metamodel-aware or grammar-aware) manner. The present theme collects corresponding implementations for the programming language [[Language:Java]].
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

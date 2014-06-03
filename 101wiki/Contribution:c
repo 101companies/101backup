@@ -1,0 +1,153 @@
+== Headline ==
+
+Implementation in the widely used, low-level [[Language:C]].
+== Characteristics ==
+
+This contribution demonstrates the usage of the low-level, mostly [[structured_programming]] [[Language:C]] to solve the inherently [[OO_programming]] problems of 101companies. Companies, departments and employees are modelled as behaviorless structs with functions operating on these structs. The inheritance found in subunits is modelled using manually tagged unions.
+
+The container type for subunits also makes use of some [[functional_programming]] features of [[Language:C]] to make traversal of containers more algorithmic and for application of the [[Visitor_pattern]] in various places.
+
+[[Feature:Parsing]] and [[Feature:Unparsing]] makes use of embedded programming [[Language:Lua]], as embedding and interacting with it is trivial. The Lua representation can easily be converted to and from other representations like [[Language:JSON]] or [[Language:XML]] using existing pure-Lua libraries.
+
+Due to the nature of [[Language:C]], many operations in this contribution are type-unsafe and require explicit allocation and deallocation of dynamic memory. Encapsulation of such operations into functions helps to prevent type errors, but such discipline is not enforced by the language. There is also significantly less syntactic sugar compared to other languages, but it also gives a view on how those features work under the hood of those other languages.
+== Illustration ==
+=== Data Model ===
+The "object" model for companies, departments and employees is separated into structs holding plain old data and functions that operate on them.
+<syntaxhighlight language="c">
+struct c101_Company {
+    char*              name;
+    struct c101_Vector subunits;
+};
+
+struct c101_Company* c101_newCompany(const char* name,
+                                     size_t      subunitCount,
+                                                 ...);
+void                c101_freeCompany(struct c101_Company* company);
+
+// More functions follow.
+// Analogous for departments and employees.
+</syntaxhighlight>
+
+Departments and employees are grouped together as subunits into a manually tagged union to allow for some primitive polymorphism. The type of the subunit needs to be checked manually if it needs to be known.
+<syntaxhighlight language="c">
+struct c101_Subunit {
+    bool isDepartment; // <- Union Tag
+    union {
+        struct c101_Employee   employee;
+        struct c101_Department department;
+    };
+};
+</syntaxhighlight>
+
+=== Graph Traversal ===
+
+Many of the implemented features rely on traversal of the "object" graph. This is implemented using the [[Visitor_pattern]], which is relatively common in C due to its ability to pass callback functions. The currently visited data type is passed via an enum and an untyped pointer (void*), which needs to be checked and casted appropriately. Arbitrary user data can also by passed via such an untyped pointer, which emulates closures.
+
+Here is the code for [[Feature:Total]], which passes the result parameter as user data and adds an employee's salary to it whenever it encounters one.
+<syntaxhighlight language="c">
+static int
+totalVisitor(enum c101_VisitorType type, void* unit, void* out)
+{
+    if (type == C101_EMPLOYEE)
+        *(double*) out += ((struct c101_Employee*) unit)->salary;
+    return 0;
+}
+
+double
+c101_total(struct c101_Company* c)
+{
+    double out = 0.0;
+    c101_visitCompany(c, &out, totalVisitor);
+    return out;
+}
+</syntaxhighlight>
+
+=== Parsing and Unparsing ===
+
+This contribution uses [[Language:Lua]] to interface with plaintext representations of the data model. Embedding it into [[Language:C]] is trivial, since it is a library written in standard C89. Lua's table representation can also easily be converted into a different representation, like [[Language:JSON]].
+
+For [[Feature:Unparsing]], the object graph is traversed using visitors and appropriate calls to Lua functions are made to build a serializable table in it. Take for example unparsing a department:
+<syntaxhighlight language="c">
+// Fragment from unparsingVisitor in c101_Unparsing.c
+    case C101_DEPARTMENT:
+        lua_getglobal (lua, "unparseDepartment");
+        luaSwap       (lua);
+        lua_pushstring(lua, ((struct c101_Department*) unit)->name);
+        if (lua_pcall(lua, 2, 2, 0))
+            return unparseError(lua);
+        break;
+</syntaxhighlight>
+
+Which calls the corresponding function in Lua:
+<syntaxhighlight language="lua">
+-- Fragment from unparsing.lua
+function unparseDepartment(current, n)
+    department = {
+        name        = n,
+        employees   = {},
+        departments = {},
+    }
+    table.insert(current["departments"], department)
+    return current, department
+end
+</syntaxhighlight>
+
+For [[Feature:Parsing]], the opposite is done: the Lua table is traversed and appropriate C functions are called. Take for example parsing an employee:
+<syntaxhighlight language="lua">
+-- Fragment from parsing.lua
+function parseEmployee(data, employee)
+    ensureType(employee,            "table",  "Employee"        )
+    ensureType(employee["name"   ], "string", "Employee name"   )
+    ensureType(employee["address"], "string", "Employee address")
+    ensureType(employee["salary" ], "number", "Employee salary" )
+    c101_parseEmployee(data, pop(employee, "name"),
+                             pop(employee, "address"),
+                             pop(employee, "salary"))
+    warnExcessive(employee, "Employee")
+end
+</syntaxhighlight>
+
+Which ensures the integrity of the data and calls the appropriate function in C:
+<syntaxhighlight language="c">
+// Fragment from c101_Parsing.c
+static int
+c101_parseEmployee(lua_State* lua)
+{
+    struct ParseData* data    = lua_touserdata (lua, 1);
+    const char      * name    = lua_tostring   (lua, 2);
+    const char      * address = lua_tostring   (lua, 3);
+    double            salary  = lua_tonumber   (lua, 4);
+
+    c101_addSubunit(c101_back(&data->stack), c101_newEmployee(name, address, salary));
+
+    return 0;
+}
+</syntaxhighlight>
+== Relationships ==
+
+[[Contribution:MetaC]] is a fork of this implementation that uses [[Language:C]]'s macro preprocessor to achieve better type safety and less memory allocation overhead in its container type.
+
+[[Contribution:cpp]] uses [[Language:CPlusPlus]] and should clear up any confusion about the difference between the language and the old "C/C++ Programmer" fallacy.
+== Building and Testing ==
+
+This contribution uses [[Technology:CMake]] for handling its build process and its [[Technology:CTest]] for testing. Please see the [https://github.com/hartenfels/Companies101C/blob/master/readme.md readme.md on GitHub] for details.
+== Metadata ==
+<!-- Next link is generated automatically-->
+* [[instanceOf::Namespace:Contribution]]
+<!-- Next link is generated automatically-->
+* [[developedBy::Contributor:hartenfels]]
+* [[uses::Language:C]]
+* [[uses::Language:Lua]]
+* [[uses::Language:JSON]]
+* [[uses::Technology:CMake]]
+* [[uses::Technology:CTest]]
+* [[uses::Technology:DataDumper]]
+* [[uses::Technology:dkjson]]
+* [[uses::Technology:Lua51]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Median]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Hierarchical_Company]]

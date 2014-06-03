@@ -1,0 +1,9 @@
+== Headline ==
+
+A [[View]] which displays a map
+
+== Metadata ==
+* [[instanceOf::Android Location]]
+* [[identifies::https://developers.google.com/maps/documentation/android/reference/com/google/android/maps/MapView]]
+* [[identifies::https://developers.google.com/maps/documentation/android/hello-mapview]]
+* [[instanceOf::Namespace:Concept]]

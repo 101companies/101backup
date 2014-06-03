@@ -1,0 +1,16 @@
+== Headline ==
+
+a protocol for network/internet-based data connections
+
+== Details ==
+
+TCP stands for Transmission Control Protocol.
+
+See [[UDP]] for another such protocol.
+
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[identifies::http://en.wikipedia.org/wiki/Transmission_Control_Protocol]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,91 @@
+== Headline ==
+
+an XPath-based fragment locator for XML
+
+== Description ==
+
+XmlFragmentLocator is a part of the [[101companies:Explorer]]; it is a XPath-based, XML-specific tool for fragment location. That is, the technology supports the XPath-based location of a fragment in an XML document. The input/output behavior of XmlFragmentLocator is the following:
+
+* Input:
+** an XML document
+** an XPath-based fragment description
+* Output:
+** the line range of the located XML fragment
+
+XmlFragmentLocator leverages XPath for the description of fragments and it uses JSON for representing the derived line ranges. Consider, for example, the following XML document (which is, in fact, an XML schema):
+
+<pre>
+<xs:schema xmlns="http://www.softlang.org/company.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.softlang.org/company.xsd">
+
+ <xs:element name="company">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="name"/>
+    <xs:element maxOccurs="unbounded" minOccurs="0" ref="department"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name="department">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element ref="name"/>
+    <xs:element name="manager" type="employee"/>
+    <xs:element maxOccurs="unbounded" minOccurs="0" ref="department"/>
+    <xs:element maxOccurs="unbounded" minOccurs="0" name="employee" type="employee"/>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>   
+
+ <xs:complexType name="employee">
+  <xs:sequence>
+   <xs:element ref="name"/>
+   <xs:element ref="address"/>
+   <xs:element ref="salary"/>
+  </xs:sequence>
+ </xs:complexType>
+
+ <xs:element name="name" type="xs:string"/>
+ <xs:element name="address" type="xs:string"/>
+ <xs:element name="salary" type="xs:double"/>
+</xs:schema>
+</pre>
+
+The following XPath expression locates the element declaration with name "department":
+
+<pre>
+/xs:schema/xs:element[@name='department']
+</pre>
+
+The line range for the located fragment is this:
+
+<pre>
+{"from":13,"to":22}
+</pre>
+
+XPath expressions for fragment descriptions are supposed to make proper use of namespace-qualified names; see "xs:schema" and "xs:element". To simplify the use of XML namespaces, the top-level prefix declarations of the input document are extracted and made available during the evaluation of the XPath expression. In this manner, in practice, no namespaces need to be specified, but instead the prefixes of the underlying document are to be used; see "xs" in the example.
+
+The following situations may be encountered in fragment location:
+
+* The XPath expression evaluates to a single XML element node. In this case, the "from" line should be the line of the start tag of the identified element; the "to" line should be the line of the end tag of the identified element. 
+* The XPath expression evaluates to a non-empty sequence of XML elements. For simplicity, it is assumed here that the sequence is readily in document order. (Without this assumption, the following convention is less useful.) In this case, the "from" line should be the line of the start tag of the first element in the sequence; the "to" line should be the line of the end tag of the last element in the sequence.
+* In all other cases, fragment location is defined to be unsuccessful. 
+
+== See Also ==
+
+* The [[101companies:Explorer]]
+
+== Contributors ==
+
+* {{101contributor|Ralf Lämmel|author}}
+* {{101contributor|Martin Leinberger|developer}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Fragment locator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/XmlFragmentLocator]]
+* [[linksTo::http://blog.davber.com/2006/09/17/xpath-with-namespaces-in-java/]]
+* [[instanceOf::Namespace:Technology]]

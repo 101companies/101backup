@@ -1,0 +1,25 @@
+== Headline ==
+
+A potpourri of [[Language:Haskell]]-based contributions
+== Description ==
+
+This theme demonstrates [[Language:Haskell]]'s approach to several programming problems: [[concurrent programming]], [[database programming]], [[generic programming]], [[GUI programming]], [[logging]], [[parsing]], [[unparsing]], [[XML programming]], [[web programming]]. Some of the contributions nicely demonstrate some strengths and specifics of Haskell. This is true, arguably, for the contributions that illustrate [[XML programming]] and [[generic programming]]. Some other contributions are mainly included to provide coverage for important programming domains or problems without necessarily arguing that the Haskell-based approach is particularly interesting or attractive. This is true, for example, for the contribution that demonstrates GUI programming. Relatively mature and established technologies are demonstrated as opposed to research experiments.
+
+The theme collects the following Haskell-based contributions:
+* [[Contribution:haskellParsec|haskellParsec]]: Parsing with the [[Technology:Parsec|Parsec]] library
+* [[Contribution:hughesPJ|hughesPJ]]: Unparsing with Text.PrettyPrint.HughesPJ
+* [[Contribution:wxHaskell|wxHaskell]]: GUI programming with [[Technology:wxHaskell|wxHaskell]]
+* [[Contribution:happstack|happstack]]: Web programming with [[Technology:Happstack|Happstack]]
+* [[Contribution:haskellDB|haskellDB]]: Database programming with [[Technology:HaskellDB|HaskellDB]]
+* [[Contribution:haskellHxt|hxt]]: XML programming with [[Technology:HXT|HXT]]
+* [[Contribution:haskellWriter|writerMonad]]: Logging with the [[writer monad]]
+* [[Contribution:mvar|mvar]]: Concurrent programming with [[MVar]]s
+* [[Contribution:haskellSyb|haskellSyb]]: Generic programming in [[SYB]] style
+== Relationships ==
+
+There are further themes with Haskell-based contributions:
+* [[Theme:Haskell introduction]]: basics of Haskell.
+* [[Theme:Haskell data]]: mostly simply variations on data modeling in Haskell.
+* [[Theme:Haskell genericity]]: different styles of generic functional programming in Haskell.
+== Metadata ==
+* [[instanceOf::Namespace:Theme]]

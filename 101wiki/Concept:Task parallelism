@@ -1,0 +1,12 @@
+== Headline ==
+
+The capability of task parallelism
+
+== Details ==
+
+See the related capability of [[data parallelism]].
+
+== Metadata ==
+* [[instanceOf::Parallelism]]
+* [[identifies::http://en.wikipedia.org/wiki/Task_parallelism]]
+* [[instanceOf::Namespace:Concept]]

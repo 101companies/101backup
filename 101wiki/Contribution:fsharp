@@ -1,0 +1,66 @@
+== Headline ==
+
+A simple implementation in [[Language:FSharp|F#]] for the [[Technology:.NET]] Framework
+
+== Characteristics ==
+
+Multiparadigm nature of F# is shown;
+both OO and FP features of the languages are illustrated by adjusting a basic [[Contribution:csharp | C#]] implementation.
+
+== Illustration ==
+
+
+<syntaxhighlight lang="fsharp">
+    type Company() = 
+     class
+       let mutable name = ""
+       let mutable departments:List<Department> = new List<Department>() 
+  
+       member this.Name with get() = name and set v = name <- v
+       member this.Departments with get() = departments and set v = departments <- v
+</syntaxhighlight>
+
+
+Here we define a member which is essentially a wrapper around pure functional style of calculating total using accumulator. (''fold'' function from F# library is used)
+
+<syntaxhighlight lang="fsharp">
+ member this.TotalSalaries =
+        let x = List.fold (fun (acc) (elem:Department) -> acc + elem.Total) 0M (List.ofSeq departments)
+        x
+
+</syntaxhighlight>
+
+== Architecture ==
+
+== Usage ==
+
+To make NUnit GUI working with .NET 4.0
+Under <configuration> add:
+<nowiki>
+
+<startup>
+  <supportedRuntime version="v4.0.30319" />
+</startup>
+</nowiki>
+
+and under <runtime> add:
+<loadFromRemoteSources enabled="true" />
+
+The implementation has been tested with:
+* F#: Programming language used for all code (Version 2.0)
+* F# compiler (Version 2.0)
+* .NET Framework used to execute compiled code (Version 4.0)
+* NUnit testing framework used for testing (Version 2.5)
+* Visual Studio: optional IDE (Version 2010)
+
+== Metadata ==
+* [[uses::Language:FSharp]] (F#): Programming language used for all code (Version 2.0)
+* [[uses::Technology:fcs.exe]]: F# compiler (Version 2.0)
+* [[uses::Technology:.NET]]: framework used to execute compiled code (Version 4.0)
+* [[uses::Technology:NUnit]]: unit testing framework used for testing (Version 2.5)
+* [[uses::Technology:Visual Studio]]: optional IDE (Version 2010)
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

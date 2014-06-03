@@ -1,0 +1,22 @@
+== Headline ==
+
+An advanced BSc course on programming techniques and technologies in Koblenz
+== Events ==
+
+* Lecture [[Script:The Expression Problem|The Expression Problem]]
+* Lecture [[Script:Selected design patterns|Selected design patterns]]
+* Lecture [[Script:XML data binding|XML data binding]]
+* Lecture [[Script:Language processing patterns|Language processing patterns]]
+* Lecture [[Script:Generative programming|Generative programming]]
+* Lecture [[Script:Metaprograms and metadata|Metaprograms and metadata]]
+* Lecture [[Script:Functional OO programming|Functional OO programming]]
+* Lecture [[Multithreading|Multithreading]]
+* Lecture [[Script:Aspect-oriented programming|Aspect-oriented programming]]
+* Lecture [[Script:Database programming|Database programming]]
+* Lecture [[Script:Remote method invocation|Remote method invocation]]
+* Lecture [[Script:Data parallelism|Data parallelism]]
+== Metadata ==
+
+
+* [[identifies::http://softlang.wikidot.com/course:ptt]]
+* [[instanceOf::Namespace:Course]]

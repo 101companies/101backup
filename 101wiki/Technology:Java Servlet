@@ -1,0 +1,12 @@
+== Headline ==
+
+a kind of server side Java component
+
+== Description ==
+
+See also the corresponding [[Technology:Java Servlet API]].
+
+== Metadata ==
+* [[instanceOf::Server technology]]
+* [[identifies::http://en.wikipedia.org/wiki/Java_Servlet]]
+* [[instanceOf::Namespace:Technology]]

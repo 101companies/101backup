@@ -1,0 +1,43 @@
+== Headline ==
+
+a fragment locator for C#
+
+== Description ==
+
+CSharpFragmentLocator  is a part of the [[101companies:Explorer]]; it is a C#-specific tool for fragment location. That is, the technology supports the syntax-aware location of a fragment in C# compilation unit. The input/output behavior of CSharpFragmentLocator is the following:
+
+* Input:
+** a C# source code file
+** a fragment description
+* Output:
+** the line range of the located fragment
+
+For fragment description and output format, please refer to [[Technology:JFragmentLocator]].
+
+The C# specific properties can be be selected by using the property name as the method name. Consider this property:
+
+<pre>
+public Guid Id { get; set; }
+</pre>
+
+It can be selected by using the name "Id" as the method:
+<pre>
+{
+  "method" : "Id"
+}
+</pre>
+
+== See also ==
+
+* The [[101companies:Explorer]]
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+* {{101contributor|Martin Leinberger|developer}}
+
+== Metadata ==
+* [[instanceOf::Fragment locator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/CSharpFragmentLocator]]
+* [[instanceOf::Namespace:Technology]]

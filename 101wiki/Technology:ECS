@@ -1,0 +1,13 @@
+== Headline ==
+
+(a retired Jakarta project for) a markup construction for Java
+
+== Description ==
+
+ECS stands for Element Construction Set.
+
+== Metadata ==
+* [[instanceOf::API]]
+* [[instanceOf::Markup technology]]
+* [[identifies::http://jakarta.apache.org/ecs/]]
+* [[instanceOf::Namespace:Technology]]

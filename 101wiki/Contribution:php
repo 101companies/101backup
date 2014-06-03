@@ -1,0 +1,166 @@
+== Intent ==
+
+[[Web programming]] in [[Language:PHP]]
+
+== Motivation ==
+
+Currently the most popular and complete [[web programming]] [[Software language|language]], which is focused on the creation of web resources - is [[Language:PHP]]. Its popularity is due to a number of advantages that it gives the developer. Code written in this [[Software language|language]], does not look bulky and basic scenarios are created in a few lines. 
+
+[[Language:PHP]] is embedded in ordinary [[Language:HTML]]-code page, which provides a high level of flexibility in its use, and security is provided by [[Language:PHP]] -stealth insertions in the browser (displayed normal [[Language:HTML]]). [[Software language|Language]]allows you to create dynamic pages that open up great opportunities for web design and programming.
+
+Due to the simplicity of the code, script execution takes place at a fairly high speed, since the nature of [[Software language|language]] can be described as an interpreter translating (the script is processing and displaying its result in a visual form). Speed ​​of processing scenarios is ideal for applications of any complexity.
+
+In this [[Contribution:PHP]] implementation, will be described basic functions and methods of [[Language:PHP]] language. 
+
+== Illustration ==
+
+=== Architecture ===
+
+All requests, which are executing in current [[Language:PHP]] implementation are going through index.php file. 
+
+Lets have a look on it:
+
+1) On first step we connection configuration file and file with functions
+
+<syntaxhighlight lang="php">
+include once('lib/config.php');
+include once('lib/functions.php');
+</syntaxhighlight>
+
+2) Next in file you can see part, which will catch all actions. This mean, that all POST queries (and queries that are not required display something to user) will be executed, and page will be redirected back.  
+<syntaxhighlight lang="php">
+
+if (get input('type') == 'action'){
+	switch(get input('action')){
+		case 'company':
+			include('actions/company.php');
+			back();
+			break;
+		case 'department':
+		…………
+
+</syntaxhighlight>
+
+3) Includes part. 
+
+Includes header and in the end of file footer. This HTML code, that will be the same for all pages (it includes [[Language:CSS]] and [[Language:JavaScript]] files).
+
+<syntaxhighlight lang="php">
+include once('template/header.php');
+……
+include once('template/footer.php');
+</syntaxhighlight>
+
+In the middle located code, that will catch “section” variable. And display need content to user
+
+<syntaxhighlight lang="php">
+switch(get input('section')){
+	case 'employee':
+		$eid = get input('eid');
+		$employeeInfo = getEmployees($eid, true);
+		include('template/employee.php');
+		break;
+		……..
+</syntaxhighlight>
+
+=== PHP and Mysql connection ===
+
+For more details about Mysql, please read [[Contribution:mySqlMany]]
+
+[[Language:PHP]] has build-in functions for working with database. Lets have a look more detailed on them.
+
+<syntaxhighlight lang="php">
+// /lib/functions.php
+$db = mysql connect(DB HOST, DB USER, DB PASSWORD);
+if (!$db) {
+    	die('Db connection error: ' . mysql error());
+}
+$dbSelected = mysql select db(DB NAME, $db);
+return $dbSelected;
+</syntaxhighlight>
+
+On this example:
+
+<syntaxhighlight lang="php">
+$db = mysql connect(DB HOST, DB USER, DB PASSWORD);
+</syntaxhighlight>
+
+is function for connecting with [[Technology:MySQL]] database, taking as parameters [[Technology:MySQL]]host, Username and password. Look http://www.php.net/manual/en/function.mysql-connect.php for more information
+
+After we initialized connection, we will use it as default in all operations with database in this implementation. 
+
+List of [[Technology:MySQL]] functions that were used in [[Language:PHP]] implementation.
+
+<syntaxhighlight lang="php">
+mysql select db(); select used Database name;
+mysql query(); // execution of Mysql query;
+mysql fetch assoc(); // return query result as associative array;
+
+// get company information
+function getCompany(){
+	//Execute query
+	$result = mysql query('SELECT * FROM company');
+	
+	//get DB table as Array
+	$data = array();
+	while($row = mysql fetch assoc($result)){
+		$data[] = $row; 
+	}
+	
+	return $data;
+}
+
+</syntaxhighlight>
+
+=== Feature implementation ===
+
+Cut salary for all employees or for all department, making using [[Technology:MySQL]] queries: 
+
+<syntaxhighlight lang="php">
+function cutCompanySalary($did = 0){
+	
+// Prepare query for cutting the salary
+	$query = 'UPDATE employee SET salary = salary/2';
+	$query .= " WHERE cid = 1"; // set Id of company – in our case we have just one company
+	
+	if ($did != 0){ // if we have department ID to cut, then add department id selector
+		$query .= ' AND did='.$did;
+	}
+	
+//Execute mysql query
+	if (mysql query($query)){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+</syntaxhighlight>
+
+== Usage ==
+
+You need a [[Web Browser]] to open the HTML files.
+
+This implementation required to have [[Technology:MySQL]]-database.
+Can be used ''company.sql'' and ''sampleCompany.sql'' of [[Contribution:mySqlMany]] for this project.
+
+For run this implementation, you should have [[Technology:Apache HTTP Server]] installed, with supporting of [[Technology:PHP]] and [[Technology:MySQL]] server installed. 
+
+* download and install [[Contribution:mySqlMany]]
+* copy all files from [[Contribution:php]] to your server folder
+* edit /lib/config.php file and set your Database credentials.
+
+== Metadata ==
+* [[uses::Language:PHP]]
+* [[uses::Language:HTML]]
+* [[uses::Language:CSS]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Distribution]]
+* [[implements::Feature:Browsing]]
+* [[implements::Feature:Persistence]]
+* [[implements::Feature:Editing]]
+* [[implements::Feature:Web UI]]
+* [[developedBy::Contributor:Lyzun Oleksandr]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,9 @@
+== Headline ==
+
+A form of [[data parallelism]] dealing with highly irregular structures
+
+== Metadata ==
+* [[instanceOf::Parallelism]]
+* [[linksTo::http://www.cs.cmu.edu/~scandal/cacm/node4.html]]
+* [[linksTo::http://www.haskell.org/haskellwiki/GHC/Data_Parallel_Haskell]]
+* [[instanceOf::Namespace:Concept]]

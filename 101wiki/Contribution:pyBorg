@@ -1,0 +1,74 @@
+==Headline==
+The Borg Pattern in [[Language:Python]]
+
+
+==Motivation==
+
+This implementation illustrates the Borg Pattern in Python, it is similar to the
+singleton pattern but the singleton pattern ensures instance equality which 
+the Borg pattern does not, instead it ensures state equality. Using this pattern,
+one has several instances but they all have the exact same state. An advantage of
+this pattern is the possibility to write normal python classes and deriving from
+the Borg class is sufficient to make it a "Borg".
+
+
+==Illustration==
+
+The data model is mostly adapted from [[Contribution:py3k]]. 
+
+<syntaxhighlight lang="python" source="program.py">
+
+class Borg(object):
+
+      state = {}
+    def   init  (self):
+        self.  dict   = Borg.  state
+        
+</syntaxhighlight>
+
+This class makes sure that all instances of a class derived from the Borg class
+have the exact same state by writing to the "  dict  " attribute which holds all
+attributes and methods of an object in Python. The Company class is very similar
+to the normal version.
+
+<syntaxhighlight lang="python" source="program.py">
+
+class Company(Borg):
+    
+    def   init  (self, name, subunits):
+        Borg.  init  (self)
+        self.name = name
+        self.subunits = subunits
+
+</syntaxhighlight>
+ 
+By deriving from the Borg class, you can do this:
+<syntaxhighlight lang="python" source="program.py">
+
+company = Company(
+    "Meganalysis", ["..."])
+    
+    first total = company.total()
+     
+    company2 = Company("Meganalysis",["..."])
+    
+    company2.cut()
+    assert company.total() * 2.0 == first total
+
+</syntaxhighlight>
+
+
+
+== Usage ==
+
+Just run <code>python program.py</code>
+
+
+== Metadata ==
+
+* [[uses::Language:Python]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Kevin Klein]]
+* [[instanceOf::Namespace:Contribution]]

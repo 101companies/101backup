@@ -1,0 +1,51 @@
+== Headline ==
+
+Lecture "Searching and sorting in Haskell" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+We show how to approach the basic [[algorithmic problem]]s of [[search problem|search]] and [[sorting problem|sorting]] in [[Language:Haskell]]. In this manner, we establish proper familiarity with basic functional programming on lists in Haskell, with the use of [[recursion]], [[local scope]], and [[polymorphism]]. We also encounter [[divide and conquer algorithm]]s in this way. Along the way, we discuss some bits of expressiveness of the Haskell [[type system]] including support for [[polymorphism]] with [[type constraint]]s, [[type checking]], and [[type inference]].
+
+The discussed encodings of search and sorting do not intend to be the most efficient ones (in Haskell); instead, the intention is to demonstrate basic algorithmic problem solving in Haskell and to provide evidence for Haskell's fitness for describing algorithms declaratively and concisely.
+== Material ==
+
+<media url=" https://www.youtube.com/watch?v=C5AWbFeJcTQ" />
+== Concepts ==
+
+=== Recap ===
+* [[Algorithm]]
+* [[Algorithmic problem]]
+* [[Search problem]]
+* [[Search algorithm]]
+* [[Linear search]]
+* [[Local scope]]
+
+=== Additions ===
+* [[Binary search]]
+* [[Sorting problem]]
+* [[Sorting algorithm]]
+* [[Insertion sort]]
+* [[Divide and conquer algorithm]]
+* [[Quicksort]]
+* [[Selection sort]]
+* [[Merge sort]]
+* [[Median]]
+* [[Type system]]
+* [[Type signature]]
+* [[Polymorphism]]
+* [[Type checking]]
+* [[Type inference]]
+
+== Languages ==
+
+* [[Language:Haskell]]
+== Features ==
+
+* [[Feature:Median]]
+== Contributions ==
+
+* [[Contribution:haskellBarchart]]
+== Metadata ==
+
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

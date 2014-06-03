@@ -1,0 +1,72 @@
+== Headline ==
+
+Exercise [[XML processing]] with [[Language:XPath]] embedded in [[Language:Java]]
+== Characteristics ==
+
+Companies are represented in [[Language:XML]] and processed by XPath and Java.  
+XPath is embedded into Java code which makes it possible to process
+query results in Java. Query results are bound to DOM-like node sets, and
+one can iterate over those and mutate them, thereby implementing
+impure transformations.
+== Illustration ==
+
+The data model is implemented as xml files (sampleCompany.xml).
+
+[[Feature:Open serialization]] is implemented using [[Technology:DOM]] Document objects:
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/loadDocument"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/saveDocument"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are implemented by using [[Technology:DOM]] trees and [[Language:XPath]] queries:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total/method/total"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Cut.java/class/Cut/method/cut"/>
+
+The [[Language:XPath]] processor is implemented by [[Technology:Xalan-Java]].
+
+Test cases are implemented for all [[Namespace:Feature]]s.
+== Relationships ==
+
+For DOM-like implementations of in-memory XML processing see [[Contribution:dom]], [[Contribution:jdom]] and [[Contribution:xom]].
+
+For a query-based implementation of in-memory XML processing see [[Contribution:xpathAPI]].
+
+For push-based XML processing see [[Contribution:sax]].
+
+For Object/XML mapping see [[Contribution:jaxbChoice]] (XSD with choice for different subunits), [[Contribution:jaxbComposition]] (XSD with object composition), [[Contribution:jaxbExtension]] (XSD with type extension) and [[Contribution:jaxbSubstitution]] (XSD with substitution groups).
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases for [[Namespace:Feature]]s.
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Mapping]]
+* [[implements::Feature:Open serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Java mapping]]
+* [[instanceOf::Theme:XML programming]]
+* [[uses::Language:Java]]
+* [[uses::Language:XML]]
+* [[uses::Language:XPath]]
+* [[uses::Technology:Xalan-Java]]
+* [[uses::Technology:JAXP]]
+* [[uses::Technology:SAX]]
+* [[uses::Technology:DOM]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

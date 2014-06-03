@@ -1,0 +1,11 @@
+== Headline ==
+
+An alternative [[feature]] in [[feature modeling]]
+== Illustration ==
+
+[[Feature:Serialization]] and [[Feature:Company]] of the [[@system]] are alternative features in that they provide fundamentally different (mutually exclusive) options for [[serialization]] and [[data modeling]].
+== Metadata ==
+
+* [[isA::Feature]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[instanceOf::Namespace:Concept]]

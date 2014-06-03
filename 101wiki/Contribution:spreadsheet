@@ -1,0 +1,47 @@
+== Intent ==
+Using a [[Technology:spreadsheet]] with a flat structure and formulas expressed in terms of a [[Language:spreadsheetLanguage]].
+
+== Motivation ==
+
+
+[[Technology:spreadsheet]] (e.g. [[Technology:MicrosoftExcel]], [[Technology:OpenOfficeCalc]] , or [[Technology:GoogleSpreadsheet]] are very commonly in data management.
+
+This implementations aims to show 
+* how the data model of the 101 companies can be flattened in one table
+* how a trivial formulas can be used to implement the [[Feature:Sum]] and [[Feature:Cut]] features.
+* how more sophisticated formulas can be used to deal with tree-based features including the [[Feature:depth]] and the [[Feature: ]] decreasing salary constraint over the hierarchy.
+* how such programs provide for free a rather user interface to edit the data, and to visualize them.  
+ 
+== Status ==
+* code is stable
+* preliminary documentation
+
+
+== Illustration ==
+
+== Architecture ==
+
+== Usage ==
+The file meganalysis.xls can be open either via Microsoft Excel, OpenOffice 
+The file is protected so by default you can only change the data.
+== Issues==
+* It is assumed that names of departement (the same for person) are key, that is distinct for each other.
+
+== Metadata ==
+* [[uses::Technology:MicrosoftExcel]]
+* [[uses::Technology:OpenOfficeCalc]]
+* [[uses::Technology:GoogleSpreadsheet]]
+* [[uses::Language:spreadsheetLanguage]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Unparsing]]
+* [[implements::Feature:Parsing]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Logging]]
+* [[implements::Feature:Persistence]]
+* [[implements::Feature:AttributeEditing]]
+* [[implements::Feature:UndoRedo]]
+* [[developedBy::Contributor:Jean Marie Favre]]
+* [[instanceOf::Namespace:Contribution]]

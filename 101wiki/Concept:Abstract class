@@ -1,0 +1,8 @@
+== Intent ==
+
+a [[class]] that cannot be directly instantiated but subclasses may be amenable to instantiation
+
+
+== Metadata ==
+* [[instanceOf::Class]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,22 @@
+We use two bots [http://www.mediawiki.org/wiki/Manual:Wikibot wikibot.classes] and [http://toolserver.org/~chris/highlight.php?d=chris/classes/ botclasses.php].
+
+== wikibot.classes ==
+
+We use this bot to:
+* push READMEs.
+* list all backlinks to a page.
+* traverse the category tree(?).
+
+== botclasses.php ==
+
+We use this bot to:
+* delete pages.
+
+== Passwords ==
+
+We share passwords for both bots outside of the svn checkout.
+
+<references/>
+
+== Metadata ==
+* [[instanceOf::Namespace:Concept]]

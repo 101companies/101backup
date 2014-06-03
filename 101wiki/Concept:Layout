@@ -1,0 +1,9 @@
+== Headline ==
+
+The architecture for the user interface in an Activity.
+
+
+== Metadata ==
+* [[instanceOf:: Android_UI]]
+* [[identifies::http://developer.android.com/guide/topics/ui/declaring-layout.html]]
+* [[instanceOf::Namespace:Concept]]

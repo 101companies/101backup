@@ -1,0 +1,12 @@
+== Headline ==
+
+A vocabulary to contain all abbreviations used on this wiki
+== Illustration ==
+
+See [[AST]].
+== Metamodel ==
+
+* '''Headline''': The linked expansion of the abbreviation.
+* '''Metadata''': A semantic property to declare that the abbreviation is an instance of [[vocabulary:Abbreviation]].
+== Metadata ==
+* [[instanceOf::Namespace:Vocabulary]]

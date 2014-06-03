@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[build tool]] conceptually derived from [[Technology:Maven]] and [[Technology:Ant]]
+
+== Metadata ==
+
+* [[identifies::http://www.gradle.org/]]
+* [[identifies::http://en.wikipedia.org/wiki/Gradle]]
+* [[instanceOf::Build tool]]
+* [[instanceOf::Namespace:Technology]]

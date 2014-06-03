@@ -1,0 +1,14 @@
+== Headline ==
+
+Modern database theme of implementations
+
+== Description ==
+
+Classically, relational (SQL-based) databases were used to manage large-volume data. These days, additional options have become commonplace. For instance, there are technologies serving the MapReduce programming model on distributed file systems; there are various NoSQL approaches, e.g., document-based databases or BigTable clones. '''This theme is under construction.''' 
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[identifies::http://en.wikipedia.org/wiki/NoSQL]]
+* [[linksTo::https://github.com/avaranovich/datatechcourse/wiki]]
+* [[instanceOf::Namespace:Theme]]

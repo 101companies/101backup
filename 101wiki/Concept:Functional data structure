@@ -1,0 +1,14 @@
+== Headline ==
+
+The specifically functional approach to the implementation of [[data structure]]s
+
+== Illustration ==
+
+See [[immutable list]]s as a simple example of a [[functional data structure]]. See [[Resource:Purely functional data structures]] for a seminal resource (in fact, a PhD thesis) on the subject. See [[Resource:Handbook of data structures and applications]] for a textbook with coverage of the subject.
+
+== Metadata ==
+
+* [[isA::Data structure]]
+* [[relatesTo::Imperative data structure]]
+* [[linksTo::http://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki]]
+* [[instanceOf::Namespace:Concept]]

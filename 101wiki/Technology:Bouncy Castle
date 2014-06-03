@@ -1,0 +1,16 @@
+== Headline ==
+
+A set of encryption technologies including an API
+
+== Details ==
+
+The full name of the technology is "Bouncy Castle Crypto APIs" according to the home page.
+
+Bouncy Castle is available for [[Language:Java]] and [[Language:CSharp|C#]].
+
+== Metadata ==
+
+* [[instanceOf::API]]
+* [[instanceOf::Encryption technology]]
+* [[identifies::http://www.bouncycastle.org/]]
+* [[instanceOf::Namespace:Technology]]

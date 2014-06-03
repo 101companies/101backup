@@ -1,0 +1,26 @@
+== Headline ==
+
+Language construct for [[metadata]] in [[Language:Java]] [[program]]s
+
+== Illustration ==
+
+In [[Language:Java]] (and many other programming languages likewise), [[metadata]] can be associated with program constructs by means of designated language support. Such metadata goes by the name of annotations in Java. For instance, when a method should be tagged to be a "test method" for [[Technology:JUnit]], then this would look as follows:
+
+<syntaxhighlight lang="java">
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class Tests {
+    @Test
+    public void test42() {
+		assertEquals(42.0, 42.0, 0.0);
+	}
+}
+</syntaxhighlight>
+
+Thus, "@Test" is the annotation which tells JUnit to execute the "test42" method along test execution. That is, "@Test" is metadata about the method "test42". JUnit is essentially a [[metaprogram]] that looks for such metadata.
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Java_annotation]]
+* [[instanceOf::Namespace:Concept]]

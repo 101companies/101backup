@@ -1,0 +1,48 @@
+== Headline ==
+
+Modeling queries in [[Language:Haskell]] with the help of [[monoid]]s
+== Characteristics ==
+
+Several functional requirements are implemented while making explicit use the [[monoid]]s. For instance, [[Feature:Total]] is implemented with the help of the [[sum monoid]]. Only those functional requirements are implemented that indeed may benefit from monoids as such. For instance, [[Feature:Cut]] is not implemented.
+== Illustration ==
+
+Consider the implementation of [[Feature:Total]]:
+
+<fragment url="src/Company/Total.hs/function/total"/>
+
+That is, lists of departments and employees are processed by the [[map function]] resulting in lists of intermediate results in the monoid's ''Sum'' type to be reduced accordingly by the monoid's ''mconcat'' operation, which, in turn, is uniformly defined by applying the [[fold function]] to the monoid's binary operation and its identity.
+== Relationships ==
+
+* The data model of [[Contribution:haskellComposition]] is reused.
+* See [[Contribution:haskellProfessional]] for an implementation of all relevant features without the use of monoids.
+== Architecture ==
+
+There are these modules:
+
+* <file url="src/Company/Data.hs"/>: a data model for [[Feature:Hierarchical_company]]
+* <file url="src/Company/Sample.hs"/>: a sample company
+* <file url="src/Company/Total.hs"/>: the implementation of [[Feature:Total]]
+* <file url="src/Company/Depth.hs"/>: the implementation of [[Feature:Depth]]
+* <file url="src/Company/Ranking.hs"/>: the implementation of [[Feature:Ranking]]
+* <file url="src/Data/Max.hs"/>: a monoid for optional maxima
+* <file url="src/Main.hs"/>: Tests
+
+The types of <file url="src/Company/Data.hs"/> implement [[Feature:Closed serialization]] through Haskell's read/show.
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:HUnit]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Closed serialization]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

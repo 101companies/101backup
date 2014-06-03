@@ -1,0 +1,47 @@
+== Intent ==
+
+A basic Windows Phone 7 implementation
+
+== Motivation ==
+
+We show
+
+* 1. Usage of MVC for developing UI.
+* 2. Declarative data binding using XAML (xml-based language), essentially different supported types (One-Way and Two-Way) of binding.
+* 3. Reactive programming model, where the model (in terms of MVC architecture) exposes observable properties.
+
+== Illustration ==
+
+* Properties support notification
+* XAML binding
+* Navigation between views
+
+== Architecture ==
+
+Every entity has a view represented as XAML file with the UI layout and data binding.
+
+The project also references the company's model created as a Silverlight class library. This is necessary because WP7 projects can't reference regular C# projects -- Silverlight runtime used in WP7 projects is a more limited version of the CLR.
+
+== Usage ==
+
+In order to run the application Windows Phone 7 tools for Visual Studio 2010 have to be installed. At the time of writing this README, [http://www.microsoft.com/download/en/details.aspx?id=23854 January 2011 Update] is the most recent version.
+
+[[Technology:Visual Studio]] 2010 should be used to open a project file.
+
+The project should be compiled as a regular VS project and deployed into an emulator by clicking the right mouse button on the project file in VS and selecting "deploy" menu item. WP7 emulator will be started automatically with an application deployed.
+
+This contribution has been tested with C# Version 4.0, Silverlight Version 3.5 and the WP7 SDK from January 2011.
+
+== Metadata ==
+* [[uses::Language:CSharp]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:Silverlight]]
+* [[uses::Technology:Visual Studio]]
+* [[uses::Technology:WP7 SDK]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Browsing]]
+* [[developedBy::Contributor::Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

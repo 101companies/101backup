@@ -1,0 +1,16 @@
+== Intent ==
+
+a transformation that preserves the level of abstraction
+
+== Discussion ==
+
+For instance, an optimization in a compiler preserves the level of abstraction.
+
+Also, a refactoring in an IDE preserves the level of abstraction.
+
+[[Vertical transformation]]s change the level of abstraction.
+
+
+== Metadata ==
+* [[instanceOf::Transformation]]
+* [[instanceOf::Namespace:Concept]]

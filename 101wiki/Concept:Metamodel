@@ -1,0 +1,9 @@
+== Headline ==
+
+a [[model]] describing rules and constraints from which to form a [[model]]
+
+== Metadata ==
+* [[instanceOf::MDE_term]]
+* [[instanceOf::Modelware_term]]
+* [[identifies::http://en.wikipedia.org/wiki/Metamodeling]]
+* [[instanceOf::Namespace:Concept]]

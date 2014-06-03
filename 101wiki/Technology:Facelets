@@ -1,0 +1,8 @@
+== Intent ==
+
+A [[Template processor|template processing system]] for generating [[Language:HTML]]/[[Language:JavaScript]]-pages in the [[Technology:JSF]] context
+
+== Metadata ==
+* [[instanceOf::Template engine]]
+* [[identifies::http://en.wikipedia.org/wiki/Facelets]]
+* [[instanceOf::Namespace:Technology]]

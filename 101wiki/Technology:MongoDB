@@ -1,0 +1,61 @@
+== Headline ==
+
+MongoDB is an open-source [[Technology:Document-oriented database]].
+
+== Description ==
+
+MongoDB is a database which holds documents in the JSON-like [[Language:BSON]] format.
+A single database may consist of several collections in which documents are organized.
+
+To query a database collection, [[Language:BSON]] objects are passed which are matched against collection entries. Certain object keys may also have a special use as operators. A typical query may look like this:
+
+<syntaxhighlight lang="javascript">
+> db.employees.find({"salary" : {"$lt" : 2000}});
+</syntaxhighlight>
+
+MongoDB also realizes [[Technology:Data Aggregation]] using an internal MapReduce implementation based on [[Language:JavaScript]]. This works on collection level by passing JavaScript functions for map and reduce steps to the database.
+
+A simple example of aggregating statistical data may be the counting of tags attributed to a blog post or product in a database collection. If the collection contains documents of the form
+
+<syntaxhighlight lang="javascript">
+{..., tags: ["foo", "bar", ...], ...}
+</syntaxhighlight>
+
+A map function that emits a count for each tag might look like this:
+
+<syntaxhighlight lang="javascript">
+> var mapfun = function() {
+  this.tags.forEach(function(tag) {
+    this.emit(tag, {"count" : 1});
+  });
+}
+</syntaxhighlight>
+
+And a corresponding reduce function that emits the summed up tags will look like this:
+
+<syntaxhighlight lang="javascript">
+> var reducefun = function(key, values) {
+  var total = 0;
+  values.forEach(function(value) {
+    total += value.count;
+  });
+  return total;
+} 
+</syntaxhighlight>
+
+To run everything a MapReduce query is formulated:
+
+<syntaxhighlight lang="javascript">
+> db.blogposts.mapReduce(mapfun, reducefun {"out" : "output"});
+</syntaxhighlight>
+
+This will return an object containing data about the processed request and save all results to the new collection "output".
+
+== Spaces ==
+
+* [[Nonrelationalware]]
+
+== Metadata ==
+* [[instanceOf::Document-oriented database]]
+* [[identifies::http://www.mongodb.org/]]
+* [[instanceOf::Namespace:Technology]]

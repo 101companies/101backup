@@ -1,0 +1,163 @@
+== Intent ==
+
+[[Web programming]] with [[Technology:IndexedDB|indexedDB]] based on the [[Language:HTML5]] ecosystem
+
+== Languages ==
+
+* [[Language:HTML5]]
+* [[Language:JavaScript]]
+
+== Technologies ==
+
+* [[Technology:IndexedDB]]
+* [[Web browser]]
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Cut]]
+* [[Feature:Total]]
+* [[Feature:Browsing]]
+* [[Feature:Web UI]]
+
+== Motivation ==
+
+The [[Technology:IndexedDB]] [[API]] is a good alternative solution for persisting data on the [[Client|client]] side of a [[Web application|web application]]. While the [[Technology:Web storage]] API uses ''key-value pairs'', the IndexedDB API uses indexed tables represented by a ''B''-tree structure for data storage. This is an applicable approach for larger amounts of data. Since the [[Synchronous communication|synchronous]] API is not fully implemented yet, we used the [[Asynchronous communication|asynchronous]] API.
+
+== Illustration ==
+
+The communication between the application and the [[Technology:IndexedDB|indexedDB]] is transaction based. But before using any transactions to gain access to the data we have to create the database and the data within. This section will start with the database initialization and data generation and will finish with illustrating a transaction based [[Feature:Cut]] request for the whole company. Please visit [[Contribution:html5local]] for the aspect of [[GUI]] generation.
+
+=== Database initialization ===
+
+The implementation contains an initial open function for the database creation. If the database initialization is successful, the function also generates tables and data.
+
+<syntaxhighlight lang="javascript" source="html5indexedDatabase/company.js">
+companies.indexedDB.open = function(f) {
+		
+	// opens a connection to the 101Companies database
+	// - if it does not exist, create new database
+	// - if it exists, use database
+	var request = indexedDB.open("101Companies");
+
+	// the database connection is successfully established
+	request.onsuccess = function(e) {
+
+		...
+
+	};
+
+	// the database connection is unavailable
+	request.onfailure = companies.indexedDB.onerror;
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="javascript" enclose="none">indexedDB.open("101Companies");</syntaxhighlight> function opens the connection to an existing database named ''101Companies'' or creates a new database with this name, if it does not exist. It returns a request status object, as well. This object allows an [[Asynchronous communication|asynchronous]] callback for the two possible results of the ''open'' function: success or failure. On failure, the <syntaxhighlight lang="javascript" enclose="none">companies.indexedDB.onerror</syntaxhighlight> function returns some user notification. On success, we are able to continue with the table generation:
+
+<syntaxhighlight lang="javascript" source="html5indexedDatabase/company.js">
+
+...
+
+// creates a data table for Companies
+var companiesStore = db.createObjectStore("Company", {keyPath: "id"});
+
+...
+
+</syntaxhighlight>
+
+This simple call creates a table named ''Company'' with the key ''id''. This table is able to store arrays with any fields, except that the field called ''id'' is used as the key for the b-tree of the table. It returns the table object for further use, as well.
+
+=== Data generation ===
+
+Data manipulations are handled with transactions. This is why we have to create transactions to generate the table contents. Each data manipulation consists of three steps:
+
+* create transaction
+* retrieve table object
+* put data into the table as an array
+
+<syntaxhighlight lang="javascript" source="html5indexedDatabase/company.js">
+companies.indexedDB.addData = function() {
+
+	// get database
+	var db = companies.indexedDB.db;
+	// create transaction
+	var transComp = db.transaction(["Company"], IDBTransaction.READ WRITE, 0);
+	// get company table
+	var compStore = transComp.objectStore("Company");
+
+	...
+
+	// create data object with id = 0
+	var compData = {
+		"company": "Meganalysis",
+		"id": 0
+	};
+  
+	...
+
+	// store data object
+	compStore.put(compData);
+
+	...
+	
+};
+</syntaxhighlight>
+
+We first retrieve the database using the field <syntaxhighlight lang="javascript" enclose="none">companies.indexedDB.db;</syntaxhighlight>. After that,  a new transaction to the ''Company'' table with <syntaxhighlight lang="javascript" enclose="none">READ WRITE</syntaxhighlight> access has to be created. The table is retrieved with <syntaxhighlight lang="javascript" enclose="none">transComp.objectStore("Company");</syntaxhighlight>. We now are able to read and write data from and into the table.
+
+=== Feature implementation ===
+
+The manipulation of data corresponds to its creation except that we need a cursor to get the required arrays out of the b-tree. In case of cutting the company we need all employees:
+
+<syntaxhighlight lang="javascript" source="html5indexedDatabase/companyModel.js">
+companies.indexedDB.cut = function() {
+	// get database
+	var db = companies.indexedDB.db;
+
+	// create transaction
+	var transEmp = db.transaction(["Employee"], IDBTransaction.READ WRITE, 0);
+	// get employee table
+	var empStore = transEmp.objectStore("Employee");
+	
+	// Key range: Get every single employee in the store
+	var keyRange = IDBKeyRange.lowerBound(0);
+	// create Cursor with key range
+	var cursorRequest = empStore.openCursor(keyRange);
+
+	// cursor runs through the result-set
+	cursorRequest.onsuccess = function(e) {
+		var result = e.target.result;
+		if(!!result == false)
+			return;
+		// cut the salary
+		result.value.salary = result.value.salary / 2;
+		// store the employee
+		empStore.put(result.value);
+		// next employee ...
+		result.continue();
+	};
+
+	// error handling
+	cursorRequest.onerror = companies.indexedDB.onerror;
+}
+</syntaxhighlight>
+
+The <syntaxhighlight lang="javascript" enclose="none">IDBKeyRange.lowerBound(0);</syntaxhighlight> means, that all keys are greater than 0. That is, in case of employees, every element within the employee b-tree. If the cursor is successfully created (<syntaxhighlight lang="javascript" enclose="none">var cursorRequest = empStore.openCursor(keyRange);</syntaxhighlight>), we are able to run through the results within the <syntaxhighlight lang="javascript" enclose="none">onsuccess</syntaxhighlight> function. The function <syntaxhighlight lang="javascript" enclose="none">e.target.result</syntaxhighlight> delivers the next element. If it exists, we cut the salary and restore it into the database. After that, we continue with the next element at <syntaxhighlight lang="javascript" enclose="none">result.continue();</syntaxhighlight>.
+
+== Architecture ==
+
+The architecture is equal to [[Contribution:html5local]], except that the model organizes the connection to the [[Technology:IndexedDB|indexed database]].
+
+== Usage ==
+
+* Check out all files from the repository.
+* Open the [this!!index.html] with your [[Web browser]]. This application currently does work only with [[Technology:Google Chrome|google chrome]].
+
+
+
+== Contributors ==
+
+* {{101contributor|Tobias Zimmer|developer}}
+== Metadata ==
+* [[instanceOf::Web application]]
+* [[instanceOf::Namespace:Contribution]]

@@ -1,0 +1,117 @@
+== Headline ==
+
+The namespace for [[software feature]]s of the [[@system]]
+
+== Description ==
+
+Each feature (i.e., each instance of the present namespace) must be described on the 101wiki by certain elements listed in detail in the metamodel section on this page. In particular, the feature needs to be described informally as a sort of requirement for the [[@system]] and it needs to be motivated informally in terms of software concepts, languages, and technologies that can be demonstrated with this feature within the [[@project]].
+
+There are the following features:
+
+* [[Feature:Company|Company]]: Companies, department, employees
+* [[Feature:Total|Total]]: Total the salaries of employees
+* [[Feature:Median|Median]]: Compute the median of the salaries
+* [[Feature:Cut|Cut]]: Cut the salaries of employees in half
+* [[Feature:Depth|Depth]]: Compute nesting depth of departments
+* [[Feature:COI|COI]]: Conflicts of interests for employees
+* [[Feature:Mentoring|Mentoring]]: Associate mentors and mentees
+* [[Feature:Ranking|Ranking]]: Enforce salary to correlate with ranks
+* [[Feature:Singleton|Singleton]]: Constrain for a single company
+* [[Feature:History|History]]: Maintain and analyze company history
+* [[Feature:Serialization|Serialization]]: De-/serialize companies
+* [[Feature:Persistence|Persistence]]: Persist companies
+* [[Feature:Mapping|Mapping]]: Map companies across technological space
+* [[Feature:Distribution|Distribution]]: Distribute companies
+* [[Feature:Parallelism|Parallelism]]: Total or cut in parallel
+* [[Feature:Logging|Logging]]: Log company changes
+* [[Feature:Browsing|Browsing]]: Browse companies interactively
+* [[Feature:Editing|Editing]]: Edit companies interactively
+* [[Feature:Restructuring|Restructuring]]: Restructure companies interactively
+* [[Feature:Web UI|Web UI]]: Operate on companies in a web browser
+* [[Feature:Parsing|Parsing]]: Parse companies in concrete syntax
+* [[Feature:Unparsing|Unparsing]]: Pretty print companies
+
+The set of all features can also be arranged in a feature model as defined by the following constraints:
+
+* [[Data requirement]]s
+** [[Feature:Company]] (XOR)
+*** [[Feature:Hierarchical company]]
+*** [[Feature:Flat company]]
+** [[Feature:COI]]?
+** [[Feature:Mentoring]]?
+** [[Feature:Ranking]]?
+** [[Feature:Singleton]]?
+** [[Feature:History]]?
+* [[Functional requirement]]s
+** [[Feature:Total]]?
+** [[Feature:Cut]]?
+** [[Feature:Median]]?
+** [[Feature:Logging]]?
+** [[Feature:Depth]]?
+** [[Feature:Parsing]]?
+** [[Feature:Unparsing]]?
+** [[Feature:History]]?
+* [[Non-functional requirement]]s
+** [[Feature:Serialization]]? (XOR)
+*** [[Feature:Open serialization]]
+*** [[Feature:Closed serialization]]
+** [[Feature:Persistence]]?
+** [[Feature:Mapping]]?
+** [[Feature:Distribution]]?
+** [[Feature:Parallelism]]? (OR)
+*** [[Feature:Data parallelism]]
+*** [[Feature:Task parallelism]]
+* [[UI requirement]]s
+** [[Feature:Browsing]]?
+** [[Feature:Editing]]?
+** [[Feature:Restructuring]]?
+** [[Feature:Web UI]]?
+* More constraints
+** [[Feature:Depth]] => [[Feature:Hierarchical company]]
+** [[Feature:Ranking]] => [[Feature:Hierarchical company]]
+** [[Feature:History]] => [[Feature:Total]]
+** [[Feature:History]] => [[Feature:Median]]
+** [[Feature:Web UI]] => [[Feature:Browsing]]
+** [[Feature:Editing]] => [[Feature:Browsing]]
+** [[Feature:Restructuring]] => [[Feature:Editing]]
+* Emerging and vanishing features
+** <strike>[[Feature:Reporting]]</strike>
+** <strike>[[Feature:Charting]]</strike>
+** <strike>[[Feature:Grouping]]</strike>
+** <strike>[[Feature:Gender]]</strike>
+** <strike>[[Feature:Bonus]]</strike>
+** <strike>[[Feature:Job description]] => [[Feature:Job role]]</strike>
+** <strike>[[Feature:Annual employee review]]</strike>
+
+'''This specification is under construction.''' 
+
+We use the following informal notation here:
+* ''f''? means that the feature ''f'' is optional.
+* ''f'' (OR) means that ''f'' is an OR feature; any operands may be chosen, but at least one, unless '''f''' is optional.
+* ''f'' (XOR) means that ''f'' is an XOR feature; either of its operands must be selected, but not several of them.
+* ''f1'' => ''f2'' means that if ''f1'' is selected then ''f2'' must be selected.
+* <strike>''f''</strike> (i.e., ''f'' with strikethrough) means that the feature is only emerging or already vanishing.
+
+The list of constraints should provide some initial intuition about the [[@system]]. Detailed arguments regarding the constraints are associated with the individual features. A more formal feature model is underway; see here: https://github.com/101companies/101docs/tree/master/featureModel
+
+== Illustration ==
+
+[[Feature:Total]] serves as a good example of a feature of the 101companies System. More specifically, it serves as a good example of a feature for a [[functional requirement]]. The feature also serves as a good example for optional sections for illustration, relationships, and guidelines.
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the feature.
+* '''Description''' (required): the description of the feature from the point of view of [[requirements analysis]] or [[software design]] or [[data modeling]], when applied to the [[@system]]. Thus, the description would say what the system should do, what qualities it should have, or how its [[software architecture]], [[software design]], or [[data model]] should be constrained. When applicable, the user of the system should be mentioned appropriately, e.g., the management of the company.
+* '''Motivation''' (required): the distinguished reasons for the feature to exist in the context of the [[@project]]. A feature may exercise interesting software concepts or it may likely to reveal interesting between software languages and software technologies. A feature cannot be motivated solely on the grounds of the human resources domain. 
+* '''Illustration''' (optional): an illustration of the feature (or a pointer therefore).
+* '''Guidelines''' (optional): a description of guidelines regarding the realization of the feature in specific contributions. For instance, naming conventions may be pointed out, expectations regarding the demonstration of the realization may be described, or restrictions may be imposed on the description of the feature.
+* '''Relationships''' (optional): explanations regarding related features.
+* '''Metadata''' (required):
+** The feature must be declared to be, indeed, an instance of [[Namespace:Feature]].
+** The feature must be classified in its role as a [[requirement]].
+** The feature may be linked to relevant online resources.
+** The feature may also be related to any relevant [[software concept]]s.
+
+== Metadata ==
+* [[instanceOf::Namespace:Namespace]]
+

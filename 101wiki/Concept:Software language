@@ -1,0 +1,14 @@
+== Headline ==
+
+A software language
+
+== Description ==
+
+The following quote, which was extracted on 1 March 2011 from the website http://planet-sl.org/sle2011/ of "The International Conference on Software Language Engineering (SLE 2011)", serves as the approximation of a description: ''"The term “software language” comprises all sorts of artificial languages used in software development including general-purpose programming languages, domain-specific languages, modeling and meta-modeling languages, data models, and ontologies. Used in its broadest sense, examples include modeling languages such as UML-based and domain-specific modeling languages, business process modeling languages, and web application modeling languages. The term “software language” also comprises APIs and collections of design patterns that are implicitly defined languages."''
+
+== Metadata ==
+
+* [[linksTo::http://planet-sl.org]]
+* [[instanceOf::Vocabulary:Software language engineering]]
+* [[instanceOf::Namespace:Concept]]
+

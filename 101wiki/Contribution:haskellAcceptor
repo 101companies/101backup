@@ -1,0 +1,81 @@
+== Headline ==
+
+[[Parsing]] (acceptance only) in [[Language:Haskell|]] with [[Technology:Parsec|]]
+
+== Motivation ==
+
+The implementation demonstrates [[parsing]] (acceptance) in [[Language:Haskell|]] with the [[Technology:Parsec|]] [[library]] of [[parser combinator]]s using an appropriate [[monad]] for [[parsing]]. A concrete textual syntax for companies is assumed. Acceptance is considered only. Thus, no abstract syntax is constructued. There are basic parsers for quoted strings and floating-point literals. The parsers for companies, departments, and employees are composed by means of appropriate parser combinators for sequence, alternative, and option.
+
+== Illustration ==
+
+There is one function per nonterminal of the underlying grammar for companies. We may use do notation to handle sequential composition. Here are all the compound parsing functions:
+
+<syntaxhighlight lang="haskell">
+-- Accept a company
+parseCompany :: Acceptor
+parseCompany = do
+  parseString "company"
+  parseLiteral
+  parseString "{"
+  many parseDepartment
+  parseString "}"
+
+-- Accept a department
+parseDepartment :: Acceptor
+parseDepartment = do
+  parseString "department"
+  parseLiteral
+  parseString "{"
+  parseManager
+  many parseSubUnit
+  parseString "}"
+
+-- Accept a subunit (an employee or a department)
+parseSubUnit :: Acceptor
+parseSubUnit = 
+      parseNonmanager
+  <|> parseDepartment
+
+-- Accept a manager
+parseManager :: Acceptor
+parseManager = parseEmployee "manager"
+
+-- Accept a non-manager
+parseNonmanager :: Acceptor
+parseNonmanager = parseEmployee "employee"
+
+-- Accept an employee
+parseEmployee :: String -> Acceptor
+parseEmployee ty = do
+  parseString ty
+  parseLiteral
+  parseString "{"
+  parseString "address"
+  parseLiteral
+  parseString "salary"
+  parseFloat
+  parseString "}"
+</syntaxhighlight>
+
+== Architecture ==
+
+There are these modules:
+
+* Main: acceptance test
+* Company/Parser: the actual parser (acceptor)
+
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:Parsec]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Parsing]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]
+

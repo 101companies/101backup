@@ -1,0 +1,71 @@
+== Headline ==
+
+Java's collection framework
+
+== Description ==
+
+The framework is hosted by the [[Technology:java.util]] package.
+
+The following list of types does not separate modern versus legacy types.
+
+=== Interfaces ===
+
+* Collection	
+* Deque
+* Enumeration
+* Iterator	
+* List
+* ListIterator	
+* Map
+* Map.Entry
+* NavigableMap
+* NavigableSet
+* Queue
+* RandomAccess	
+* Set
+* SortedMap
+* SortedSet
+
+=== Classes ===
+
+* AbstractCollection
+* AbstractList
+* AbstractMap
+* AbstractMap.SimpleEntry
+* AbstractMap.SimpleImmutableEntry	
+* AbstractQueue
+* AbstractSequentialList	
+* AbstractSet
+* ArrayDeque
+* ArrayList
+* Arrays	
+* BitSet	
+* Collections	
+* Dictionary
+* EnumMap	
+* EnumSet
+* HashMap
+* HashSet
+* Hashtable	
+* IdentityHashMap
+* LinkedHashMap	
+* LinkedHashSet	
+* LinkedList
+* PriorityQueue	
+* Properties
+* Stack
+* TreeMap
+* TreeSet	
+* Vector
+* WeakHashMap
+
+=== Exceptions ===
+
+* ConcurrentModificationException	
+* EmptyStackException	
+* NoSuchElementException	
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[identifies::http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

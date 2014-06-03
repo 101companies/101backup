@@ -1,0 +1,23 @@
+== Headline ==
+
+Add gender for employees
+
+== Description ==
+
+The data structure shall be extended by introducing a gender for an employee.
+
+== Motivation ==
+
+The current data structure of [[Contribution:mySqlMany]] and [[Contribution:mySqlOne]] only allows two-dimensional aggregation and analysis of data. Adding [[Feature:Gender]] enables us aggregating data multi-dimensional and therefore creating a more advanced reporting commonly used in the area of Business Intelligence (i.e. OLAP cubes).
+
+== Relationships ==
+
+* See [[Contribution:mySqlOneReporting]] for an implementation of this feature
+* The present feature should be applicable to any data model of companies, specifically [[Feature:Flat company]] and [[Feature:Hierarchical_company]].
+
+== Metadata ==
+
+
+* [[isA::Data requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

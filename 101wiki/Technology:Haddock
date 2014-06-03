@@ -1,0 +1,44 @@
+== Headline ==
+
+A [[documentation generator]] for [[Language:Haskell]]
+
+
+== Illustration ==
+
+Haddock relies on module headers and simple comment conventions to generate documentation from Haskell source code. Consider, for example, the following module:
+
+<syntaxhighlight lang="haskell">
+{- | This comment is placed before the module header and thus
+     is seen as the general description of the module. Since 
+     the general description may be a bit longer, it is quite 
+     common to see a multi-line comment in this position. -}
+
+module Main (
+ foo
+) where
+
+-- | The "|" character in the comment expresses that this
+-- comment should contribute to the generated documentation.
+-- Haddock does indeed search for such comments. 
+-- We note that 'foo' is indeed exported and thus it 
+-- deserves documentation. We could also use a multi-line 
+-- comment of course.
+foo :: () -> ()
+foo = id
+
+-- This function is not exported.
+-- Thus, no Haddock comment is needed.
+-- That is, the function will not appear in generated documentation.
+bar :: () -> Bool
+bar = const True
+</syntaxhighlight>
+
+It uses Haddock comment conventions for the module description and the exported function ''foo''. Haddock supports much more conventions and features; see the documentation. Haddock also nicely integrates with [[Technology:Cabal]] such that one can simply invoke "cabal haddock" to generate documentation for a given [[Haskell package]]. 
+
+
+== Metadata ==
+
+
+* [[instanceOf::Documentation generator]]
+* [[identifies::http://www.haskell.org/haddock]]
+* [[instanceOf::Namespace:Technology]]

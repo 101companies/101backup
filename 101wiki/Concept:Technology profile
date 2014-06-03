@@ -1,0 +1,13 @@
+== Intent ==
+
+a way of using technologies
+
+== Description ==
+
+Certain technologies are frequently used together in a certain manner. The present concept of a [[Technology profile]] makes it possible to capture explicitly some general facts about such "usage scenario". 
+
+
+
+== Metadata ==
+* [[instanceOf::Misc]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[design pattern]] for interface-based database access or persistence
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Data_access_object]]
+* [[instanceOf::Design pattern]]
+* [[relatesTo::Data Transfer Object]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,52 @@
+== Headline ==
+
+Basic company structure
+== Description ==
+
+There are the following major kinds of entities involved:
+
+* ''Companies''
+* ''Employees''
+* ''Departments''
+
+''Departments'' are only involved if and only if sub-feature [[Feature:Hierarchical company]] as opposed to sub-feature [[Feature:Flat company]] is chosen.
+
+Entities are composed of parts as follows:
+
+* A ''company'' has a ''name''.
+* A ''company'' has ''employees'' maintained in some sort of collection. 
+* A ''company'' has (possibly) ''departments''.
+* An ''employee'' has a ''name'', a ''salary'' and an ''address''.
+
+There are the following additional assumptions:
+
+* Company names are strings such as "Acme".
+* Employee names are strings such as "Joe".
+* Addresses are strings such as "Redmond".
+* Salaries are non-negative floating point numbers such as "42.42".
+* Employee names are unique across companies.
+
+The following simplifications and omissions are deliberate:
+
+* In reality, employee names are not necessarily unique.
+* In reality, a company may have a CEO, CFO, etc. omitted here.
+* Salaries may call for a money type also including a currency.
+== Motivation ==
+
+This feature triggers use of basic data modeling techniques in implementing the [[@system]]. Basic company structure suffices with a tree-like representation of companies.
+== Illustration ==
+
+See [[Feature:Flat company]] and [[Feature:Hierarchical company]] for illustration.
+== Relationships ==
+
+* See [[Feature:Flat company]] and [[Feature:Hierarchical company]] for concrete  features for this abstract feature for basic company structure.
+* There are several other features that also deal with extras of company structure: [[Feature:COI]], [[Feature:Mentoring]], [[Feature:Ranking]], and [[Feature:Singleton]].
+== Guidelines ==
+
+This is an abstract (an XOR) feature, which should not be chosen as such, but instead either [[Feature:Flat company]] or [[Feature:Hierarchical company]] is to be selected.
+== Metadata ==
+
+* [[isA::Data requirement]]
+* [[isA::Mandatory feature]]
+* [[isA::Alternative feature]]
+* [[instanceOf::Namespace:Feature]]

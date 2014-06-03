@@ -1,0 +1,8 @@
+== Intent ==
+
+a [[class]] that can be directly instantiated as opposed to an [[abstract class]]
+
+
+== Metadata ==
+* [[instanceOf::Class]]
+* [[instanceOf::Namespace:Concept]]

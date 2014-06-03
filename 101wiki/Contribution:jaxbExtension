@@ -1,0 +1,87 @@
+== Headline ==
+
+[[Object-XML mapping]] for [[Language:Java]] and [[Language:XSD]] with [[Technology:JAXB]]
+
+== Characteristics ==
+
+See [[Contribution:jaxbComposition]] for the overall motivation of exercising [[Technology:JAXB]] and for arguably a simple baseline of a schema and corresponding schema-derived classes. The present implementation represents an attempt to model different kinds of subunits of department (i.e., sub-departments and employees) as subtypes of a common supertype of subunits, where subtyping is meant here in the sense of XSD's type extension mechanism. The result is rather complex at both ends.
+
+== Illustration ==
+
+The data model is implemented as xml files (sampleCompany.xml) that conform to a schema (Company.xsd). For example departments:
+
+<syntaxhighlight lang="xml">
+<xs:complexType name="department">
+ <xs:complexContent>
+  <xs:extension base="subunit">
+   <xs:sequence>
+    <xs:element ref="name"/>
+    <xs:element name="manager" type="employee"/>
+    <xs:element maxOccurs="unbounded" minOccurs="0" name="subunit" type="subunit"/>
+   </xs:sequence>
+  </xs:extension>
+ </xs:complexContent>
+</xs:complexType>
+</syntaxhighlight>
+
+Actual [[Language:Java]] classes will be generated using [[Technology:xjc]].
+
+[[Feature:Open serialization]] is implemented using [[Technology:JAXB]] Un-/Marshaller:
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/deserializeCompany"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Serialization.java/class/Serialization/method/serializeCompany"/>
+
+[[Feature:Total]] and [[Feature:Cut]] are implemented as static methods:
+
+<fragment url="src/main/java/org/softlang/company/features/Total.java/class/Total"/>
+
+<fragment url="src/main/java/org/softlang/company/features/Cut.java/class/Cut"/>
+
+Test cases are implemented for all [[Namespace:Feature]]s.
+
+== Relationships ==
+
+For DOM-like implementations of in-memory XML processing see [[Contribution:dom]], [[Contribution:jdom]] and [[Contribution:xom]].
+
+For a query-based implementation of in-memory XML processing see [[Contribution:xpathAPI]].
+
+For push-based XML processing see [[Contribution:sax]].
+
+For Object/XML mapping see [[Contribution:jaxbChoice]] (XSD with choice for different subunits), [[Contribution:jaxbComposition]] (XSD with object composition), [[Contribution:jaxbExtension]] (XSD with type extension) and [[Contribution:jaxbSubstitution]] (XSD with substitution groups).
+
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[Functional requirements]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases for [[Namespace:Feature]]s.
+
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+
+== Metadata ==
+
+* [[implements::Feature:Hierarchical company]]
+* [[implements::Feature:Mapping]]
+* [[implements::Feature:Open serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Java mapping]]
+* [[instanceOf::Theme:XML programming]]
+* [[uses::Language:Java]]
+* [[uses::Language:JAXB annotations]]
+* [[uses::Language:XML]]
+* [[uses::Language:XSD]]
+* [[uses::Technology:JAXB]]
+* [[uses::Technology:xjc]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

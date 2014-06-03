@@ -1,0 +1,31 @@
+== Headline ==
+
+A lecture on [[RMI]]-based [[distribution]] as part of the [[Course:Programming in Koblenz]]
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/rmi-23850462"/>
+
+== Concepts ==
+
+* [[Distribution]]
+* [[RMI]]
+* [[Client]]
+* [[Server]]
+
+== Languages ==
+
+* [[Language:Java|Java]]
+
+== Features ==
+
+* [[Feature:Distribution]]
+
+== Contributions ==
+
+* [[Contribution:javaRmi]]
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

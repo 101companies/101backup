@@ -1,0 +1,11 @@
+== Demo ==
+
+Let's try to discover this location:
+
+https://github.com/101companies/101repo/tree/master/concepts/Quicksort
+
+Here is how we could refer to the folder: <folder url="/concepts/Quicksort"/>
+
+When rendered "concepts" is missing. Also, we end up on Github as opposed to the discovery page. Actually, we end up in the nowhere on Github. The discovery service would know what to do.
+== Metadata ==
+* [[instanceOf::Namespace:Issue]]

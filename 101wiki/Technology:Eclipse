@@ -1,0 +1,17 @@
+== Headline ==
+
+A popular [[IDE]] for Java with many available plugins
+
+== Components ==
+
+Eclipse effectively contains (per requirement or actually) other technologies:
+
+* [[Technology:javac]]
+* [[Technology:JDK]]
+* [[Technology:Java SE]]
+* [[Technology:JUnit]]
+
+== Metadata ==
+
+* [[instanceOf::IDE]]
+* [[instanceOf::Namespace:Technology]]

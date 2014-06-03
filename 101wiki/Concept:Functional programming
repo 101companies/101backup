@@ -1,0 +1,42 @@
+== Headline ==
+
+A [[programming paradigm]] treating computation as the evaluation of mathematical [[Function]]s
+== Illustration ==
+
+Consider the following definition of the factorial function in [[Language:Haskell]]:
+
+<syntaxhighlight language="haskell">
+-- A recursive definition of the factorial function
+factorial n =
+  if n==0
+    then 1
+    else n * factorial (n-1)
+</syntaxhighlight>
+
+This definition describes the computation of factorial in terms of basic arithmetic operations ("functions") and the [[Recursion|recursive]] application of the factorial function itself. There are no variables that are assigned different values over time.
+
+For comparison, consider the following definition of the factorial function in [[Language:Java]]:
+
+<syntaxhighlight language="java">
+  // An imperative definition of the factorial function
+  public static int factorial(int n) {
+    int result = 1;
+    for (int i=n; i>1; i--) 
+      result = result * i;
+    return result;
+  }
+</syntaxhighlight>
+
+A ''result'' variable is used in a loop to aggregate the product. Also, the loop uses a variable ''i'' to iterate from ''n'' down to ''1''. Arguably, the recursive formulation is also straightforward in Java, but Java with its emphasis on variables and assignment as well as mutable data structures and encapsulation of state in objects does not encourage functional programming.
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Functional_programming, 14 April 2013)
+
+In computer science, functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids state and mutable data. It emphasizes the application of functions, in contrast to the imperative programming style, which emphasizes changes in state. [...] Functional programming has its roots in lambda calculus, a formal system developed in the 1930s to investigate computability, the Entscheidungsproblem, function definition, function application, and recursion. Many functional programming languages can be viewed as elaborations on the lambda calculus.
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Functional_programming]]
+* [[instanceOf::Programming paradigm]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[relatesTo::Lambda calculus]]
+* [[instanceOf::Namespace:Concept]]

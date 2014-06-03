@@ -1,0 +1,43 @@
+== Headline ==
+
+A [[program]] that manipulates [[program]]s
+
+== Illustration ==
+
+Consider the following simplify for arithmetic expressions, written in [[Language:Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- Simple arithmetic expressions
+data Expr = Const Int | Add Expr Expr
+  deriving (Eq, Show)
+
+-- Simplification for unit law of addition
+simplify :: Expr -> Expr
+simplify t@(Const c) = t
+simplify (Add (Const 0) x) = simplify x
+simplify (Add x (Const 0)) = simplify x
+simplify t@(Add x y) = 
+   if t==t'
+     then t
+     else simplify t'
+  where
+    t' = Add (simplify x) (simplify y)
+</syntaxhighlight>
+
+For instance, the simplifier works as follows:
+
+<syntaxhighlight lang="haskell">
+> simplify (Add (Const 20) (Const 22))
+Add (Const 20) (Const 22)
+> simplify (Add (Const 0) (Const 42))
+Const 42
+</syntaxhighlight>
+
+The simplifier is a metaprogram, as it is a [[program]] that manipulates another program. The [[metalanguage]] used here is [[Language:Haskell]]. The [[object language]] used here is ''Expr'', the language of expression.
+
+See the concept of [[reflection]] for a more specific form of metaprogramming for further illustrations.
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Metaprogramming]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,34 @@
+== Headline ==
+
+Idiomatic implementation of several feature in [[Language:Haskell]]..
+== Characteristics ==
+
+The objective of this contribution is to show idiomatic Haskell code for many [[Functional requirement|functional]] and  [[data requirement]]s. We leave out features which would require extra programming technologies as those would be covered by designated contributions. Also, some [[data requirement]]s are left out as they deal with more specialized features of the [[@system]]. There are several other [[Language:Haskell]]-based contributions (specifically those in [[Theme:Haskell introduction]]) that address smaller feature sets and limit their use of language features or focus on specific idioms (for pedagogical reasons). So the present contribution is more of an attempt as to how a knowledgeable Haskell programmer would possibly approach the features in serious way.
+== Relationships ==
+
+* The present contribution is engineered in much the same way as [[Contribution:haskellEngineer]].
+* The present contribution uses the same data model as [[Contribution:haskellComposition]], which is also reused by yet other contributions.
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md.
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Hierarchical_company2]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Median]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Depth]]
+* [[implements::Feature:Mentoring]]
+* [[implements::Feature:Ranking]]
+* [[implements::Feature:Closed serialization]]
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:HUnit]]
+* [[uses::Technology:Haddock]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Theme:Haskell introduction]]
+* [[instanceOf::Namespace:Contribution]]

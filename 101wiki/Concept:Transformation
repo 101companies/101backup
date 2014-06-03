@@ -1,0 +1,21 @@
+== Headline ==
+
+An [[IO behavior]] that transforms given data
+
+== Details ==
+
+The [[IO behavior]] is said to ''transform'' data in that it will essentially compute a result of the same type as the input's type or similarly complex type. (Compare this with the concept of [[query]].) A transformation is either [[Type-preserving transformation|type-preserving]] or [[Type-changing transformation|type-changing]] -- depending on the fact whether input and output of a transformation are of the same type or not. A transformation is either [[Vertical transformation|vertical]] or [[Horizontal transformation|horizontal]] -- depending on the fact whether the abstraction level is changed or preserved. A transformation is either [[Pure IO behavior|pure]] or [[Impure IO behavior|impure]] -- depending on the fact whether the input data (or anything else) is modified by the transformation.
+
+== Metadata ==
+
+* [[cites::http://dx.doi.org/10.1016/j.entcs.2005.10.021]]
+* [[cites::http://dx.doi.org/10.1016/j.jsc.2004.12.011]]
+* [[linksTo::http://en.wikipedia.org/wiki/Transformation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Data transformation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Model transformation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Program transformation]]
+* [[linksTo::http://en.wikipedia.org/wiki/XML transformation]]
+* [[linksTo::http://en.wikipedia.org/wiki/Transformation of text]]
+* [[isA::IO behavior]]
+* [[instanceOf::Vocabulary:Computing]]
+* [[instanceOf::Namespace:Concept]]

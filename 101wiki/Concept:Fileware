@@ -1,0 +1,12 @@
+== Intent ==
+
+a technological space focused on sequential and indexed files
+
+== Description ==
+
+A typical representative in terms of programming languages is [[Language:Cobol]]. However, the notion of files continues to serve in modern programming technologies. For instance, parallel programming according to the basic MapReduce programming model, as it was defined by Google, essentially leverages record-based files.
+
+
+== Metadata ==
+* [[instanceOf::Space]]
+* [[instanceOf::Namespace:Concept]]

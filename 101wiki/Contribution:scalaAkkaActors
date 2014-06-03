@@ -1,0 +1,42 @@
+== Headline ==
+
+This is an implementation of the basic spec using [[Language:Scala]] together with the [[Technology:Akka]] toolkit's actor library as well as Akka's Typed Actors.
+
+== Motivation ==
+
+This implementation uses Akka to show how a strong, static type system can serve to type check the inherently dynamic actor pattern by encapsulating actors behind typesafe proxy interfaces.
+
+== Architecture ==
+
+In ''Company.scala'' a regular Akka actor-based implementation is given as a reference. ''TypedCompany.scala'' shows how the message passing is hidden behind traits that provide a front from which Akka can construct a proxy object to interact with.
+
+== Usage ==
+
+This implementation uses sbt 0.10 as build tool, available at [http://github.com/harrah/xsbt/]. After installing sbt just change into the project directory and run
+ <nowiki>sbt</nowiki>
+to create the project, followed by
+ <nowiki>sbt update</nowiki>
+This should fetch any needed dependencies. After that you can compile the project by typing
+ <nowiki>sbt compile</nowiki>
+and then
+ <nowiki>sbt test</nowiki>
+to run the tests.
+
+This contribution has been tested with Scala Version 2.9.0.1, [[Technology::Akka]] Version 1.1.3 and [[Technology::sbt]] Version 0.10.
+
+== Issues ==
+
+Akka is currently transitioning to version 2.0 which radically changes and simplifies the implementation of TypedActors. Upon release of Akka 2.0, a revision of this implementation is to be scheduled.
+
+== Metadata ==
+* [[uses::Languages:Scala]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Task parallelism]]
+* [[uses::Technology:Scala]]
+* [[uses::Technology:Akka]]
+* [[uses::Technology:sbt]]
+* [[uses::Technology:specs2]]
+* [[developedBy::Contributor:Sebastian Jackel]]
+* [[instanceOf::Namespace:Contribution]]

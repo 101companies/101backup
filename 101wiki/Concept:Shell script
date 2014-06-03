@@ -1,0 +1,12 @@
+== Headline ==
+
+A script file for command-line processing
+
+== Details ==
+
+See also the concept of [[batch file]]s.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Shell_script]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,78 @@
+== Headline ==
+
+[[Serialization]] for company data
+== Description ==
+
+Company data must be serializable so that data is preserved also during downtimes of the [[@system]]. Any [[serialization]] format is conceivable here. Serialized data would be typically stored in the file system between program runs.
+== Motivation ==
+
+Programming languages differ in terms of [[serialization]] approaches in interesting ways. In addition, multiple reasonable [[serialization]] options may exist for even the same language.
+== Illustration ==
+
+One reasonable [[serialization]] format is [[Language:JSON]]. The typical sample company is represented in [[Language:JSON]] as follows:
+
+<syntaxhighlight lang="javascript">
+{ 
+  "name" : "Acme Corporation",
+  "departments" : [
+    {
+      "name" : "Research",
+      "manager" : {
+        "name" : "Fred",
+        "salary" : 88888
+      }   
+    },
+    {
+      "name" : "Development",
+      "manager" : {
+        "name" : "Marie",
+        "salary" : 77777
+      },
+      "departments" : [
+        {
+          "name" : "Dev1",
+          "manager" : {
+            "name" : "Bob",
+            "salary" : 77776
+          }
+        },
+        {
+          "name" : "Dev2",
+          "manager" : {
+            "name" : "Alice",
+            "salary" : 77775
+          },
+          "employees" : [
+            {
+              "name" : "Ralf",
+              "salary" : 4711
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</syntaxhighlight>
+
+Various languages blend well with [[Language:JSON]] as [[serialization]] format. For instance, [[Language:Python]] provides library support to serialize [[Language:Python]]'s [[dictionary|dictionaries]] in [[Language:JSON]]. For instance, in the following code, the ''load'' method of a [[Language:JSON]] [[API]] is used to deserialize on-file [[Language:JSON]] content.
+
+<syntaxhighlight lang="python">
+company = json.load(open(sys.argv[1], 'r'))
+</syntaxhighlight>
+
+The snippet originates from [[Contribution:pyjson]].
+== Relationships ==
+
+* See [[Feature:Open serialization]] and [[Feature:Closed serialization]] for concrete serialization features.
+* [[Feature:Persistence]] is concerned with [[persistence]] instead of [[serialization]].
+== Guidelines ==
+
+* This is an abstract (an XOR) feature, which should not be chosen as such, but instead either [[Feature:Open serialization]] or [[Feature:Closed serialization]] is to be selected.
+* A suitable ''demonstration'' of serialization should deserialize company data so that the "resurrected" company can be processed, e.g., by totaling salaries according to [[Feature:Total]]. Also, round-tripping of serialization should be demonstrated such that serialization of given data following by de-serialization returns the same data.
+== Metadata ==
+
+* [[isA::Non-functional requirement]]
+* [[isA::Optional feature]]
+* [[isA::Alternative feature]]
+* [[instanceOf::Namespace:Feature]]

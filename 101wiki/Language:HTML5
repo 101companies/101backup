@@ -1,0 +1,41 @@
+== Headline ==
+
+A [[Markup_language|Markup Language]] for [[Web programming]]
+
+== Description ==
+
+HTML5 is a [[Markup_language|markup language]], which extends the current [[Language:HTML]]-Standard with several features like [[offline storage]], [[canvas]] and some more.
+
+Related languages and technologies:
+
+* [[Ajax]]
+* [[Language:JavaScript|JavaScript]]
+* [[Language:JSON|JSON]]
+
+=== Feature List ===
+
+Not every [[Web browser]] provides a full-feature-support. The following list shows the used features in [[@implementation|implementations]] and the tested browsers.
+
+{|
+|-
+! Feature !! [[@implementation|Implementation]] !! [[Technology:Mozilla Firefox|Firefox]] !! [[Technology:Safari]] !! [[Technology:Opera]] !! [[Technology:Internet Explorer]] !! [[Technology:Google Chrome|Chrome]]
+|-
+| [[session storage]] || [[Contribution:html5session]] || style="background-color:#88bb00" | yes (with web server) || not tested || not tested || not tested || style="background-color:#00cc00" | yes
+|-
+| [[local storage]] || [[Contribution:html5local]] || style="background-color:#88bb00" | yes (with web server) || not tested || not tested || not tested || style="background-color:#00cc00" | yes
+|-
+| [[XMLHttpRequest]] || [[Contribution:html5XMLHttpRequest]] || style="background-color:#00cc00" | yes || not tested || not tested || not tested || style="background-color:#88bb00" | yes (with web server)
+|-
+| || [[Contribution:html5ajax]] || style="background-color:#88bb00" | yes (with web server) || style="background-color:#88bb00" | yes (with web server) || not tested || not tested || style="background-color:#88bb00" | yes (with web server)
+|-
+| [[indexed database]] || [[Contribution:html5indexedDatabase]] || style="background-color:#cc0000" | no || not tested || not tested || not tested || style="background-color:#00cc00" | yes
+|}
+
+== Metadata ==
+
+* [[instanceOf::Markup_language]]
+
+* [[identifies::http://en.wikipedia.org/wiki/HTML5]]
+* [[linksTo::http://dret.typepad.com/dretblog/html5-api-overview.html]]
+* [[instanceOf::Namespace:Language]]
+

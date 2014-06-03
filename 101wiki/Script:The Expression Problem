@@ -1,0 +1,61 @@
+== Headline ==
+
+A lecture on the [[Expression problem]] as part of the [[Course:Programming in Koblenz]]
+
+
+
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/the-expression-problem-as-part-of-the-the-ptt-lecture"/>
+
+
+== Concepts ==
+
+* [[Modularity]]
+* [[Expression problem]]
+* [[Visitor pattern]]
+
+
+
+== Languages ==
+
+* [[Language:Java]]
+
+
+
+== Technologies ==
+
+* [[Technology:GitHub]]
+* [[Technology:Gradle]]
+* [[Technology:Eclipse]]
+
+
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+
+
+
+== Contributions ==
+
+* [[Contribution:javaComposition]]
+* [[Contribution:javaInheritance]]
+* [[Contribution:javaStatic]]
+* [[Contribution:javaVisitor]]
+
+
+
+== Information ==
+
+* [[Information:Download]]
+* [[Information:Contact]]
+
+
+
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

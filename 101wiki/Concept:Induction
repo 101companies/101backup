@@ -1,0 +1,15 @@
+{{#addscript: hook }}
+
+== Headline ==
+
+a method of (mathematical) [[proof]]
+
+== Discussion ==
+
+In functional programming, induction is also referred to as a reasoning principle.
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Vocabulary:Programming theory]]
+* [[identifies::http://en.wikipedia.org/wiki/Mathematical_induction]]
+* [[instanceOf::Namespace:Concept]]

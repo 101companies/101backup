@@ -1,0 +1,22 @@
+== Headline ==
+
+Contributions that exercise [[generic programming]] in [[Language:Haskell]]
+== Description ==
+
+There are different classes of [[generic programming]]. The present theme is concerned with the class of generic programming that involves data type-polymorphic functions such that the functions can be applied to data of different types as, for example, in the case of the "[[Scrap your boilerplate]]" style of generic programming. The present theme is focused on different generic programming styles as they exist for [[Language:Haskell]]. Certain [[Namespace:Feature|features]] of the [[@system]] are particularly relevant for the present theme. These are the features for cutting and totaling salaries as they illustrate the need for data transformations and queries that may need to fully traverse compound data while only some details of such data (i.e., salaries) are conceptually relevant. Thus, [[Feature:Total]] and [[Feature:Cut]] make up the baseline set of features to be covered by any member contribution of this theme.
+
+These are the members of the theme:
+
+* [[Contribution:haskellSyb|haskellSyb]]: "[[Scrap your boilerplate]]" style
+* [[Contribution:strafunski|strafunski]]: [[Strategic programming]]
+* [[Contribution:haskellTree|haskellTree]]: [[Rose tree]]s for representation
+* [[Contribution:tabaluga|tabaluga]]: [[Fold]]s for systems of data types
+== Relationships ==
+
+* See [[Theme:Scrap your boilerplate]] for a specific style of generic programming with Haskell coverage.
+== Metadata ==
+
+
+* [[relatesTo::Feature:Total]]
+* [[relatesTo::Feature:Cut]]
+* [[instanceOf::Namespace:Theme]]

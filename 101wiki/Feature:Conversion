@@ -1,0 +1,147 @@
+== Headline ==
+
+Implement conversion routines to unify different schemas and data structures.
+== Description ==
+
+The data model of 101companies has no differences in its data structure or schema.
+Especially in the area of Business Intelligence it is a common task to unify data from various different systems.
+Adding structural differences, such as currencies will help us illustrating procedures on how to transform data.
+== Motivation ==
+
+A globally operating company needs to analyze data from various locations (also meaning companies). Each location operates the 101companies HR-System. The HR-System is missing a feature to distinguish between currencies. But for analysis it is mandatory to unify all data to one target currency.
+== Illustration ==
+
+This feature will be illustrated using [[Contribution:pyDWH]].
+
+
+=== Configuration ===
+The configuration file '' config.cfg '' contains all needed information for the conversion.
+Each source database reflects a specific company or location (in a country).
+It has a currency for the salaries. There is also a base currency which is the target currency.
+In addition there is an option for an API to calculate the current exchange rates.
+
+
+'' Excerpt of config.cfg ''
+<pre>
+[source_1]
+company_id = 1
+currency = EUR
+...
+
+[source_2]
+company_id = 2
+currency = USD
+...
+
+[target]
+...
+
+[general]
+base_currency = EUR
+
+# usage: http://finance.yahoo.com/d/quotes.csv?f=sl1&s=USDEUR=X
+exchange_rate_api = http://finance.yahoo.com/d/quotes.csv?f=sl1&s=__DATA__=X
+</pre>
+
+
+While running the ETL (Extract, Transform, Load) it extracts all data from the given source databases, transforms* it and loads it in a unified database schema.
+
+=== Transformation ===
+First it checks whether we need to convert the currencies. In case the source and target currencies differ it will query the API to retrieve the current exchange rate between both currencies.
+
+'' etl/exchange.py ''
+<syntaxhighlight language="python">
+import logging
+import urllib2
+from decimal import Decimal
+
+# Supported currencies based on the list from European Central Bank:
+# http://www.ecb.int/stats/exchange/eurofxref/html/index.en.html
+CURRENCIES = [
+    "AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR", "GBP",
+    "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "LTL", "LVL",
+    "MXN", "MYR", "NOK", "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD",
+    "THB", "TRY", "USD", "ZAR"
+]
+
+
+class ExchangeError(Exception):
+    """
+    Exchange exception for all conversion errors.
+    """
+    pass
+
+
+class Exchange(object):
+    """
+    Performs currency conversion using an external API specified in the
+    configuration file.
+    """
+    def __init__(self, config):
+        self.base_currency = config['base_currency']
+        assert self.base_currency in CURRENCIES
+        self.exchange_rate_api = config['exchange_rate_api']
+        self.exchange_rate = None
+
+    def set_exchange_rate(self, source_currency, target_currency=None):
+        """
+        Fetches current exchange rate from Yahoo! Finance API and set
+        instance's exchange_rate with respect to the given target currency.
+        """
+        if target_currency is None:
+            target_currency = self.base_currency
+
+        if source_currency == target_currency:
+            # Same currency, i.e. no conversion
+            self.exchange_rate = 1
+            return
+
+        if source_currency not in CURRENCIES:
+            raise ExchangeError("unknown currency: {}".format(source_currency))
+        if target_currency not in CURRENCIES:
+            raise ExchangeError("unknown currency: {}".format(target_currency))
+
+        data = "{}{}".format(source_currency, target_currency)
+        url = self.exchange_rate_api.replace("__DATA__", data)
+        response = ""
+        logging.debug("url={}".format(url))
+        request = urllib2.Request(url=url)
+        try:
+            response = urllib2.urlopen(request).read()
+        except (urllib2.HTTPError, urllib2.URLError) as err:
+            raise ExchangeError(err)
+        response = response.strip()
+
+        logging.debug("response={}".format(response))
+        if data not in response:
+            raise ExchangeError("invalid data from {}: {}".format(url, data))
+
+        exchange_rate = response.split(",", 1)[1]
+        self.exchange_rate = Decimal(exchange_rate)
+</syntaxhighlight>
+
+During the transformation is where the conversion actually happens. 
+For each employee 'apply_exchange_rate()' is being called.
+
+'' Excerpt of etl/transform.py ''
+<syntaxhighlight language="python">
+    def _apply_exchange_rate(self, source_amount):
+        """
+        Applies exchange rate on the given amount, e.g. to convert it to
+        an amount in base currency.
+        """
+        assert self.exchange is not None
+        assert self.exchange.exchange_rate is not None
+        if self.exchange.exchange_rate == 1:  # No conversion needed
+            return source_amount
+        target_amount = Decimal(source_amount) * self.exchange.exchange_rate
+        logging.debug("exchange_rate={} [{}]->[{}]".format(
+            self.exchange.exchange_rate, source_amount, target_amount))
+        return target_amount.quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+</syntaxhighlight>
+==Metadata==
+
+* [[isA::Optional feature]]
+* [[isA::Data requirement]]
+* [[isA::Functional requirement]]
+* [[instanceOf::Namespace:Feature]]

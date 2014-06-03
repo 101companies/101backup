@@ -1,0 +1,58 @@
+== Headline ==
+
+The Quicksort [[sorting algorithm]]
+
+
+
+== Illustration ==
+
+See the visualization of Quicksort on Wikipedia: 
+
+http://en.wikipedia.org/wiki/Quicksort
+
+See various illustrations of Quicksort as available on YouTube, e.g.:
+
+<media url="http://www.youtube.com/watch?v=ywWBy6J5gz8"/>
+
+An implementation of Quicksort is given here for the [[Language:Haskell]]:
+
+<syntaxhighlight language=haskell>
+-- Polymorphic sorting
+sort :: Ord a => [a] -> [a]
+sort [] = []
+sort (pivot:rest) =
+             (sort lesser)
+          ++ [pivot]
+          ++ (sort greater)
+  where
+    lesser  = filter (< pivot) rest
+    greater = filter (>= pivot) rest
+</syntaxhighlight>
+
+The first equation models that an empty list is sorted vacuously. The second equation picks the head of the list as the 'pivot' element, which is used to partition the input. Indeed, all elements 'lesser' than 'pivot' are collected in one helper list and all elements 'greater' (or equal) than 'pivot' are collected in another helper list. Quicksort is then invoked recursively on 'lesser' and 'greater' and the intermediate results are appended with the 'pivot' element in between.
+
+The implementation is illustrated as follows:
+
+<syntaxhighlight language=haskell>
+-- Illustrate sorting
+main = do
+  let input = [2,4,3,1,4]
+  print $ sort input -- [1,2,3,4,4]
+</syntaxhighlight>
+
+
+
+== Citation ==
+
+(http://en.wikipedia.org/wiki/Quicksort, 21 April 2013)
+
+Quicksort is a divide and conquer algorithm. Quicksort first divides a large list into two smaller sub-lists: the low elements and the high elements. Quicksort can then recursively sort the sub-lists.
+
+
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Quicksort]]
+* [[instanceOf::Sorting algorithm]]
+* [[instanceOf::Divide and conquer algorithm]]
+* [[instanceOf::Namespace:Concept]]

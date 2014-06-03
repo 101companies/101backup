@@ -1,0 +1,10 @@
+== Headline ==
+
+A [[type-preserving transformation|type-preserving]] [[model transformation]]
+
+== Metadata ==
+
+* [[cites::http://dx.doi.org/10.1016/j.entcs.2005.10.021]]
+* [[isA::Model transformation]]
+* [[instanceOf::Vocabulary:MDE]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,21 @@
+== Headline ==
+
+A validator for Java
+
+== Description ==
+
+JValidator is a [[@technology]]; it is a Java-specific validator. JValidator essentially parses the source code; it does not attempt compilation; it does not enforce any static semantics rules. Zero exit code is to be interpreted as successful validation; non-zero exit code as failure.
+
+== Contributors ==
+
+* {{101contributor|Martin Leinberger|developer}}
+* {{101contributor|Ralf Lämmel|author}}
+
+
+
+
+== Metadata ==
+* [[instanceOf::Validator]]
+* [[instanceOf::@technology]]
+* [[identifies::https://github.com/101companies/101repo/tree/master/technologies/JValidator]]
+* [[instanceOf::Namespace:Technology]]

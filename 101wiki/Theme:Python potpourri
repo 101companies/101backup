@@ -1,0 +1,22 @@
+== Headline ==
+
+Contributions achieving basic coverage of [[Language:Python]]
+
+== Description ==
+
+This theme is under construction.
+
+== Direction ==
+
+* [[Contribution:py3k]]: A basic implementation.
+* [[Contribution:pyjson]]: An implementation leveraging the JSON API reasonably.
+* [[Contribution:pyjamas]]: Web programming with [[Technology:Pyjamas]].
+
+== Relationships ==
+
+TODO: Perhaps, some of the implementations could be claimed to be similar to what's going on for other languages.
+
+== Metadata ==
+
+* [[isA::Namespace:Theme]]
+* [[instanceOf::Namespace:Theme]]

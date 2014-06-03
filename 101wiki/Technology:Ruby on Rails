@@ -1,0 +1,19 @@
+== Headline ==
+
+a [[language::Language:Ruby | Ruby]] based web-application framework
+== Description ==
+
+Ruby on Rails, is a [[full-stack web-application framework]], using [[dependsOn::Language:Ruby]] as a primary language.
+Includes [[dependsOn::Technology:WEBrick]], a Ruby web server, and [[dependsOn::Technology:Rake]], a build system.
+
+It implements [[dependsOn::MVC]] and [[Active record]] design patterns, also enforces usage of [[dependsOn :: Technology:REST | REST]], organizing the  application around resources and standard [[Technology:HTTP | HTTP]] verbs.
+A view in the default configuration of Rails is an erb file, implemented in [[Technology:eRuby]], which is a default [[Rails template engine]]. Alternative [[Templating engine|template engines]], such as [[Technology:HAML | HAML]] and [[Technology:Mustache | Mustache]] are supported.
+It uses [[dependsOn::Technology:Rake]] for building applications
+
+Production Rails applications typically deployed to [[Technology:Apache HTTP Server]] or [[Technology:nginx]] web servers with [[Technology:Phusion Passenger]] module installed.
+
+== Metadata ==
+* [[instanceOf::Full-stack web-application framework]]
+* [[identifies::http://rubyonrails.org]]
+* [[linksTo::http://en.wikipedia.org/wiki/Ruby_on_Rails]]
+* [[instanceOf::Namespace:Technology]]

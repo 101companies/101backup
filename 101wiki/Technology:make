@@ -1,0 +1,14 @@
+== Intent ==
+
+a popular build automation tool
+
+== Description ==
+
+''make'' is de-facto a name that could refer to different implementations,
+
+One popular implementation of ''make'' is [[Technology:GNU make]].
+
+== Metadata ==
+* [[instanceOf::Build tool]]
+* [[identifies::http://en.wikipedia.org/wiki/Make_(software)]]
+* [[instanceOf::Namespace:Technology]]

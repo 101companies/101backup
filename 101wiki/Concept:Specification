@@ -1,0 +1,14 @@
+== Headline ==
+
+A description of a [[software system]] or [[software component|component]]
+
+== Description ==
+
+A [[specification]] describes a [[software system]] or [[software component|component]] at a higher level of abstraction and it should abstract from [[implementation]] details. A [[specification]] may be written in a [[specification language]] as opposed to a [[programming language]].
+
+== Metadata ==
+
+* [[linksTo::http://en.wikipedia.org/wiki/Specification_language]]
+* [[instanceOf::Vocabulary:Software engineering]]
+* [[relatesTo::Implementation]]
+* [[instanceOf::Namespace:Concept]]

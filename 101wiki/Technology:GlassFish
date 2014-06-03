@@ -1,0 +1,9 @@
+== Intent ==
+
+A [[Technology:Java EE]] [[Application server]]
+
+== Metadata ==
+* [[instanceOf::Application server]]
+* [[linksTo::http://en.wikipedia.org/wiki/GlassFish]]
+* [[identifies::http://glassfish.java.net/]]
+* [[instanceOf::Namespace:Technology]]

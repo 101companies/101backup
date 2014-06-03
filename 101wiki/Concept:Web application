@@ -1,0 +1,12 @@
+== Headline ==
+
+An application that leverages web resources or web technologies
+
+== Details ==
+
+"A web-application is a software system based on technologies and standards of the world wide web, that provides web specific resources such as content and services through a [[user interface]], the [[webbrowser]]."<cite>Web-Engineering</cite>
+
+== Metadata ==
+* [[instanceOf::Vocabulary:Internet]]
+* [[identifies::http://en.wikipedia.org/wiki/Web_application]]
+* [[instanceOf::Namespace:Concept]]

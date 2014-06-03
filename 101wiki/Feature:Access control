@@ -1,0 +1,12 @@
+== Headline ==
+
+Access control for company data
+
+== Description ==
+
+Users may differ in what data they can access in read or write mode. Basic authorization may be needed to read the company structure including names but excluding addresses and salaries. Manager-level authorization may be needed to read and write salary data of heads under a manager. Yet extra authorization may be needed to read data of all employees.
+
+
+== Metadata ==
+* [[instanceOf::101execution]]
+* [[instanceOf::Namespace:Feature]]

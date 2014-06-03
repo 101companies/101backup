@@ -1,0 +1,13 @@
+== Intent ==
+
+write the state (a specific attribute) of an object
+
+== Discussion ==
+
+See the discussion of ]]getter]]s.
+
+
+
+== Metadata ==
+* [[instanceOf::Instance method]]
+* [[instanceOf::Namespace:Concept]]

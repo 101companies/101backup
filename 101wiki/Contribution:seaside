@@ -1,0 +1,75 @@
+== Headline ==
+
+[[Web programming]] in [[Language:Smalltalk]] with [[Technology:Seaside]]
+
+== Motivation ==
+
+TBD
+
+== Architecture ==
+
+== Illustration ==
+
+There is a basic OO implemenetation.
+
+Cut for the Employee
+<syntaxhighlight lang="smalltalk">
+cut
+	salary := salary / 2
+</syntaxhighlight>
+
+Total for the Employee
+<syntaxhighlight lang="smalltalk">
+total
+	^salary
+</syntaxhighlight>
+
+Cut for the Departmnent
+
+<syntaxhighlight lang="smalltalk">
+cut
+	super cut.
+	manager cut.
+	employees do:[:each | each cut]
+</syntaxhighlight>
+
+Total for the Department
+
+<syntaxhighlight lang="smalltalk">
+total
+	^self employees inject:((manager total) + (super total)) into:[:total :current | total + current total]
+</syntaxhighlight>
+
+
+The second part contains a layer of web-specific components.
+
+== Usage ==
+
+* 1. Download Seaside for Pharo (http://www.seaside.st/download/pharo).
+* 2. Open Seaside environment.
+* 3. Open "world" context menu within seaside (right click or double left click). Tools->File Browser. Navigate to the "implementations\seaside" folder in your svn repository.  
+* 4. Select ''101companies.st'' and click "install" on a toolbar.
+* 5. Select ''101companies-Tests.st'' and click "install" on a toolbar.
+
+At this point you should be able to see 101comanies and 101companiesTests in the components browser.
+Next you have to start a web-server. For this go to the "Seasise Control Panel", select WAComancheAdaptor and click "Start" button.
+
+If you don't see any adapters:
+* 1. Open the 'Seaside Control Panel' in the 'Tools' submenu of the 'World' menu
+* 2. Should there be no WAComancheAdaptor add one by right clicking and selecting 'Add adaptor...'
+* 3. Select the WAComancheAdaptor and press 'Start'.
+
+Open http://localhost:8080/101companies in your web-browser.
+
+== Metadata ==
+* [[instanceOf::Theme:Web programming]]
+* [[uses::Language:Smalltalk]]
+* [[uses::Technology:Pharo]]
+* [[uses::Technology:Seaside]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Total]]
+* [[developedBy::Contributor:Any Kellens]]
+* [[reviewedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]
+

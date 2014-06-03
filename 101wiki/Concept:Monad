@@ -1,0 +1,40 @@
+== Headline ==
+
+A [[Functional programming|functional]] [[programming idiom]] for composing
+== Illustration ==
+
+The term "monad" originates from category theory, but this illustration focuses on the functional programming view where "monad" refers to a programming idiom for composing computations, specifically computations that may involve side effects or I/O actions. Monads have been popularized by [[Language:Haskell]].
+
+In Haskell, monads are developed and used with the help of the [[type class]] ''Monad'' which is parametrized by a [[type constructor]] for the actual monad. Here is a sketch of the type class: 
+
+<syntaxhighlight lang="haskell">
+class Monad m where
+  return :: a -> m a
+  (>>=) :: m a -> (a -> m b) -> m b
+  -- ... some details omitted
+</syntaxhighlight>
+
+The ''return'' function serves the construction of trivial computations, i.e., computations that return values. The ''>>='' (also knows as the [[bind function]]) compose a computation with a function that consumes the value of said computation to produce a composed computation. Here are some informal descriptions of popular monads:
+
+* [[State monad]]
+** ''return'' v: return value ''v'' and pass on state
+** ''bind'' c f: apply computation ''c'' as state transformer and pass on transformed state to ''f''
+* [[Reader monad]]
+** ''return'' v: return value ''v'' and ignore environment
+** ''bind'' c f: pass environment to both ''c'' and ''f''
+* [[Writer monad]]
+** ''return'' v: return value ''v'' and empty output
+** ''bind'' c f: compose output from both ''c'' and ''f''
+* [[Maybe monad]]
+** ''return'' v: return "successful" value ''v''
+** ''bind'' c f: fail if ''c'' fails, otherwise, pass on successful result to ''f''
+== Metadata ==
+
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[instanceOf::Type class]]
+* [[isA::Programming idiom]]
+* [[identifies::http://en.wikipedia.org/wiki/Monad_%28functional_programming%29]]
+* [[identifies::http://www.haskell.org/haskellwiki/Monad]]
+* [[linksTo::http://en.wikibooks.org/wiki/Haskell/Understanding_monads]]
+* [[linksTo::http://en.wikipedia.org/wiki/Monad_(category_theory)]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,30 @@
+== Headline ==
+
+The central [[abstraction]] in [[functional programming]]
+== Illustration ==
+
+Consider the following [[function definition]] in [[Language:Haskell]].
+
+<syntaxhighlight language="haskell">
+-- The increment function
+inc :: Int -> Int
+inc x = x + 1
+</syntaxhighlight>
+
+This [[function]] can be applied, for example, to the [[argument]] 41 as follows.
+
+<syntaxhighlight language="haskell">
+inc 41
+</syntaxhighlight>
+
+This [[function application]] is evaluated to the following [[result]]:
+
+<pre>
+42
+</pre>
+== Metadata ==
+
+* [[instanceOf::Abstraction mechanism]]
+* [[instanceOf::Vocabulary:Functional programming]]
+* [[linksTo::http://en.wikipedia.org/wiki/Function_(mathematics)]]
+* [[instanceOf::Namespace:Concept]]

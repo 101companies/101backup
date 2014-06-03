@@ -1,0 +1,27 @@
+== Headline ==
+
+A lecture on [[functional OO programming]] as part of the [[Course:Programming in Koblenz]]
+== Material ==
+
+<media url="http://www.slideshare.net/rlaemmel/functional-oo-programming"/>
+== Concepts ==
+
+* [[Functional programming]]
+* [[OO programming]]
+* [[Functional OO programming]]
+* [[Nested class]]
+* [[Anonymous class]]
+* [[Function object]]
+* [[Closure]]
+* [[Traversal]]
+* [[Traversal scheme]]
+* [[Parsing]]
+* [[Parser combinator]]
+== Contributions ==
+
+* [[Contribution:javaSyb]]
+* [[Contribution:javaParseLib]]
+== Metadata ==
+
+* [[instanceOf::Course:Programming in Koblenz]]
+* [[instanceOf::Namespace:Script]]

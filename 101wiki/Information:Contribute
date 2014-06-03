@@ -1,0 +1,30 @@
+== Headline ==
+
+How to contribute to the [[@project]]
+
+== Description ==
+
+A guided submission page is under way to submit [[@contribution]]s for inclusion into 101repo and coverage on 101wiki. Until this page is released the following process is used: 
+
+* Prepare your contribution following these practices:
+** Use a GitHub repo under your control.
+** Use a contribution name that does not clash with existing contributions.
+** If you plan to host multiple contributions, then designate a subdir to each contribution.
+** Do not mix contributions and other stuff; use a "contributions" dir to factor out contributions.
+* "Register" your contribution with an email to 101companies@gmail.org to include these details.
+** Your  name  and  email address  for contact.
+** The  URL  for anonymous git-read-only access to your repo.
+** The  directory  within said repo which contains your contribution.
+** Details, if any, to be put on the initial contribution page on 101wiki.
+* Your email will be processed by the gatekeepers of 101companies as follows:
+** The contribution is reviewed in some basic manner.
+** 101repo is amended to "symbolically link" to your contribution.
+** An initial page is created for your contribution on the 101wiki.
+** You will be notified and granted editing access to the wiki.
+* You maintain your contribution in your GitHub repo.
+* You document your contribution on 101wiki.
+
+== Metadata ==
+
+* [[relatesTo::@contribution]]
+* [[instanceOf::Namespace:Information]]

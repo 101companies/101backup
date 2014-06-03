@@ -1,0 +1,11 @@
+== Headline ==
+
+[[Persistence]] for company data
+== Description ==
+
+This feature covers the capability of [[persistence]] for the [[@system]]. The feature is considered an [[101execution|execution quality]] in the sense that the system can save and re-load data for use beyond the lifetime of a specific execution instance of the system while also providing the scalability-related aspects of proper persistence. Otherwise, [[Feature:Serialization]] applies. That is, persistence is supposed to make the system specifically scale for large data volume due to lazy loading.
+== Metadata ==
+
+* [[isA::Non-functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

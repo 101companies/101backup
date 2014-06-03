@@ -1,0 +1,9 @@
+== Headline == 
+
+the Avalon LogKit logging framework used throughout the Avalon project
+
+== Metadata ==
+* [[instanceOf::Framework]]
+* [[instanceOf::Java package]]
+* [[identifies::http://excalibur.apache.org/apidocs/org/apache/log/package-summary.html]]
+* [[instanceOf::Namespace:Technology]]

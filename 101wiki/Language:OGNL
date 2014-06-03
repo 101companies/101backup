@@ -1,0 +1,12 @@
+== Headline == 
+
+a language for object graph navigation
+
+== Description ==
+
+OGNL stands for "Object Graph Navigation Language", but see the technology [[Technology:OGNL]]
+
+== Metadata ==
+* [[instanceOf::Scripting language]]
+* [[identifies::http://commons.apache.org/ognl/]]
+* [[instanceOf::Namespace:Language]]

@@ -1,0 +1,10 @@
+== Headline ==
+
+The [[monad]]-based approach to [[IO]] in [[Language:Haskell]]
+== Description ==
+
+The IO system enables programming to examine and modify the current state of the world in terms of, for example, interactive input and output, mutable variable access or file access. The corresponding IO actions are of a type based on the designated [[IO monad]]. The Haskell language separates pure functional computations from IO computations.
+== Metadata ==
+* [[instanceOf::Vocabulary:Haskell]]
+* [[identifies::http://www.haskell.org/tutorial/io.html Input/Output]]
+* [[instanceOf::Namespace:Concept]]

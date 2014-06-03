@@ -1,0 +1,172 @@
+== Headline ==
+
+Delay evaluation of an expression until its value is needed
+
+== Illustration ==
+
+=== Lazy by definition ===
+
+Lazy evaluation is either supported by the underlying [[programming language]] or it needs to be encoded by the programs. Let's start with illustrations in [[Language:Haskell|Haskell]]; this language's  [[semantics]] is lazy by definition.
+
+Consider the following expression and its evaluation:
+
+<syntaxhighlight lang="haskell">
+> repeat 42
+[42,42,42,42,42,42,42,42,42,42,42,42,42,42,...
+</syntaxhighlight>
+
+That is, 42 is to be repeated an infinite number of times and all those 42s are to be collected in one list. It is not surprising that the evaluation of this expression never stops as witnessed by printing the infinite result forever. Laziness comes into play when such expressions are used in a way that they do not need to be fully evaluated.
+
+For instance, let us compute the head of an infinite list:
+
+<syntaxhighlight lang="haskell">
+> head $ repeat 42
+42
+</syntaxhighlight>
+
+Thus, the list of repeated 42s is never materialized; rather the infinite list is only computed up to the point needed for returning the result, i.e., the head of the list. Here is another example for exploiting laziness to compute on 'infinite' data:
+
+<syntaxhighlight lang="haskell">
+> length $ take 42 $ repeat 42
+42
+</syntaxhighlight>
+
+That is, we compute the length of the list that holds the first 42 elements of the earlier infinite list of 42s. Here is yet another example:
+
+<syntaxhighlight lang="haskell">
+> [1..] !! 41
+42
+</syntaxhighlight>
+
+That is, we retrieve the 42nd element (the 41st index) of the earlier list.
+
+=== Lazy conditionals ===
+
+Most languages are readily lazy in terms of the semantics of their conditionals such that the 'then' and 'else' branches are only evaluated or executed, if necessary. This specific form of laziness is obviously important for programming, regardless of whether we face a language with lazy or strict evaluation. For instance, consider the following definition of [[factorial]] in [[Language:Haskell|Haskell]]:
+
+<syntaxhighlight lang="haskell">
+-- A straightforward definition of factorial
+factorial :: Integer -> Integer
+factorial x =
+  if x < 0 
+    then error "factorial arg error"
+    else if x <= 1
+      then 1
+      else x * factorial (x-1)
+</syntaxhighlight>
+
+Regardless of language, such a definition should not evaluate the recursive case, except when honored by the value of the condition. Thus, this style of recursive definition even works in a programming language with [[strict evaluation]], .e.g, in [[Language:Python|Python]]:
+
+<syntaxhighlight lang="python">
+# A straightforward definition of factorial
+def factorial(x):
+    if not isinstance(x, (int, long)) or x<0:
+        raise RuntimeError('factorial arg error')
+    else:
+        if x <= 1:
+            return 1
+        else:
+            return x * factorial(x-1)
+</syntaxhighlight>
+
+The difference between lazy and eager evaluation becomes quite clear, when we attempt a definition of 'if' as a function. In [[Language:Haskell|Haskell]], we can actually define a function to mimic 'if' and use it in revising the recursive definition of factorial:
+
+<syntaxhighlight lang="haskell">
+-- A re-definition of "if"
+ifThenElse :: Bool -> x -> x -> x
+ifThenElse True x _ = x
+ifThenElse False _ x = x
+
+-- Factorial re-defined to use user-defined if
+factorial' :: Integer -> Integer
+factorial' x =
+  ifThenElse (x < 0)
+    (error "factorial arg error")
+    (ifThenElse (x <= 1)
+      1
+      (x * factorial' (x-1)))
+</syntaxhighlight>
+
+The fact that this definition works depends on the lazy evaluation semantics of Haskell. The arguments of the function ''ifThenElse'' are only evaluated, when they are really needed. Let us attempt the same experiment in a language with eager evaluation semantics, e.g., [[Language:Python|Python]]:
+
+<syntaxhighlight lang="python">
+# A troubled re-definition of "if"
+def troubledIf(b,x1,x2):
+    if b:
+        return x1
+    else:
+        return x2
+
+# Factorial re-defined to use user-defined if
+def troubledFactorial(x):
+    if not isinstance(x, (int, long)) or x<0:
+        raise RuntimeError('factorial arg error')
+    else:
+        return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+</syntaxhighlight>
+
+When exercising this definition, we get this sort of runtime error:
+
+<pre>
+>>> troubledFactorial(5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 23, in troubledFactorial
+    return troubledIf(x<=1,1,x * troubledFactorial(x-1))
+  File "program.py", line 21, in troubledFactorial
+    raise RuntimeError('factorial arg error')
+RuntimeError: factorial arg error
+</pre>
+
+A quick analysis suggests that this runtime error arises from the fact that an application of the function 'generates' an infinite chain of recursive applications, thereby eventually leading to the application of the function to a negative number, which is intercepted by the precondition test of the function. Thus, the function ''troubledIf'' is clearly not lazy and it cannot be used in defining the factorial function.
+
+=== Encoding laziness ===
+
+One may encode laziness in a language with eager evaluation. To this end, each expressions, for which evaluation should be deferred, can be turned into a degenerated closure ([[lambda abstraction]]) such that the evaluation can be requested explicitly by a trivial application. Consider the following attempt at a user-defined 'if' in Python and its use in another attempt at the factorial function:
+
+<syntaxhighlight lang="python">
+# A (properly) lazy re-definition of "if"
+def lazyIf(b,x1,x2):
+    if b:
+        return x1(())
+    else:
+        return x2(())
+
+# A definition of factorial using lazyIf
+def lazyFactorial(x):
+    if not isinstance(x, (int, long)) or x<0:
+        raise RuntimeError('factorial arg error')
+    else:
+        return lazyIf(x<=1,lambda _: 1, lambda _: x * lazyFactorial(x-1))
+</syntaxhighlight>
+
+Thus, evaluation is requested explicitly by passing "()" (i.e., the empty tuple) to a "deferred" expression. When constructing a deferred expression, then we use a lambda abstraction with a superfluous variable. 
+
+See [[Resource:Purely functional data structures]] for a profound discussion of [[data structure]]s in a functional programming language while leveraging laziness for the benefit of efficiency.
+
+== Relationships == 
+
+See the related concept of [[eager evaluation]].
+
+Synonyms (in a broad sense):
+* [[Call-by-need evaluation]]
+* [[Non-strict evaluation]]
+* [[Laziness]]
+
+== Metadata ==
+
+* [[identifies::http://en.wikipedia.org/wiki/Lazy_evaluation]]
+* [[instanceOf::Evaluation strategy]]
+* [[instanceOf::Vocabulary:Programming]]
+* [[instanceOf::Vocabulary:Programming languages]]
+* [[instanceOf::Namespace:Concept]]

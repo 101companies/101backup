@@ -1,0 +1,48 @@
+== Headline ==
+
+Multithreading in [[Language:Java]]
+== Characteristics ==
+
+Multithreading enables parallel or concurrent data processing for the implementation of functional requirements of the [[@system]].
+== Illustration ==
+
+The data model is implemented as [[POJO]]s, as usual. A sequential implementation of the operations for totaling and cutting salaries is also included. For instance:
+
+<fragment url="src/main/java/org/softlang/company/model/Company.java/class/Company"/>
+
+Concurrent computations rely on the identification of actions suitable for multithreading. Department-level actions for totaling and cutting salaries are chosen as the scope here. The following context class shows how an action is not performed sequentially but rather by submission to a thread pool.
+
+<fragment url="src/main/java/org/softlang/company/features/context/ConcurrentContext.java/class/ConcurrentContext"/>
+== Architecture ==
+
+The contribution follows a standardized structure:
+* inputs contains input files for tests
+* src/main/java contains the following packages:
+** org.softlang.company.features for implementations of [[functional requirement]]s.
+*** org.softlang.company.features.action for helper classes for [[Feature:Total]] and [[Feature:Cut]].
+*** org.softlang.company.features.context for helper classes for Multithreading.
+** org.softlang.company.model for implementations of [[Feature:Company]].
+* src/test/java contains the following packages:
+** org.softlang.company.tests for [[Technology:JUnit]] test cases.
+== Usage ==
+
+This contribution uses [[Technology:Gradle]] for building. [[Technology:Eclipse]] is supported.
+
+See https://github.com/101companies/101simplejava/blob/master/README.md
+== Metadata ==
+
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Data parallelism]]
+* [[implements::Feature:Task parallelism]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[instanceOf::Theme:Data parallelism]]
+* [[uses::Language:Java]]
+* [[uses::Technology:JUnit]]
+* [[uses::Technology:Gradle]]
+* [[developedBy::Contributor:Christian Schlöffell]]
+* [[developedBy::Contributor:Johann Tissen]]
+* [[developedBy::Contributor:Rebecca Bindarra]]
+* [[developedBy::Contributor:Tobias Schmidt]]
+* [[developedBy::Contributor:Tobias Zimmer]]
+* [[instanceOf::Namespace:Contribution]]

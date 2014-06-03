@@ -1,0 +1,35 @@
+== Headline ==
+
+Lecture "Parsing and unparsing in Haskell" as part of [[Course:Lambdas in Koblenz]]
+== Summary ==
+
+[[Grammar]] knowledge is implemented in [[Language:Haskell|Haskell]] for the sake of [[parsing]] and [[unparsing]] [[concrete syntax]]. In both cases, we leverage libraries that provide [[abstraction]]s for composing [[parser]]s or [[unparser]]s, respectively. In the case of parsing, we use the [[Technology:Parsec|Parsec]]  library for parser combinators, which leverages the [[monad]] concept. In the case of unparsing, we leverage the [[Technology:HughesPJ|HughesPJ]] library. (Another term for unparsing is [[pretty printing]].)
+== Concepts ==
+
+* [[Parser]]
+* [[Unparser]]
+* [[Parsing]]
+* [[Unparsing]]
+* [[Pretty printing]]
+* [[Grammar]]
+* [[Parser combinator]]
+* [[Monad]]
+== Languages ==
+
+* [[Language:Haskell]]
+== Technologies ==
+
+* [[Technology:Parsec]]
+* [[Technology:HughesPJ]]
+== Features ==
+
+* [[Feature:Parsing]]
+* [[Feature:Unparsing]]
+== Contributions ==
+
+* [[Contribution:haskellParsec]]
+* [[Contribution:hughesPJ]]
+== Metadata ==
+
+* [[partOf::Course:Lambdas in Koblenz]]
+* [[instanceOf::Namespace:Script]]

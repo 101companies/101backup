@@ -1,0 +1,33 @@
+== Intent ==
+
+X/O/R mapping with [[Technology:xsd.exe]] and strongly typed DataSets
+
+== Motivation ==
+
+X/O mapping within the .NET platform is exercised. This is a variation on [[Contribution:xsdClasses]]; we generate typed DataSets as opposed to classes for plain objects.
+
+== Architecture ==
+
+See [[Contribution:xsdClasses]].
+
+== Usage ==
+
+[[Technology:Visual Studio]] 2010 should be used to open a project file. The project itself is a class-library and compiles into a DLL. To run a project you must execute at least one unit test (or all at once).
+Nunit GUI or other Visual studio extension (e.g. Resharper) should be used for executing unit tests.
+
+The following command should be used if one wants to re-generate C# sources from xsd file: xsd Company.xsd /dataset /out:../
+
+The contribution has been tested with C# Version 4.0, the .NET Framework Version 4.0 and NUnit Version 2.5.
+
+== Metadata ==
+* [[uses::Language:CSharp]]
+* [[uses::Technology:csc.exe]]
+* [[uses::Technology:.NET]]
+* [[uses::Technology:NUnit]]
+* [[implements::Feature:Hierarchical_company]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Mapping]]
+* [[developedBy::Contributor:Andrei Varanovich]]
+* [[instanceOf::Namespace:Contribution]]

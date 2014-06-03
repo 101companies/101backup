@@ -1,0 +1,55 @@
+== Headline ==
+
+The namespace for semantic properties used on this wiki
+
+== Description ==
+
+This wiki uses properties of [[Technology:Semantic MediaWiki]] to provide semantically rich links between pages on this wiki and also links to external web pages. For instance, a contribution page uses "uses" properties to identify pages for languages and technologies that are used by the contribution. To give another example, all kinds of pages may engage in isA/instanceOf relationships for the purpose of classification. This namespace collects all those properties.
+
+=== List of existing properties ===
+
+* [[Property:Uses]]: a contribution declaring language or technology usage.
+* [[Property:Implements]]: a contribution declaring feature implementation.
+* [[Property:DevelopedBy]]: a contribution declaring a contributor to be a developer.
+* [[Property:InstanceOf]]: an "instance-of" (typeOf) relationship.
+* [[Property:IsA]]: an "is-a" (subtypeOf) relationship.
+* [[Property:PartOf]]: a "part-of" relationship.
+* [[Property:Identifies]]: a 101wiki page that corresponds to a web resource (e.g., a Wikipedia page).
+* [[Property:LinksTo]]: a 101wiki page that refers to some web resource.
+* [[Property:Cites]]: a 101wiki page that cites some web resource.
+
+Note that lower case is used in actual property markup as opposed to upper case in the property page names above.
+
+=== Process for adding a property ===
+
+1. Add the property here:
+
+http://mediawiki.101companies.org/index.php?title=MediaWiki:Smw_import_v101
+
+2. Create a property pages as listed above. The page will contain markup that registers the property with the [[Technology:Semantic MediaWiki]]. 
+
+3. Go here:
+
+http://mediawiki.101companies.org/wiki/Special:SMWAdmin
+
+Click the button in "Data repair and upgrade" section.
+== Illustration ==
+
+See [[Property:Identifies]] for an example of a property page with relatively rich details.
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the property.
+* '''Description''' (required): the description of the property.
+* '''Object type''' (required): the type of the property's object (using SMW markup).
+* '''Illustration''' (optional): an illustration of the property.
+* '''Relationships''' (optional): explanations regarding related properties.
+* '''Metadata''' (required):
+** The property must be declared to be, indeed, an instance of [[Namespace:Property]].
+** The namespace may be linked to relevant online resources.
+** The namespace may also be related to any relevant [[software concept]]s.
+
+== Metadata ==
+
+* [[linksTo::http://mediawiki.101companies.org/index.php?title=MediaWiki:Smw_import_v101]]
+* [[instanceOf::Namespace:Namespace]]

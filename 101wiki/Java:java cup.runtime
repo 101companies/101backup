@@ -1,0 +1,9 @@
+== Headline == 
+
+runtime package of [[Technology:CUP]] parser generator
+
+== Metadata ==
+* [[instanceOf::Library]]
+* [[instanceOf::Java package]]
+* [[identifies::http://www2.research.att.com/~john/Grappa/docs/java_cup/runtime/package-summary.html]]
+* [[instanceOf::Namespace:Java]]

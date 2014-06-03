@@ -1,0 +1,18 @@
+[[imported from::v101:instanceOf]]
+
+== Headline ==
+
+Association of a 101wiki page with its "type"
+
+== Object type ==
+
+Internal page
+
+== Relationships ==
+
+* See also [[Property:IsA]].
+
+== Metadata ==
+
+* [[instanceOf::Namespace:Property]]
+* [[linksTo::http://en.wikipedia.org/wiki/Instance_(computer_science)]]

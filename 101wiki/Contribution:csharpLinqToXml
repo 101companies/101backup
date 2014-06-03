@@ -1,0 +1,52 @@
+== Headline ==
+
+[[In-memory XML processing]] in [[Language:CSharp|C#]] with [[Technology:LINQ to XML]]
+
+[[Technology:.NET]] Language Integrated Query usage for [[Language:XML]] processing 
+
+== Metadata ==
+
+* [[instanceOf::Theme:XML programming]]
+
+== Languages ==
+
+* [[Language:CSharp]](C#): Programming language used for all code (Version 4.0)
+
+== Technologies ==
+
+* [[Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[Technology:LINQ to XML]]: XML API
+* [[Technology:.NET]]: Framework used to execute compiled code (Version 4.0)
+* [[Technology:NUnit]]: Unit testing framework used for testing (Version 2.5)
+
+== Features ==
+
+* [[Feature:Hierarchical_company]]
+* [[Feature:Total]]
+* [[Feature:Cut]]
+* [[Feature:Parsing]]
+* [[Feature:Unparsing]]
+
+== Motivation ==
+
+LINQ to XML is used in 2 scenarios:
+
+* Reconstruct full in-memory model. Linq2Xml is used to create a full in-memory object tree from the source XML file.
+* Cut and Total operations implemented directly on top of XML file where the model is stored.
+
+== Architecture ==
+
+C# object-oriented representation of 101companies model iimlemented in [[Contribution:csharp]] is used. It contains classes with required properties and methods(features implementations).
+
+* Manual reconsctruction of object model from xml
+* Transformations for pure xml model representation without using OO-model
+
+== Usage ==
+[[Technology:Visual Studio]] 2010 should be used to open a project file.
+The project itself is a class-library and compiles into a DLL. To run a project you must execute at least one unit test (or all at once).
+Nunit GUI or other Visual studio extension (e.g., Resharper) should be used for executing unit tests.
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+* [[instanceOf::Namespace:Contribution]]

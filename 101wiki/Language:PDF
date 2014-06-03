@@ -1,0 +1,12 @@
+== Headline ==
+
+A file format used to represent documents
+
+== Details ==
+
+PDF stands for Portable Document Format.
+
+== Metadata ==
+* [[instanceOf::Format language]]
+* [[identifies::http://en.wikipedia.org/wiki/Portable_Document_Format]]
+* [[instanceOf::Namespace:Language]]

@@ -1,0 +1,13 @@
+== Headline ==
+
+An interface in the [[View]] class that contains a single callback method
+
+== Details ==
+
+Look also [[Observer pattern]]
+
+== Metadata ==
+* [[instanceOf::Android_UI]]
+* [[identifies::http://developer.android.com/guide/topics/ui/ui-events.html]]
+* [[linksTo::http://developer.android.com/guide/topics/ui/controls.html]]
+* [[instanceOf::Namespace:Concept]]

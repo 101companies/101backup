@@ -1,0 +1,11 @@
+== Headline ==
+
+Unparse company data to an external format
+== Description ==
+
+Users of the [[@system]] may want to export data to another system. Hence, the [[@system]] may need to support such export, e.g., on the grounds of XML, JSON, or a concrete syntax. See also [[Feature:Parsing]]. Forms of [[open serialization]] may be used to enable import/export.
+== Metadata ==
+
+* [[isA::Functional requirement]]
+* [[isA::Optional feature]]
+* [[instanceOf::Namespace:Feature]]

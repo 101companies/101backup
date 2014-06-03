@@ -1,0 +1,34 @@
+== Headline ==
+
+Applying specification theory to [[Language:Haskell|]]
+== Characteristics ==
+
+This contribution is inspired by specification theory and domain engineering in the sense of the [[Language:Magnolia]] and the Bergen Language Design Laboratory.
+== Architecture ==
+
+Modules:
+* Company.Signature: Signature for covered features
+* Company.Properties: Properties to be met by any implementation
+* Company.Definitions: Definitional parts of implementation
+* Company.Implementation: A straightforward implementation
+* Company.Sample: A sample company
+* Company.Tests: Tests
+* Main: Run tests
+== Usage ==
+
+See https://github.com/101companies/101haskell/blob/master/README.md
+== Metadata ==
+
+* [[uses::Language:Haskell]]
+* [[uses::Language:Haskell 98]]
+* [[uses::Technology:GHC]]
+* [[uses::Technology:Cabal]]
+* [[uses::Technology:HUnit]]
+* [[uses::Technology:QuickCheck]]
+* [[uses::Technology:Haddock]]
+* [[implements::Feature:Flat_company]]
+* [[implements::Feature:Closed serialization]]
+* [[implements::Feature:Total]]
+* [[implements::Feature:Cut]]
+* [[developedBy::Contributor:Ralf Lämmel]]
+* [[instanceOf::Namespace:Contribution]]

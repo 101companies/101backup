@@ -1,0 +1,9 @@
+== Headline ==
+
+A tool to inflate the context menu from a menu resource
+
+== Metadata ==
+* [[instanceOf::Android_UI]]
+* [[identifies::http://developer.android.com/reference/android/view/MenuInflater.html]]
+* [[linksTo::http://developer.android.com/guide/topics/ui/menus.html]]
+* [[instanceOf::Namespace:Concept]]

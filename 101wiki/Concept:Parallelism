@@ -1,0 +1,8 @@
+== Headline ==
+
+the capability of executing programs in parallel
+
+== Metadata ==
+* [[instanceOf::Capability]]
+* [[identifies::http://en.wikipedia.org/wiki/Parallel_computing]]
+* [[instanceOf::Namespace:Concept]]

@@ -1,0 +1,29 @@
+== Headline ==
+
+The namespace for [[@contribution]]s
+
+== Metamodel ==
+
+* '''Headline''' (required): the headline introducing the contribution.
+* '''Characteristics''' (required): the characteristics of the contribution, which make it a relevant addition to the [[@repo]]. Trivially, relevance could be claimed, if languages and technologies are exercised not previously exercised by the repository. Typically, convincing relevance requires a more complex argument such as a certain programming technique or technology usage pattern or a certain technology/language combo to be covered originally by the contribution at hand.
+* '''Illustration''' (optional): an illustration of the contribution based on source-code snippets and explanations. 
+* '''Relationships''' (optional): explanations regarding related contributions.
+* '''Architecture''' (optional): explanations regarding the files, directories, and other such details regarding the organization of the contribution.
+* '''Usage''' (optional): explanations regarding building and testing the contribution so that its execution can be easily reproduced relatively easily by diverse users. 
+* '''Metadata''' (required):
+** The contribution must be declared to be, indeed, an instance of [[Namespace:Contribution]].
+** The contribution must be associated with used [[software language]]s in [[Namespace:Language]].
+** The contribution must be associated with used [[software technology|software technologies]]s in [[Namespace:Technology]].
+** The contribution must be associated with implemented features in [[Namespace:Feature]].
+** The contribution may be linked to relevant online resources.
+** The contribution may also be related to any relevant [[software concept]]s.
+
+== Illustration ==
+
+[[Contribution:haskellStarter]] serves as a strong example, as it is maintained as a showcase.
+
+== Metadata ==
+
+
+* [[relatesTo::Namespace:Contributor]]
+* [[instanceOf::Namespace:Namespace]]
